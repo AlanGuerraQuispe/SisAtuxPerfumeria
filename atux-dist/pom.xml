@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+	    <groupId>com.atux</groupId>
+		<artifactId>atux</artifactId>
+		<version>1.0</version>
+    </parent>
+    <artifactId>atux-dist</artifactId>
+    <name>Atux - Dist</name>
+    <packaging>pom</packaging>
+    <description>Atux - Dist</description>
+    <build>
+		<finalName>${parent.artifactId}-dist</finalName>
+    </build>
+
+  <dependencies>
+	  <dependency>
+	    <groupId>com.atux</groupId>
+        <artifactId>atux-domain</artifactId>
+		<version>1.0</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.atux</groupId>
+        <artifactId>atux-desktop</artifactId>
+		<version>1.0</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.atux</groupId>
+        <artifactId>atux-cron</artifactId>
+		<version>1.0</version>
+	  </dependency> 
+  </dependencies>
+<modules>
+	<module>web-start</module>
+	<module>stand-alone</module>
+	<module>cron</module>
+  </modules>
+</project>

@@ -1,0 +1,28 @@
+opción Falta 0
+	debe de aparecer una ventana para ingresar la fracción del producto
+
+Filtrar producto por principio activo
+
+Visualizar filas por colores (según precios y bono) por tipo de productos
+	Marca propia
+	Tipo A
+	Otros
+
+Precio Editable en la opción de completar venta
+
+En el reporte de detalle de ventas agregar columna con el precio que se regularizo la venta
+
+Un reporte que muestre todos los productos que se vendió a precio diferente con el responsable de la venta
+
+Revisar Ajuste de Stock
+
+-----------------------------
+
+Agregar producto lote
+
+Producto
+Fecha de ingreso
+Fecha de vencimiento
+lote
+tipo de docuemtno
+numero de docuemnto

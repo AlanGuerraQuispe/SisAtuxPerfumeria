@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+	    <groupId>com.atux</groupId>
+		<artifactId>atux</artifactId>
+		<version>1.0</version>
+    </parent>
+    <artifactId>atux-standalone</artifactId>
+    <name>Atux - StandAlone</name>
+    <packaging>pom</packaging>
+    <description>Atux - StandAlone</description>
+    <build>
+		<finalName>${parent.artifactId}-cron</finalName>
+		<plugins>
+
+
+		     <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>Copiando dir bin ...</echo>
+                                <copy todir="target/suministros-cron.dir/bin">
+									<fileset dir="bin"/>
+								</copy>
+							
+								<echo>Copiando properties ...</echo>
+								<copy file="../../suministros-desktop/target/classes/aw.app.properties" todir="target/suministros-cron.dir/conf"/>
+
+								<echo>Copiando Wrapper ...</echo>
+								<copy file="../../suministros-cron/target/classes/wrapper.conf" todir="target/suministros-cron.dir/conf"/>
+
+                                <echo>Copiando Wrapper ...</echo>
+                                <copy file="../../suministros-cron/target/classes/wrapperqa.conf" todir="target/suministros-cron.dir/conf"/>
+
+
+								<copy file="lib/wrapper.jar" todir="target/suministros-cron.dir/lib"/>
+								<copy file="lib/wrapper-windows-x86-32.dll" todir="target/suministros-cron.dir/lib"/>
+
+								
+							</tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<!--version>2.0-beta-1</version-->
+				<configuration>
+					<descriptors>
+					<descriptor>assembly.xml</descriptor>
+					</descriptors>
+					<!--finalName>replicador-ad</finalName>
+					<outputDirectory>target/replicador-ad/lib</outputDirectory>
+					<workDirectory>target/assembly/work</workDirectory-->
+				</configuration>
+
+
+
+			</plugin>
+
+        
+
+
+        </plugins>
+    </build>
+
+  <dependencies>
+	  <dependency>
+	    <groupId>com.atux</groupId>
+        <artifactId>atux-domain</artifactId>
+		<version>1.0</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.atux</groupId>
+        <artifactId>atux-cron</artifactId>
+		<version>1.0</version>
+	  </dependency>      
+  </dependencies>
+
+</project>

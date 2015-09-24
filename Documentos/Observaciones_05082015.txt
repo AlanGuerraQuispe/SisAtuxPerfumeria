@@ -1,0 +1,24 @@
+pantalla Kardex - agregar codigo barra
+pantalla de rotacion - filtros, mostrar los productos al cargar la pantalla
+revisar funcionalidad de calculo de venta ABC
+agregar titulos a pantallas, agregar propiedad de fecha calendario
+en modulo de ajuste de stock , agregar el lote
+modulo de kardex verificar calculo de stock en la grilla
+uniformizar los colores y botones en modulos
+agregar version de app
+
+Agregar monto total del pedido  de reposicion, por item y total del pedido.
+Exportar el pedido de reposicion en excel
+Ver el pedido a credito ya que salio un error
+Ver lentitud del pedido.
+
+Central
+Quitar properties
+separar base de datos separa - local
+En pantalla de precios de local, agregar filtro de local y el exportar por local
+agregar locales a modulos
+vericar el codigo de almacen
+
+
+Revisar si al cobrar sale un error porque la impresora no este conectada o el papel se atasca...se hace rollback pero no
+donacion no hace rollback, luego si se trata de cobrar el pedido no deja ya que el pedido ya existe en la tabla VTTR_PEDIDO_DONACION

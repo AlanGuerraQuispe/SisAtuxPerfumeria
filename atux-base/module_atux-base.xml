@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_atux-base" default="compile.module.atux-base">
+  <dirname property="module.atux-base.basedir" file="${ant.file.module_atux-base}"/>
+  
+  <property name="module.jdk.home.atux-base" value="${jdk.home.1.6}"/>
+  <property name="module.jdk.bin.atux-base" value="${jdk.bin.1.6}"/>
+  <property name="module.jdk.classpath.atux-base" value="jdk.classpath.1.6"/>
+  
+  <property name="compiler.args.atux-base" value="-encoding windows-1252 -source 1.5 -target 1.6 ${compiler.args}"/>
+  
+  <property name="atux-base.output.dir" value="${module.atux-base.basedir}/target/classes"/>
+  <property name="atux-base.testoutput.dir" value="${module.atux-base.basedir}/target/test-classes"/>
+  
+  <path id="atux-base.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="atux-base.module.production.classpath">
+    <path refid="${module.jdk.classpath.atux-base}"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.1.0.RELEASE/spring-jdbc-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/3.1.0.RELEASE/spring-tx-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/3.1.0.RELEASE/spring-orm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.2.7.Final/hibernate-entitymanager-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.2.7.Final/hibernate-core-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.0.1.Final/hibernate-validator-5.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/0.8.0/classmate-0.8.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-tools/4.0.0-CR1/hibernate-tools-4.0.0-CR1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/transaction/jta/1.1/jta-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/ant/ant/1.6.5/ant-1.6.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/freemarker/freemarker/2.3.8/freemarker-2.3.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/jtidy/r8-20060801/jtidy-r8-20060801.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/tycho/org.eclipse.jdt.core/3.8.0.v_C03/org.eclipse.jdt.core-3.8.0.v_C03.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/text/3.2.0-v20060605-1400/text-3.2.0-v20060605-1400.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/core/commands/3.3.0-I20070605-0010/commands-3.3.0-I20070605-0010.jar"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-functor/commons-functor/1.0/commons-functor-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/3.1.0.RELEASE/spring-aspects-3.1.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="atux-base.runtime.production.module.classpath">
+    <pathelement location="${atux-base.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.1.0.RELEASE/spring-jdbc-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/3.1.0.RELEASE/spring-tx-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/3.1.0.RELEASE/spring-orm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.2.7.Final/hibernate-entitymanager-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.2.7.Final/hibernate-core-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.0.1.Final/hibernate-validator-5.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/0.8.0/classmate-0.8.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-tools/4.0.0-CR1/hibernate-tools-4.0.0-CR1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/transaction/jta/1.1/jta-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/ant/ant/1.6.5/ant-1.6.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/freemarker/freemarker/2.3.8/freemarker-2.3.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/jtidy/r8-20060801/jtidy-r8-20060801.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/tycho/org.eclipse.jdt.core/3.8.0.v_C03/org.eclipse.jdt.core-3.8.0.v_C03.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/text/3.2.0-v20060605-1400/text-3.2.0-v20060605-1400.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/core/commands/3.3.0-I20070605-0010/commands-3.3.0-I20070605-0010.jar"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-functor/commons-functor/1.0/commons-functor-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/3.1.0.RELEASE/spring-aspects-3.1.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="atux-base.module.classpath">
+    <path refid="${module.jdk.classpath.atux-base}"/>
+    <pathelement location="${atux-base.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.1.0.RELEASE/spring-jdbc-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/3.1.0.RELEASE/spring-tx-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/3.1.0.RELEASE/spring-orm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.2.7.Final/hibernate-entitymanager-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.2.7.Final/hibernate-core-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.0.1.Final/hibernate-validator-5.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/0.8.0/classmate-0.8.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-tools/4.0.0-CR1/hibernate-tools-4.0.0-CR1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/transaction/jta/1.1/jta-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/ant/ant/1.6.5/ant-1.6.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/freemarker/freemarker/2.3.8/freemarker-2.3.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/jtidy/r8-20060801/jtidy-r8-20060801.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/tycho/org.eclipse.jdt.core/3.8.0.v_C03/org.eclipse.jdt.core-3.8.0.v_C03.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/text/3.2.0-v20060605-1400/text-3.2.0-v20060605-1400.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/core/commands/3.3.0-I20070605-0010/commands-3.3.0-I20070605-0010.jar"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-functor/commons-functor/1.0/commons-functor-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/3.1.0.RELEASE/spring-aspects-3.1.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="atux-base.runtime.module.classpath">
+    <pathelement location="${atux-base.testoutput.dir}"/>
+    <pathelement location="${atux-base.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.1.0.RELEASE/spring-jdbc-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/3.1.0.RELEASE/spring-tx-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/3.1.0.RELEASE/spring-orm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.2.7.Final/hibernate-entitymanager-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.2.7.Final/hibernate-core-4.2.7.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.0.1.Final/hibernate-validator-5.0.1.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/0.8.0/classmate-0.8.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-tools/4.0.0-CR1/hibernate-tools-4.0.0-CR1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/transaction/jta/1.1/jta-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/ant/ant/1.6.5/ant-1.6.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/freemarker/freemarker/2.3.8/freemarker-2.3.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/jtidy/r8-20060801/jtidy-r8-20060801.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/tycho/org.eclipse.jdt.core/3.8.0.v_C03/org.eclipse.jdt.core-3.8.0.v_C03.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/text/3.2.0-v20060605-1400/text-3.2.0-v20060605-1400.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/core/commands/3.3.0-I20070605-0010/commands-3.3.0-I20070605-0010.jar"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-functor/commons-functor/1.0/commons-functor-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/3.1.0.RELEASE/spring-aspects-3.1.0.RELEASE.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.atux-base">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.atux-base">
+    <patternset refid="excluded.from.module.atux-base"/>
+  </patternset>
+  
+  <path id="atux-base.module.sourcepath">
+    <dirset dir="${module.atux-base.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="atux-base.module.test.sourcepath">
+    <dirset dir="${module.atux-base.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.atux-base" depends="compile.module.atux-base.production,compile.module.atux-base.tests" description="Compile module atux-base"/>
+  
+  <target name="compile.module.atux-base.production" depends="register.custom.compilers" description="Compile module atux-base; production classes">
+    <mkdir dir="${atux-base.output.dir}"/>
+    <javac2 destdir="${atux-base.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.atux-base}/javac">
+      <compilerarg line="${compiler.args.atux-base}"/>
+      <bootclasspath refid="atux-base.module.bootclasspath"/>
+      <classpath refid="atux-base.module.production.classpath"/>
+      <src refid="atux-base.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.atux-base"/>
+    </javac2>
+    
+    <copy todir="${atux-base.output.dir}">
+      <fileset dir="${module.atux-base.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.atux-base.tests" depends="register.custom.compilers,compile.module.atux-base.production" description="compile module atux-base; test classes" unless="skip.tests">
+    <mkdir dir="${atux-base.testoutput.dir}"/>
+    <javac2 destdir="${atux-base.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.atux-base}/javac">
+      <compilerarg line="${compiler.args.atux-base}"/>
+      <bootclasspath refid="atux-base.module.bootclasspath"/>
+      <classpath refid="atux-base.module.classpath"/>
+      <src refid="atux-base.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.atux-base"/>
+    </javac2>
+    
+    <copy todir="${atux-base.testoutput.dir}">
+      <fileset dir="${module.atux-base.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.atux-base" description="cleanup module">
+    <delete dir="${atux-base.output.dir}"/>
+    <delete dir="${atux-base.testoutput.dir}"/>
+  </target>
+</project>

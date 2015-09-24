@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_build-tools" default="compile.module.build-tools">
+  <dirname property="module.build-tools.basedir" file="${ant.file.module_build-tools}"/>
+  
+  <property name="module.jdk.home.build-tools" value="${jdk.home.1.6}"/>
+  <property name="module.jdk.bin.build-tools" value="${jdk.bin.1.6}"/>
+  <property name="module.jdk.classpath.build-tools" value="jdk.classpath.1.6"/>
+  
+  <property name="compiler.args.build-tools" value="-encoding windows-1252 -source 1.5 -target 1.6 ${compiler.args}"/>
+  
+  <property name="build-tools.output.dir" value="${module.build-tools.basedir}/target/classes"/>
+  <property name="build-tools.testoutput.dir" value="${module.build-tools.basedir}/target/test-classes"/>
+  
+  <path id="build-tools.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="build-tools.module.production.classpath">
+    <path refid="${module.jdk.classpath.build-tools}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="build-tools.runtime.production.module.classpath">
+    <pathelement location="${build-tools.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="build-tools.module.classpath">
+    <path refid="${module.jdk.classpath.build-tools}"/>
+    <pathelement location="${build-tools.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="build-tools.runtime.module.classpath">
+    <pathelement location="${build-tools.testoutput.dir}"/>
+    <pathelement location="${build-tools.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.build-tools">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.build-tools">
+    <patternset refid="excluded.from.module.build-tools"/>
+  </patternset>
+  
+  <path id="build-tools.module.sourcepath">
+    <dirset dir="${module.build-tools.basedir}">
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.build-tools" depends="compile.module.build-tools.production,compile.module.build-tools.tests" description="Compile module build-tools"/>
+  
+  <target name="compile.module.build-tools.production" depends="register.custom.compilers" description="Compile module build-tools; production classes">
+    <mkdir dir="${build-tools.output.dir}"/>
+    <javac2 destdir="${build-tools.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.build-tools}/javac">
+      <compilerarg line="${compiler.args.build-tools}"/>
+      <bootclasspath refid="build-tools.module.bootclasspath"/>
+      <classpath refid="build-tools.module.production.classpath"/>
+      <src refid="build-tools.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.build-tools"/>
+    </javac2>
+    
+    <copy todir="${build-tools.output.dir}">
+      <fileset dir="${module.build-tools.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.build-tools.tests" depends="register.custom.compilers,compile.module.build-tools.production" description="compile module build-tools; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.build-tools" description="cleanup module">
+    <delete dir="${build-tools.output.dir}"/>
+    <delete dir="${build-tools.testoutput.dir}"/>
+  </target>
+</project>

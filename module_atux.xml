@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_atux" default="compile.module.atux">
+  <dirname property="module.atux.basedir" file="${ant.file.module_atux}"/>
+  
+  <property name="module.jdk.home.atux" value="${jdk.home.1.6}"/>
+  <property name="module.jdk.bin.atux" value="${jdk.bin.1.6}"/>
+  <property name="module.jdk.classpath.atux" value="jdk.classpath.1.6"/>
+  
+  <property name="compiler.args.atux" value="-encoding windows-1252 -source 1.5 -target 1.6 ${compiler.args}"/>
+  
+  <property name="atux.output.dir" value="${module.atux.basedir}/target/classes"/>
+  <property name="atux.testoutput.dir" value="${module.atux.basedir}/target/test-classes"/>
+  
+  <path id="atux.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="atux.module.production.classpath">
+    <path refid="${module.jdk.classpath.atux}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="atux.runtime.production.module.classpath">
+    <pathelement location="${atux.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="atux.module.classpath">
+    <path refid="${module.jdk.classpath.atux}"/>
+    <pathelement location="${atux.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="atux.runtime.module.classpath">
+    <pathelement location="${atux.testoutput.dir}"/>
+    <pathelement location="${atux.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock-junit3/2.1.0/jmock-junit3-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jmock/jmock/2.1.0/jmock-2.1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-api/1.0/hamcrest-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.0/hamcrest-library-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/3.1.0.RELEASE/spring-test-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/velocity/velocity/1.5/velocity-1.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit-dep/4.9/junit-dep-4.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net-ftp/commons-net-ftp/2.0/commons-net-ftp-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/1.5.0/ehcache-1.5.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/jsr107cache/jsr107cache/1.0/jsr107cache-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/2.0/commons-net-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/mail/mail/1.4/mail-1.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.atux">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.atux">
+    <patternset refid="excluded.from.module.atux"/>
+  </patternset>
+  
+  
+  <target name="compile.module.atux" depends="compile.module.atux.production,compile.module.atux.tests" description="Compile module atux"/>
+  
+  <target name="compile.module.atux.production" depends="register.custom.compilers" description="Compile module atux; production classes"/>
+  
+  <target name="compile.module.atux.tests" depends="register.custom.compilers,compile.module.atux.production" description="compile module atux; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.atux" description="cleanup module">
+    <delete dir="${atux.output.dir}"/>
+    <delete dir="${atux.testoutput.dir}"/>
+  </target>
+</project>
