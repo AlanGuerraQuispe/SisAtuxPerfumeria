@@ -581,7 +581,7 @@ public class CCliente extends JAbstractController{
     public String getNuevoCodigo(String coCompania, String coLocal){
         String Codigo="";
         try {
-            return AtuxDBUtility.getValueAt(Cliente.nt,"rtrim(ltrim(to_char(max(CO_CLIENTE_LOCAL) + 1,'00000000')))"," CO_COMPANIA = '"+coCompania +"' AND CO_LOCAL = '" + coLocal + "'");
+						return AtuxDBUtility.getValueAt(Cliente.nt,"rtrim(ltrim(to_char(nvl(max(CO_CLIENTE_LOCAL),0) + 1,'00000000')))"," CO_COMPANIA = '"+coCompania +"' AND CO_LOCAL = '" + coLocal + "'");
         } catch (SQLException ex) {
             Logger.getLogger(CCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
