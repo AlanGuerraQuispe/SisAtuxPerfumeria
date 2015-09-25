@@ -3,6 +3,7 @@ package atux.vistas.reportes;
 
 //import atux.controllers.CFactores;
 import atux.modelgui.ModeloTablaExportarConCad;
+import atux.modelgui.ModeloTablaLocales;
 import atux.util.Helper;
 import atux.util.common.AtuxVariables;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,13 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
         initComponents();
         Limpiar();
         dteFechaInicio.requestFocus();
+
+        CargaDatos();
+        tblListado.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//        Helper.ajustarSoloAnchoColumnas(tblListado, ModeloTablaLocales.anchoColumnas);
+//        Helper.ajustarAnchoColumnas(tblListado);
+//        setEventSelectionModel(tblListado.getSelectionModel());
+
 
 //        cp = new CExportarConCad();
 //        mtp = new ModeloTablaExportarConCad(inicioPag,finalPag);
@@ -79,7 +87,7 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
             Fecha = String.valueOf(sdf.format(date));
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Al menos elija una FECHA DE NACIMIENTO VALIDA ", "Error..!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Elija una FECHA VALIDA ", "Error..!!", JOptionPane.ERROR_MESSAGE);
         }
 //
 //
@@ -97,8 +105,13 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
     }
    
     public final void CargaDatos(){
-        mtp = new ModeloTablaExportarConCad(AtuxVariables.vCodigoCompania,AtuxVariables.vCodigoLocal, FormatoFecha(dteFechaInicio),FormatoFecha(dteFechaFinal));
-        numRegistros = mtp.getCantidadRegistros();
+        if (dteFechaInicio.getDate()==null || dteFechaFinal.getDate()==null){
+            mtp = new ModeloTablaExportarConCad("000","000", "01/01/2000", "01/01/2000");
+        }else{
+            mtp = new ModeloTablaExportarConCad(AtuxVariables.vCodigoCompania,AtuxVariables.vCodigoLocal, FormatoFecha(dteFechaInicio),FormatoFecha(dteFechaFinal));
+        }
+
+//        numRegistros = mtp.getCantidadRegistros();
         tblListado.setModel(mtp);
         Helper.ajustarSoloAnchoColumnas(tblListado,ModeloTablaExportarConCad.anchoColumnas);
     }
@@ -198,19 +211,21 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
 
         tblListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
-        tblListado.setAutoscrolls(false);
+        tblListado.setColumnSelectionAllowed(true);
+        tblListado.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblListado);
+        tblListado.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         pnlAccionesCategorias_G01.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesCategorias_G01.setOpaque(false);
@@ -276,8 +291,8 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAccionesCategorias_G01, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

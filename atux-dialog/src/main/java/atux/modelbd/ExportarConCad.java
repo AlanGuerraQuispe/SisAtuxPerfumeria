@@ -18,7 +18,7 @@ public class ExportarConCad extends JAbstractModelBD implements Serializable,IMo
     private String feComprobante;
     private String coMoneda;
     private String deGlosaPrincipal;
-    private String vaTasaCambio;
+    private double vaTasaCambio;
     private String tiConversion;
     private String inConversionMoneda;
     private String feTipoCambio;
@@ -26,9 +26,9 @@ public class ExportarConCad extends JAbstractModelBD implements Serializable,IMo
     private String coAnexo;
     private String coCentroCosto;
     private String inDebeHaber;
-    private String nuImporteOriginal;
-    private String nuImporteDolares;
-    private String nuImporteSoles;
+    private double nuImporteOriginal;
+    private double nuImporteDolares;
+    private double nuImporteSoles;
     private String tiDocumento;
     private String nuDocumento;
     private String feDocumento;
@@ -226,27 +226,27 @@ public class ExportarConCad extends JAbstractModelBD implements Serializable,IMo
         this.nuImporteBaseDetracSoles = nuImporteBaseDetracSoles;
     }
 
-    public String getNuImporteDolares() {
+    public double getNuImporteDolares() {
         return nuImporteDolares;
     }
 
-    public void setNuImporteDolares(String nuImporteDolares) {
+    public void setNuImporteDolares(double nuImporteDolares) {
         this.nuImporteDolares = nuImporteDolares;
     }
 
-    public String getNuImporteOriginal() {
+    public double getNuImporteOriginal() {
         return nuImporteOriginal;
     }
 
-    public void setNuImporteOriginal(String nuImporteOriginal) {
+    public void setNuImporteOriginal(double nuImporteOriginal) {
         this.nuImporteOriginal = nuImporteOriginal;
     }
 
-    public String getNuImporteSoles() {
+    public double getNuImporteSoles() {
         return nuImporteSoles;
     }
 
-    public void setNuImporteSoles(String nuImporteSoles) {
+    public void setNuImporteSoles(double nuImporteSoles) {
         this.nuImporteSoles = nuImporteSoles;
     }
 
@@ -330,11 +330,11 @@ public class ExportarConCad extends JAbstractModelBD implements Serializable,IMo
         this.vaIGVDocumentoProvision = vaIGVDocumentoProvision;
     }
 
-    public String getVaTasaCambio() {
+    public double getVaTasaCambio() {
         return vaTasaCambio;
     }
 
-    public void setVaTasaCambio(String vaTasaCambio) {
+    public void setVaTasaCambio(double vaTasaCambio) {
         this.vaTasaCambio = vaTasaCambio;
     }
     

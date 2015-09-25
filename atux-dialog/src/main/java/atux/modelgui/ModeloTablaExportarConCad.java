@@ -5,11 +5,11 @@ import atux.modelbd.ExportarConCad;
 
 public class ModeloTablaExportarConCad extends ModeloTabla{
 
-    String[] columnas = {"Sub Diario", "Número", "Fecha Comprobante", "Codigo Moneda", "Glosa Principal", "Tasa cambio", "Tipo Conversion", "Flag Conversion Moneda", "Fecha Tipo Cambio","Cuenta Contable", "Codigo Anexo", "Codigo Centro Costo", "Debe Haber", "Importe Original", "Importe Dolares", "Importe Soles","Tipo Documento", "Numero Documento", "Fecha Documento", "Fecha Vencimiento","Codigo Area", "Glosa Detalle", "Codigo Anexo Auxiliar", "Medio Pago","Tipo Documento Referencia", "Numero Documento Referencia", "Fecha Documento Referencia", "Base Imponible Doc Referencia", "IGV Documento Provision", "Tipo Referencia Estado MQ", "Numero Serie Caja Reg", "Fecha Operacion","Tipo Tasa", "Tasa Detraccion", "Importe Base Detrac Dolares", "Importe Base Detrac Soles"};
+    String[] columnas = {"Sub Diario", "Número", "Fecha Comprobante", "Codigo Moneda", "Glosa Principal", "Tasa cambio", "Tipo Conversion", "Flag Conversion Moneda", "Fecha Tipo Cambio","Cuenta Contable", "Codigo Anexo", "Centro Costo", "Debe Haber", "Importe Original", "Importe Dolares", "Importe Soles","Tipo Documento", "Numero Documento", "Fecha Documento", "Fecha Vencimiento","Codigo Area", "Glosa Detalle", "Codigo Anexo Auxiliar", "Medio Pago","Tipo Documento Referencia", "Numero Documento Referencia", "Fecha Documento Referencia", "Base Imponible Doc Referencia", "IGV Documento Provision", "Tipo Referencia Estado MQ", "Numero Serie Caja Reg", "Fecha Operacion","Tipo Tasa", "Tasa Detraccion", "Importe Base Detrac Dolares", "Importe Base Detrac Soles"};
     public static int TODOS = -1;
     public static int ACTIVOS = 1;
     public static int NO_ACTIVOS = 0;    
-    public static final Integer[] anchoColumnas  = {100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100};
+    public static final Integer[] anchoColumnas  = {70,60,130,100,100,80,100,100,100,100,100,80,80,100,100,100,100,120,120,120,80,100,140,100,180,210,120,210,180,170,160,120,80,150,180,160};
     
     public ModeloTablaExportarConCad() {
         cc = new CExportarConCad();

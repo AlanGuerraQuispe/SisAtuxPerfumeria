@@ -79,7 +79,7 @@ public class CExportarConCad extends JAbstractController{
                 exportarConCad.setFeComprobante(rs.getString("fe_comprobante"));
                 exportarConCad.setCoMoneda(rs.getString("co_moneda"));
                 exportarConCad.setDeGlosaPrincipal(rs.getString("Glosa_Principal"));
-                exportarConCad.setVaTasaCambio(rs.getString("va_tasa_cambio"));
+                exportarConCad.setVaTasaCambio(rs.getDouble("va_tasa_cambio"));
                 exportarConCad.setTiConversion(rs.getString("Tipo_Conversion"));
                 exportarConCad.setInConversionMoneda(rs.getString("Flag_Conversion_Moneda"));
                 exportarConCad.setFeTipoCambio(rs.getString("Fecha_Tipo_Cambio"));
@@ -87,9 +87,9 @@ public class CExportarConCad extends JAbstractController{
                 exportarConCad.setCoAnexo(rs.getString("Codigo_Anexo"));
                 exportarConCad.setCoCentroCosto(rs.getString("Codigo_Centro_Costo"));
                 exportarConCad.setInDebeHaber(rs.getString("Debe_Haber"));
-                exportarConCad.setNuImporteOriginal(rs.getString("Importe_Original"));
-                exportarConCad.setNuImporteDolares(rs.getString("Importe_Dolares"));
-                exportarConCad.setNuImporteSoles(rs.getString("Importe_Soles"));
+                exportarConCad.setNuImporteOriginal(rs.getDouble("Importe_Original"));
+                exportarConCad.setNuImporteDolares(rs.getDouble("Importe_Dolares"));
+                exportarConCad.setNuImporteSoles(rs.getDouble("Importe_Soles"));
                 exportarConCad.setTiDocumento(rs.getString("Tipo_Documento"));
                 exportarConCad.setNuDocumento(rs.getString("Numero_Documento"));
                 exportarConCad.setFeDocumento(rs.getString("Fecha_Documento"));
