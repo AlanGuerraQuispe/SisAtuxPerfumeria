@@ -7,6 +7,7 @@ import atux.trasladoproducto.DlgRecepGuias;
 import atux.vistas.catalogo.*;
 import atux.vistas.inventario.IListaPedidosReposicion;
 import atux.vistas.inventario.IPedidoReposicion;
+import atux.vistas.reportes.IExportaConCad;
 import atux.vistas.utilitario.ICambiarUsuario;
 import atux.vistas.utilitario.ICorrelativoSis;
 import atux.vistas.venta.*;
@@ -133,13 +134,14 @@ public class MenuBuilder {
                 .addJInternalFrame(IG5_SubFamilia.class, "G5- Sub.Familia")
                 ;        
 
-        createMenu(mb, 'P',new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuPrecios.png")))
-                .addPst(FNLocalPreciosPst.class, "Precios")
-                .addPst(FNProveedorPrecioPst.class, "Precios-Proveedor")
-                .addPst(FNAjustePrecioPst.class, "Descuento General")
-                .addPst(FNLaboratorioDescuentoPst.class, "Descuento x Laboratorio")
-                .addPst(FNLaboratorioIncentivoPst.class, "Incentivos")
-                .addPst(FNLaboratorioExhibicionPst.class, "Min. Exhibición")
+        createMenu(mb, 'P', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuPrecios.png")))
+                .addJInternalFrame(IExportaConCad.class, "Exportar a CONCAR")
+//                .addPst(FNLocalPreciosPst.class, "Precios")
+//                .addPst(FNProveedorPrecioPst.class, "Precios-Proveedor")
+//                .addPst(FNAjustePrecioPst.class, "Descuento General")
+//                .addPst(FNLaboratorioDescuentoPst.class, "Descuento x Laboratorio")
+//                .addPst(FNLaboratorioIncentivoPst.class, "Incentivos")
+//                .addPst(FNLaboratorioExhibicionPst.class, "Min. Exhibición")
         ;
 
         createMenu(mb, 'U', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuUtilitarios.png")))
