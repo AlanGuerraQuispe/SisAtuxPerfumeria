@@ -1,6 +1,5 @@
 package atux.managerbd;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,15 +24,10 @@ public class BaseConexion {
     
     public static int TODO           = 1;
     public static int SOLO_STATEMENT = 2;
-    public static int SOLO_RESULTSET = 3;
-    public static int SOLO_PREPAREDSTATEMENT = 4;
-    public static int CONNECION      = 5;
 
-//  public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@192.168.1.111:1521:ABDPV001";
     public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.200:1521:XE";
-//  public static String connect_string_thin = "jdbc:oracle:thin:ecventa/venta@7.86.89.177:1521:ABDPV001";
-//  public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.91:1521:XE";
-      
+//    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@7.164.158.123:1521:XE";
+
     /**
      * String de Conexion modo OCI
      */

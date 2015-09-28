@@ -4,6 +4,8 @@ import atux.core.Ex;
 import atux.core.JAbstractController;
 import atux.core.JAbstractModelBD;
 import atux.modelbd.DetallePedidoVenta;
+import com.aw.core.util.StringUtils;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -143,7 +145,7 @@ public class CDetallePedidoVenta extends JAbstractController{
                    detPedVenta.setNuRevisionProducto(rs.getString("NU_REVISION_PRODUCTO"));
                    detPedVenta.setProdLocal(new CProductoLocal().getRegistro(new Object[]{rs.getString("CO_COMPANIA"),rs.getString("CO_LOCAL"),rs.getString("CO_PRODUCTO"),rs.getString("NU_REVISION_PRODUCTO")}));
 
-                   if(rs.getString("IN_PRODUCTO_PRINCIPAL").equals ("N"))
+                if(!StringUtils.isEmpty(rs.getString("IN_PRODUCTO_PRINCIPAL")) && rs.getString("IN_PRODUCTO_PRINCIPAL").equals ("N"))
                         detPedVenta.setProductoInsumo (new CProductoInsumo ().getRegistroPorPk (new Object[]{rs.getString ("CO_COMPANIA"), rs.getString ("CO_PRODUCTO_PRINCIPAL"), rs.getString ("NU_REVISION_PRODUCTO"), rs.getString ("CO_PRODUCTO")}));
 
                    detPedVenta.setVaVenta(rs.getDouble("VA_VENTA"));
