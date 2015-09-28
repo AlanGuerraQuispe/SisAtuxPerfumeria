@@ -31,7 +31,6 @@ public class AtuxPst {
         List menus = new ArrayList();
         frmAtux = new FrmAtuxV2(menus);
         String version = "1.0";
-        //String version = StringUtils.nvl(VersionInfo.instance().getVersion(), "¿ver?");
         AtuxUtility.validaPCName();
         String enviroment = StringUtils.nvl(System.getProperty(SPSysProp.ATUX_ENVIROMENT), "¿ENV?");
         String bdInfo = StringUtils.nvl("TEST", "¿BD?");
@@ -50,9 +49,6 @@ public class AtuxPst {
         }
         frmAtux.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
         frmAtux.setVisible(true);
-
-//        Mac mac = new Mac();
-//        mac.VisualizaVentana(frmAtux);
 
     }
 

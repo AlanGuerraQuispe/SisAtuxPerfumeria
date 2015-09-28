@@ -112,8 +112,8 @@ public class MenuBuilder {
                 .addJInternalFrame(ICompania.class, "Compañías")
                 .addJInternalFrame(IMaestroProductos.class, "Productos")
                 .addJInternalFrame(ILocales.class, "Locales")
-                .addJInternalFrame(IProveedores.class, "Proveedores")
-                .addJInternalFrame(ILaboratorio.class, "Laboratorios")
+//                .addJInternalFrame(IProveedores.class, "Proveedores")
+//                .addJInternalFrame(ILaboratorio.class, "Laboratorios")
                 .addJInternalFrame(IVendedores.class, "Vendedores")
                 .addJInternalFrame(IClientes.class, "Clientes")
                 .addJInternalFrame(IImpuestoIGV.class, "IGV")
@@ -123,7 +123,7 @@ public class MenuBuilder {
                 .addJInternalFrame(IFormaPago.class, "Formas de Pago");
         
          catalogos.addJInternalFrame(IPrincipioActivo.class, "Principio Activo")
-                 .addJInternalFrame(IMedicos.class, "Médicos")
+//                 .addJInternalFrame(IMedicos.class, "Médicos")
                 ;
          
         createMenu(catalogos.getMenu(),"Set Categorias")
@@ -132,16 +132,10 @@ public class MenuBuilder {
                 .addJInternalFrame(IG3_SubDivision.class, "G3- Sub.División")
                 .addJInternalFrame(IG4_Familia.class, "G4- Familia")
                 .addJInternalFrame(IG5_SubFamilia.class, "G5- Sub.Familia")
-                ;        
+                ;
 
-        createMenu(mb, 'P', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuPrecios.png")))
+        createMenu(mb, 'P', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuReportes.png")))
                 .addJInternalFrame(IExportaConCad.class, "Exportar a CONCAR")
-//                .addPst(FNLocalPreciosPst.class, "Precios")
-//                .addPst(FNProveedorPrecioPst.class, "Precios-Proveedor")
-//                .addPst(FNAjustePrecioPst.class, "Descuento General")
-//                .addPst(FNLaboratorioDescuentoPst.class, "Descuento x Laboratorio")
-//                .addPst(FNLaboratorioIncentivoPst.class, "Incentivos")
-//                .addPst(FNLaboratorioExhibicionPst.class, "Min. Exhibición")
         ;
 
         createMenu(mb, 'U', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuUtilitarios.png")))
