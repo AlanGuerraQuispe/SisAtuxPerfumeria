@@ -5,7 +5,7 @@ import atux.core.JAbstractModelBD;
 import atux.modelgui.ModeloTablaPrincipioActivo;
 import atux.util.FiltraEntrada;
 import atux.util.Helper;
-import atux.vistas.catalogo.IProductoInsumo;
+import atux.vistas.catalogo.IProductoInsumoAnt;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,9 +17,9 @@ public class BuscarPrincipioActivo extends javax.swing.JPanel {
     int opcion=-1;
     private ModeloTablaPrincipioActivo mtp;
     private CPrincipioActivo cp;
-    IProductoInsumo Ipa;
+    IProductoInsumoAnt Ipa;
 
-    public BuscarPrincipioActivo(int opcion, IProductoInsumo Ipa) {
+    public BuscarPrincipioActivo(int opcion, IProductoInsumoAnt Ipa) {
         initComponents();
         lbAviso.setVisible(false);
         this.Ipa = Ipa;

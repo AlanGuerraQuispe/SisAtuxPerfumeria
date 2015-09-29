@@ -9,6 +9,8 @@ import atux.util.Helper;
 import atux.util.common.AtuxGridUtils;
 import atux.util.common.AtuxUtility;
 import atux.vistas.catalogo.IProductoInsumo;
+import atux.vistas.catalogo.IProductoInsumoAnt;
+
 import java.awt.Component;
 import javax.swing.*;
 
@@ -44,17 +46,17 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
         AtuxUtility.moveFocus(txtDato);
     }
 
-    public BuscarMaestroProducto(JPanel base) {
-        initComponents();
-        this.base = (IProductoInsumo)base;
-        lbAviso.setVisible(false);
-        mtp = new ModeloTablaMaestroProductos();
-        tblProducto.setModel(mtp);
-        Helper.ajustarSoloAnchoColumnas(tblProducto, ModeloTablaMaestroProductos.anchoColumnasBusqueda);
-        Helper.setFiltraEntrada(txtDato.getDocument(), FiltraEntrada.SOLO_LETRAS, 50, false);
-        AtuxGridUtils.setearPrimerRegistro(tblProducto, txtDato, 1);
-        AtuxUtility.moveFocus(txtDato);
-    }
+//    public BuscarMaestroProducto(JPanel base) {
+//        initComponents();
+//        this.base = (IProductoInsumo)base;
+//        lbAviso.setVisible(false);
+//        mtp = new ModeloTablaMaestroProductos();
+//        tblProducto.setModel(mtp);
+//        Helper.ajustarSoloAnchoColumnas(tblProducto, ModeloTablaMaestroProductos.anchoColumnasBusqueda);
+//        Helper.setFiltraEntrada(txtDato.getDocument(), FiltraEntrada.SOLO_LETRAS, 50, false);
+//        AtuxGridUtils.setearPrimerRegistro(tblProducto, txtDato, 1);
+//        AtuxUtility.moveFocus(txtDato);
+//    }
 
     private void getOptionPane() {
         if (op != null) {
@@ -157,14 +159,14 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDato, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,12 +284,12 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
         if (this.tblProducto.getSelectedRow() != -1) {
             cp = new CProducto();
             cp.setProducto(mtp.getFila(tblProducto.getSelectedRow()));
-            if(base !=null){
-                base.txtCodigoPrincipioActivo.setText(((Producto)cp.getProducto()).getCoProducto());
-                base.txtDescripcionPrincipioActivo.setText(((Producto)cp.getProducto()).getDeProducto());
-                base.setVaCosto(cp.getProducto().getVaCostoProducto());
-                base.setVaPrecioPublico(cp.getProducto().getVaPrecioPublico());
-            }
+//            if(base !=null){
+//                base.txtCodigoPrincipioActivo.setText(((Producto)cp.getProducto()).getCoProducto());
+//                base.txtDescripcionPrincipioActivo.setText(((Producto)cp.getProducto()).getDeProducto());
+//                base.setVaCosto(cp.getProducto().getVaCostoProducto());
+//                base.setVaPrecioPublico(cp.getProducto().getVaPrecioPublico());
+//            }
             op.setValue(1);
         } else {
             lbAviso.setVisible(true);
@@ -295,7 +297,7 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
-    private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
+    private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {                                         
         if (evt.getClickCount() == 1) {
             Producto pro = (Producto) mtp.getFila(tblProducto.getSelectedRow());
             txtDato.setText(pro.getDeProducto());
@@ -306,13 +308,13 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
             if (tblProducto.getSelectedRow() != -1) {
                 cp = new CProducto();
                 cp.setProducto(mtp.getFila(tblProducto.getSelectedRow()));
-                if(base !=null){
-                    base.txtCodigoPrincipioActivo.setText(((Producto)cp.getProducto()).getCoProducto());
-                    base.txtDescripcionPrincipioActivo.setText(((Producto)cp.getProducto()).getDeProducto());
-                    base.setVaCosto(cp.getProducto().getVaCostoProducto());
-                    base.setVaPrecioPublico(cp.getProducto().getVaPrecioPublico());
-                    base.setDeUnidadInsumo(cp.getProducto().getDeUnidadProducto());
-                }
+//                if(base !=null){
+//                    base.txtCodigoPrincipioActivo.setText(((Producto)cp.getProducto()).getCoProducto());
+//                    base.txtDescripcionPrincipioActivo.setText(((Producto)cp.getProducto()).getDeProducto());
+//                    base.setVaCosto(cp.getProducto().getVaCostoProducto());
+//                    base.setVaPrecioPublico(cp.getProducto().getVaPrecioPublico());
+//                    base.setDeUnidadInsumo(cp.getProducto().getDeUnidadProducto());
+//                }
                 op.setValue(1);
             } else {
                 lbAviso.setVisible(true);
