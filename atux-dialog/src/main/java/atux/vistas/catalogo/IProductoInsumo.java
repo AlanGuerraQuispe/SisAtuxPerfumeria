@@ -1,5 +1,16 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * IProductoInsumo.java
+ *
+ * Created on 29/09/2015, 03:43:53 PM
+ */
 package atux.vistas.catalogo;
 
+import atux.common.AtuxDBUtility;
 import atux.controllers.CPrincipioActivo;
 import atux.controllers.CProductoInsumo;
 import atux.enums.IndicadorSNRegistro;
@@ -10,12 +21,13 @@ import atux.util.ECampos;
 import atux.util.FiltraEntrada;
 import atux.util.Helper;
 import atux.util.common.AtuxGridUtils;
-import atux.util.common.AtuxVariables;
-import atux.util.common.AtuxDBUtility;
 import atux.util.common.AtuxUtility;
+import atux.util.common.AtuxVariables;
 import atux.vistas.buscar.BuscarMaestroProducto;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -23,13 +35,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class IProductoInsumo extends javax.swing.JPanel {
+/**
+ *
+ * @author ABC
+ */
+public class IProductoInsumo extends javax.swing.JDialog {
     private CProductoInsumo cp;
     private ModeloTablaProductoInsumo mtp;
     private ModeloTablaProductoInsumo mtp2;
@@ -43,10 +62,40 @@ public class IProductoInsumo extends javax.swing.JPanel {
     JOptionPane op;
     private DefaultComboBoxModel mImprime;
     private Double vaCosto;
+
+    public Double getVaCosto() {
+        return vaCosto;
+    }
+
+    public void setVaCosto(Double vaCosto) {
+        this.vaCosto = vaCosto;
+    }
+
+    public Double getVaPrecioPublico() {
+        return vaPrecioPublico;
+    }
+
+    public void setVaPrecioPublico(Double vaPrecioPublico) {
+        this.vaPrecioPublico = vaPrecioPublico;
+    }
     private Double vaPrecioPublico;
     private String deUnidadInsumo;
     private String Estado;
     private String tiMaterialSAP;
+    
+    /** Creates new form IProductoInsumo */
+    public IProductoInsumo(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        AtuxUtility.centrarVentana(this);
+        this.setTitle("Mostrando todos los Insumos del Producto");
+
+        cp = new CProductoInsumo();
+        setFiltroTexto();
+        setEventSelectionModel(tblListado.getSelectionModel());
+        DesActivarCasillas();
+        lbAviso.setVisible(false);
+    }
 
     public String getTiMaterialSAP() {
         return tiMaterialSAP;
@@ -56,17 +105,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
         this.tiMaterialSAP = tiMaterialSAP;
     }
     
-    
-
-    public IProductoInsumo() {
-        initComponents();
-        cp = new CProductoInsumo();
-        setFiltroTexto();
-        setEventSelectionModel(tblListado.getSelectionModel());
-        DesActivarCasillas();
-        lbAviso.setVisible(false);
-    }
-
     public final void CargaDatos() {
         Estado = "T";
 
@@ -118,11 +156,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
             cp.setProductoInsumo(mtp.getFila(tblListado.getSelectedRow()));
             setProductoInsumo();
             btnModificar.setEnabled(true);
-            
-            mtp2 = new ModeloTablaProductoInsumo(AtuxVariables.vCodigoCompania, txtCodigoPrincipioActivo.getText(), Estado);
-            tblListadoInsumo.setModel(mtp2);
-            Helper.ajustarSoloAnchoColumnas(tblListadoInsumo, ModeloTablaProductoInsumo.anchoColumnas);
-            
         }
     }
 
@@ -144,6 +177,10 @@ public class IProductoInsumo extends javax.swing.JPanel {
         } else {
             chbSetActivo(false);
         }
+
+        mtp2 = new ModeloTablaProductoInsumo(AtuxVariables.vCodigoCompania, txtCodigoPrincipioActivo.getText(), Estado);
+        tblListadoInsumo.setModel(mtp2);
+        Helper.ajustarSoloAnchoColumnas(tblListadoInsumo, ModeloTablaProductoInsumo.anchoColumnas);
     }
 
     private void Limpiar() {
@@ -172,6 +209,8 @@ public class IProductoInsumo extends javax.swing.JPanel {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+
+        this.cmbImprime.setEnabled(true);
     }
 
     private void DesActivarCasillas() {
@@ -194,6 +233,8 @@ public class IProductoInsumo extends javax.swing.JPanel {
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);
 
+        this.cmbImprime.setEnabled(false);
+        
         esActualizacion = false;
         this.pnlBuscadorTDeCambio.setVisible(true);
         logger.info(txtCodigoPrincipioActivo.getText());
@@ -261,7 +302,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
         try {
             Fecha = formatter.parse(dateInString);
         } catch (ParseException ex) {
-            Logger.getLogger(IProductoInsumo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IProductoInsumoAnt.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Fecha;
     }
@@ -287,9 +328,14 @@ public class IProductoInsumo extends javax.swing.JPanel {
         txtDescripcion.setText(DescripcionProducto);
     }
 
+    public void setUnidadInsumo(String UnidadProducto) {
+        deUnidadInsumo=UnidadProducto;
+    }
+
     public void setUnidadProducto(String UnidadProducto) {
         txtUnidad.setText(UnidadProducto);
     }
+
 
     private void getOptionPane() {
         if (op != null) {
@@ -314,10 +360,8 @@ public class IProductoInsumo extends javax.swing.JPanel {
         BG1.getRegistroPorPk(new String[]{Codigo, "1"});
         txtDescripcionPrincipioActivo.setText(BG1.getPrincipioActivo().getDePrincipioActivo().trim());
     }
-
-
-    /**
-     * This method is called from within the constructor to
+    
+    /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
@@ -326,7 +370,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         pnlEntradas = new javax.swing.JPanel();
         lblCodigo = new javax.swing.JLabel();
@@ -361,8 +404,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListadoInsumo = new javax.swing.JTable();
 
-        setAlignmentX(0.0F);
-        setAlignmentY(0.0F);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
         panelImage1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -422,19 +464,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
         txtCodigoPrincipioActivo.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodigoPrincipioActivo.setName("pcodigo"); // NOI18N
         txtCodigoPrincipioActivo.setPreferredSize(new java.awt.Dimension(120, 25));
-        txtCodigoPrincipioActivo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCodigoPrincipioActivoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCodigoPrincipioActivoFocusLost(evt);
-            }
-        });
-        txtCodigoPrincipioActivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoPrincipioActivoActionPerformed(evt);
-            }
-        });
         txtCodigoPrincipioActivo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCodigoPrincipioActivoKeyReleased(evt);
@@ -597,7 +626,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
         btnUltimo.setBounds(152, 6, 48, 25);
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
-        buttonGroup1.add(rbTodos);
         rbTodos.setFont(new java.awt.Font("Arial", 1, 14));
         rbTodos.setForeground(new java.awt.Color(255, 255, 255));
         rbTodos.setText("Todos");
@@ -610,9 +638,9 @@ public class IProductoInsumo extends javax.swing.JPanel {
         rbTodos.setBounds(205, 6, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
-        buttonGroup1.add(rbAtivos);
         rbAtivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbAtivos.setForeground(new java.awt.Color(255, 255, 255));
+        rbAtivos.setSelected(true);
         rbAtivos.setText("Activos");
         rbAtivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -623,7 +651,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
         rbAtivos.setBounds(279, 6, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
-        buttonGroup1.add(rbNoActivos);
         rbNoActivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbNoActivos.setForeground(new java.awt.Color(255, 255, 255));
         rbNoActivos.setText("No Activos");
@@ -731,33 +758,74 @@ public class IProductoInsumo extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 787, Short.MAX_VALUE)
             .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 447, Short.MAX_VALUE)
             .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeroActionPerformed
+private void txtCodigoPrincipioActivoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPrincipioActivoKeyReleased
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_F1:
+                ISeleccionarInsumo pvc = new ISeleccionarInsumo(new Frame(), true, this);
+                pvc.setPreferredSize(new Dimension(650, 350));
+                JLabel aviso = pvc.getAviso();
+
+                String msj = (tipoSeleccion == -1 ? "Mostrando Listado de Insumos" : (tipoSeleccion == 1 ? "Mostrando Listado de Insumos" : "Mostrando Listado de Insumos"));
+                pvc.setVisible(true);
+//                JOptionPane.showInternalOptionDialog(new Frame() , pvc, msj, -1, -1, null, new Object[]{aviso}, null);
+
+
+//                if (pvc.getMaestroProducto() != null) {
+//                    this.txtCodigoPrincipioActivo.setText(((Producto)pvc.getMaestroProducto()).getCoProducto());
+//                    this.txtDescripcionPrincipioActivo.setText(((Producto)pvc.getMaestroProducto()).getDeProducto());
+//                }
+
+                break;
+            case KeyEvent.VK_ENTER:
+                BuscarInfoPrincipioActivo(txtCodigoPrincipioActivo.getText());
+                cmbImprime.requestFocus();
+                break;
+        }
+}//GEN-LAST:event_txtCodigoPrincipioActivoKeyReleased
+
+private void chbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbEstadoActionPerformed
+        chbSetActivo(chbEstado.isSelected());
+}//GEN-LAST:event_chbEstadoActionPerformed
+
+private void chbEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chbEstadoKeyReleased
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                btnGuardar.requestFocus();
+                break;
+        }
+}//GEN-LAST:event_chbEstadoKeyReleased
+
+private void btnPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeroActionPerformed
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = 0;
         AtuxGridUtils.showCell(tblListado, numRegistros, ModeloTablaSimple.COLUMNA_DESCRIPCION);
         cp.setProductoInsumo(mtp.getFila(numRegistros));
         setProductoInsumo();
         return;
-    }//GEN-LAST:event_btnPrimeroActionPerformed
+}//GEN-LAST:event_btnPrimeroActionPerformed
 
-    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = numRegistros - 1;
         if (numRegistros == -1) {
@@ -768,9 +836,9 @@ public class IProductoInsumo extends javax.swing.JPanel {
         setProductoInsumo();
 
         return;
-    }//GEN-LAST:event_btnAnteriorActionPerformed
+}//GEN-LAST:event_btnAnteriorActionPerformed
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = numRegistros + 1;
         if (finalPag < numRegistros) {
@@ -781,9 +849,9 @@ public class IProductoInsumo extends javax.swing.JPanel {
         setProductoInsumo();
 
         return;
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+}//GEN-LAST:event_btnSiguienteActionPerformed
 
-    private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
+private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = finalPag;
         AtuxGridUtils.showCell(tblListado, numRegistros, ModeloTablaSimple.COLUMNA_DESCRIPCION);
@@ -791,49 +859,49 @@ public class IProductoInsumo extends javax.swing.JPanel {
         setProductoInsumo();
 
         return;
-    }//GEN-LAST:event_btnUltimoActionPerformed
+}//GEN-LAST:event_btnUltimoActionPerformed
 
-    private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodosActionPerformed
+private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodosActionPerformed
         tipoSeleccion = -1;
         inicioPag = 0;
         finalPag = tmpFp;
+        Limpiar();
         CargaDatos();
         chbSetActivo(true);
-        Limpiar();
-    }//GEN-LAST:event_rbTodosActionPerformed
+}//GEN-LAST:event_rbTodosActionPerformed
 
-    private void rbAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAtivosActionPerformed
+private void rbAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAtivosActionPerformed
         tipoSeleccion = 1;
         inicioPag = 0;
         finalPag = tmpFp;
+        Limpiar();
         CargaDatos();
         chbSetActivo(true);
-        Limpiar();
-    }//GEN-LAST:event_rbAtivosActionPerformed
+}//GEN-LAST:event_rbAtivosActionPerformed
 
-    private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
+private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
         tipoSeleccion = 0;
         inicioPag = 0;
         finalPag = tmpFp;
+        Limpiar();
         CargaDatos();
         chbSetActivo(false);
-        Limpiar();
-    }//GEN-LAST:event_rbNoActivosActionPerformed
+}//GEN-LAST:event_rbNoActivosActionPerformed
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         esActualizacion = false;
         Limpiar();
         ActivarCasillas();
         txtCodigoPrincipioActivo.requestFocus();
-    }//GEN-LAST:event_btnNuevoActionPerformed
+}//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         esActualizacion = true;
         ActivarCasillas();
         txtCodigoPrincipioActivo.requestFocus();
-    }//GEN-LAST:event_btnModificarActionPerformed
+}//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Esta Seguro de Guardar los Datos", "Mensaje del Sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
             return;
         }
@@ -871,98 +939,70 @@ public class IProductoInsumo extends javax.swing.JPanel {
         CargaDatos();
         DesActivarCasillas();
         tblListado.requestFocus();
-    }//GEN-LAST:event_btnGuardarActionPerformed
+}//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Se perderan todos los datos ingresados\nEsta Seguro de Cancelar ", "Mensaje del Sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
             return;
         }
 
         DesActivarCasillas();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+}//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        getOptionPane();
-        op.setValue(1);
-    }//GEN-LAST:event_btnSalirActionPerformed
+private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    dispose();
+//    getOptionPane();
+//        op.setValue(1);
+}//GEN-LAST:event_btnSalirActionPerformed
 
-    private void chbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbEstadoActionPerformed
-        chbSetActivo(chbEstado.isSelected());
-    }//GEN-LAST:event_chbEstadoActionPerformed
+private void panelImage1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelImage1FocusGained
 
-    private void chbEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chbEstadoKeyReleased
-        switch (evt.getKeyCode()) {
-            case KeyEvent.VK_ENTER:
-                btnGuardar.requestFocus();
-                break;
-        }
-    }//GEN-LAST:event_chbEstadoKeyReleased
+}//GEN-LAST:event_panelImage1FocusGained
 
-    private void txtCodigoPrincipioActivoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPrincipioActivoKeyReleased
-        switch (evt.getKeyCode()) {
-            case KeyEvent.VK_F1:
-
-                BuscarMaestroProducto pvc = new BuscarMaestroProducto(this);
-                pvc.setPreferredSize(new Dimension(650, 350));
-                JLabel aviso = pvc.getAviso();
-
-                String msj = (tipoSeleccion == -1 ? "Mostrando Listado de Insumos" : (tipoSeleccion == 1 ? "Mostrando Listado de Insumos" : "Mostrando Listado de Insumos"));
-                JOptionPane.showInternalOptionDialog(this, pvc, msj, -1,
-                        -1, null, new Object[]{aviso}, null);
-
-                if (pvc.getMaestroProducto() != null) {
-                    this.txtCodigoPrincipioActivo.setText(((Producto)pvc.getMaestroProducto()).getCoProducto());
-                    this.txtDescripcionPrincipioActivo.setText(((Producto)pvc.getMaestroProducto()).getDeProducto());
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
-
-                break;
-            case KeyEvent.VK_ENTER:
-                BuscarInfoPrincipioActivo(txtCodigoPrincipioActivo.getText());
-                cmbImprime.requestFocus();
-                break;
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(IProductoInsumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(IProductoInsumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(IProductoInsumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(IProductoInsumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_txtCodigoPrincipioActivoKeyReleased
+        //</editor-fold>
 
-    public Double getVaCosto() {
-        return vaCosto;
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                IProductoInsumo dialog = new IProductoInsumo(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
-
-    public void setVaCosto(Double vaCosto) {
-        this.vaCosto = vaCosto;
-    }
-
-    public Double getVaPrecioPublico() {
-        return vaPrecioPublico;
-    }
-
-    public void setVaPrecioPublico(Double vaPrecioPublico) {
-        this.vaPrecioPublico = vaPrecioPublico;
-    }
-
-    public String getDeUnidadInsumo() {
-        return deUnidadInsumo;
-    }
-
-    public void setDeUnidadInsumo(String deUnidadInsumo) {
-        this.deUnidadInsumo = deUnidadInsumo;
-    }
-
-    private void txtCodigoPrincipioActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoPrincipioActivoActionPerformed
-
-    }//GEN-LAST:event_txtCodigoPrincipioActivoActionPerformed
-
-    private void panelImage1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelImage1FocusGained
-
-    }//GEN-LAST:event_panelImage1FocusGained
-
-    private void txtCodigoPrincipioActivoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoPrincipioActivoFocusGained
-
-    }//GEN-LAST:event_txtCodigoPrincipioActivoFocusGained
-
-    private void txtCodigoPrincipioActivoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoPrincipioActivoFocusLost
-
-    }//GEN-LAST:event_txtCodigoPrincipioActivoFocusLost
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
     private elaprendiz.gui.button.ButtonRect btnCancelar;
@@ -973,7 +1013,6 @@ public class IProductoInsumo extends javax.swing.JPanel {
     private elaprendiz.gui.button.ButtonRect btnSalir;
     private elaprendiz.gui.button.ButtonRect btnSiguiente;
     private elaprendiz.gui.button.ButtonRect btnUltimo;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbEstado;
     private javax.swing.JComboBox cmbImprime;
     private javax.swing.JScrollPane jScrollPane1;

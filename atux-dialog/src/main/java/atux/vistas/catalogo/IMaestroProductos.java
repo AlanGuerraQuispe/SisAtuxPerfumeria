@@ -10,12 +10,7 @@ import atux.enums.IndicadorSNRegistro;
 
 import javax.swing.*;
 
-import atux.vistas.buscar.BuscarG1_LineaComercial;
-import atux.vistas.buscar.BuscarG2_Division;
-import atux.vistas.buscar.BuscarG3_SubDivision;
-import atux.vistas.buscar.BuscarG4_Familia;
-import atux.vistas.buscar.BuscarG5_SubFamilia;
-import atux.vistas.buscar.BuscarMaestroProducto;
+import atux.vistas.buscar.*;
 
 import java.awt.*;
 import java.util.Calendar;
@@ -754,7 +749,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         panelImage1.setPreferredSize(new java.awt.Dimension(1200, 500));
         panelImage1.setLayout(null);
 
-        pnlEntradasCategorias_G05.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Maestro de Productos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasCategorias_G05.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Maestro de Productos", 1, 2));
         pnlEntradasCategorias_G05.setAlignmentX(0.2F);
         pnlEntradasCategorias_G05.setAlignmentY(0.2F);
         pnlEntradasCategorias_G05.setEnabled(false);
@@ -762,7 +757,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.setPreferredSize(new java.awt.Dimension(748, 120));
         pnlEntradasCategorias_G05.setLayout(null);
 
-        pnlDastosIniciales.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlDastosIniciales.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlDastosIniciales.setAlignmentX(0.2F);
         pnlDastosIniciales.setAlignmentY(0.2F);
         pnlDastosIniciales.setOpaque(false);
@@ -846,7 +841,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.add(pnlDastosIniciales);
         pnlDastosIniciales.setBounds(84, 20, 870, 40);
 
-        pnlSetDeCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Set de Categoria", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlSetDeCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Set de Categoria", 1, 2));
         pnlSetDeCategoria.setAlignmentX(0.2F);
         pnlSetDeCategoria.setAlignmentY(0.2F);
         pnlSetDeCategoria.setOpaque(false);
@@ -1041,17 +1036,17 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.add(pnlSetDeCategoria);
         pnlSetDeCategoria.setBounds(16, 65, 474, 197);
 
-        pnlControlDescuento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Control Descuento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlControlDescuento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Control Descuento", 1, 2));
         pnlControlDescuento.setOpaque(false);
         pnlControlDescuento.setLayout(null);
 
-        lblInGenero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblInGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblInGenero.setText("Dirigido:");
         pnlControlDescuento.add(lblInGenero);
         lblInGenero.setBounds(50, 90, 60, 23);
 
-        cmbGenero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cmbGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbGenero);
         cmbGenero.setBounds(120, 85, 137, 24);
 
@@ -1060,13 +1055,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlControlDescuento.add(lblTipoProducto);
         lblTipoProducto.setBounds(247, 41, 91, 23);
 
-        cmbTipoProducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cmbTipoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cmbTipoProducto.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cmbTipoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbTipoProducto);
         cmbTipoProducto.setBounds(348, 40, 170, 24);
 
         cmbImpuesto.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbImpuesto);
         cmbImpuesto.setBounds(348, 83, 101, 24);
 
@@ -1085,12 +1080,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblMoneda.setBounds(266, 137, 72, 15);
 
         cmbMoneda.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbMoneda);
         cmbMoneda.setBounds(348, 132, 171, 24);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
-        chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         chbEstado.setSelected(true);
         chbEstado.setText("Activo");
         chbEstado.setAlignmentX(0.2F);
@@ -1122,12 +1117,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtCodEzenz.setAlignmentY(0.2F);
         txtCodEzenz.setDireccionDeSombra(30);
         txtCodEzenz.setDisabledTextColor(new java.awt.Color(255, 102, 102));
-        txtCodEzenz.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCodEzenz.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodEzenz.setName("pdescrip"); // NOI18N
         pnlControlDescuento.add(txtCodEzenz);
         txtCodEzenz.setBounds(122, 40, 108, 21);
 
-        lblCodigoEnz.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCodigoEnz.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblCodigoEnz.setText("Cod EZENZ:");
         pnlControlDescuento.add(lblCodigoEnz);
         lblCodigoEnz.setBounds(40, 40, 68, 20);
@@ -1135,7 +1130,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlEntradasCategorias_G05.add(pnlControlDescuento);
         pnlControlDescuento.setBounds(496, 65, 570, 197);
 
-        pnlBuscadorCategorias2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorCategorias2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorCategorias2.setOpaque(false);
         pnlBuscadorCategorias2.setPreferredSize(new java.awt.Dimension(575, 37));
 
@@ -1246,7 +1241,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 .addComponent(lblFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(dteFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         pnlBuscadorCategorias2Layout.setVerticalGroup(
             pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1275,12 +1270,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         );
 
         pnlEntradasCategorias_G05.add(pnlBuscadorCategorias2);
-        pnlBuscadorCategorias2.setBounds(16, 270, 1050, 39);
+        pnlBuscadorCategorias2.setBounds(16, 270, 1050, 37);
 
         panelImage1.add(pnlEntradasCategorias_G05);
         pnlEntradasCategorias_G05.setBounds(10, 0, 1078, 320);
 
-        pnlBuscadorCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorCategorias.setOpaque(false);
         pnlBuscadorCategorias.setPreferredSize(new java.awt.Dimension(575, 37));
         pnlBuscadorCategorias.setLayout(null);
@@ -1348,12 +1343,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             }
         });
         pnlBuscadorCategorias.add(rbTodos);
-        rbTodos.setBounds(288, 7, 71, 25);
+        rbTodos.setBounds(288, 7, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
         rbAtivos.setFont(new java.awt.Font("Arial", 1, 14));
         rbAtivos.setForeground(new java.awt.Color(255, 255, 255));
+        rbAtivos.setSelected(true);
         rbAtivos.setText("Activos");
         rbAtivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1361,7 +1357,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             }
         });
         pnlBuscadorCategorias.add(rbAtivos);
-        rbAtivos.setBounds(362, 7, 81, 25);
+        rbAtivos.setBounds(362, 7, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbNoActivos);
@@ -1374,12 +1370,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             }
         });
         pnlBuscadorCategorias.add(rbNoActivos);
-        rbNoActivos.setBounds(444, 7, 103, 25);
+        rbNoActivos.setBounds(444, 7, 101, 25);
 
         panelImage1.add(pnlBuscadorCategorias);
         pnlBuscadorCategorias.setBounds(198, 326, 551, 37);
 
-        pnlAccionesCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesCategorias.setOpaque(false);
         pnlAccionesCategorias.setPreferredSize(new java.awt.Dimension(550, 50));
         pnlAccionesCategorias.setLayout(null);
@@ -1543,7 +1539,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
         );
 
         pack();
@@ -2020,7 +2016,9 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCodigoDeBarrasActionPerformed
 
     private void btnInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsumosActionPerformed
-        IProductoInsumo pvc = new IProductoInsumo();
+
+//        IBuscarProdInsumos pvc = new IBuscarProdInsumos(new Frame(),true);
+        IProductoInsumo pvc = new IProductoInsumo(new Frame(),true);
         pvc.setCodigoProducto(txtCodigo.getText());
         pvc.setDescripcionProducto(txtDescripcion.getText());
         pvc.setUnidadProducto(txtUnidad.getText());
@@ -2032,10 +2030,29 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             pvc.setPreferredSize(new Dimension(775, 318));
         }
 
+        pvc.setVisible(true);
 
-        String msj = "Mostrando todos los Insumos del Producto";
-        JOptionPane.showInternalOptionDialog(this, pvc, msj, -1,
-                -1, null, new Object[]{pvc.getAviso()}, null);
+
+
+        
+        
+        
+//        IProductoInsumo pvc = new IProductoInsumo();
+//        pvc.setCodigoProducto(txtCodigo.getText());
+//        pvc.setDescripcionProducto(txtDescripcion.getText());
+//        pvc.setUnidadProducto(txtUnidad.getText());
+//        pvc.setTiMaterialSAP(cp.getProducto().getTiMaterialSap());
+//        pvc.CargaDatos();
+//        if (cp.getProducto().getTiMaterialSap().equals("PROD")){
+//            pvc.setPreferredSize(new Dimension(775, 450));
+//        }else{
+//            pvc.setPreferredSize(new Dimension(775, 318));
+//        }
+//
+//
+//        String msj = "Mostrando todos los Insumos del Producto";
+//        JOptionPane.showInternalOptionDialog(this, pvc, msj, -1,
+//                -1, null, new Object[]{pvc.getAviso()}, null);
 
     }//GEN-LAST:event_btnInsumosActionPerformed
 
