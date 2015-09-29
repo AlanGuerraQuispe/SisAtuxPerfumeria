@@ -150,6 +150,10 @@ public class CProductoInsumo extends JAbstractController{
             query.append("   and INS.CO_COMPANIA = '").append(CoCompania).append("'");
             query.append("   and INS.CO_PRODUCTO = '").append(CoProducto).append("' ");
 
+            if (!Estado.equals("T")){
+                query.append("   and INS.ES_PRODUCTO_INSUMO = '").append(Estado).append("' ");
+            }
+
             rs =  this.getRegistrosSinFiltro(query);
 
             while(rs.next()){
