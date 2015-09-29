@@ -197,6 +197,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private void setMaestroProductos() {
         Limpiar();
         // Datos Maestro Producto
+        
         this.txtCodigo.setText(String.valueOf(cp.getProducto().getCoProducto().trim()));
         this.txtDescripcion.setText(String.valueOf(cp.getProducto().getDeProducto().trim()));
         this.txtUnidad.setText(String.valueOf(cp.getProducto().getDeUnidadProducto().trim()));
@@ -243,20 +244,19 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         DeFraccionAnt = prodLocal.getDeUnidadFraccion();
         CaStockDisponibleAnt = prodLocal.getCaStockDisponible();
 
-        if (cp.getProducto().getTiMaterialSap().equals("PROD")){
-            ProductoInsumo insumo = new CProductoInsumo().getPreciosInsumo(cp.getProducto().getCoCompania(), cp.getProducto().getCoProducto());
-
-            this.txtCosto.setText(String.valueOf(insumo.getVaCosto()));
-            this.txtPrecio.setText(String.valueOf(insumo.getVaPrecioPublico()));
-            this.txtDescuento.setText(prodLocal.getPcDescuento1().toString());
-            this.txtPreVtaPublico.setText(String.valueOf(insumo.getVaPrecioPublico()));
-        }
-        else{
+//        if (cp.getProducto().getTiMaterialSap().equals("PROD")){
+//            ProductoInsumo insumo = new CProductoInsumo().getPreciosInsumo(cp.getProducto().getCoCompania(), cp.getProducto().getCoProducto());
+//
+//            this.txtCosto.setText(String.valueOf(insumo.getVaCosto()));
+//            this.txtPrecio.setText(String.valueOf(insumo.getVaPrecioPublico()));
+//            this.txtDescuento.setText(prodLocal.getPcDescuento1().toString());
+//            this.txtPreVtaPublico.setText(String.valueOf(insumo.getVaPrecioPublico()));
+//        }else{
             this.txtCosto.setText(String.valueOf(cp.getProducto().getVaPrecioCompra()));
             this.txtPrecio.setText(prodLocal.getVaVenta().toString());
             this.txtDescuento.setText(prodLocal.getPcDescuento1().toString());
             this.txtPreVtaPublico.setText(prodLocal.getCalculoPrecioPublico().toString());
-        }
+//        }
 
         // Impuesto
         cmbOpcionImpuesto(cmbImpuesto, cp.getProducto().getCoImpuesto1());
@@ -2024,8 +2024,14 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pvc.setCodigoProducto(txtCodigo.getText());
         pvc.setDescripcionProducto(txtDescripcion.getText());
         pvc.setUnidadProducto(txtUnidad.getText());
+        pvc.setTiMaterialSAP(cp.getProducto().getTiMaterialSap());
         pvc.CargaDatos();
-        pvc.setPreferredSize(new Dimension(775, 318));
+        if (cp.getProducto().getTiMaterialSap().equals("PROD")){
+            pvc.setPreferredSize(new Dimension(775, 450));
+        }else{
+            pvc.setPreferredSize(new Dimension(775, 318));
+        }
+
 
         String msj = "Mostrando todos los Insumos del Producto";
         JOptionPane.showInternalOptionDialog(this, pvc, msj, -1,

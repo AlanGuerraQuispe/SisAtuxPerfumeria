@@ -32,6 +32,7 @@ import org.apache.commons.logging.LogFactory;
 public class IProductoInsumo extends javax.swing.JPanel {
     private CProductoInsumo cp;
     private ModeloTablaProductoInsumo mtp;
+    private ModeloTablaProductoInsumo mtp2;
     private boolean esActualizacion = false;
     private int tipoSeleccion = 1; //-1 todo,1 activos, 0 No activos
     public int finalPag = 0;//cont
@@ -44,6 +45,18 @@ public class IProductoInsumo extends javax.swing.JPanel {
     private Double vaCosto;
     private Double vaPrecioPublico;
     private String deUnidadInsumo;
+    private String Estado;
+    private String tiMaterialSAP;
+
+    public String getTiMaterialSAP() {
+        return tiMaterialSAP;
+    }
+
+    public void setTiMaterialSAP(String tiMaterialSAP) {
+        this.tiMaterialSAP = tiMaterialSAP;
+    }
+    
+    
 
     public IProductoInsumo() {
         initComponents();
@@ -55,7 +68,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
     }
 
     public final void CargaDatos() {
-        String Estado = "T";
+        Estado = "T";
 
         if (tipoSeleccion == 0) {
             Estado = "I";
@@ -70,6 +83,19 @@ public class IProductoInsumo extends javax.swing.JPanel {
         numRegistros = mtp.getCantidadRegistros();
         tblListado.setModel(mtp);
         Helper.ajustarSoloAnchoColumnas(tblListado, ModeloTablaProductoInsumo.anchoColumnas);
+
+        mtp2 = new ModeloTablaProductoInsumo(AtuxVariables.vCodigoCompania, txtCodigoPrincipioActivo.getText(), Estado);
+        tblListadoInsumo.setModel(mtp2);
+        Helper.ajustarSoloAnchoColumnas(tblListadoInsumo, ModeloTablaProductoInsumo.anchoColumnas);
+        
+        if (this.getTiMaterialSAP().equals("PROD")){
+            tblListadoInsumo.setVisible(true);
+            jScrollPane2.setVisible(true);
+        }else{
+            tblListadoInsumo.setVisible(false);
+            jScrollPane2.setVisible(false);
+        }
+        
     }
 
     private void setFiltroTexto() {
@@ -92,6 +118,11 @@ public class IProductoInsumo extends javax.swing.JPanel {
             cp.setProductoInsumo(mtp.getFila(tblListado.getSelectedRow()));
             setProductoInsumo();
             btnModificar.setEnabled(true);
+            
+            mtp2 = new ModeloTablaProductoInsumo(AtuxVariables.vCodigoCompania, txtCodigoPrincipioActivo.getText(), Estado);
+            tblListadoInsumo.setModel(mtp2);
+            Helper.ajustarSoloAnchoColumnas(tblListadoInsumo, ModeloTablaProductoInsumo.anchoColumnas);
+            
         }
     }
 
@@ -327,6 +358,8 @@ public class IProductoInsumo extends javax.swing.JPanel {
         btnGuardar = new elaprendiz.gui.button.ButtonRect();
         btnCancelar = new elaprendiz.gui.button.ButtonRect();
         btnSalir = new elaprendiz.gui.button.ButtonRect();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblListadoInsumo = new javax.swing.JTable();
 
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
@@ -338,7 +371,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
             }
         });
 
-        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlEntradas.setEnabled(false);
         pnlEntradas.setOpaque(false);
 
@@ -351,7 +384,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
         lblCodigoPrincipioActivo.setFont(new java.awt.Font("Tahoma", 1, 13));
         lblCodigoPrincipioActivo.setText("Insumo:");
 
-        lblImprime.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblImprime.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblImprime.setText("Imprime?");
 
         txtCodigo.setEditable(false);
@@ -410,7 +443,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
 
         lbAviso.setBackground(new java.awt.Color(255, 0, 51));
         lbAviso.setForeground(new java.awt.Color(255, 255, 0));
-        lbAviso.setText("Debe Seleccionar un Insumo");
+        lbAviso.setText("Debe Seleccionar un Médico");
         lbAviso.setPreferredSize(new java.awt.Dimension(250, 17));
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 13));
@@ -519,7 +552,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblListado);
 
-        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
         pnlBuscadorTDeCambio.setLayout(null);
 
@@ -574,7 +607,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
             }
         });
         pnlBuscadorTDeCambio.add(rbTodos);
-        rbTodos.setBounds(205, 6, 71, 25);
+        rbTodos.setBounds(205, 6, 69, 25);
 
         rbAtivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbAtivos);
@@ -587,7 +620,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
             }
         });
         pnlBuscadorTDeCambio.add(rbAtivos);
-        rbAtivos.setBounds(279, 6, 81, 25);
+        rbAtivos.setBounds(279, 6, 77, 25);
 
         rbNoActivos.setBackground(new java.awt.Color(51, 153, 255));
         buttonGroup1.add(rbNoActivos);
@@ -600,9 +633,9 @@ public class IProductoInsumo extends javax.swing.JPanel {
             }
         });
         pnlBuscadorTDeCambio.add(rbNoActivos);
-        rbNoActivos.setBounds(360, 6, 103, 25);
+        rbNoActivos.setBounds(360, 6, 101, 25);
 
-        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
         pnlAccionesTDeCambio.setLayout(null);
 
@@ -658,37 +691,47 @@ public class IProductoInsumo extends javax.swing.JPanel {
         pnlAccionesTDeCambio.add(btnSalir);
         btnSalir.setBounds(390, 6, 88, 25);
 
+        tblListadoInsumo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblListadoInsumo);
+
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelImage1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelImage1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelImage1Layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelImage1Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(pnlEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -701,7 +744,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -934,6 +977,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
     private javax.swing.JCheckBox chbEstado;
     private javax.swing.JComboBox cmbImprime;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private elaprendiz.gui.label.LabelRect lbAviso;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoPrincipioActivo;
@@ -948,6 +992,7 @@ public class IProductoInsumo extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbNoActivos;
     private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tblListado;
+    private javax.swing.JTable tblListadoInsumo;
     private elaprendiz.gui.textField.TextField txtCodigo;
     public elaprendiz.gui.textField.TextField txtCodigoPrincipioActivo;
     private elaprendiz.gui.textField.TextField txtDescripcion;
