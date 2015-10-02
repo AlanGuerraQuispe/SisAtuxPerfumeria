@@ -109,7 +109,7 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
                 this.mtdpv = new ModeloTomaPedidoVenta(2);
                 
                 this.tblProductos.setModel(mtdpv);
-                this.tblProductos.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRenderer(this));
+                this.tblProductos.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRendererInsumo(this));
                 
                 TableColumn tc = this.tblProductos.getColumnModel().getColumn(this.tblProductos.getColumnCount()-1);
                 tc.setCellEditor(new CeldaAccionEditorInsumo(this));

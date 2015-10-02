@@ -333,7 +333,7 @@ public class ServicioEmisionComprobantes {
             comprobantePago.setNuPedido(pedido.getNuPedido());
             comprobantePago.setTiComprobante(tipoComprobante);
             comprobantePago.setNombreVendedor(nombreVendedor);
-
+            comprobantePago.setVaTotalDescuento(pedido.getVaTotalDescuento());
             if (i == listaDeComprobantes.size() - 1) {
                 comprobantePago.setMensajeComprobante(mensajeComprobante);
                 comprobantePago.setMensajeComprobanteDetail(mensajeComprobanteDetails);

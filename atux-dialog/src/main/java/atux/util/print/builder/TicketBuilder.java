@@ -39,9 +39,9 @@ public class TicketBuilder extends ComprobanteBuilder {
         
         vPrint.printLine(AtuxPRNUtility.alinearIzquierda(AtuxPRNUtility.alinearIzquierda(" ", 3)+"TEL: "+AtuxVariables.vCompaniaFono, 18) + AtuxPRNUtility.alinearDerecha("RUC: " + AtuxVariables.vNuRucCompania, 17), true);
         
-        vPrint.printLine("  " + AtuxPRNUtility.alinearIzquierda(AtuxVariables.vCompaniaDireccion, 35), true);        
+        vPrint.printLine("          " + AtuxPRNUtility.alinearIzquierda(AtuxVariables.vCompaniaDireccion, 35), true);
 
-        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 3)+"Local: " +AtuxVariables.vCodigoLocal+"-"+ AtuxVariables.vDescripcionLocal, true);
+        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 2)+"Local: " +AtuxVariables.vCodigoLocal+"-"+ AtuxVariables.vDescripcionLocal, true);
 
         vPrint.printLine(AtuxVariables.vDireccionLocal +" "+ AtuxVariables.vDistritoLocal +"-"+AtuxVariables.vProvinciaLocal, true); 
         vPrint.printLine(" ", true);
@@ -159,8 +159,10 @@ public class TicketBuilder extends ComprobanteBuilder {
         }else{
             vPrint.printLine(AtuxPRNUtility.alinearDerecha("Redo : S/.", 30), false);
             vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaSaldoRedondeo()), 10), true);
-            vPrint.printLine(AtuxPRNUtility.alinearDerecha("Total S/. ", 30), false);
-            vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaTotalPrecioVenta()), 10), true);
+            vPrint.printLine(AtuxPRNUtility.alinearDerecha("Dsto : S/.", 30), false);
+            vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaTotalDescuento()), 10), true);
+            vPrint.printLine(AtuxPRNUtility.alinearDerecha("Total  S/. ", 30), false);
+            vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaTotalPrecioVenta() - comprobantePago.getVaTotalDescuento()), 10), true);
         }
 
         for (int i = 0; i < tblPagos.getRowCount(); i++)

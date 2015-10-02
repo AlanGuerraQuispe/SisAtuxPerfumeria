@@ -364,7 +364,7 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             query.append("       (SELECT SUM(PRO.VA_PRECIO_PUBLICO) FROM  LGTM_PRODUCTO PRO, LGTR_PRODUCTO_INSUMO INS WHERE PRO.CO_COMPANIA = INS.CO_COMPANIA AND PRO.CO_PRODUCTO = INS.CO_PRODUCTO_INSUMO AND INS.CO_PRODUCTO = T1.CO_PRODUCTO) PRECIO_PUB, ");
             query.append("       NVL(PRDLOCAL.CA_STOCK_DISPONIBLE,0)  STOCK, ");
             query.append("       T1.CO_LABORATORIO AS CO_LAB, ");
-            query.append("       '' AS DE_LABORATORIO, ");
+            query.append("       ''                AS DE_LABORATORIO, ");
             query.append("       T3.CO_NIVEL_05 AS CO_J5, T3.DE_ACCION_TERAPEUTICA AS DE_J5, ");
             query.append("       T4.CO_NIVEL_04 AS CO_J4, T4.DE_GRUPO_TERAPEUTICO  AS DE_J4, ");
             query.append("       T5.CO_NIVEL_03 AS CO_J3, T5.DE_GRUPO_ANATOMICO    AS DE_J3, ");
@@ -377,7 +377,8 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             query.append("       T8.CO_PRINCIPIO_ACTIVO, ");
             query.append("       T9.DE_PRINCIPIO_ACTIVO, ");
             query.append("       T8.IN_PRINCIPIO_ACTIVO_PRINCIPAL, ");
-            query.append("       T1.IN_GENERO ");
+            query.append("       T1.IN_GENERO, ");
+            query.append("       T1.CO_PRODUCTO_SAP ");
             query.append("  FROM LGTR_PRODUCTO_LOCAL          PRDLOCAL ");
             query.append("       LEFT JOIN   LGTM_PRODUCTO         T1 ");
             query.append("        ON  PRDLOCAL.CO_COMPANIA  = '").append(AtuxVariables.vCodigoCompania).append("'\n");
@@ -449,6 +450,7 @@ public class CProductoLocal extends JAbstractController implements Serializable{
                        prod.setDePrincipioActivo(rs.getString(31));
                        prod.setInPrincipioActivoPrincipal(rs.getString(32));
                        prod.setInGenero(rs.getString("IN_GENERO"));
+                       prod.setCoProductoSap(rs.getString("CO_PRODUCTO_SAP"));
                    prodLocal.setProducto(prod);
                    prodLocal.setDeUnidadFraccion(rs.getString(7));
                    prodLocal.setVaVenta(rs.getDouble(10));

@@ -4,11 +4,17 @@ import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.PedidoVenta;
 import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTomaPedidoVenta;
+import atux.util.AdminIFrame;
 import atux.util.CeldaAccionEditorInsumo;
 import atux.util.CellEditorSpinnerPedidoVenta;
+import atux.vistas.buscar.BuscarProducto;
 import atux.vistas.buscar.IBuscarProdInsumos;
+import atux.vistas.catalogo.IMaestroProductos;
+import com.aw.swing.mvp.navigation.AWWindowsManager;
+import com.aw.swing.mvp.util.SwingShowDialogAction;
 
 import java.awt.*;
+import java.beans.PropertyVetoException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +29,7 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
     private ModeloTomaPedidoVenta mtpv;
     private int indexFila = -1;
     private CeldaAccionEditorInsumo cae;
+    private static BuscarProducto buscarProducto = null;
 
     public PanelAccionProdInsumos(JInternalFrame ifr) {
         initComponents();
@@ -104,31 +111,54 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
             this.indexFila = this.tabla.getSelectedRow();
         }
 
-        IBuscarProdInsumos pvc = new IBuscarProdInsumos(new Frame(),true);
-        pvc.setVisible(true);
+//        IBuscarProdInsumos pvc = new IBuscarProdInsumos(new Frame(),true);
+//        pvc.setVisible(true);
 
-        if (pvc.getProductoLocal() != null) {
-            /**
-             * coreegir cuamdo se borra la primera fila nos genera un dato nulo.
-             */
-            if (!mtpv.existe(pvc.getProductoLocal())) {
-                try {
-                    mtpv.contarItems();
-                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setNuItemPedido(mtpv.getNumItems());
-                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).agregarItem(pvc.getProductoLocal());
-                    this.tabla.changeSelection(this.indexFila, 2, true, false);
-                    cae.lanzarDetencionEdicion();
-                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getSpinner().requestFocus();
-                    nuevoItem();
-                } catch (SQLException ex) {
-                    Logger.getLogger(PanelAccionProdInsumos.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        BuscarProducto buscarProducto = new BuscarProducto();
+        //pvc.setContentPane(ifr);
+        //pvc.setVisible(true);
 
-            } else {
-                JOptionPane.showInternalMessageDialog(ifr, "El Producto: " + pvc.getProductoLocal().getProducto().getDeProducto() +
-                        " ya ha sido agregado", "Producto Duplicado", JOptionPane.WARNING_MESSAGE);
-            }
-        }
+        //if (buscarProducto == null) {
+//            buscarProducto = new BuscarProducto();
+//        buscarProducto = new BuscarProducto();
+//        buscarProducto.toFront();
+//        buscarProducto.setModal(true);
+//        buscarProducto.setVisible(true);
+            //ifr.toBack();
+
+//            JOptionPane.showInternalMessageDialog(this,buscarProducto);
+//            new SwingShowDialogAction(BuscarProducto.class, "Buscar Producto");
+//            try {
+//                buscarProducto.setSelected(true);
+//                buscarProducto.centrar(AWWindowsManager.instance().getDp(), buscarProducto);
+//            } catch (PropertyVetoException e) {
+//                e.printStackTrace();
+//            }
+        //}
+        AdminIFrame.mostrarVentanaCentrada(AWWindowsManager.instance().getDp(), buscarProducto);
+
+//        if (pvc.getProductoLocal() != null) {
+//            /**
+//             * coreegir cuamdo se borra la primera fila nos genera un dato nulo.
+//             */
+//            if (!mtpv.existe(pvc.getProductoLocal())) {
+//                try {
+//                    mtpv.contarItems();
+//                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setNuItemPedido(mtpv.getNumItems());
+//                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).agregarItem(pvc.getProductoLocal());
+//                    this.tabla.changeSelection(this.indexFila, 2, true, false);
+//                    cae.lanzarDetencionEdicion();
+//                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getSpinner().requestFocus();
+//                    nuevoItem();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(PanelAccionProdInsumos.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            } else {
+//                JOptionPane.showInternalMessageDialog(ifr, "El Producto: " + pvc.getProductoLocal().getProducto().getDeProducto() +
+//                        " ya ha sido agregado", "Producto Duplicado", JOptionPane.WARNING_MESSAGE);
+//            }
+//        }
     }//GEN-LAST:event_bntAgregarActionPerformed
 
     private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarActionPerformed

@@ -1,5 +1,6 @@
 package atux.vistas;
 
+import atux.vistas.buscar.BuscarProducto;
 import atux.util.common.AtuxUtility;
 import atux.vistas.venta.*;
 import atux.vistas.venta.aperCierre.IAperturaCaja;
@@ -41,7 +42,7 @@ public class MainWindow extends javax.swing.JFrame {
     private static ICobroPedido vntCobroPedido = null;
     private static IConsultarVentas vntConsultarVentas = null;
     private static IMaestroProductos vntProducto = null;
-    private static IPedidoVenta vntPedidoVenta = null;
+    private static BuscarProducto vntPedidoVenta = null;
     private static IPedidoVentaInsumo vntPedidoVentaInsumo = null;
     private static IConsultarPedidosACredito vntPedidoACredito = null;
     private static ICompletarPedidoVenta vntCompPedidoVenta = null;
@@ -789,7 +790,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         if (vntPedidoVenta == null) {
-            vntPedidoVenta = new IPedidoVenta();
+            vntPedidoVenta = new BuscarProducto();
         }
 
         AdminIFrame.mostrarVentanaCentrada(dp, vntPedidoVenta);
@@ -916,7 +917,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jMenuItem42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem42ActionPerformed
         if (vntPedidoVenta == null) {
-            vntPedidoVenta = new IPedidoVenta();
+            vntPedidoVenta = new BuscarProducto();
         }
 
         AdminIFrame.mostrarVentanaCentrada(dp, vntPedidoVenta);

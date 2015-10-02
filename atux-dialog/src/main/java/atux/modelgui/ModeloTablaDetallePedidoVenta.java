@@ -5,7 +5,7 @@ import atux.modelbd.PedidoVenta;
 import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.ProductoLocal;
 import atux.vistas.venta.ICompletarPedidoVenta;
-import atux.vistas.venta.IPedidoVenta;
+import atux.vistas.buscar.BuscarProducto;
 import java.util.ArrayList;
 
 
@@ -54,12 +54,6 @@ public class ModeloTablaDetallePedidoVenta extends ModeloTabla{
             }
         }
         return false;
-    }
-
-    public void setValueAt(IPedidoVenta pedidoVenta,Object aValue, int rowIndex, int columnIndex)
-    {
-        this.setValueAt(aValue, rowIndex, columnIndex);
-        pedidoVenta.setTotales();
     }
     
     public void setValueAt(ICompletarPedidoVenta pedidoVenta,Object aValue, int rowIndex, int columnIndex)

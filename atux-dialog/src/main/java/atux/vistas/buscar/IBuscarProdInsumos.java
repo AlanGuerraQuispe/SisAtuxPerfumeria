@@ -3,7 +3,6 @@ package atux.vistas.buscar;
 import atux.controllers.CProductoLocal;
 import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTablaProducto;
-import atux.util.ECampos;
 import atux.util.Helper;
 import atux.util.common.AtuxGridUtils;
 import atux.util.common.AtuxUtility;
@@ -15,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,7 +24,7 @@ import java.util.Iterator;
  */
 public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionListener{
 
-    private ProductoLocal prodLocal;
+    private ProductoLocal       prodLocal;
     private ModeloTablaProducto mtp;
     private ModeloTablaProducto mtpInsumos;
     private ModeloTablaProducto mtpPromocion;
@@ -53,8 +53,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelBusqueda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtDato = new elaprendiz.gui.textField.TextField(new Dimension(400,50));
-        bntBuscar = new elaprendiz.gui.button.ButtonRect();
-        lblAviso = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
         rbTodos = new javax.swing.JRadioButton();
         rbCaballeros = new javax.swing.JRadioButton();
@@ -78,16 +76,7 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jScrollPaneInsumos = new javax.swing.JScrollPane();
         tblInsumosProductos = new javax.swing.JTable();
         jPanelDetalleInsumos = new javax.swing.JPanel();
-        jlGrupo2 = new javax.swing.JLabel();
-        jLDGrupoComplementario = new javax.swing.JLabel();
-        jLinea2 = new javax.swing.JLabel();
-        jDLineaComplementario = new javax.swing.JLabel();
-        jlCajas2 = new javax.swing.JLabel();
-        jlDCajasComplementario = new javax.swing.JLabel();
-        jlPrecio2 = new javax.swing.JLabel();
-        jlDPrecioComplementario = new javax.swing.JLabel();
-        jlStock2 = new javax.swing.JLabel();
-        jlDStockComplementario = new javax.swing.JLabel();
+        lblAviso = new javax.swing.JLabel();
         jPanelPromocion = new javax.swing.JPanel();
         jScrollPanePromocion = new javax.swing.JScrollPane();
         tblProductosPromocion = new javax.swing.JTable();
@@ -95,6 +84,11 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(860, 339));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -109,10 +103,13 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelBusqueda.setAutoscrolls(true);
         jPanelBusqueda.setOpaque(false);
         jPanelBusqueda.setPreferredSize(new java.awt.Dimension(860, 40));
+        jPanelBusqueda.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Buscar Por:");
+        jPanelBusqueda.add(jLabel1);
+        jLabel1.setBounds(121, 10, 80, 22);
 
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -123,33 +120,21 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
             }
         });
 
-        txtDato.setToolTipText("");
         txtDato.setAlignmentX(0.0F);
         txtDato.setPreferredSize(new java.awt.Dimension(180, 27));
         txtDato.addKeyListener(new java.awt.event.KeyAdapter() {
-
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDatokeyTyped(evt);
-            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDatoKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDatoKeyReleased(evt);
             }
-        });
-
-        bntBuscar.setBackground(new java.awt.Color(51, 153, 255));
-        bntBuscar.setText("Buscar");
-        bntBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntBuscarActionPerformed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDatoKeyTyped(evt);
             }
         });
-
-        lblAviso.setFont(new java.awt.Font("Segoe Print", 1, 17));
-        lblAviso.setForeground(new java.awt.Color(255, 255, 0));
-        lblAviso.setText("Promoción");
+        jPanelBusqueda.add(txtDato);
+        txtDato.setBounds(211, 8, 221, 25);
 
         jPanelOpciones.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -169,7 +154,7 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         buttonGroup.add(rbCaballeros);
         rbCaballeros.setFont(new java.awt.Font("Tahoma", 1, 12));
         rbCaballeros.setForeground(new java.awt.Color(255, 255, 255));
-        rbCaballeros.setText("Hombres");
+        rbCaballeros.setText("Caballeros");
         rbCaballeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbCaballerosActionPerformed(evt);
@@ -180,7 +165,7 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         buttonGroup.add(rbDamas);
         rbDamas.setFont(new java.awt.Font("Tahoma", 1, 12));
         rbDamas.setForeground(new java.awt.Color(255, 255, 255));
-        rbDamas.setText("Mujeres");
+        rbDamas.setText("Damas");
         rbDamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbDamasActionPerformed(evt);
@@ -192,13 +177,13 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelOpcionesLayout.setHorizontalGroup(
             jPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOpcionesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(39, 39, 39)
                 .addComponent(rbTodos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rbCaballeros)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbDamas)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanelOpcionesLayout.setVerticalGroup(
             jPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,44 +196,8 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
-        jPanelBusqueda.setLayout(jPanelBusquedaLayout);
-        jPanelBusquedaLayout.setHorizontalGroup(
-            jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1)
-                .addGap(10, 10, 10)
-                .addComponent(txtDato, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(bntBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelBusquedaLayout.setVerticalGroup(
-            jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                .addGroup(jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(txtDato, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(bntBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelBusquedaLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jPanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanelBusqueda.add(jPanelOpciones);
+        jPanelOpciones.setBounds(449, 6, 370, 30);
 
         panelImageBusquedaProducto.add(jPanelBusqueda, java.awt.BorderLayout.PAGE_START);
 
@@ -259,9 +208,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelProductos.setLayout(null);
 
         jPanelProducto.setAutoscrolls(true);
-
-        jScrollPaneProducto.setAutoscrolls(true);
-        jScrollPaneProducto.setPreferredSize(new java.awt.Dimension(452, 250));
 
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -290,10 +236,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
                 "Código", "Producto", "Unidad", "Pre.Venta", "Descuento", "Pre.Público", "Stock", "Bono"
             }
         ));
-        tblProductos.setToolTipText("Productos");
-        tblProductos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblProductos.setPreferredSize(new java.awt.Dimension(820, 360));
-        tblProductos.setRowHeight(18);
         tblProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblProductosMouseClicked(evt);
@@ -305,15 +247,11 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelProducto.setLayout(jPanelProductoLayout);
         jPanelProductoLayout.setHorizontalGroup(
             jPanelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
-            .addGroup(jPanelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPaneProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE))
+            .addComponent(jScrollPaneProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
         jPanelProductoLayout.setVerticalGroup(
             jPanelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-            .addGroup(jPanelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPaneProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+            .addComponent(jScrollPaneProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
         );
 
         jPanelProductos.add(jPanelProducto);
@@ -407,7 +345,7 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
                 "Código", "Producto complementario", "Unidad", "Pre.Venta", "Descuento", "Prec.Público", "Stock", "Bono"
             }
         ));
-        tblInsumosProductos.setToolTipText("Productos complementarios");
+        tblInsumosProductos.setToolTipText("Productos base");
         tblInsumosProductos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblInsumosProductos.setPreferredSize(new java.awt.Dimension(820, 400));
         tblInsumosProductos.setRowHeight(18);
@@ -421,7 +359,7 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         );
         jPanelInsumosLayout.setVerticalGroup(
             jPanelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInsumosLayout.createSequentialGroup()
+            .addGroup(jPanelInsumosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPaneInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
         );
@@ -433,61 +371,11 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         jPanelDetalleInsumos.setEnabled(false);
         jPanelDetalleInsumos.setLayout(null);
 
-        jlGrupo2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlGrupo2.setForeground(new java.awt.Color(153, 0, 0));
-        jlGrupo2.setText("Grupo :");
-        jlGrupo2.setName(""); // NOI18N
-        jPanelDetalleInsumos.add(jlGrupo2);
-        jlGrupo2.setBounds(10, 4, 40, 20);
-
-        jLDGrupoComplementario.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLDGrupoComplementario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleInsumos.add(jLDGrupoComplementario);
-        jLDGrupoComplementario.setBounds(50, 4, 140, 20);
-
-        jLinea2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLinea2.setForeground(new java.awt.Color(153, 0, 0));
-        jLinea2.setText("Linea :");
-        jPanelDetalleInsumos.add(jLinea2);
-        jLinea2.setBounds(190, 4, 36, 20);
-
-        jDLineaComplementario.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jDLineaComplementario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleInsumos.add(jDLineaComplementario);
-        jDLineaComplementario.setBounds(230, 4, 150, 20);
-
-        jlCajas2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlCajas2.setForeground(new java.awt.Color(153, 0, 0));
-        jlCajas2.setText("Cajas :");
-        jPanelDetalleInsumos.add(jlCajas2);
-        jlCajas2.setBounds(380, 4, 43, 20);
-
-        jlDCajasComplementario.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDCajasComplementario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleInsumos.add(jlDCajasComplementario);
-        jlDCajasComplementario.setBounds(420, 4, 70, 20);
-
-        jlPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlPrecio2.setForeground(new java.awt.Color(153, 0, 0));
-        jlPrecio2.setText("Precio :");
-        jPanelDetalleInsumos.add(jlPrecio2);
-        jlPrecio2.setBounds(490, 4, 42, 20);
-
-        jlDPrecioComplementario.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDPrecioComplementario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleInsumos.add(jlDPrecioComplementario);
-        jlDPrecioComplementario.setBounds(532, 4, 40, 20);
-
-        jlStock2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlStock2.setForeground(new java.awt.Color(153, 0, 0));
-        jlStock2.setText("Stock :");
-        jPanelDetalleInsumos.add(jlStock2);
-        jlStock2.setBounds(572, 4, 39, 20);
-
-        jlDStockComplementario.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDStockComplementario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleInsumos.add(jlDStockComplementario);
-        jlDStockComplementario.setBounds(611, 4, 25, 20);
+        lblAviso.setFont(new java.awt.Font("Segoe Print", 1, 17));
+        lblAviso.setForeground(new java.awt.Color(255, 255, 0));
+        lblAviso.setText("Promoción");
+        jPanelDetalleInsumos.add(lblAviso);
+        lblAviso.setBounds(40, 0, 100, 23);
 
         jPanelProductos.add(jPanelDetalleInsumos);
         jPanelDetalleInsumos.setBounds(1, 465, 840, 27);
@@ -560,15 +448,15 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDatokeyTyped(KeyEvent evt) {
-        AtuxUtility.convertirMayuscula(evt);
+    private void formWindowGainedFocus(WindowEvent evt) {
+        AtuxUtility.moveFocus(txtDato);
     }
 
     public ProductoLocal getProductoLocal() {
         return prodLocal;
     }
 
-    private void txtDatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyPressed
+    private void txtDatoKeyPressed(java.awt.event.KeyEvent evt) {
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (tblProductos.getSelectedRow() != -1) {
                 prodLocal = (ProductoLocal) mtp.getFila(tblProductos.getSelectedRow());
@@ -585,43 +473,75 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
             prodLocal = null;
             AtuxVariables.vAceptar = false;
         }
-        else if (tblProductos != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
-            checkTeclaPresionada(evt, tblProductos);
-        }
-    }//GEN-LAST:event_txtDatoKeyPressed
+//        else if (tblProductos != null && !(evt.getKeyCode() == KeyEvent.VK_ESCAPE) &&
+//                (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN)) {
+//            checkTeclaPresionada(evt, tblProductos);
+//        }
+    }
 
     private void txtDatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
-//            String vFindText = txtDato.getText().trim();
-//            String currentCodigo = prodLocal.getCoProducto();
-//            String currentProducto = prodLocal.getProducto().getDeProducto().toUpperCase();
+        //if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
+              String vFindText       = txtDato.getText().trim();
+            if(vFindText.length()==0) {
+                inicializarCarga(AtuxVariables.arrayProductos);
+            }
 
-//            if ((currentCodigo.equalsIgnoreCase(vFindText) || currentProducto.substring(0, vFindText.length()).equalsIgnoreCase(vFindText))) {                            
+            if(vFindText.length()>2) {
+                ArrayList<ProductoLocal> prodSoloHombres = new ArrayList();
+                ProductoLocal productoLoc;
+                Iterator<ProductoLocal> iter = AtuxVariables.arrayProductos.iterator();
+                while (iter.hasNext()) {
+                    productoLoc = iter.next();
+
+                    if (productoLoc.getProducto().getDeProducto().indexOf(vFindText) != -1) {
+                        prodSoloHombres.add(productoLoc);
+                    }
+                }
+                if(prodSoloHombres.size()!=0)
+                    inicializarCarga(prodSoloHombres);
+                else
+                    inicializarCarga(AtuxVariables.arrayProductos);
+
+            }
+        else{
+                inicializarCarga(AtuxVariables.arrayProductos);
+            }
+//            if ((currentCodigo.equalsIgnoreCase(vFindText) || currentProducto.substring(0, vFindText.length()).equalsIgnoreCase(vFindText))) {
 //                   bntBuscar.doClick();
 //            }
 //            if(prodLocal.getCaStockDisponible()==0){
 //                AtuxUtility.showMessage(null, "Producto no cuenta con stock disponible !!!", null);
 //            }
             //else {
-                logger.info("ProductoLocal: "+prodLocal.getProducto().getDeProducto());
-                AtuxVariables.vAceptar = true;
-                this.setVisible(false);
+                //logger.info("ProductoLocal: "+prodLocal.getProducto().getDeProducto());
+                //AtuxVariables.vAceptar = true;
+                //this.setVisible(false);
             //}
-        }
-        else if (!(evt.getKeyCode() == KeyEvent.VK_ESCAPE) && !(evt.getKeyCode() == KeyEvent.VK_O)) {
-            AtuxGridUtils.buscarDescripcion(evt, tblProductos, txtDato, COL_DE_PRODUCTO);
-            prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
-            mostrarDetalleProducto(prodLocal);
-        }
+        //}
+//        else
+//        if (!(evt.getKeyCode() == KeyEvent.VK_ESCAPE) && !(evt.getKeyCode() == KeyEvent.VK_O) &&
+//                (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN)) {
+//            AtuxGridUtils.buscarDescripcion(evt, tblProductos, txtDato, COL_DE_PRODUCTO);
+//            prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
+//            mostrarDetalleProducto(prodLocal);
+//        }
     }//GEN-LAST:event_txtDatoKeyReleased
 
-    private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodosActionPerformed
+    private void txtDatoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyTyped
+        AtuxUtility.convertirMayuscula(evt);
+    }//GEN-LAST:event_txtDatoKeyTyped
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        AtuxUtility.moveFocus(txtDato);
+    }//GEN-LAST:event_formFocusGained
+
+    private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {
         inicializarCarga(AtuxVariables.arrayProductos);
         AtuxUtility.moveFocus(txtDato);
-    }//GEN-LAST:event_rbTodosActionPerformed
+    }
 
-    private void rbCaballerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCaballerosActionPerformed
+    private void rbCaballerosActionPerformed(java.awt.event.ActionEvent evt) {
         ProductoLocal productoLoc;
         ArrayList<ProductoLocal> prodSoloHombres = new ArrayList();
 
@@ -629,15 +549,15 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         while (iter.hasNext()){
             productoLoc = iter.next();
 
-            if(productoLoc.getProducto().getInGenero().equals("H")){
+            if(productoLoc.getProducto().getInGenero().equals("M")){
                 prodSoloHombres.add(productoLoc);
             }
         }
         inicializarCarga(prodSoloHombres);
         AtuxUtility.moveFocus(txtDato);
-    }//GEN-LAST:event_rbCaballerosActionPerformed
+    }
 
-    private void rbDamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDamasActionPerformed
+    private void rbDamasActionPerformed(java.awt.event.ActionEvent evt) {
         ProductoLocal productoLoc;
         ArrayList<ProductoLocal> prodSoloMujeres = new ArrayList();
 
@@ -645,69 +565,15 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         while (iter.hasNext()){
             productoLoc = iter.next();
 
-            if(productoLoc.getProducto().getInGenero().equals("M")){
+            if(productoLoc.getProducto().getInGenero().equals("F")){
                 prodSoloMujeres.add(productoLoc);
             }
         }
         inicializarCarga(prodSoloMujeres);
         AtuxUtility.moveFocus(txtDato);
-    }//GEN-LAST:event_rbDamasActionPerformed
+    }
 
-
-    private void bntBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarActionPerformed
-        if (tblProductos.getRowCount() <= 0) {
-            return;
-        }
-
-        String vCodigo = this.txtDato.getText().trim();
-        prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
-
-        if (vCodigo.trim().length() > 0) {
-            if (vCodigo.trim().length() == 6 && AtuxUtility.isLong(vCodigo)) { //CODIGO DE PRODUCTO
-                if (!AtuxUtility.findTextInJTable(tblProductos, vCodigo, 0, COL_DE_PRODUCTO)) {
-                    AtuxUtility.showMessage(null, "Producto no encontrado según criterio de búsqueda !!!", null);
-                    AtuxUtility.moveFocus(txtDato);
-                } else {
-                    txtDato.setText(((String) tblProductos.getValueAt(tblProductos.getSelectedRow(), 1)).trim());
-                   mostrarDetalleProducto(prodLocal);
-                }
-            } else if (vCodigo.trim().length() >= 6 && vCodigo.trim().length() <= 13) {
-                if (AtuxUtility.findTextInJTable(tblProductos, vCodigo, 0, COL_DE_PRODUCTO)) {
-                    vCodigo = txtDato.getText().trim();
-                    AtuxUtility.findTextInJTable(tblProductos, vCodigo, 0, COL_DE_PRODUCTO);
-                    mostrarDetalleProducto(prodLocal);
-                    return;
-                }
-                /*try { TODO ver el uso del codigo de barra
-                    VariablesVentas.vCodigoBarra = vCodigo;
-                    vCodigo = DBVentas.getCodigoProductoBarra();
-                } catch (SQLException sqlException) {
-                    sqlException.printStackTrace();
-                    AtuxUtility.showMessage(this, "Error en la búsqueda del Producto !!! - " + sqlException.getErrorCode(), null);
-                }
-
-                if (vCodigo.equalsIgnoreCase("0000000")) {
-                    AtuxUtility.showMessage(null, "Producto no encontrado según criterio de búsqueda !!!", null);                    
-                    AtuxUtility.moveFocus(txtDato);
-                } else {
-                    AtuxUtility.findTextInJTable(tblProductos, vCodigo, 1, 2);
-                    txtDato.setText(((String) tblProductos.getValueAt(tblProductos.getSelectedRow(), 2)).trim());
-                    System.out.println("...FILTRO CODIGO DE BARRAS ");
-                    mostrarDetalleProducto();
-                }*/
-
-            } else if (AtuxUtility.findTextInJTable(tblProductos, vCodigo, 0, COL_DE_PRODUCTO)) {
-                vCodigo = txtDato.getText().trim();
-                AtuxUtility.findTextInJTable(tblProductos, vCodigo, 0, COL_DE_PRODUCTO);
-                logger.info("...Penultima condición ");
-               mostrarDetalleProducto(prodLocal);
-            } else {
-                AtuxUtility.showMessage(null, "Producto no encontrado según criterio de búsqueda !!!", txtDato);
-            }
-        }
-    }//GEN-LAST:event_bntBuscarActionPerformed
-
-    private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
+    private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) {
             if (tblProductos.getSelectedRow() != -1) {
                 prodLocal = (ProductoLocal) mtp.getFila(tblProductos.getSelectedRow());
@@ -730,10 +596,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
                 AtuxUtility.moveFocus(txtDato);
             }
         }
-    }//GEN-LAST:event_tblProductosMouseClicked
-
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {
-        AtuxUtility.moveFocus(txtDato);
     }
 
     public final void inicializarCarga(ArrayList lista){
@@ -742,17 +604,14 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         this.tblProductos.repaint();
         mtp.fireTableDataChanged();
 
-//        Helper.ajustarAnchoColumnasNew(tblProductos,ModeloTablaProducto.anchoColumnas);
         Helper.ajustarSoloAnchoColumnas(tblProductos, ModeloTablaProducto.anchoColumnas);
-        AtuxGridUtils.setearPrimerRegistro(tblProductos,txtDato,COL_DE_PRODUCTO);
-
-        prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
+        prodLocal =(ProductoLocal)mtp.getFila(0);
         mostrarDetalleProducto(prodLocal);
-
     }
 
     private void checkTeclaPresionada(KeyEvent evt, JTable tblProductos) {
         AtuxGridUtils.aceptarTeclaPresionada(evt, tblProductos, txtDato, COL_DE_PRODUCTO);
+        //AtuxGridUtils.buscarDescripcion(evt, tblProductos, txtDato, 0);
         prodLocal =(ProductoLocal)mtp.getFila(tblProductos.getSelectedRow());
         mostrarDetalleProducto(prodLocal);
     }
@@ -761,7 +620,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
 
         jLDGrupo.setText(prodLocal.getDeJ5());
         jDLinea.setText(prodLocal.getDeJ1());
-        //jDLaboratorio.setText(prodLocal.getProducto().getLaboratorio().getDeLaboratorio());
 
         jlDCajas.setText(prodLocal.getProducto().getDeUnidadProducto());
 
@@ -777,18 +635,17 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         }
 
         cProdLoc = new CProductoLocal();
-
         this.tblInsumosProductos.removeAll();
 
         mtpInsumos = new ModeloTablaProducto(cProdLoc.getInsumosProductos(prodLocal), ModeloTablaProducto.PRO_INSUMOS);
         this.tblInsumosProductos.setModel(mtpInsumos);
 
-//        prodLocal.setVaPrecioPublico(mtpInsumos.getPrecioVentaInsumos());
-//        prodLocal.setVaVenta(mtpInsumos.getPrecioVentaInsumos());
-//        prodLocal.setVaCostoProducto(mtpInsumos.getCostoInsumos());
+//      prodLocal.setVaPrecioPublico(mtpInsumos.getPrecioVentaInsumos());
+//      prodLocal.setVaVenta(mtpInsumos.getPrecioVentaInsumos());
+//      prodLocal.setVaCostoProducto(mtpInsumos.getCostoInsumos());
 
-//        this.tblProductos.repaint();
-//        mtp.fireTableDataChanged();
+        this.tblProductos.repaint();
+        mtp.fireTableDataChanged();
 
         this.tblInsumosProductos.repaint();
         mtpInsumos.fireTableDataChanged();
@@ -799,8 +656,6 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
         mtpPromocion = new ModeloTablaProducto(cProdLoc.getProductosPromocion(prodLocal.getCoProducto()),ModeloTablaProducto.PRO_PROMOCION);
         this.tblProductosPromocion.setModel(mtpPromocion);
         Helper.ajustarSoloAnchoColumnas(tblProductosPromocion, ModeloTablaProducto.anchoColumnasPromo);
-
-        ECampos.setEditableTexto(this.jPanelDetalleInsumos, true, new Component[]{jlGrupo2, jLinea2, jlCajas2, jlPrecio2, jlStock2}, true, "");
 
     }
 
@@ -813,16 +668,12 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private elaprendiz.gui.button.ButtonRect bntBuscar;
     private javax.swing.JButton btnSalir;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel jDLinea;
-    private javax.swing.JLabel jDLineaComplementario;
     private javax.swing.JLabel jLDGrupo;
-    private javax.swing.JLabel jLDGrupoComplementario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLinea;
-    private javax.swing.JLabel jLinea2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBusqueda;
     private javax.swing.JPanel jPanelDetalleInsumos;
@@ -836,19 +687,12 @@ public class IBuscarProdInsumos extends javax.swing.JDialog implements ActionLis
     private javax.swing.JScrollPane jScrollPaneProducto;
     private javax.swing.JScrollPane jScrollPanePromocion;
     private javax.swing.JLabel jlCajas;
-    private javax.swing.JLabel jlCajas2;
     private javax.swing.JLabel jlDCajas;
-    private javax.swing.JLabel jlDCajasComplementario;
     private javax.swing.JLabel jlDPrecio;
-    private javax.swing.JLabel jlDPrecioComplementario;
     private javax.swing.JLabel jlDStock;
-    private javax.swing.JLabel jlDStockComplementario;
     private javax.swing.JLabel jlGrupo;
-    private javax.swing.JLabel jlGrupo2;
     private javax.swing.JLabel jlPrecio;
-    private javax.swing.JLabel jlPrecio2;
     private javax.swing.JLabel jlStock;
-    private javax.swing.JLabel jlStock2;
     private javax.swing.JLabel lblAviso;
     private elaprendiz.gui.panel.PanelImage panelImageBusquedaProducto;
     private javax.swing.JRadioButton rbCaballeros;

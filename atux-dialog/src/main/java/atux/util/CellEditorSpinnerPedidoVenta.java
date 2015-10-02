@@ -8,7 +8,7 @@ import atux.modelgui.ModeloTomaPedidoVenta;
 import atux.util.common.AtuxUtility;
 import atux.vistas.venta.ICompletarPedidoVenta;
 import atux.vistas.venta.IPedidoVentaInsumo;
-import atux.vistas.venta.IPedidoVenta;
+import atux.vistas.buscar.BuscarProducto;
 import com.aw.swing.spring.Application;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,7 +34,7 @@ public class CellEditorSpinnerPedidoVenta extends AbstractCellEditor implements 
     private Object valorInicial;
     private Object valorActual;
     private IPedidoVentaInsumo pedidoVentaInsumo;
-    private IPedidoVenta pedidoVenta;
+    private BuscarProducto pedidoVenta;
     private ICompletarPedidoVenta iCompPedidoVenta;
 
 
@@ -94,45 +94,6 @@ public class CellEditorSpinnerPedidoVenta extends AbstractCellEditor implements 
         spinner.addChangeListener(listener);
 
     }
-
-    public CellEditorSpinnerPedidoVenta(int sizeDes, final IPedidoVenta pedidoVenta) {
-        this.pedidoVenta = pedidoVenta;
-        spinner = new JSpinner();
-        spinner.setFont(new Font("Tahoma", 1, 14));
-        spinner.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        spinner.setModel(new SpinnerNumberModel(0, 0, 500, sizeDes));
-
-        ChangeListener listener = new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                JSpinner temp = (JSpinner) e.getSource();
-                ((DefaultEditor) temp.getEditor()).getTextField().setHorizontalAlignment(JTextField.RIGHT);
-                Integer vi = (Integer) valorInicial;
-                if (vi != null) {
-                    valorActual = temp.getValue();
-                    ModeloTomaPedidoVenta mt = ((ModeloTomaPedidoVenta) tbl.getModel());
-                    int stock = ((DetallePedidoVenta) mt.getFila(fila)).getProdLocal().getCaStockDisponible();
-
-                    if (Double.parseDouble(valorActual.toString()) > stock) {
-                        valorActual = stock;
-                        AtuxUtility.showMessage(null, "El Stock disponible es " + stock + " " + ((DetallePedidoVenta) mt.getFila(fila)).getProdLocal().getDeUnidadFraccion(), null);
-                    } else {
-                        Double pr = ((DetallePedidoVenta) mt.getFila(fila)).getProdLocal().getVaPrecioPublico();
-                        mt.setValueAt(getPedidoVenta(), Double.parseDouble(valorActual.toString()) * pr, getFila(), 4);
-                        ((DetallePedidoVenta) mt.getFila(fila)).setCaAtendida(Integer.parseInt(valorActual.toString()));
-                        mt.contarItems();
-                    }
-
-                }
-                ((DefaultEditor) temp.getEditor()).getTextField().setHorizontalAlignment(JTextField.LEFT);
-                fireEditingStopped();
-            }
-
-        };
-
-        spinner.addChangeListener(listener);
-        }
 
     public CellEditorSpinnerPedidoVenta(int sizeDes, ICompletarPedidoVenta iCompPedidoVenta) {
         this.iCompPedidoVenta = iCompPedidoVenta;
@@ -205,11 +166,11 @@ public class CellEditorSpinnerPedidoVenta extends AbstractCellEditor implements 
         this.pedidoVentaInsumo = pedidoVenta;
     }
 
-    public IPedidoVenta getPedidoVenta() {
+    public BuscarProducto getPedidoVenta() {
         return pedidoVenta;
     }
 
-    public void setPedidoVenta(IPedidoVenta pedidoVenta) {
+    public void setPedidoVenta(BuscarProducto pedidoVenta) {
         this.pedidoVenta = pedidoVenta;
     }
 

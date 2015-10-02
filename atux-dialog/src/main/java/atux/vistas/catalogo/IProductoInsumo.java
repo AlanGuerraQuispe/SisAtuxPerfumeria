@@ -302,7 +302,7 @@ public class IProductoInsumo extends javax.swing.JDialog {
         try {
             Fecha = formatter.parse(dateInString);
         } catch (ParseException ex) {
-            Logger.getLogger(IProductoInsumoAnt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IProductoInsumo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Fecha;
     }

@@ -25,8 +25,9 @@ public class BaseConexion {
     public static int TODO           = 1;
     public static int SOLO_STATEMENT = 2;
 
-    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.200:1521:XE";
+//    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.200:1521:XE";
 //    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@7.164.158.123:1521:XE";
+    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@localhost:1521:XE";
 
     /**
      * String de Conexion modo OCI

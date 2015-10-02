@@ -1,5 +1,6 @@
 package atux.modelgui;
 
+import atux.vistas.buscar.BuscarProducto;
 import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.ProductoLocal;
 import atux.util.common.AtuxUtility;
@@ -75,12 +76,6 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
             }
         }
         return false;
-    }
-
-    public void setValueAt(IPedidoVenta pedidoVenta,Object aValue, int rowIndex, int columnIndex)
-    {
-        this.setValueAt(aValue, rowIndex, columnIndex);
-        pedidoVenta.setTotales();
     }
 
     public void setValueAt(IPedidoVentaInsumo pedidoVenta,Object aValue, int rowIndex, int columnIndex)

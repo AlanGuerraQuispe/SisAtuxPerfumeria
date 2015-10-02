@@ -70,7 +70,7 @@ public class ModeloTablaProducto extends ModeloTabla{
             case PRO_LISTA: 
                 switch(columnIndex)
                  {                     
-                     case 0:return ((ProductoLocal)registros.get(rowIndex)).getProducto().getCoProducto();
+                     case 0:return ((ProductoLocal)registros.get(rowIndex)).getProducto().getCoProductoSap();
                      case 1:return ((ProductoLocal)registros.get(rowIndex)).getProducto().getDeProducto();
                      case 2:return ((ProductoLocal)registros.get(rowIndex)).getDeUnidadFraccion();
                      case 3:return ((ProductoLocal)registros.get(rowIndex)).getVaVenta();

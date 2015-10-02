@@ -14,9 +14,6 @@ import java.util.ArrayList;
 public class CSimpleModelo extends JAbstractController implements Serializable{
 
     public SimpleModelo sm;
-    public static final int OCLASE = SimpleModelo.OCLASE;
-    public static final int OMARCA= SimpleModelo.OMARCA;
-    public static final int OMODELO= SimpleModelo.OMODELO;
     private int tipoModelo;
     private FormaPago     formaPago;
     private TipoPersona   tipoPersona;
@@ -24,8 +21,8 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
     private FormaPagoPedidoCredito pedCredito;
     private ProductoLocal prodLocal;
     private ListaPedidosReposicion pedRep;
-    private Descuento descuento;
-    private TipoProducto tiProducto;
+    private Descuento     descuento;
+    private TipoProducto  tiProducto;
     private DescuentoProducto descuentoProducto;
 
     public CSimpleModelo(int tipoModelo) {
@@ -171,24 +168,7 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
             query.append("           AND FORMA_LOCAL.CO_FORMA_PAGO = FORMA.CO_FORMA_PAGO ");
             query.append("           AND FORMA.PC_DESCUENTO_ESPECIAL = 0.00 ");
             query.append("           AND FORMA.ES_FORMA_PAGO = 'A' ");
-            //query.append("           AND FORMA.CO_FORMA_PAGO NOT IN (SELECT CO_FORMA_PAGO ");
-            //query.append("                                             FROM CVTM_CONVENIO ");
-            //query.append("                                            WHERE CO_FORMA_PAGO IS NOT NULL) ");
             query.append("           AND FORMA.CO_FORMA_PAGO_PADRE IS NULL ");
-//            query.append("        UNION ");
-//            query.append("        SELECT FORMA.CO_COMPANIA, ");
-//            query.append("                    NVL(FORMA_LOCAL.CO_FORMA_PAGO,' ') CO_FORMA_PAGO, ");
-//            query.append("                    NVL(FORMA.DE_CORTA_FORMA_PAGO,' ') DE_CORTA_FORMA_PAGO, ");
-//            query.append("                    NU_ORDEN_FILA ");
-//            query.append("          FROM VTTR_FORMA_PAGO FORMA, ");
-//            query.append("               VTTR_FORMA_PAGO_LOCAL FORMA_LOCAL ");
-//            query.append("         WHERE FORMA_LOCAL.CO_COMPANIA   = '").append(AtuxVariables.vCodigoCompania).append("'");
-//            query.append("           AND FORMA_LOCAL.CO_LOCAL      = '").append(AtuxVariables.vCodigoLocal).append("'");
-//            query.append("           AND FORMA_LOCAL.ES_FORMA_PAGO = 'A' ");
-//            query.append("           AND FORMA_LOCAL.CO_COMPANIA = FORMA.CO_COMPANIA ");
-//            query.append("           AND FORMA_LOCAL.CO_FORMA_PAGO = FORMA.CO_FORMA_PAGO ");
-//            query.append("           AND FORMA.ES_FORMA_PAGO = 'A' ");            
-//            query.append("           AND FORMA.CO_FORMA_PAGO = FORMA.CO_FORMA_PAGO_PADRE");            
             query.append("           ) ");
             query.append(" ORDER BY NU_ORDEN_FILA");
             rs =  this.getRegistrosSinFiltro(query);

@@ -9,7 +9,6 @@ import atux.util.Helper;
 import atux.util.common.AtuxGridUtils;
 import atux.util.common.AtuxUtility;
 import atux.vistas.catalogo.IProductoInsumo;
-import atux.vistas.catalogo.IProductoInsumoAnt;
 
 import java.awt.Component;
 import javax.swing.*;

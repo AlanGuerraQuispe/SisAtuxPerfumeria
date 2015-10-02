@@ -147,7 +147,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         this.tblInsumos.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRendererInsumo(this));
 
         TableColumn tcIns = this.tblInsumos.getColumnModel().getColumn(this.tblInsumos.getColumnCount() - 1);
-        tcIns.setCellEditor(new CeldaAccionEditor(this));
+        tcIns.setCellEditor(new CeldaAccionEditorInsumo(this));
         Helper.ajustarSoloAnchoColumnas(tblInsumos, ModeloTablaDetallePedidoVenta.anchoColumnas);
 
         boolean vExisteCajaTurno = AtuxSearch.existeCajaTurnoImpresora(new Frame());
@@ -903,9 +903,9 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 AtuxVariables.MOTIVO_KARDEX_VENTA, "D");
 
         //Actuliza el stock disponible y el stock comprometido
-        for (DetallePedidoVenta item : dtpv) {
-            CPedidoVenta.updateStocksProducto(item.getCoProducto(), item.getCaAtendida(), false);
-        }
+//        for (DetallePedidoVenta item : dtpv) {
+//            CPedidoVenta.updateStocksProducto(item.getCoProducto(), item.getCaAtendida(), false);
+//        }
 
         AtuxSearch.setNuSecNumeracionNoCommit(AtuxVariables.NUMERACION_PEDIDO_DIARIO);
 
@@ -934,7 +934,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         this.tblInsumos.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRendererInsumo(this));
 
         TableColumn tcIns = this.tblInsumos.getColumnModel().getColumn(this.tblInsumos.getColumnCount() - 1);
-        tcIns.setCellEditor(new CeldaAccionEditor(this));
+        tcIns.setCellEditor(new CeldaAccionEditorInsumo(this));
         Helper.ajustarSoloAnchoColumnas(tblInsumos, ModeloTablaDetallePedidoVenta.anchoColumnas);
     }
 
