@@ -259,6 +259,23 @@ public class CPedidoVenta extends JAbstractController{
         return rgs;
     }
     
+//    public static void grabarKardexSegunPedido(String pGlosa,
+//                                               String pGrupoMotivo,
+//                                               String pMotivo,
+//                                               String pTipoOperacion) throws SQLException {
+//        ArrayList parametros = new ArrayList();
+//        parametros.add(AtuxVariables.vCodigoCompania);
+//        parametros.add(AtuxVariables.vCodigoLocal);
+//        parametros.add(AtuxVariables.vNumeroPedido);
+//        parametros.add(AtuxVariables.TIPO_DOCUMENTO_PEDIDO);
+//        parametros.add(pGlosa);
+//        parametros.add(pGrupoMotivo);
+//        parametros.add(pMotivo);
+//        parametros.add(AtuxVariables.vIdUsuario);
+//        parametros.add(pTipoOperacion);
+//        AtuxDBUtility.executeSQLStoredProcedure(null, "PTOVTA_VENTAS.ACTUALIZARKARDEXPERFUMERIA(?,?,?,?,?,?,?,?,?)", parametros, false);
+//    }
+
     public static void grabarKardexSegunPedido(String pGlosa,
                                                String pGrupoMotivo,
                                                String pMotivo,
@@ -267,15 +284,15 @@ public class CPedidoVenta extends JAbstractController{
         parametros.add(AtuxVariables.vCodigoCompania);
         parametros.add(AtuxVariables.vCodigoLocal);
         parametros.add(AtuxVariables.vNumeroPedido);
-        parametros.add(AtuxVariables.TIPO_DOCUMENTO_PEDIDO);     
+        parametros.add(AtuxVariables.TIPO_DOCUMENTO_PEDIDO);
         parametros.add(pGlosa);
         parametros.add(pGrupoMotivo);
         parametros.add(pMotivo);
         parametros.add(AtuxVariables.vIdUsuario);
         parametros.add(pTipoOperacion);
-        AtuxDBUtility.executeSQLStoredProcedure(null, "PTOVTA_VENTAS.ACTUALIZARKARDEXPERFUMERIA(?,?,?,?,?,?,?,?,?)", parametros, false);
+        AtuxDBUtility.executeSQLStoredProcedure(null, "PTOVTA_VENTAS.ACTUALIZARKARDEXSEGUNPEDIDO(?,?,?,?,?,?,?,?,?)", parametros, false);
     }
-    
+
     public static void updateStocksProducto(String pCodigoProducto, int pCantidad, boolean pWithCommit) throws SQLException {
         String queryUpdate = "UPDATE LGTR_PRODUCTO_LOCAL " +
                 "   SET CA_STOCK_DISPONIBLE = CA_STOCK_DISPONIBLE - " + pCantidad + " ,  "+        

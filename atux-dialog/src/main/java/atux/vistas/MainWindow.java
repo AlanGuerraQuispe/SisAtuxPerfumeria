@@ -789,11 +789,7 @@ public class MainWindow extends javax.swing.JFrame {
 
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        if (vntPedidoVenta == null) {
-            vntPedidoVenta = new BuscarProducto();
-        }
 
-        AdminIFrame.mostrarVentanaCentrada(dp, vntPedidoVenta);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void bntIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntIngresarActionPerformed
@@ -916,11 +912,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     private void jMenuItem42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem42ActionPerformed
-        if (vntPedidoVenta == null) {
-            vntPedidoVenta = new BuscarProducto();
-        }
 
-        AdminIFrame.mostrarVentanaCentrada(dp, vntPedidoVenta);
     }//GEN-LAST:event_jMenuItem42ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed

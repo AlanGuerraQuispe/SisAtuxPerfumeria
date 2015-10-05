@@ -190,6 +190,14 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         return tmpCantidad;
     }
 
+    /**
+       DetallePedidoVenta dc2 = (DetallePedidoVenta)obj;
+        if(dc2.getProdLocal().getPrimaryKey() != null)
+        {
+           Double bruto = AtuxUtility.getDecimalNumberRedondeado((dc2.getVaVenta()/((dc2.getPcImpuesto_1()/100) + 1))*dc2.getCaAtendida());
+           tmpBruto += bruto;
+        }
+     */
     public Double getBruto()
     {
         Double tmpBruto = 0.0;
@@ -197,9 +205,17 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         {
             DetallePedidoVenta dc2 = (DetallePedidoVenta)obj;
             if(dc2.getProdLocal().getPrimaryKey() != null)
-            {                   
-                Double bruto = AtuxUtility.getDecimalNumberRedondeado((dc2.getVaVenta()/((dc2.getPcImpuesto_1()/100) + 1))*dc2.getCaAtendida());                 
-                tmpBruto += bruto;               
+            {
+                Double bruto = AtuxUtility.getDecimalNumberRedondeado(dc2.getProdLocal().getVaVenta()*dc2.getCaAtendida());
+                tmpBruto += bruto;
+                for(Object objComponente:dc2.getProdLocal().getInsumosProducto())
+                {
+                    ProductoLocal pro = (ProductoLocal)objComponente;
+                    if (pro.getInImpresion().equals("S")){
+                        bruto = AtuxUtility.getDecimalNumberRedondeado(pro.getVaVenta()*dc2.getCaAtendida());
+                        tmpBruto += bruto;
+                    }
+                }
             }
         }
         this.mBruto = tmpBruto;
@@ -219,17 +235,38 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
             }
         }
                 
-//        this.mDscto = this.mBruto - tmpDsc ;
+//      this.mDscto = this.mBruto - tmpDsc ;
         this.mDscto = aplicaDescuento() ;
         return this.mDscto;
     }
     
     public Double getAfecto()
     {                
-        this.mAfecto = this.mBruto - mDscto;
+        //this.mAfecto = this.mBruto - mDscto;
+        this.mAfecto = this.mBruto;
         return this.mAfecto;
     }
     
+//    public Double getTotalImpuesto()
+//    {
+//        Double tmpImp = 0.0;
+//        for(Object obj:this.registros)
+//        {
+//            DetallePedidoVenta dc2 = (DetallePedidoVenta)obj;
+//            if(dc2.getProdLocal().getPrimaryKey() != null)
+//            {
+//                Double tmpVenta  = this.mBruto;
+//                Double descuento = AtuxUtility.getDecimalNumberRedondeado(tmpVenta/((dc2.getPcImpuesto_1()/100) + 1));
+//                Double impuesto  = AtuxUtility.getDecimalNumberRedondeado(tmpVenta - descuento);
+//                tmpImp = impuesto;
+//
+//            }
+//        }
+//
+//        this.mImpuesto = tmpImp;
+//        return this.mImpuesto;
+//    }
+
     public Double getTotalImpuesto()
     {
         Double tmpImp = 0.0;
@@ -237,21 +274,22 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         {
             DetallePedidoVenta dc2 = (DetallePedidoVenta)obj;
             if(dc2.getProdLocal().getPrimaryKey() != null)
-            {                
+            {
                 Double tmpVenta  = dc2.getVaPrecioVenta();
-                Double descuento = AtuxUtility.getDecimalNumberRedondeado(dc2.getVaPrecioVenta()/((dc2.getPcImpuesto_1()/100) + 1));                                
+                Double descuento = AtuxUtility.getDecimalNumberRedondeado(dc2.getVaPrecioVenta()/((dc2.getPcImpuesto_1()/100) + 1));
                 Double impuesto  = AtuxUtility.getDecimalNumberRedondeado(tmpVenta - descuento);
                 tmpImp += impuesto;
             }
         }
         this.mImpuesto = tmpImp;
         return this.mImpuesto;
-    }        
-    
+    }
+
     public Double getTotalPrecioVenta()
     {            
-        Double tmpTotPreVenta = (mBruto + mImpuesto - mDscto) + getRedondeo();
-        
+//        Double tmpTotPreVenta = (mBruto + mImpuesto - mDscto) + getRedondeo();
+        Double tmpTotPreVenta = (mBruto -  mDscto);
+
         this.mTotalPreVenta = tmpTotPreVenta;
         return this.mTotalPreVenta;
     }
@@ -262,7 +300,7 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         
         this.mRedondeo = tmpRedondeo;
         return this.mRedondeo;
-    }       
+    }
     
     public void contarItems()
     {

@@ -76,11 +76,11 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     }
 
     private void tableHandlerEvent(TableModelEvent e) {
-        setTotales();
         if(tblProductoPrincipal.getSelectedRow()>0) {
             DetallePedidoVenta fila = mtdpv.getDetallesPedidoVenta().get(tblProductoPrincipal.getSelectedRow());
             mostrarInsumos(fila);
         }
+        setTotales();
     }
 
     public void nuevoPedido() throws SQLException {
@@ -162,8 +162,6 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroupComprobante = new javax.swing.ButtonGroup();
-        buttonGroupImpuesto = new javax.swing.ButtonGroup();
-        buttonGroupEstado = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         jPanel1 = new javax.swing.JPanel();
         jLFecha = new javax.swing.JLabel();
@@ -740,9 +738,9 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         getContentPane().add(panelImage1);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void bntBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarProveedorActionPerformed
+    private void bntBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {
         BuscarProveedor pvc = new BuscarProveedor(ModeloTablaProveedores.ACTIVOS);
         pvc.setSize(new Dimension(300, 180));
 
@@ -754,14 +752,14 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         if (pvc.getProveedor() != null) {
             setProveedor(((Proveedores) (pvc.getProveedor())));
         }
-    }//GEN-LAST:event_bntBuscarProveedorActionPerformed
+    }
 
-    private void tblProductoPrincipalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblProductoPrincipalFocusLost
+    private void tblProductoPrincipalFocusLost(java.awt.event.FocusEvent evt) {
         tblProductoPrincipal.clearSelection();
         setTotales();
-    }//GEN-LAST:event_tblProductoPrincipalFocusLost
+    }
 
-    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
+    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (mtdpv.getNumItems() == 0) {
                 JOptionPane.showInternalMessageDialog(this, "Debe seleccionar al menos un Producto.",
@@ -785,23 +783,23 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
             Logger.getLogger(IPedidoVentaInsumo.class.getName()).log(Level.SEVERE, null, ex);
             AtuxUtility.liberarTransaccion();
         }
-    }//GEN-LAST:event_bntGuardarActionPerformed
+    }
 
-    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
+    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {
         closeWindow(true);
-    }//GEN-LAST:event_bntSalirActionPerformed
+    }
 
-    private void bntImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntImprimirActionPerformed
+    private void bntImprimirActionPerformed(java.awt.event.ActionEvent evt) {
         if (AtuxVariables.vTipoCaja.equalsIgnoreCase(AtuxVariables.TIPO_CAJA_MULTIFUNCIONAL)) {
             logger.info("Es caja multifuncional <<" + AtuxVariables.vTipoCaja + ">>");
             mostrarCobroDePedidoGenerado();
         }
-    }//GEN-LAST:event_bntImprimirActionPerformed
+    }
 
-    private void tblProductoPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoPrincipalMouseClicked
+    private void tblProductoPrincipalMouseClicked(java.awt.event.MouseEvent evt) {
 //        DetallePedidoVenta fila = mtdpv.getDetallesPedidoVenta().get(tblProductoPrincipal.getSelectedRow());
 //        mostrarInsumos(fila);
-    }//GEN-LAST:event_tblProductoPrincipalMouseClicked
+    }
 
     private void guardar() throws SQLException {
         pedido = new PedidoVenta();
@@ -884,7 +882,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 insumo.setNuItemPedido(countItem);
                 insumo.setCoProductoPrincipal(item.getCoProducto());
                 insumo.setEsDetPedidoVenta("P");
-                insumo.setInProductoPrincipal("N");
+                insumo.setInProductoPrincipal(insum.getInImpresion());
                 insumo.setIdCreaDetPedidoVenta(AtuxVariables.vIdUsuario);
                 insumo.setFeCreaDetPedidoVenta(AtuxSearch.getFechaHora());
                 try {
@@ -893,9 +891,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 } catch (SQLException e) {
                     logger.error("Error al grabar el detalle del pedido" + e);
                 }
-
             }
-
         }
 
         //Graba el Kardex todo aguerra
@@ -903,9 +899,13 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 AtuxVariables.MOTIVO_KARDEX_VENTA, "D");
 
         //Actuliza el stock disponible y el stock comprometido
-//        for (DetallePedidoVenta item : dtpv) {
-//            CPedidoVenta.updateStocksProducto(item.getCoProducto(), item.getCaAtendida(), false);
-//        }
+        for (DetallePedidoVenta item : dtpv) {
+            CPedidoVenta.updateStocksProducto(item.getCoProducto(), item.getCaAtendida(), false);
+
+            for (ProductoLocal insum : item.getProdLocal().getInsumosProducto()) {
+                CPedidoVenta.updateStocksProducto(insum.getCoProducto(), item.getCaAtendida(), false);
+            }
+        }
 
         AtuxSearch.setNuSecNumeracionNoCommit(AtuxVariables.NUMERACION_PEDIDO_DIARIO);
 
@@ -945,8 +945,6 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     private elaprendiz.gui.button.ButtonRect bntImprimir;
     private elaprendiz.gui.button.ButtonRect bntSalir;
     private javax.swing.ButtonGroup buttonGroupComprobante;
-    private javax.swing.ButtonGroup buttonGroupEstado;
-    private javax.swing.ButtonGroup buttonGroupImpuesto;
     private javax.swing.JFormattedTextField ftfAfecto;
     private javax.swing.JFormattedTextField ftfBruto;
     private elaprendiz.gui.textField.TextField ftfCambio;
@@ -1163,10 +1161,10 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     public void setTotales() {
         this.ftfBruto.setValue(mtdpv.getBruto());
         this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
-        this.ftfAfecto.setValue(mtdpv.getAfecto());
-        this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
+        //this.ftfAfecto.setValue(mtdpv.getAfecto());
+        //this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
         this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
-        this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
+        //this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
         this.ftfItems.setValue(mtdpv.getNumItems());
 
         if (mtdpv.getBruto() > 0) {

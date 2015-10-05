@@ -47,7 +47,7 @@ public class DetallePedidoVenta extends JAbstractModelBD implements Serializable
     private PedidoVenta idPedidoVenta;
     private ProductoLocal prodLocal;
     private ProductoInsumo productoInsumo;
-    
+
     private String coCompania;
     private String coLocal;
     private String nuPedido;
@@ -108,6 +108,7 @@ public class DetallePedidoVenta extends JAbstractModelBD implements Serializable
     private Double vaPrecioOriginal;
     private String inInafecto;
     private String inProductoPrincipal;
+    private String inImpresion;
 
     private int lineasmensaje;
     private String deMensajePromocion;
@@ -720,6 +721,14 @@ public class DetallePedidoVenta extends JAbstractModelBD implements Serializable
 
     public void setProductoInsumo (ProductoInsumo productoInsumo) {
         this.productoInsumo = productoInsumo;
+    }
+
+    public String getInImpresion() {
+        return inImpresion;
+    }
+
+    public void setInImpresion(String inImpresion) {
+        this.inImpresion = inImpresion;
     }
 
     @Override

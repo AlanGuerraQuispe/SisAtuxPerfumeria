@@ -1,5 +1,7 @@
 package atux.util;
 
+import atux.vistas.buscar.BuscarProducto;
+
 import java.awt.Dimension;
 import java.beans.PropertyVetoException;
 import javax.swing.JDesktopPane;
@@ -45,10 +47,11 @@ public class AdminIFrame {
         vnt.setLocation(
                 (pantalla.width - ventana.width) / 2,
                 ((pantalla.height - ventana.height) / 2) -40);
-        
-        vnt.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);                
-        vnt.setVisible(true);        
-                
-    }        
-    
+
+            vnt.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
+            vnt.setVisible(true);
+
+    }
+
+
 }

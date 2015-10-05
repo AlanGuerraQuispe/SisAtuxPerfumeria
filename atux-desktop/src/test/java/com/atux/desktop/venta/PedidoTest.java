@@ -13,7 +13,7 @@ import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTomaPedidoVenta;
 import atux.util.common.*;
 import atux.vistas.MainWindow;
-import atux.vistas.venta.IPedidoVenta;
+import atux.vistas.venta.IPedidoVentaInsumo;
 import atux.vistas.venta.caja.IPagoPedido;
 import com.atux.bean.donacion.Donacion;
 import com.atux.bean.donacion.DonacionDetalle;
@@ -55,7 +55,7 @@ import java.util.List;
 })
 public class PedidoTest extends TestPersistenceBase {
     private CPedidoVenta cpPedidoVenta = new CPedidoVenta();
-    private IPedidoVenta ipPedidoVenta = new IPedidoVenta("Test");
+    private IPedidoVentaInsumo ipPedidoVenta = new IPedidoVentaInsumo("Test");
     private CProductoLocal cpProductoLocal = new CProductoLocal();
     private ModeloTomaPedidoVenta modeloTomaPedidoVenta;
 

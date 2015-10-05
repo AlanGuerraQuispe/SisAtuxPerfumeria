@@ -125,6 +125,7 @@ public class ProductoLocal extends JAbstractModelBD implements Serializable,IMod
     private String stockEnCajas;
     private String caTransito;
     private String caComprasPendientes;
+    private String inImpresion;
 
     private List<ProductoLocal> insumosProducto = new ArrayList();
     private Boolean inInsumos;
@@ -799,6 +800,14 @@ public class ProductoLocal extends JAbstractModelBD implements Serializable,IMod
 
     public void setInInsumos(Boolean inInsumos) {
         this.inInsumos = inInsumos;
+    }
+
+    public String getInImpresion() {
+        return inImpresion;
+    }
+
+    public void setInImpresion(String inImpresion) {
+        this.inImpresion = inImpresion;
     }
 
     public Double getCalculoPrecioPublico() {

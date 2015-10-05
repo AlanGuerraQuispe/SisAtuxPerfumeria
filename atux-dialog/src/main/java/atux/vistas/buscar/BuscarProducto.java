@@ -1,6 +1,5 @@
 package atux.vistas.buscar;
 
-
 import atux.controllers.CProductoLocal;
 import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTablaProducto;
@@ -8,15 +7,11 @@ import atux.util.Helper;
 import atux.util.common.AtuxUtility;
 import atux.util.common.AtuxVariables;
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import java.util.Iterator;
 
-import com.aw.swing.mvp.navigation.AWWindowsManager;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import atux.vistas.venta.PanelAccionProdInsumos;
 
 public final class BuscarProducto extends javax.swing.JInternalFrame {
 
@@ -24,133 +19,24 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
     private ModeloTablaProducto mtp;
     private ModeloTablaProducto mtpInsumos;
     private ModeloTablaProducto mtpPromocion;
-    private int COL_DE_PRODUCTO=1;
     CProductoLocal cProdLoc;
+    PanelAccionProdInsumos panelInsumos;
 
-    private final Log logger = LogFactory.getLog(getClass());
-
-    boolean modal=false;
-
-//    public void show() {
-//        super.show();
-//        if (this.modal) startModal();
-//    }
-//
-//
-//    public void setVisible(boolean value) {
-//        super.setVisible(value);
-//        if (modal) {
-//            if (value) {
-//                startModal();
-//            } else {
-//                stopModal();
-//            }
-//        }
-//    }
-//
-//    private synchronized void startModal() {
-//
-//        try {
-//            if (SwingUtilities.isEventDispatchThread()) {
-//                EventQueue theQueue =
-//                        getToolkit().getSystemEventQueue();
-//                while (isVisible()) {
-//                    AWTEvent event = theQueue.getNextEvent();
-//                    Object source = event.getSource();
-//                    boolean dispatch=true;
-//
-//                    if (event instanceof MouseEvent) {
-//                        MouseEvent e = (MouseEvent)event;
-//                        MouseEvent m =
-//                                SwingUtilities.convertMouseEvent ((Component) e.getSource(),e,this);
-//                        if (!this.contains(m.getPoint())
-//                                && e.getID()!=MouseEvent.MOUSE_DRAGGED) dispatch=false;
-//                    }
-//
-//                    if (dispatch)
-//                        if (event instanceof ActiveEvent) {
-//                            ((ActiveEvent)event).dispatch();
-//                        } else if (source instanceof Component) {
-//                            ((Component)source).dispatchEvent(
-//                                    event);
-//                        } else if (source instanceof MenuComponent) {
-//                            ((MenuComponent)source).dispatchEvent(
-//                                    event);
-//                        } else {
-//                            System.err.println(
-//                                    "Unable to dispatch: " + event);
-//                        }
-//                }
-//            } else {
-//                while (isVisible()) {
-//                    wait();
-//                }
-//            }
-//        } catch (InterruptedException ignored) {
-//        }
-//
-//    }
-//
-//    private synchronized void stopModal() {
-//        notifyAll();
-//    }
-//
-//    public void setModal(boolean modal) {
-//        this.modal=modal;
-//    }
-//    public boolean isModal() {
-//        return this.modal;
-//    }
-
-    public BuscarProducto() {
+    public BuscarProducto(PanelAccionProdInsumos panel) {
         super();
         initComponents();
-        lblAviso.setVisible(false);
-        CProductoLocal cpl = new CProductoLocal();
-        AtuxVariables.arrayProductos = cpl.getProductosPedidoVenta();
+        panelInsumos = panel;
         inicializarCarga(AtuxVariables.arrayProductos);
         AtuxUtility.moveFocus(txtDato);
-        //this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-    }
-
-    public final void inicializarCarga(ArrayList lista){
-        mtp = new ModeloTablaProducto(lista,ModeloTablaProducto.PRO_LISTA);
-        this.tblProductos.setModel(mtp);
-        this.tblProductos.repaint();
-        mtp.fireTableDataChanged();
-
-        Helper.ajustarSoloAnchoColumnas(tblProductos, ModeloTablaProducto.anchoColumnas);
-        prodLocal =(ProductoLocal)mtp.getFila(0);
-        mostrarDetalleProducto(prodLocal);
     }
 
     private void mostrarDetalleProducto(ProductoLocal prodLocal) {
-
-        jLDGrupo.setText(prodLocal.getDeJ5());
-        jDLinea.setText(prodLocal.getDeJ1());
-
-        jlDCajas.setText(prodLocal.getProducto().getDeUnidadProducto());
-
-        if  (prodLocal.getInProdFraccionado().equals("S")){
-            double preCaja = Helper.redondear(prodLocal.getVaPrecioPublico()*prodLocal.getVaFraccion(), 2);
-            jlDPrecio.setText(String.valueOf(preCaja));
-            int stockCaja = Math.round(prodLocal.getCaStockDisponible()/prodLocal.getVaFraccion());
-            jlDStock.setText(String.valueOf(stockCaja));
-        }
-        else{
-            jlDPrecio.setText(prodLocal.getVaPrecioPublico().toString());
-            jlDStock.setText(String.valueOf(prodLocal.getCaStockDisponible()));
-        }
 
         cProdLoc = new CProductoLocal();
         this.tblInsumosProductos.removeAll();
 
         mtpInsumos = new ModeloTablaProducto(cProdLoc.getInsumosProductos(prodLocal), ModeloTablaProducto.PRO_INSUMOS);
         this.tblInsumosProductos.setModel(mtpInsumos);
-
-
-        this.tblProductos.repaint();
-        mtp.fireTableDataChanged();
 
         this.tblInsumosProductos.repaint();
         mtpInsumos.fireTableDataChanged();
@@ -168,8 +54,6 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupComprobante = new javax.swing.ButtonGroup();
-        buttonGroupImpuesto = new javax.swing.ButtonGroup();
         buttonGroupEstado = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         jPanel1 = new javax.swing.JPanel();
@@ -184,16 +68,6 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         tblProductos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanelDetalleProd = new javax.swing.JPanel();
-        lblEzen = new javax.swing.JLabel();
-        jLDGrupo = new javax.swing.JLabel();
-        jLinea = new javax.swing.JLabel();
-        jDLinea = new javax.swing.JLabel();
-        jlCajas = new javax.swing.JLabel();
-        jlDCajas = new javax.swing.JLabel();
-        jlPrecio = new javax.swing.JLabel();
-        jlDPrecio = new javax.swing.JLabel();
-        jlStock = new javax.swing.JLabel();
-        jlDStock = new javax.swing.JLabel();
         jPanelInsumos = new javax.swing.JPanel();
         jScrollPaneInsumos = new javax.swing.JScrollPane();
         tblInsumosProductos = new javax.swing.JTable();
@@ -207,7 +81,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
 
         setTitle("Buscar Perfume");
         setNormalBounds(new java.awt.Rectangle(0, 0, 500, 400));
-        setPreferredSize(new java.awt.Dimension(860, 630));
+        setPreferredSize(new java.awt.Dimension(860, 645));
         try {
             setSelected(true);
         } catch (java.beans.PropertyVetoException e1) {
@@ -250,6 +124,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanelOpciones.setBackground(new java.awt.Color(51, 153, 255));
 
         rbTodos.setBackground(new java.awt.Color(51, 153, 255));
+        buttonGroupEstado.add(rbTodos);
         rbTodos.setFont(new java.awt.Font("Tahoma", 1, 12));
         rbTodos.setForeground(new java.awt.Color(255, 255, 255));
         rbTodos.setSelected(true);
@@ -261,6 +136,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         });
 
         rbCaballeros.setBackground(new java.awt.Color(51, 153, 255));
+        buttonGroupEstado.add(rbCaballeros);
         rbCaballeros.setFont(new java.awt.Font("Tahoma", 1, 12));
         rbCaballeros.setForeground(new java.awt.Color(255, 255, 255));
         rbCaballeros.setText("Caballeros");
@@ -271,6 +147,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         });
 
         rbDamas.setBackground(new java.awt.Color(51, 153, 255));
+        buttonGroupEstado.add(rbDamas);
         rbDamas.setFont(new java.awt.Font("Tahoma", 1, 12));
         rbDamas.setForeground(new java.awt.Color(255, 255, 255));
         rbDamas.setText("Damas");
@@ -308,7 +185,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
+            .addGap(0, 854, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 78, Short.MAX_VALUE)
@@ -337,7 +214,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         );
 
         panelImage1.add(jPanel1);
-        jPanel1.setBounds(0, 0, 846, 50);
+        jPanel1.setBounds(0, 0, 856, 50);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setOpaque(false);
@@ -380,76 +257,19 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanel6.add(jScrollPaneProducto, java.awt.BorderLayout.CENTER);
 
         panelImage1.add(jPanel6);
-        jPanel6.setBounds(0, 50, 846, 270);
+        jPanel6.setBounds(0, 50, 846, 250);
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.setOpaque(false);
+        jPanel2.setLayout(null);
 
         jPanelDetalleProd.setBackground(new java.awt.Color(53, 151, 255));
         jPanelDetalleProd.setAlignmentX(0.0F);
         jPanelDetalleProd.setAlignmentY(0.0F);
         jPanelDetalleProd.setEnabled(false);
         jPanelDetalleProd.setLayout(null);
-
-        lblEzen.setFont(new java.awt.Font("Tahoma", 1, 11));
-        lblEzen.setForeground(new java.awt.Color(153, 0, 0));
-        lblEzen.setText("Ezen :");
-        lblEzen.setName(""); // NOI18N
-        jPanelDetalleProd.add(lblEzen);
-        lblEzen.setBounds(10, 4, 32, 20);
-
-        jLDGrupo.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLDGrupo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleProd.add(jLDGrupo);
-        jLDGrupo.setBounds(50, 4, 140, 20);
-
-        jLinea.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLinea.setForeground(new java.awt.Color(153, 0, 0));
-        jLinea.setText("Linea :");
-        jPanelDetalleProd.add(jLinea);
-        jLinea.setBounds(190, 4, 36, 20);
-
-        jDLinea.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jDLinea.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleProd.add(jDLinea);
-        jDLinea.setBounds(230, 4, 150, 20);
-
-        jlCajas.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlCajas.setForeground(new java.awt.Color(153, 0, 0));
-        jlCajas.setText("Cajas :");
-        jPanelDetalleProd.add(jlCajas);
-        jlCajas.setBounds(380, 4, 43, 20);
-
-        jlDCajas.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDCajas.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleProd.add(jlDCajas);
-        jlDCajas.setBounds(420, 4, 65, 20);
-
-        jlPrecio.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlPrecio.setForeground(new java.awt.Color(153, 0, 0));
-        jlPrecio.setText("Precio :");
-        jPanelDetalleProd.add(jlPrecio);
-        jlPrecio.setBounds(490, 4, 42, 20);
-
-        jlDPrecio.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleProd.add(jlDPrecio);
-        jlDPrecio.setBounds(532, 4, 40, 20);
-
-        jlStock.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlStock.setForeground(new java.awt.Color(153, 0, 0));
-        jlStock.setText("Stock :");
-        jPanelDetalleProd.add(jlStock);
-        jlStock.setBounds(572, 4, 39, 20);
-
-        jlDStock.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jlDStock.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelDetalleProd.add(jlDStock);
-        jlDStock.setBounds(611, 4, 25, 20);
-
-        jPanelInsumos.setPreferredSize(new java.awt.Dimension(769, 105));
-
-        jScrollPaneInsumos.setPreferredSize(new java.awt.Dimension(452, 400));
+        jPanel2.add(jPanelDetalleProd);
+        jPanelDetalleProd.setBounds(2, 2, 843, 10);
 
         tblInsumosProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -472,7 +292,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         ));
         tblInsumosProductos.setToolTipText("Productos base");
         tblInsumosProductos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblInsumosProductos.setPreferredSize(new java.awt.Dimension(820, 400));
+        tblInsumosProductos.setPreferredSize(new java.awt.Dimension(820, 100));
         tblInsumosProductos.setRowHeight(18);
         jScrollPaneInsumos.setViewportView(tblInsumosProductos);
 
@@ -480,14 +300,15 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanelInsumos.setLayout(jPanelInsumosLayout);
         jPanelInsumosLayout.setHorizontalGroup(
             jPanelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(jScrollPaneInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
         );
         jPanelInsumosLayout.setVerticalGroup(
             jPanelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInsumosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPaneInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+            .addComponent(jScrollPaneInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jPanel2.add(jPanelInsumos);
+        jPanelInsumos.setBounds(3, 11, 843, 87);
 
         jPanelDetalleInsumos.setBackground(new java.awt.Color(53, 151, 255));
         jPanelDetalleInsumos.setEnabled(false);
@@ -499,9 +320,10 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanelDetalleInsumos.add(lblAviso);
         lblAviso.setBounds(40, 0, 100, 23);
 
-        jPanelPromocion.setPreferredSize(new java.awt.Dimension(787, 90));
+        jPanel2.add(jPanelDetalleInsumos);
+        jPanelDetalleInsumos.setBounds(2, 99, 843, 27);
 
-        jScrollPanePromocion.setPreferredSize(new java.awt.Dimension(452, 250));
+        jScrollPanePromocion.setPreferredSize(new java.awt.Dimension(452, 100));
 
         tblProductosPromocion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -514,7 +336,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         ));
         tblProductosPromocion.setToolTipText("Promociones");
         tblProductosPromocion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblProductosPromocion.setPreferredSize(new java.awt.Dimension(820, 200));
+        tblProductosPromocion.setPreferredSize(new java.awt.Dimension(820, 100));
         tblProductosPromocion.setRowHeight(18);
         jScrollPanePromocion.setViewportView(tblProductosPromocion);
 
@@ -522,48 +344,18 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jPanelPromocion.setLayout(jPanelPromocionLayout);
         jPanelPromocionLayout.setHorizontalGroup(
             jPanelPromocionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPanePromocion, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(jScrollPanePromocion, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
         );
         jPanelPromocionLayout.setVerticalGroup(
             jPanelPromocionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPanePromocion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addComponent(jScrollPanePromocion, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 2, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelDetalleProd, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelDetalleInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelPromocion, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 2, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(jPanelInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanelDetalleProd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(1, 1, 1)
-                    .addComponent(jPanelDetalleInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(1, 1, 1)
-                    .addComponent(jPanelPromocion, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jPanel2.add(jPanelPromocion);
+        jPanelPromocion.setBounds(2, 126, 843, 48);
 
         panelImage1.add(jPanel2);
-        jPanel2.setBounds(0, 320, 846, 238);
+        jPanel2.setBounds(0, 300, 846, 173);
 
         pnlActionButtons.setOpaque(false);
         pnlActionButtons.setLayout(null);
@@ -579,68 +371,145 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         bntSalir.setBounds(711, 6, 63, 25);
 
         panelImage1.add(pnlActionButtons);
-        pnlActionButtons.setBounds(0, 560, 846, 40);
+        pnlActionButtons.setBounds(0, 475, 846, 40);
 
         getContentPane().add(panelImage1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
+    public ProductoLocal getProductoLocal() {
+        return prodLocal;
+    }
+
+    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {
         closeWindow(true);        
-    }//GEN-LAST:event_bntSalirActionPerformed
+    }
 
-    private void txtDatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDatoKeyPressed
+    private void txtDatoKeyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            closeWindow(true);
+        }
+    }
 
-    private void txtDatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDatoKeyReleased
+    private void txtDatoKeyReleased(java.awt.event.KeyEvent evt) {
+        String vFindText       = txtDato.getText().trim();
+        if(vFindText.length()==0) {
+            inicializarCarga(AtuxVariables.arrayProductos);
+        }
 
-    private void txtDatoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDatoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDatoKeyTyped
+        if(vFindText.length()>2) {
+            ArrayList<ProductoLocal> prodSoloHombres = new ArrayList();
+            ProductoLocal productoLoc;
+            Iterator iter = AtuxVariables.arrayProductos.iterator();
+            while (iter.hasNext()) {
+                productoLoc = (ProductoLocal) iter.next();
 
-    private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbTodosActionPerformed
+                if (productoLoc.getProducto().getDeProducto().contains(vFindText)) {
+                    prodSoloHombres.add(productoLoc);
+                }
+            }
+            if(prodSoloHombres.size()!=0)
+                inicializarCarga(prodSoloHombres);
 
-    private void rbCaballerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCaballerosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbCaballerosActionPerformed
+            else
+                inicializarCarga(AtuxVariables.arrayProductos);
 
-    private void rbDamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDamasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbDamasActionPerformed
+        }
+        else{
+            inicializarCarga(AtuxVariables.arrayProductos);
+        }
+    }
 
-    private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblProductosMouseClicked
+    private void txtDatoKeyTyped(java.awt.event.KeyEvent evt) {
+        AtuxUtility.convertirMayuscula(evt);
+    }
 
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formFocusGained
+    private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {
+        inicializarCarga(AtuxVariables.arrayProductos);
+        AtuxUtility.moveFocus(txtDato);
+    }
 
-    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formFocusLost
-    
+    private void rbCaballerosActionPerformed(java.awt.event.ActionEvent evt) {
+        ProductoLocal productoLoc;
+        ArrayList<ProductoLocal> prodSoloHombres = new ArrayList();
+
+        Iterator iter = AtuxVariables.arrayProductos.iterator();
+        while (iter.hasNext()){
+            productoLoc = (ProductoLocal) iter.next();
+
+            if(productoLoc.getProducto().getInGenero().equals("M")){
+                prodSoloHombres.add(productoLoc);
+            }
+        }
+        inicializarCarga(prodSoloHombres);
+        AtuxUtility.moveFocus(txtDato);
+    }
+
+    private void rbDamasActionPerformed(java.awt.event.ActionEvent evt) {
+        ProductoLocal productoLoc;
+        ArrayList<ProductoLocal> prodSoloMujeres = new ArrayList();
+
+        Iterator iter = AtuxVariables.arrayProductos.iterator();
+        while (iter.hasNext()){
+            productoLoc = (ProductoLocal) iter.next();
+
+            if(productoLoc.getProducto().getInGenero().equals("F")){
+                prodSoloMujeres.add(productoLoc);
+            }
+        }
+        inicializarCarga(prodSoloMujeres);
+        AtuxUtility.moveFocus(txtDato);
+    }
+
+    private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {
+        if (evt.getClickCount() == 2) {
+            if (tblProductos.getSelectedRow() != -1) {
+                prodLocal = (ProductoLocal) mtp.getFila(tblProductos.getSelectedRow());
+               closeWindow(true);
+            }
+        }
+
+        if (evt.getClickCount() == 1) {
+            if (tblProductos.getSelectedRow() != -1) {
+                prodLocal = (ProductoLocal) mtp.getFila(tblProductos.getSelectedRow());
+                mostrarDetalleProducto(prodLocal);
+                txtDato.setText(prodLocal.getProducto().getDeProducto());
+                prodLocal = null;
+            }
+        }
+    }
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {
+        AtuxUtility.moveFocus(txtDato);
+    }
+
+    private void formFocusLost(java.awt.event.FocusEvent evt) {
+        this.toBack();
+        this.setEnabled(false);
+    }
+
+    public final void inicializarCarga(ArrayList lista){
+        mtp = new ModeloTablaProducto(lista,ModeloTablaProducto.PRO_LISTA);
+        this.tblProductos.setModel(mtp);
+        this.tblProductos.repaint();
+        mtp.fireTableDataChanged();
+
+        Helper.ajustarSoloAnchoColumnas(tblProductos, ModeloTablaProducto.anchoColumnas);
+    }
+
     public void closeWindow(boolean pAceptar) {              
-        AtuxVariables.vAceptar = pAceptar;       
-        this.setVisible(false);        
-        this.dispose();
+        dispose();
+        this.setVisible(false);
+        if (pAceptar) panelInsumos.agregarItem();
+        prodLocal = null;
+        AtuxVariables.vAceptar = pAceptar;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect bntSalir;
-    private javax.swing.ButtonGroup buttonGroupComprobante;
     private javax.swing.ButtonGroup buttonGroupEstado;
-    private javax.swing.ButtonGroup buttonGroupImpuesto;
-    private javax.swing.JLabel jDLinea;
-    private javax.swing.JLabel jLDGrupo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLinea;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
@@ -652,14 +521,7 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPaneInsumos;
     private javax.swing.JScrollPane jScrollPaneProducto;
     private javax.swing.JScrollPane jScrollPanePromocion;
-    private javax.swing.JLabel jlCajas;
-    private javax.swing.JLabel jlDCajas;
-    private javax.swing.JLabel jlDPrecio;
-    private javax.swing.JLabel jlDStock;
-    private javax.swing.JLabel jlPrecio;
-    private javax.swing.JLabel jlStock;
     private javax.swing.JLabel lblAviso;
-    private javax.swing.JLabel lblEzen;
     private elaprendiz.gui.panel.PanelImage panelImage1;
     private javax.swing.JPanel pnlActionButtons;
     private javax.swing.JRadioButton rbCaballeros;

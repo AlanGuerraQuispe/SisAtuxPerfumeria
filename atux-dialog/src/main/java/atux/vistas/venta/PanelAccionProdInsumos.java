@@ -4,23 +4,20 @@ import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.PedidoVenta;
 import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTomaPedidoVenta;
-import atux.util.AdminIFrame;
 import atux.util.CeldaAccionEditorInsumo;
 import atux.util.CellEditorSpinnerPedidoVenta;
 import atux.vistas.buscar.BuscarProducto;
-import atux.vistas.buscar.IBuscarProdInsumos;
-import atux.vistas.catalogo.IMaestroProductos;
 import com.aw.swing.mvp.navigation.AWWindowsManager;
-import com.aw.swing.mvp.util.SwingShowDialogAction;
+
 
 import java.awt.*;
-import java.beans.PropertyVetoException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.*;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.MouseInputAdapter;
 
 public class PanelAccionProdInsumos extends javax.swing.JPanel {
 
@@ -111,55 +108,61 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
             this.indexFila = this.tabla.getSelectedRow();
         }
 
-//        IBuscarProdInsumos pvc = new IBuscarProdInsumos(new Frame(),true);
-//        pvc.setVisible(true);
+        buscarProducto = new BuscarProducto(this);
 
-        BuscarProducto buscarProducto = new BuscarProducto();
-        //pvc.setContentPane(ifr);
-        //pvc.setVisible(true);
+        JPanel glass = new JPanel();
+        glass.setOpaque(false);
+        glass.add(buscarProducto);
+        ifr.setGlassPane(glass);
+        glass.setVisible(true);
+        buscarProducto.toFront();
+        buscarProducto.setVisible(true);
+        buscarProducto.addInternalFrameListener(new ModalAdapter(this));
 
-        //if (buscarProducto == null) {
-//            buscarProducto = new BuscarProducto();
-//        buscarProducto = new BuscarProducto();
-//        buscarProducto.toFront();
-//        buscarProducto.setModal(true);
-//        buscarProducto.setVisible(true);
-            //ifr.toBack();
+    }
 
-//            JOptionPane.showInternalMessageDialog(this,buscarProducto);
-//            new SwingShowDialogAction(BuscarProducto.class, "Buscar Producto");
-//            try {
-//                buscarProducto.setSelected(true);
-//                buscarProducto.centrar(AWWindowsManager.instance().getDp(), buscarProducto);
-//            } catch (PropertyVetoException e) {
-//                e.printStackTrace();
-//            }
-        //}
-        AdminIFrame.mostrarVentanaCentrada(AWWindowsManager.instance().getDp(), buscarProducto);
+    class ModalAdapter extends InternalFrameAdapter {
+        Component glass;
 
-//        if (pvc.getProductoLocal() != null) {
-//            /**
-//             * coreegir cuamdo se borra la primera fila nos genera un dato nulo.
-//             */
-//            if (!mtpv.existe(pvc.getProductoLocal())) {
-//                try {
-//                    mtpv.contarItems();
-//                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setNuItemPedido(mtpv.getNumItems());
-//                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).agregarItem(pvc.getProductoLocal());
-//                    this.tabla.changeSelection(this.indexFila, 2, true, false);
-//                    cae.lanzarDetencionEdicion();
-//                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getSpinner().requestFocus();
-//                    nuevoItem();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(PanelAccionProdInsumos.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//            } else {
-//                JOptionPane.showInternalMessageDialog(ifr, "El Producto: " + pvc.getProductoLocal().getProducto().getDeProducto() +
-//                        " ya ha sido agregado", "Producto Duplicado", JOptionPane.WARNING_MESSAGE);
-//            }
-//        }
-    }//GEN-LAST:event_bntAgregarActionPerformed
+        public ModalAdapter(Component glass) {
+            this.glass = glass;
+
+            MouseInputAdapter adapter = new MouseInputAdapter() {
+            };
+            glass.addMouseListener(adapter);
+            glass.addMouseMotionListener(adapter);
+        }
+
+        public void internalFrameClosed(InternalFrameEvent e) {
+            glass.setVisible(false);
+        }
+    }
+
+    public void agregarItem(){
+        if (buscarProducto.getProductoLocal() != null) {
+            /**
+             * coreegir cuamdo se borra la primera fila nos genera un dato nulo.
+             */
+            if (!mtpv.existe(buscarProducto.getProductoLocal())) {
+                try {
+                    mtpv.contarItems();
+                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setNuItemPedido(mtpv.getNumItems());
+                    ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).agregarItem(buscarProducto.getProductoLocal());
+                    this.tabla.changeSelection(this.indexFila, 2, true, false);
+                    cae.lanzarDetencionEdicion();
+                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getSpinner().requestFocus();
+                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getPedidoVentaInsumo().mostrarInsumos((DetallePedidoVenta) mtpv.getFila(this.indexFila));
+                    nuevoItem();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PanelAccionProdInsumos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } else {
+                JOptionPane.showInternalMessageDialog(ifr, "El Producto: " + buscarProducto.getProductoLocal().getProducto().getDeProducto() +
+                        " ya ha sido agregado", "Producto Duplicado", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
 
     private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarActionPerformed
         if (this.tabla.getSelectedRow() != -1) {

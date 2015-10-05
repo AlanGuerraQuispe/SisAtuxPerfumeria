@@ -4,6 +4,7 @@ import atux.inventario.DlgGuiaIngreso;
 import atux.trasladoproducto.DlgListaPedidoTraslado;
 import atux.trasladoproducto.DlgPedidoTraslado;
 import atux.trasladoproducto.DlgRecepGuias;
+import atux.vistas.buscar.BuscarProducto;
 import atux.vistas.catalogo.*;
 import atux.vistas.inventario.IListaPedidosReposicion;
 import atux.vistas.inventario.IPedidoReposicion;
@@ -67,7 +68,7 @@ public class MenuBuilder {
         mb.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         MenuItem ventas = createMenu(mb, 'V',new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuVentas.png")))
-                //.addJInternalFrame(IPedidoVenta.class, "Realizar Venta")
+//                .addJInternalFrame(BuscarProducto.class, "Buscar Producto")
                 .addJInternalFrame(IPedidoVentaInsumo.class, "Productos terminados")
                 .addJInternalFrame(ICompletarPedidoVenta.class, "Completar Ventas")
                 .addJInternalFrame(IConsultarVentas.class, "Consultar Ventas")

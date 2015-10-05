@@ -21,7 +21,7 @@ public class ProductoInsumo extends JAbstractModelBD implements Serializable,IMo
     private String  inProductoInsumoPrincipal;
     private String  inImpresion;
     private String  deObservacion;
-    private Double vaCosto;
+    private Double  vaCosto;
     private Double  vaPrecioPublico;
     private String  deUnidad;
     private String  esProductoInsumo;

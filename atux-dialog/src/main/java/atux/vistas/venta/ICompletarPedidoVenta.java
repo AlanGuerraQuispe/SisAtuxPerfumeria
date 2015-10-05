@@ -840,7 +840,7 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
                 insumo.setNuItemPedido(countItem);
                 insumo.setCoProductoPrincipal(item.getCoProducto());
                 insumo.setEsDetPedidoVenta("P");
-                insumo.setInProductoPrincipal("N");
+                insumo.setInProductoPrincipal(insum.getInImpresion());
                 insumo.setIdCreaDetPedidoVenta(AtuxVariables.vIdUsuario);
                 insumo.setFeCreaDetPedidoVenta(AtuxSearch.getFechaHora());
                 try {
@@ -849,9 +849,7 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
                 } catch (SQLException e) {
                     logger.error("Error al grabar el detalle del pedido" + e);
                 }
-
             }
-
         }
 
         //Graba el Kardex todo aguerra
@@ -861,6 +859,10 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
         //Actuliza el stock disponible y el stock comprometido
         for (DetallePedidoVenta item : dtpv) {
             CPedidoVenta.updateStocksProducto(item.getCoProducto(), item.getCaAtendida(), false);
+
+            for (ProductoLocal insum : item.getProdLocal().getInsumosProducto()) {
+                CPedidoVenta.updateStocksProducto(insum.getCoProducto(), item.getCaAtendida(), false);
+            }
         }
 
         AtuxSearch.setNuSecNumeracionNoCommit(AtuxVariables.NUMERACION_PEDIDO_DIARIO);

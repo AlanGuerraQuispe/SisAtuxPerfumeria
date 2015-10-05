@@ -85,7 +85,7 @@ public class TicketBuilder extends ComprobanteBuilder {
         for (int i = 0; i < detalle.size(); i++) {
             DetallePedidoVenta detallePedido = (DetallePedidoVenta) detalle.get(i);
 
-            descripcionAdicional = "";            
+            descripcionAdicional = "";
             double precioMostrar = 0;
 
             precioMostrar = detallePedido.getVaPrecioPublico();                    
@@ -124,12 +124,12 @@ public class TicketBuilder extends ComprobanteBuilder {
 //                            AtuxPRNUtility.alinearIzquierda(detallePedido.getProdLocal().getProducto().getLaboratorio().getDeLaboratorio(), 6), true);
                 }
             }
-            else{
-                if(detallePedido.getProductoInsumo().getInImpresion().equals("S")){
-                    vPrint.printLine(AtuxPRNUtility.alinearDerecha("  ", 2) +
-                            AtuxPRNUtility.alinearIzquierda(detallePedido.getProdLocal().getProducto().getDeProducto(), 26) + " ", true);
-                }
-            }
+//            else{
+//                if(detallePedido.getProductoInsumo().getInImpresion().equals("S")){
+//                    vPrint.printLine(AtuxPRNUtility.alinearDerecha("  ", 2) +
+//                            AtuxPRNUtility.alinearIzquierda(detallePedido.getProdLocal().getProducto().getDeProducto(), 26) + " ", true);
+//                }
+//            }
             numeroLineas++;
         }
     }
