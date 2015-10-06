@@ -59,6 +59,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         initComponents();
         try {
             nuevoPedido();
+            this.bntImprimir.setEnabled(false);
         } catch (SQLException ex) {
             logger.error("Error al generar un nuevo pedido" + ex);
         }
@@ -770,15 +771,18 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
 
             guardar();
             AtuxUtility.aceptarTransaccion();
-            if (AtuxVariables.vTipoCaja.equalsIgnoreCase(AtuxVariables.TIPO_CAJA_TRADICIONAL)) {
-                logger.info("Es caja tradicional <<" + AtuxVariables.vTipoCaja + ">>");
-                mostrarNumeroPedido();
-            } else {
+            
+            if (AtuxVariables.vTipoCaja.equalsIgnoreCase(AtuxVariables.TIPO_CAJA_MULTIFUNCIONAL)) {
                 logger.info("Es caja multifuncional <<" + AtuxVariables.vTipoCaja + ">>");
                 this.bntImprimir.setEnabled(true);
                 this.bntGuardar.setEnabled(false);
                 this.tblProductoPrincipal.setEnabled(false);
             }
+            else
+                logger.info("Es caja  <<" + AtuxVariables.vTipoCaja + ">> tradicional");
+
+            mostrarNumeroPedido();
+
         } catch (SQLException ex) {
             Logger.getLogger(IPedidoVentaInsumo.class.getName()).log(Level.SEVERE, null, ex);
             AtuxUtility.liberarTransaccion();
