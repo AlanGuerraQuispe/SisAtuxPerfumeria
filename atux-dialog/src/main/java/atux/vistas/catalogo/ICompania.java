@@ -260,6 +260,9 @@ public class ICompania extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.cmbTipoVia.setEnabled(true);
+        this.cmbTipoPoblacion.setEnabled(true);
     }
     private void DesActivarCasillas(){
         this.pnlEntradasObligatorias.setEnabled(true);
@@ -285,6 +288,9 @@ public class ICompania extends javax.swing.JInternalFrame {
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);        
         
+        this.cmbTipoVia.setEnabled(false);
+        this.cmbTipoPoblacion.setEnabled(false);
+
         esActualizacion = false;
         logger.info(txtCodigo.getText());
     }
@@ -385,7 +391,7 @@ public class ICompania extends javax.swing.JInternalFrame {
         cp.getMaestroCompania().setApPaternoRespCompania(txtApellidoPaterno.getText());
         cp.getMaestroCompania().setApMaternoRespCompania(txtApellidoMaterno.getText());
         cp.getMaestroCompania().setNoRespCompania(txtNombres.getText());
-        cp.getMaestroCompania().setDeDireccion("");
+        cp.getMaestroCompania().setDeDireccion(((TipoVia)cmbTipoVia.getSelectedItem()).getDeCortaTipoVia() + " " + txtNombreVia.getText() + " " + txtNumero.getText());
         cp.getMaestroCompania().setDeDireccionWeb(txtURL.getText());
         cp.getMaestroCompania().setDeEmail(txtEmail.getText());
 
