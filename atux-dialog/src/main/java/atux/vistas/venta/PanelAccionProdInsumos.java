@@ -188,6 +188,10 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
 //                       }
                         ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setProdLocal(new ProductoLocal());
                         mtpv.quitarFila(this.indexFila);
+                        if(this.ifr instanceof  IPedidoVentaInsumo)
+                            ((IPedidoVentaInsumo) this.ifr).setTotales();
+                        else if (this.ifr instanceof  ICompletarPedidoVenta)
+                            ((ICompletarPedidoVenta) this.ifr).setTotales();
 
                         mtpv.contarItems();
                         cae.lanzarDetencionEdicion();

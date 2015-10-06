@@ -57,6 +57,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
 
     public IPedidoVentaInsumo() {
         initComponents();
+        AtuxVariables.vInComprobanteManual="N";
         try {
             nuevoPedido();
             this.bntImprimir.setEnabled(false);
@@ -116,7 +117,6 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         this.ftfTotal.setValue(0.00);
 
         this.mtdpv = new ModeloTomaPedidoVenta(1);
-        this.mtdpv.setPedidoInsumo(this);
 
         this.tblProductoPrincipal.setModel(mtdpv);
         this.tblProductoPrincipal.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRendererInsumo(this));
@@ -777,11 +777,17 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 this.bntImprimir.setEnabled(true);
                 this.bntGuardar.setEnabled(false);
                 this.tblProductoPrincipal.setEnabled(false);
-            }
-            else
-                logger.info("Es caja  <<" + AtuxVariables.vTipoCaja + ">> tradicional");
+                bntImprimirActionPerformed(evt);
 
-            mostrarNumeroPedido();
+            }
+            else{
+                logger.info("Es caja  <<" + AtuxVariables.vTipoCaja + ">> tradicional");
+                mostrarNumeroPedido();
+            }
+
+
+
+
 
         } catch (SQLException ex) {
             Logger.getLogger(IPedidoVentaInsumo.class.getName()).log(Level.SEVERE, null, ex);
@@ -1162,13 +1168,24 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     }
 
     public void setTotales() {
+//        this.ftfBruto.setValue(mtdpv.getBruto());
+//        this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
+//        //this.ftfAfecto.setValue(mtdpv.getAfecto());
+//        //this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
+//        this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
+//        //this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
+//        this.ftfItems.setValue(mtdpv.getNumItems());
+
+
         this.ftfBruto.setValue(mtdpv.getBruto());
         this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
-        //this.ftfAfecto.setValue(mtdpv.getAfecto());
-        //this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
         this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
-        //this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
+        this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
+        this.ftfAfecto.setValue(mtdpv.getAfecto());
+        this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
         this.ftfItems.setValue(mtdpv.getNumItems());
+
+
 
         if (mtdpv.getBruto() > 0) {
             bntGuardar.setEnabled(true);

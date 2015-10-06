@@ -107,9 +107,10 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
                 this.ftfImpuesto.setValue(0.00);
                 this.ftfDescuento.setValue(0.00);
                 this.ftfRedeondeo.setValue(0.00);
-                this.ftfTotal.setValue(0.00);                
+                this.ftfTotal.setValue(0.00);
+
                 this.mtdpv = new ModeloTomaPedidoVenta(2);
-                
+
                 this.tblProductos.setModel(mtdpv);
                 this.tblProductos.setDefaultRenderer(PanelAccionProdInsumos.class, new AccionTableCellRendererInsumo(this));
                 
@@ -1140,12 +1141,15 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
     {       
         this.ftfBruto.setValue(mtdpv.getBruto());        
         this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
-        this.ftfAfecto.setValue(mtdpv.getAfecto());
-        this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());        
         this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
+        this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
+        this.ftfAfecto.setValue(mtdpv.getAfecto());
         this.ftfRedeondeo.setValue(mtdpv.getRedondeo());
         this.ftfItems.setValue(mtdpv.getNumItems());
-        
+
+
+
+
         if(mtdpv.getBruto()>0){
             bntGuardar.setEnabled(true);
         }
