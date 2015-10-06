@@ -162,10 +162,6 @@ public class CellEditorSpinnerPedidoVenta extends AbstractCellEditor implements 
         return pedidoVentaInsumo;
     }
 
-    public void setPedidoVentaInsumo(IPedidoVentaInsumo pedidoVenta) {
-        this.pedidoVentaInsumo = pedidoVenta;
-    }
-
     public BuscarProducto getPedidoVenta() {
         return pedidoVenta;
     }

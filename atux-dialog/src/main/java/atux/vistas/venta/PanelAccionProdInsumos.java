@@ -7,8 +7,6 @@ import atux.modelgui.ModeloTomaPedidoVenta;
 import atux.util.CeldaAccionEditorInsumo;
 import atux.util.CellEditorSpinnerPedidoVenta;
 import atux.vistas.buscar.BuscarProducto;
-import com.aw.swing.mvp.navigation.AWWindowsManager;
-
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -151,7 +149,12 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
                     this.tabla.changeSelection(this.indexFila, 2, true, false);
                     cae.lanzarDetencionEdicion();
                     ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getSpinner().requestFocus();
+
+                    if(this.ifr instanceof  IPedidoVentaInsumo)
                     ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getPedidoVentaInsumo().mostrarInsumos((DetallePedidoVenta) mtpv.getFila(this.indexFila));
+                    else if (this.ifr instanceof  ICompletarPedidoVenta)
+                    ((CellEditorSpinnerPedidoVenta) this.tabla.getCellEditor(this.indexFila, 2)).getCompletarPedidoVenta().mostrarInsumos((DetallePedidoVenta) mtpv.getFila(this.indexFila));
+
                     nuevoItem();
                 } catch (SQLException ex) {
                     Logger.getLogger(PanelAccionProdInsumos.class.getName()).log(Level.SEVERE, null, ex);

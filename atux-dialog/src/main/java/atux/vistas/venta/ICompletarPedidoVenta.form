@@ -31,15 +31,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelImage1" min="-2" pref="944" max="-2" attributes="0"/>
+          <Component id="panelImage1" alignment="0" pref="944" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="5" pref="5" max="5" attributes="0"/>
-              <Component id="panelImage1" min="-2" pref="447" max="-2" attributes="0"/>
-          </Group>
+          <Component id="panelImage1" alignment="1" pref="615" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -59,10 +56,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jPanel1" alignment="0" max="32767" attributes="1"/>
-                  <Component id="jPanel2" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                  <Component id="pnlActionButtons" alignment="0" pref="944" max="32767" attributes="1"/>
                   <Component id="jPanel6" alignment="1" pref="944" max="32767" attributes="1"/>
               </Group>
+              <Component id="jPanel2" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+              <Component id="pnlActionButtons" alignment="0" pref="944" max="32767" attributes="1"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -72,10 +69,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel6" min="-2" pref="74" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" pref="259" max="-2" attributes="0"/>
+                  <Component id="jPanel2" pref="427" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlActionButtons" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -402,7 +399,6 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="942" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="pnlHerramientas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="10" attributes="0"/>
@@ -418,20 +414,20 @@
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="2" pref="2" max="2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="ftfDescuento" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="18" pref="18" max="18" attributes="0"/>
                                   <Component id="jLabel17" min="-2" pref="56" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="67" pref="67" max="67" attributes="0"/>
                                   <Component id="jLabel12" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="67" pref="67" max="67" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="46" pref="46" max="46" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -444,36 +440,40 @@
                               <Component id="ftfTotal" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="942" max="-2" attributes="0"/>
+                      <Component id="jScrollInsumos" alignment="0" pref="942" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="131" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollInsumos" pref="143" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="pnlHerramientas" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel12" alignment="0" min="-2" pref="49" max="-2" attributes="1"/>
                                   <EmptySpace min="6" pref="6" max="6" attributes="0"/>
                                   <Component id="pnlComprobante" min="-2" max="-2" attributes="1"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="4" pref="4" max="4" attributes="0"/>
                                   <Component id="jLabel11" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="4" pref="4" max="4" attributes="0"/>
                                   <Component id="ftfBruto" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="6" pref="6" max="6" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="4" pref="4" max="4" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="1" pref="1" max="1" attributes="0"/>
                                           <Component id="ftfDescuento" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -486,7 +486,7 @@
                                   <EmptySpace min="9" pref="9" max="9" attributes="0"/>
                                   <Component id="jLabel13" min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="5" pref="5" max="5" attributes="0"/>
                                   <Component id="ftfAfecto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="6" pref="6" max="6" attributes="0"/>
@@ -497,6 +497,7 @@
                                   <Component id="ftfTotal" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -879,6 +880,35 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollInsumos">
+                  <Properties>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[452, 150]"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblInsumos">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="5">
+                            <Column editable="false" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="false" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="false" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="false" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="cellSelectionEnabled" type="boolean" value="true"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="rowHeight" type="int" value="24"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>

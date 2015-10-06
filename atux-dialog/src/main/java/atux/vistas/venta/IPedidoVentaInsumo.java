@@ -938,7 +938,6 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         Helper.ajustarSoloAnchoColumnas(tblInsumos, ModeloTablaDetallePedidoVenta.anchoColumnas);
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntBuscarProveedor;
     private elaprendiz.gui.button.ButtonRect bntGuardar;
