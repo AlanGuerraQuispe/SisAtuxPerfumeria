@@ -115,6 +115,7 @@ public class Producto extends JAbstractModelBD implements Serializable,IModel{
     private String coPrincipioActivo;
     private String dePrincipioActivo;
     private String inPrincipioActivoPrincipal;
+    private Producto producto;
 
     public static final String[]
           FULL_CAMPOS ={"CO_COMPANIA, CO_PRODUCTO, NU_REVISION_PRODUCTO, DE_CORTA_PRODUCTO, DE_PRODUCTO,"+
@@ -1002,6 +1003,10 @@ public class Producto extends JAbstractModelBD implements Serializable,IModel{
      public DatoArchivo getImagen(String s)
     {
         return dat;
+    }
+     
+    public Producto getProducto() {
+        return producto;
     }
     
     @Override

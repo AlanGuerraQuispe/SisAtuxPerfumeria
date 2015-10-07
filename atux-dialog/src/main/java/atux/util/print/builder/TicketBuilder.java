@@ -158,7 +158,12 @@ public class TicketBuilder extends ComprobanteBuilder {
 
         }else{
             vPrint.printLine(AtuxPRNUtility.alinearDerecha("Redo : S/.", 30), false);
-            vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaSaldoRedondeo()), 10), true);
+            if (comprobantePago.getVaSaldoRedondeo() == 0){
+                vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(0), 10), true);
+            }else{
+                vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaSaldoRedondeo()), 10), true);
+            }
+
             vPrint.printLine(AtuxPRNUtility.alinearDerecha("Dsto : S/.", 30), false);
             vPrint.printLine(AtuxPRNUtility.alinearDerecha(AtuxUtility.formatNumber(comprobantePago.getVaTotalDescuento()), 10), true);
             vPrint.printLine(AtuxPRNUtility.alinearDerecha("Total  S/. ", 30), false);
@@ -168,7 +173,7 @@ public class TicketBuilder extends ComprobanteBuilder {
         for (int i = 0; i < tblPagos.getRowCount(); i++)
             vPrint.printLine((String) tblPagos.getValueAt(i, 1) + " " + (String) tblPagos.getValueAt(i, 3) + " (" + (String) tblPagos.getValueAt(i, 2) + ")", true);
         
-        vPrint.printLine("VUELTO:  S/. " + vuelto, true);
+        vPrint.printLine("VUELTO:  S/. " + AtuxUtility.formatNumber(Double.parseDouble(vuelto),2), true);
         vPrint.printLine("CAJERO: " + AtuxVariables.vNoUsuario.trim() + " " + AtuxVariables.vPaternoUsuario.trim(), true);
         vPrint.printLine("VENDED: " + comprobantePago.getNombreVendedor() + ((AtuxVariables.vTipoPedido.equalsIgnoreCase(AtuxVariables.TIPO_PEDIDO_DELIVERY)) ? " -DELIVERY-" : " "), true);
         vPrint.printLine(" ", true);
@@ -190,9 +195,10 @@ public class TicketBuilder extends ComprobanteBuilder {
             vPrint.printLine(comprobantePago.getDeVoucher(), true);
         }
         
-        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "POR REGULACION DE SUNAT CONSERVE SU COMPROBANTE.", true);
-        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "TODO CAMBIO O DEVOLUCION DE PRODUCTO", true);
-        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "DEBE ESTAR EN BUEN ESTADO Y SIN SENALES DE USO", true);
+        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "Por regulación de SUNAT conserver su", true);
+        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "comprobante. Todo cambio o devolución de", true);
+        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "producto debe estar en buen estado y sin", true);
+        vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "señales de uso.", true);
         vPrint.printLine(" ", true);
         vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) +"\"Cada personalidad, un estilo", true);
         vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 0) + "Cada estilo, una fragancia,", true);
@@ -202,7 +208,8 @@ public class TicketBuilder extends ComprobanteBuilder {
 
         vPrint.printLine(AtuxPRNUtility.alinearIzquierda(" ", 10)+AtuxVariables.vDeMensajeTicket.trim(), true);
         if (AtuxVariables.vCompaniaDireccionWeb.trim().length() > 0)
-            vPrint.printLineSinEspacio(AtuxPRNUtility.alinearIzquierda(" ", 12) + AtuxVariables.vCompaniaDireccionWeb.trim(), true);
+            //vPrint.printLineSinEspacio(AtuxPRNUtility.alinearIzquierda(" ", 12) + AtuxVariables.vCompaniaDireccionWeb.trim(), true);
+            vPrint.printLineSinEspacio(AtuxVariables.vCompaniaDireccionWeb.trim(), true);
     }
     
     @Override

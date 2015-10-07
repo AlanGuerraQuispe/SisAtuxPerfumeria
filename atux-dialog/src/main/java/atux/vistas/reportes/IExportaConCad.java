@@ -1,6 +1,5 @@
 package atux.vistas.reportes;
 
-
 //import atux.controllers.CFactores;
 import atux.modelgui.ModeloTablaExportarConCad;
 import atux.modelgui.ModeloTablaLocales;
@@ -18,6 +17,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.toedter.calendar.JDateChooser;
+import java.io.File;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 /**
@@ -242,6 +242,11 @@ public class IExportaConCad extends javax.swing.JInternalFrame {
         btnExportar.setBackground(new java.awt.Color(51, 153, 255));
         btnExportar.setText("Exportar");
         btnExportar.setEnabled(false);
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(new java.awt.Color(51, 153, 255));
         btnSalir.setText("Cerrar");
@@ -336,8 +341,29 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_btnSalirActionPerformed
 
 private void btnComsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComsultaActionPerformed
+    if (dteFechaInicio.getDate() ==null){
+        JOptionPane.showMessageDialog(null, "Ingrese una FECHA de INCIO VALIDA", "Error..!!", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (dteFechaFinal.getDate() ==null){
+        JOptionPane.showMessageDialog(null, "Ingrese una FECHA FINAL VALIDA", "Error..!!", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if(dteFechaFinal.getDate().before(dteFechaInicio.getDate())  ){
+        JOptionPane.showMessageDialog(null, "Ingrese una FECHA FINAL no puede ser anterior a la FECHA INICIO", "Error..!!", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
     CargaDatos();
+    btnExportar.setEnabled(true);
 }//GEN-LAST:event_btnComsultaActionPerformed
+
+private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+// TODO add your handling code here:
+    File archivo;
+    
+    
+}//GEN-LAST:event_btnExportarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnComsulta;
