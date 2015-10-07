@@ -31,6 +31,11 @@ public final class IConsultarVentas extends javax.swing.JInternalFrame {
     public IConsultarVentas() {
         initComponents();
         txtNumeroPedido.requestFocus();
+//        Helper.ajustarSoloAnchoColumnasTablaConsulta(tblPedidos,ModeloTablaPedidoVenta.anchoColumnas);
+
+        Helper.ajustarSoloAnchoColumnas(tblPedidos,ModeloTablaPedidoVenta.anchoColumnas);
+        Helper.ajustarSoloAnchoColumnas(tblDetalle,ModeloTablaDetallePedidoVenta.anchoColumnas);
+
     }
 
     @SuppressWarnings("unchecked")

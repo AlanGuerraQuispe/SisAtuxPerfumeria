@@ -1120,15 +1120,29 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
     private void setProveedor(Proveedores proveedor)
     {
         this.proveedor = proveedor;
-       if(this.proveedor != null)
-        {
-           this.txtProveedor.setText(this.proveedor.getDeProveedor().trim());   
-           this.txtRuc.setText(this.proveedor.getNuDocIdentidad().trim());
-           this.txtDireccion.setText(this.proveedor.getDeDireccion().trim());                                       
-           rbTicketFactura.setSelected(true);
-           rbTicketBoleta.setSelected(false);               
-        }
-       else{
+       if(this.proveedor != null){
+           this.txtProveedor.setText("");
+           this.txtRuc.setText("");
+           this.txtDireccion.setText("");
+           this.txtProveedor.setText(this.proveedor.getDeProveedor().trim());
+           if (this.proveedor.getNuDocIdentidad() != null)
+               this.txtRuc.setText(this.proveedor.getNuDocIdentidad().trim());
+           if (this.proveedor.getDeDireccion() != null)
+               this.txtDireccion.setText(this.proveedor.getDeDireccion().trim());
+           if (this.proveedor.getNuDocIdentidad() == null){
+               rbTicketFactura.setSelected(false);
+               rbTicketBoleta.setSelected(true);
+           }else{
+               rbTicketFactura.setSelected(true);
+               rbTicketBoleta.setSelected(false);
+           }
+
+//           this.txtProveedor.setText(this.proveedor.getDeProveedor().trim());
+//           this.txtRuc.setText(this.proveedor.getNuDocIdentidad().trim());
+//           this.txtDireccion.setText(this.proveedor.getDeDireccion().trim());
+//           rbTicketFactura.setSelected(true);
+//           rbTicketBoleta.setSelected(false);
+        }else{
             this.txtProveedor.setText("");
             this.txtRuc.setText("");
             this.txtDireccion.setText("");

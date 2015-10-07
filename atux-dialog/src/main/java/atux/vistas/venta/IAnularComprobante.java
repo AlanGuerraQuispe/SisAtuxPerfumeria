@@ -94,7 +94,8 @@ public final class IAnularComprobante extends javax.swing.JInternalFrame {
         bntAnular = new elaprendiz.gui.button.ButtonRect();
         bntVerComprobantes = new elaprendiz.gui.button.ButtonRect();
 
-        setTitle("Anulación de pedidos");
+        //setTitle("Anulación de pedidos");
+        setTitle("Devolución de Ventas");
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
@@ -534,9 +535,9 @@ public final class IAnularComprobante extends javax.swing.JInternalFrame {
 
 
                 if (pedido != null) {
-                    if (AtuxSearch.esPedidoDiaAnterior(AtuxUtility.getDateToString(pedido.getFePedido(), "dd/MM/yyyy"))) {
-                        JOptionPane.showMessageDialog(this, "No se pueden cobrar Pedidos de días anteriores. Favor de anular este pedido y volver a generarlo", "Mensaje del Sistema", JOptionPane.WARNING_MESSAGE);
-                    }
+//                    if (AtuxSearch.esPedidoDiaAnterior(AtuxUtility.getDateToString(pedido.getFePedido(), "dd/MM/yyyy"))) {
+//                        JOptionPane.showMessageDialog(this, "No se pueden cobrar Pedidos de días anteriores. Favor de anular este pedido y volver a generarlo", "Mensaje del Sistema", JOptionPane.WARNING_MESSAGE);
+//                    }
 
                     AtuxVariables.vTipoCambioPedido = pedido.getVaTasaCambio();
                     lblTipoCambio.setText(AtuxUtility.formatNumber(AtuxVariables.vTipoCambioPedido));
