@@ -2,15 +2,18 @@ package atux.modelgui;
 
 import atux.controllers.CProducto;
 import atux.modelbd.Producto;
+import java.util.ArrayList;
 
 public class ModeloTablaMaestroProductos extends ModeloTabla{
 
     String[] columnas = {"CODIGO", "DESCRIPCION", "UNIDAD PRODUCTO", "LABORATORIO"};
+    public final static int PRO_LISTA= 1;
     public static int TODOS = -1;
     public static int ACTIVOS = 1;
     public static int NO_ACTIVOS = 0;
     public static final Integer[] anchoColumnas  = {140,600,200,300};
     public static final Integer[] anchoColumnasBusqueda  = {80,400,150,300};
+    private int tipoTabla;    
     
     public ModeloTablaMaestroProductos(String Filtro) {
         cc = new CProducto();
@@ -36,6 +39,15 @@ public class ModeloTablaMaestroProductos extends ModeloTabla{
         cc.setNumPaginador(inicio, finalPag);
         registros = ((CProducto)cc).getRegistros(null);
     }
+
+    public ModeloTablaMaestroProductos(ArrayList productos,int tipoTabla) {
+         if(tipoTabla==PRO_LISTA){
+            this.nombreColumnas = columnas;
+             this.tipoTabla = PRO_LISTA;
+         }
+        this.registros = productos;
+    }        
+    
     public ModeloTablaMaestroProductos(int opcion,int inicio,int finalPag) {
         cc = new CProducto();
         this.nombreColumnas = columnas;
