@@ -46,8 +46,6 @@ public class BuscarMaestroProducto extends javax.swing.JPanel {
         arrayMaestrosProductos = cp.getProductosLaboratorio(Filtro);        
 //        inicializarCarga(arrayMaestrosProductos);
 
-        
-        
         mtp = new ModeloTablaMaestroProductos(Filtro);
         tblBuscarProducto.setModel(mtp);
 

@@ -28,6 +28,8 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         panelInsumos = panel;
         inicializarCarga(AtuxVariables.arrayProductos);
         AtuxUtility.moveFocus(txtDato);
+        Helper.ajustarSoloAnchoColumnas(tblProductosPromocion, ModeloTablaProducto.anchoColumnasPromo);
+        Helper.ajustarSoloAnchoColumnas(tblInsumosProductos, ModeloTablaProducto.anchoColumnas);
     }
 
     private void mostrarDetalleProducto(ProductoLocal prodLocal) {
@@ -326,13 +328,20 @@ public final class BuscarProducto extends javax.swing.JInternalFrame {
         jScrollPanePromocion.setPreferredSize(new java.awt.Dimension(452, 100));
 
         tblProductosPromocion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Producto promoción", "Unidad", "Prec.Venta", "Descuento", "Prec.Público", "Stock", "Bono"
-            }
+//            new Object [][] {
+//                {null, null, null, null, null, null, null, null},
+//                {null, null, null, null, null, null, null, null}
+//            },
+//            new String [] {
+//                "Código", "Producto promoción", "Unidad", "Prec.Venta", "Descuento", "Prec.Público", "Stock", "Bono"
+//            }
+                new Object [][] {
+                        {null, null},
+                        {null, null}
+                },
+                new String [] {
+                        "Promoción", "Laboratorio"
+                }
         ));
         tblProductosPromocion.setToolTipText("Promociones");
         tblProductosPromocion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
