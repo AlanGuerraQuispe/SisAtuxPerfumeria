@@ -23,11 +23,15 @@ public class PromocionDetalle {
     private String inProdFraccionado;
     private String inProdFraccionadoP;
     private BigDecimal caProducto;
+    private BigDecimal caEntero;
+    private BigDecimal caFraccion;
     private BigDecimal vaFraccion;
     private BigDecimal vaFraccionP;
     private String coProductoP;
     private String deProductoP;
     private BigDecimal caProductoP;
+    private BigDecimal caEnteroP;
+    private BigDecimal caFraccionP;
     private String esProductoPlan="A";
 
     public String getCoProducto() {
@@ -46,8 +50,23 @@ public class PromocionDetalle {
         this.deProducto = deProducto;
     }
 
+    @Validation("R")
+    @NumberFormat
+    public BigDecimal getCaEntero() {
+        return caEntero;
+    }
 
+    public void setCaEntero(BigDecimal caEntero) {
+        this.caEntero = caEntero;
+    }
 
+    public BigDecimal getCaFraccion() {
+        return caFraccion;
+    }
+
+    public void setCaFraccion(BigDecimal caFraccion) {
+        this.caFraccion = caFraccion;
+    }
 
     public String getCoProductoP() {
         return coProductoP;
@@ -63,6 +82,24 @@ public class PromocionDetalle {
 
     public void setDeProductoP(String deProductoP) {
         this.deProductoP = deProductoP;
+    }
+
+    @Validation("R")
+    @NumberFormat
+    public BigDecimal getCaEnteroP() {
+        return caEnteroP;
+    }
+
+    public void setCaEnteroP(BigDecimal caEnteroP) {
+        this.caEnteroP = caEnteroP;
+    }
+
+    public BigDecimal getCaFraccionP() {
+        return caFraccionP;
+    }
+
+    public void setCaFraccionP(BigDecimal caFraccionP) {
+        this.caFraccionP = caFraccionP;
     }
 
     public String getEsProductoPlan() {

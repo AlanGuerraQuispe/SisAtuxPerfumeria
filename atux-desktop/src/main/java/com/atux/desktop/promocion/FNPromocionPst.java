@@ -1,14 +1,17 @@
 package com.atux.desktop.promocion;
 
+import com.atux.bean.precios.ProveedorFlt;
 import com.atux.bean.promocion.Promocion;
 import com.atux.bean.promocion.PromocionDetalle;
 import com.atux.bean.promocion.PromocionFlt;
 import com.atux.comun.LocalId;
 import com.atux.comun.context.AppCtx;
 import com.atux.config.APDD;
+import com.atux.desktop.promocion.FrmFNPromocion;
 import com.atux.dominio.precios.ProveedorService;
 import com.atux.dominio.promocion.PromocionService;
 import com.atux.service.qryMapper.PromocionQryMapper;
+import com.atux.service.qryMapper.ProveedorQryMapper;
 import com.aw.stereotype.AWPresenter;
 import com.aw.swing.mvp.FindPresenter;
 import com.aw.swing.mvp.Presenter;
@@ -17,7 +20,6 @@ import com.aw.swing.mvp.action.ActionDialog;
 import com.aw.swing.mvp.action.types.DeleteItemAction;
 import com.aw.swing.mvp.action.types.EditAction;
 import com.aw.swing.mvp.action.types.InsertAction;
-import com.aw.swing.mvp.action.types.ViewAction;
 import com.aw.swing.mvp.binding.component.support.ColumnInfo;
 import com.aw.swing.mvp.grid.GridInfoProvider;
 import com.aw.swing.mvp.grid.GridProvider;
@@ -92,28 +94,45 @@ public class FNPromocionPst extends FindPresenter<PromocionFlt> {
     }
 
     protected void registerActions() {
-        ViewAction viewAction =new ViewAction(){
+        actionRsr.registerAction("Nuevo", new InsertAction<Promocion, Promocion>(Promocion.class))
+                .notNeedVisualComponent()
+                .setKeyTrigger(ActionDialog.KEY_F2)
+                .setTargetPstClass(PromocionPst.class)
+                .refreshGridAtEnd();
+
+        actionRsr.registerAction("Editar", new EditAction<Promocion, Promocion>() {
+
             @Override
-            protected Object getObjectToBeViewed(Object obj) {
+            protected Promocion getObjectToBeUpdated(Promocion obj) {
                 Promocion precioLista = null;
                 if (getGridProvider().getSelectedRow() != null) {
                     precioLista = (Promocion) getGridProvider().getSelectedRow();
                     PromocionFlt proveedorFlt = new PromocionFlt();
                     proveedorFlt.setLocalId(AppCtx.instance().getLocalId());
-                    proveedorFlt.setCoPromocion(((Promocion) obj).getCoPromocion());
+                    proveedorFlt.setCoPromocion(obj.getCoPromocion());
                     precioLista.setDetalle(promocionQryMapper.findPromocionDetalleList(proveedorFlt));
                     precioLista.setDetalleLocal(promocionQryMapper.findPromocionDetalleLocalList(proveedorFlt));
                 }
                 return precioLista;
             }
-        };
-        actionRsr.registerAction("Editar", viewAction, getGridProvider()).notNeedVisualComponent()
+        }, getGridProvider()).notNeedVisualComponent()
                 .needSelectedRow()
                 .refreshGridAtEnd()
-                .setKeyTrigger(ActionDialog.KEY_F5)
+                .setKeyTrigger(ActionDialog.KEY_F3)
                 .setTargetPstClass(PromocionPst.class);
 
-
+        actionRsr.registerAction("Eliminar", new DeleteItemAction() {
+            @Override
+            protected Object executeIntern() throws Throwable {
+                promocionService.eliminar((Promocion) getGridProvider().getSelectedRow());
+                return null;
+            }
+        }, getGridProvider())
+                .needSelectedRow()
+                .setKeyTrigger(ActionDialog.KEY_F4)
+                .notNeedVisualComponent()
+                .refreshGridAtEnd()
+                .setConfirmMsg("¿Está seguro de eliminar la promoción?");
     }
 
 
@@ -123,17 +142,17 @@ public class FNPromocionPst extends FindPresenter<PromocionFlt> {
             ColumnInfo[] columns = new ColumnInfo[]{
                     new ColumnInfo("Código", "coProducto", 40, ColumnInfo.LEFT) .setBackgroundColor(new Color(79, 129, 189), Color.black),
                     new ColumnInfo("Producto", "deProducto", 200, ColumnInfo.LEFT) .setBackgroundColor(new Color(79, 129, 189), Color.black),
-                    new ColumnInfo("Cant. Ent.", "caProducto", 45, ColumnInfo.RIGHT)
+                    new ColumnInfo("Cant. Ent.", "caEntero", 45, ColumnInfo.RIGHT)
                             .formatAsNumberWithGroup()
                             .setBackgroundColor(new Color(79, 129, 189), Color.black),
-                    new ColumnInfo("Cant. Frac.", "vaFraccion", 45, ColumnInfo.RIGHT)
+                    new ColumnInfo("Cant. Frac.", "caFraccion", 45, ColumnInfo.RIGHT)
                             .formatAsNumberWithGroup()
                             .setBackgroundColor(new Color(79, 129, 189), Color.black),
                     new ColumnInfo("Código", "coProductoP", 40, ColumnInfo.LEFT),
                     new ColumnInfo("Producto", "deProductoP", 200, ColumnInfo.LEFT),
-                    new ColumnInfo("Cant. Ent.", "caProductoP", 45, ColumnInfo.RIGHT)
+                    new ColumnInfo("Cant. Ent.", "caEnteroP", 45, ColumnInfo.RIGHT)
                             .formatAsNumberWithGroup(),
-                    new ColumnInfo("Cant Frac.", "vaFraccionP", 45, ColumnInfo.RIGHT)
+                    new ColumnInfo("Cant Frac.", "caFraccionP", 45, ColumnInfo.RIGHT)
                             .formatAsNumberWithGroup(),
                     new ColumnInfo("Estado", "esProductoPlan", 40, ColumnInfo.LEFT),
             };
@@ -151,7 +170,7 @@ public class FNPromocionPst extends FindPresenter<PromocionFlt> {
     }
 
     public static void main(String[] args) {
-        AppCtx.instance().setLocalId(new LocalId("001", "005"));
+        AppCtx.instance().setLocalId(new LocalId("001", "025"));
 
 
         new LookAndFeelManager().initialize();

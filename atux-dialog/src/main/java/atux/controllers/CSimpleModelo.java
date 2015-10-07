@@ -598,7 +598,7 @@ public class CSimpleModelo extends JAbstractController implements Serializable{
             query.append("               LGTR_PRODUCTO_LOCAL PRODUCTO_LOCAL \n");
             query.append("       WHERE   PRODUCTO_LOCAL.CO_COMPANIA         = '").append(AtuxVariables.vCodigoCompania).append("'\n");
             query.append("       AND     PRODUCTO_LOCAL.CO_LOCAL            = '").append(AtuxVariables.vCodigoLocal).append("'\n");
-            query.append("       AND     PRODUCTO_LOCAL.IN_PRODUCTO_REPONER = 'S' \n");
+            //query.append("       AND     PRODUCTO_LOCAL.IN_PRODUCTO_REPONER = 'S' \n");
             query.append("       AND \n");
             query.append("               ( \n");
             query.append("                       PRODUCTO_LOCAL.ES_PROD_LOCAL       = 'A' \n");

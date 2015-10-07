@@ -4,12 +4,10 @@ import atux.inventario.DlgGuiaIngreso;
 import atux.trasladoproducto.DlgListaPedidoTraslado;
 import atux.trasladoproducto.DlgPedidoTraslado;
 import atux.trasladoproducto.DlgRecepGuias;
-import atux.vistas.buscar.BuscarProducto;
 import atux.vistas.catalogo.*;
 import atux.vistas.inventario.IListaPedidosReposicion;
 import atux.vistas.inventario.IPedidoReposicion;
 import atux.vistas.reportes.IExportaConCad;
-import atux.vistas.utilitario.ICambiarUsuario;
 import atux.vistas.utilitario.ICorrelativoSis;
 import atux.vistas.venta.*;
 import atux.vistas.venta.aperCierre.IAperturaCaja;
@@ -22,7 +20,6 @@ import com.atux.desktop.consulta.SeleccionarVentaTransaccionPst;
 import com.atux.desktop.consulta.SeleccionarVentaVendedorPst;
 import com.atux.desktop.donacion.FNDonacionPst;
 import com.atux.desktop.inventario.*;
-import com.atux.desktop.precios.*;
 import com.atux.desktop.promocion.FNPromocionPst;
 import com.aw.core.format.FillerFormat;
 import com.aw.swing.mvp.action.ActionMenuItem;
@@ -120,7 +117,7 @@ public class MenuBuilder {
                 .addJInternalFrame(IImpuestoIGV.class, "IGV")
                 .addJInternalFrame(ITipoDeCambio.class, "Tipo de Cambio")
                 .addPst(FNPromocionPst.class, "Promociones")
-                .addPst(FNDonacionPst.class, "Donaciones")
+//                .addPst(FNDonacionPst.class, "Donaciones")
                 .addJInternalFrame(IFormaPago.class, "Formas de Pago");
         
          catalogos.addJInternalFrame(IPrincipioActivo.class, "Principio Activo")

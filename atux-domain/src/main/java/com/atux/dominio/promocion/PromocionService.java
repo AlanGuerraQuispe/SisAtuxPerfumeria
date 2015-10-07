@@ -7,5 +7,8 @@ import com.atux.bean.promocion.Promocion;
  */
 public interface PromocionService {
 
+    void grabar(Promocion backBean);
+
+    void eliminar(Promocion selectedRow);
 
 }

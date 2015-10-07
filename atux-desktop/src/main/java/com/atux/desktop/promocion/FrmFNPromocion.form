@@ -176,6 +176,10 @@
         <rowspec value="fill:16dlu:noGrow"/>
         <colspec value="fill:d:noGrow"/>
         <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
         <colspec value="right:max(d;4px):grow"/>
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -190,16 +194,34 @@
               <forms/>
             </constraints>
             <properties>
-              <text value="F5 = Ver"/>
+              <text value="F2 = Crear"/>
             </properties>
           </component>
           <component id="cf1f8" class="javax.swing.JLabel" binding="lblEsc">
+            <constraints>
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Esc = Salir"/>
+            </properties>
+          </component>
+          <component id="fe864" class="javax.swing.JLabel" binding="lblF3">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
               <forms/>
             </constraints>
             <properties>
-              <text value="Esc = Salir"/>
+              <text value="F3 = Modificar"/>
+            </properties>
+          </component>
+          <component id="712f4" class="javax.swing.JLabel" binding="lblF4">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="F4 = Eliminar"/>
             </properties>
           </component>
         </children>

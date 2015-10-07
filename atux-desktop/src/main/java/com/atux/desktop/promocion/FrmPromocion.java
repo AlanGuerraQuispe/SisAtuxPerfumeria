@@ -25,6 +25,7 @@ public class FrmPromocion {
     public JTextField txtBuscar;
     public JLabel lblBuscar;
     public JPanel footerPanel;
+    public JLabel lblF2;
     public JLabel lblEsc;
     public JTextField txtFeIchanicio;
     public JTextField txtFeFin;
@@ -34,6 +35,7 @@ public class FrmPromocion {
     public JTextField txtNoPromocion;
     public JTextField txtNoProveedor;
     public JLabel lblProveedor;
+    public JLabel lblF4;
     public JTextField txtMensajeLargo;
     public JTextField txtMensajeCorto;
     public JTextField txtObservacion;
@@ -50,6 +52,8 @@ public class FrmPromocion {
     public JLabel lblTitGrid1;
     public JPanel pnlTitGrid1;
     public JPanel pnlGrid1;
+    public JLabel lblF10;
+    public JLabel lblF6;
 
     private void createUIComponents() {
         pnlForm = new ZonePanel("Promociones", true);
@@ -143,11 +147,23 @@ public class FrmPromocion {
         lblFechaInicio.setText("Fecha Inicio");
         pnlForm.add(lblFechaInicio, cc.xy(13, 1));
         footerPanel = new JPanel();
-        footerPanel.setLayout(new FormLayout("right:max(d;4px):grow", "fill:16dlu:noGrow"));
+        footerPanel.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,right:max(d;4px):grow", "fill:16dlu:noGrow"));
         pnlMain.add(footerPanel, cc.xy(1, 7));
+        lblF2 = new JLabel();
+        lblF2.setText("F2 = Agregar");
+        footerPanel.add(lblF2, cc.xy(1, 1));
         lblEsc = new JLabel();
         lblEsc.setText("Esc = Salir");
-        footerPanel.add(lblEsc, cc.xy(1, 1));
+        footerPanel.add(lblEsc, cc.xy(9, 1));
+        lblF4 = new JLabel();
+        lblF4.setText("F4 = Eliminar");
+        footerPanel.add(lblF4, cc.xy(3, 1));
+        lblF10 = new JLabel();
+        lblF10.setText("F10 = Guardar");
+        footerPanel.add(lblF10, cc.xy(7, 1));
+        lblF6 = new JLabel();
+        lblF6.setText("F6 = Locales");
+        footerPanel.add(lblF6, cc.xy(5, 1));
         pnlGrid1 = new JPanel();
         pnlGrid1.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow,top:4dlu:noGrow,center:d:grow"));
         pnlMain.add(pnlGrid1, cc.xy(1, 5));

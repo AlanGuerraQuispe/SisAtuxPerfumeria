@@ -144,7 +144,7 @@ public class PromocionCrudPst extends Presenter<PromocionDetalle> {
     }
 
     public static void main(String[] args) {
-        AppCtx.instance().setLocalId(new LocalId("001", "005"));
+        AppCtx.instance().setLocalId(new LocalId("003", "001"));
         new LookAndFeelManager().initialize();
         Application.instance().init();
         Presenter presenter = PstMgr.instance().getPst(PromocionCrudPst.class);

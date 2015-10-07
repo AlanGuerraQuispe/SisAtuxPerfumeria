@@ -38,6 +38,8 @@ public class FrmFNPromocion {
     public JTextField txtFechaFin;
     public JLabel lblFeInicio;
     public JLabel lblFeFin;
+    private JLabel lblF3;
+    private JLabel lblF4;
     public JTextField txtNoPromocion;
 
     private void createUIComponents() {
@@ -107,14 +109,20 @@ public class FrmFNPromocion {
         txtNoPromocion = new JTextField();
         pnlForm.add(txtNoPromocion, cc.xy(3, 1, CellConstraints.FILL, CellConstraints.DEFAULT));
         footerPanel = new JPanel();
-        footerPanel.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,right:max(d;4px):grow", "fill:16dlu:noGrow"));
+        footerPanel.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,right:max(d;4px):grow", "fill:16dlu:noGrow"));
         pnlMain.add(footerPanel, cc.xy(1, 7));
         lblF2 = new JLabel();
-        lblF2.setText("F5 = Ver");
+        lblF2.setText("F2 = Crear");
         footerPanel.add(lblF2, cc.xy(1, 1));
         lblEsc = new JLabel();
         lblEsc.setText("Esc = Salir");
-        footerPanel.add(lblEsc, cc.xy(3, 1));
+        footerPanel.add(lblEsc, cc.xy(7, 1));
+        lblF3 = new JLabel();
+        lblF3.setText("F3 = Modificar");
+        footerPanel.add(lblF3, cc.xy(3, 1));
+        lblF4 = new JLabel();
+        lblF4.setText("F4 = Eliminar");
+        footerPanel.add(lblF4, cc.xy(5, 1));
         pnlGrid1 = new JPanel();
         pnlGrid1.setLayout(new FormLayout("fill:d:grow", "fill:16dlu:noGrow,top:4dlu:noGrow,fill:d:grow"));
         pnlMain.add(pnlGrid1, cc.xy(1, 5));

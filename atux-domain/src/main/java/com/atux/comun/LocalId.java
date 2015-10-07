@@ -4,7 +4,7 @@ package com.atux.comun;
  * Created by MATRIX-JAVA on 19/11/2014.
  */
 public class LocalId {
-    private String coCompania="001";
+    private String coCompania="003";
     private String coLocal;
 
     public LocalId() {

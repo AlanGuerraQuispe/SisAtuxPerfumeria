@@ -1,5 +1,10 @@
 package com.atux.bean.promocion;
 
+import com.aw.core.validation.annotation.NumberFormat;
+import com.aw.core.validation.annotation.Validation;
+
+import java.math.BigDecimal;
+
 /**
  * Created by MATRIX-JAVA on 5/2/2015.
  */
