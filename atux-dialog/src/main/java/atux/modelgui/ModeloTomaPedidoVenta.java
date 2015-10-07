@@ -7,8 +7,8 @@ import atux.util.common.AtuxUtility;
 import atux.util.common.AtuxVariables;
 import atux.vistas.venta.*;
 import org.apache.commons.lang.StringUtils;
-
 import java.util.ArrayList;
+import atux.util.*;
 
 public class ModeloTomaPedidoVenta extends ModeloTabla{
 
@@ -27,7 +27,6 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
                                                     50,60,160};
     
     private int tipoTabla;
-    private IPedidoVentaInsumo pedidoInsumo;
 
     public ModeloTomaPedidoVenta(ArrayList registros) {
         super(registros);
@@ -137,7 +136,6 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
     public void quitarFila(int fila)
     {
         registros.remove(fila);
-        this.pedidoInsumo.setTotales ();
     }
     
     public boolean existe(ProductoLocal prd)
@@ -219,6 +217,8 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
             }
         }
         this.mBruto = tmpBruto;
+
+//        logger.info(tmpBruto );
         return this.mBruto;
     }
     
@@ -242,8 +242,8 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
     
     public Double getAfecto()
     {                
-        //this.mAfecto = this.mBruto - mDscto;
-        this.mAfecto = this.mBruto;
+        this.mAfecto = this.mTotalPreVenta - mImpuesto;
+        //this.mAfecto = this.mBruto;
         return this.mAfecto;
     }
     
@@ -270,11 +270,13 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
     public Double getTotalImpuesto()
     {
         Double tmpImp = 0.0;
+        Double mIGV = 0.0;
         for(Object obj:this.registros)
         {
             DetallePedidoVenta dc2 = (DetallePedidoVenta)obj;
             if(dc2.getProdLocal().getPrimaryKey() != null)
             {
+                mIGV = ((dc2.getPcImpuesto_1()/100) + 1);
                 Double tmpVenta  = dc2.getVaPrecioVenta();
                 Double descuento = AtuxUtility.getDecimalNumberRedondeado(dc2.getVaPrecioVenta()/((dc2.getPcImpuesto_1()/100) + 1));
                 Double impuesto  = AtuxUtility.getDecimalNumberRedondeado(tmpVenta - descuento);
@@ -282,6 +284,12 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
             }
         }
         this.mImpuesto = tmpImp;
+        if (mAfecto ==0){
+            this.mImpuesto=0.0;
+        }else{
+            this.mImpuesto = mTotalPreVenta - (mTotalPreVenta / mIGV);
+        }
+
         return this.mImpuesto;
     }
 
@@ -296,8 +304,9 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
     
     public Double getRedondeo()
     {            
-        Double tmpRedondeo = AtuxUtility.getRedondeo(mBruto + mImpuesto - mDscto);       
-        
+        //Double tmpRedondeo = AtuxUtility.getRedondeo(mBruto + mImpuesto - mDscto);
+        Double tmpRedondeo = AtuxUtility.getRedondeo(mBruto - (mAfecto + mImpuesto));
+//        Double tmpRedondeo = mBruto - (mAfecto + mImpuesto);
         this.mRedondeo = tmpRedondeo;
         return this.mRedondeo;
     }
@@ -373,7 +382,4 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         return dp;
     }
 
-    public void setPedidoInsumo (IPedidoVentaInsumo pedidoInsumo) {
-        this.pedidoInsumo = pedidoInsumo;
-    }
 }
