@@ -401,8 +401,6 @@ public class ICompania extends javax.swing.JInternalFrame {
             cp.getMaestroCompania().setEsCompania("I");
         }
 
-
-        
         Boolean EstadoGuardar=false;
             
         if(!esActualizacion){
@@ -1772,6 +1770,7 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_btnCancelarActionPerformed
 
 private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
     dispose();
 }//GEN-LAST:event_btnSalirActionPerformed
 
