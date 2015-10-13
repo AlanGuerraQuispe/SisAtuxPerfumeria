@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atux.service.qryMapper.SequenceQryMapper">
+
+    <select id="nextVttcPrecioLista"
+            resultType="string"
+            >
+        select  LPAD(SEQ_VTTC_PRECIO_LISTA.NEXTVAL,8,'0') from DUAL
+    </select>
+
+    <select id="nextPrtmPromo"
+            resultType="string"
+            >
+        select  LPAD(SEQ_PRTM_PROMO.NEXTVAL,8,'0') from DUAL
+    </select>
+    <select id="nextCvtmInstitucion"
+            resultType="string"
+            >
+        select  LPAD(SEQ_CVTM_INSTITUCION.NEXTVAL,8,'0') from DUAL
+    </select>
+</mapper>
