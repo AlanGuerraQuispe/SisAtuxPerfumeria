@@ -785,10 +785,6 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
                 mostrarNumeroPedido();
             }
 
-
-
-
-
         } catch (SQLException ex) {
             Logger.getLogger(IPedidoVentaInsumo.class.getName()).log(Level.SEVERE, null, ex);
             AtuxUtility.liberarTransaccion();

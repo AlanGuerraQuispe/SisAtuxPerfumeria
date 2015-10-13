@@ -3,7 +3,6 @@ package atux.util;
 import atux.handlers.PedidoVentaInterceptor;
 import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.PedidoVenta;
-import atux.modelbd.ProductoLocal;
 import atux.modelgui.ModeloTomaPedidoVenta;
 import atux.util.common.AtuxUtility;
 import atux.vistas.venta.ICompletarPedidoVenta;
@@ -15,7 +14,6 @@ import org.apache.commons.logging.LogFactory;
 
 import java.awt.Component;
 import java.awt.Font;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
@@ -69,22 +67,21 @@ public class CellEditorSpinnerPedidoVenta extends AbstractCellEditor implements 
                         ((DetallePedidoVenta) mt.getFila(fila)).setCaAtendida(Integer.parseInt(valorActual.toString()));
                         mt.contarItems();
                         getPedidoVentaInsumo().mostrarInsumos(((DetallePedidoVenta) mt.getFila(fila)));
-//                        PedidoVentaInterceptor pedidoVentaInterceptor = Application.instance().getBean(PedidoVentaInterceptor.class);
-//                        Map result = new HashMap();
-//                        try {
-//                            PedidoVenta pedidoVenta=new PedidoVenta();
-//                            pedidoVenta.setDetallePedidoVenta(mt.getRegistros());
-//                            pedidoVentaInterceptor.procesar(pedidoVenta, (DetallePedidoVenta) mt.getFila(fila), result);
-//                            mt.fireTableRowsInserted();
-//                            if (result.get("mensajeVentana") != null) {
-//                                AtuxUtility.showMessage(null, (String) result.get("mensajeVentana"), null);
-//
-//                            }
-//                        } catch (Exception e1) {
-//                            LOG.error("Error al verificar promociones ",e1);
-//                            AtuxUtility.showMessage(null, "Error al verificar promociones del producto", null);
-//                        }
-//                    }
+                        PedidoVentaInterceptor pedidoVentaInterceptor = Application.instance().getBean(PedidoVentaInterceptor.class);
+                        Map result = new HashMap();
+                        try {
+                            PedidoVenta pedidoVenta=new PedidoVenta();
+                            pedidoVenta.setDetallePedidoVenta(mt.getRegistros());
+                            pedidoVentaInterceptor.procesar(pedidoVenta, (DetallePedidoVenta) mt.getFila(fila), result);
+                            mt.fireTableRowsInserted();
+                            if (result.get("mensajeVentana") != null) {
+                                AtuxUtility.showMessage(null, (String) result.get("mensajeVentana"), null);
+
+                            }
+                        } catch (Exception e1) {
+                            LOG.error("Error al verificar promociones ",e1);
+                            AtuxUtility.showMessage(null, "Error al verificar promociones del producto", null);
+                        }
 
                 }
                 ((DefaultEditor) temp.getEditor()).getTextField().setHorizontalAlignment(JTextField.LEFT);

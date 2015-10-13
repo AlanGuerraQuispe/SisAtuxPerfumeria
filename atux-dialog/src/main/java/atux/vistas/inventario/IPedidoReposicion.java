@@ -58,26 +58,14 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         lblParametroMin = new javax.swing.JLabel();
         txtParamDiasRotacion = new elaprendiz.gui.textField.TextField();
         lblPeriodo = new javax.swing.JLabel();
-        lblIgnorarProSinSaldo = new javax.swing.JLabel();
-        lblTiempoSuninistro = new javax.swing.JLabel();
-        lblTransito = new javax.swing.JLabel();
         lblMinExhibicion = new javax.swing.JLabel();
         lblSumarCompras = new javax.swing.JLabel();
-        lblTipoOperacion = new javax.swing.JLabel();
-        lblOrigenProductos = new javax.swing.JLabel();
         lblProdActivos = new javax.swing.JLabel();
-        lblProdFraccionados = new javax.swing.JLabel();
         lblProdFaltaCero = new javax.swing.JLabel();
-        btnIgnorarSaldo = new javax.swing.JButton();
-        btnSumarSuministro = new javax.swing.JButton();
-        btnSumarTransito = new javax.swing.JButton();
         btnSumarMinExhibicion = new javax.swing.JButton();
         btnSumarComPendientes = new javax.swing.JButton();
         btnProductosActivos = new javax.swing.JButton();
-        btnProductosFraccionados = new javax.swing.JButton();
         btnFaltaCero = new javax.swing.JButton();
-        jcbTipoOperacion = new javax.swing.JComboBox();
-        jcbOrigenProductos = new javax.swing.JComboBox();
         dcFechaIni = new com.toedter.calendar.JDateChooser();
         dcFechaFin = new com.toedter.calendar.JDateChooser();
         pnlBody = new javax.swing.JPanel();
@@ -105,7 +93,6 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         lblMes04 = new javax.swing.JLabel();
         txtMes04 = new elaprendiz.gui.textField.TextField();
         pnlButtons = new javax.swing.JPanel();
-        btnPedidoDefault = new javax.swing.JButton();
         btnCalcularReposicion = new javax.swing.JButton();
         btnVerPedido = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -165,17 +152,8 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
 
         txtParamDiasRotacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblPeriodo.setFont(new java.awt.Font("Tahoma", 1, 12));
+        lblPeriodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPeriodo.setText("Periodo de revisión");
-
-        lblIgnorarProSinSaldo.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblIgnorarProSinSaldo.setText("Ignorar Prod. Sin Saldo");
-
-        lblTiempoSuninistro.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblTiempoSuninistro.setText("Sumar Tiempo de Suministro");
-
-        lblTransito.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblTransito.setText("Sumar Transito");
 
         lblMinExhibicion.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblMinExhibicion.setText("Sumar Minimo Exhibición");
@@ -183,53 +161,11 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         lblSumarCompras.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblSumarCompras.setText("Sumar Compras Pendientes");
 
-        lblTipoOperacion.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblTipoOperacion.setText("Tipo de Operación");
-
-        lblOrigenProductos.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblOrigenProductos.setText("Origen de Prod.");
-
         lblProdActivos.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblProdActivos.setText("Solo Prod. Activos");
 
-        lblProdFraccionados.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblProdFraccionados.setText("Productos Fraccionados");
-
-        lblProdFaltaCero.setFont(new java.awt.Font("Tahoma", 1, 12));
+        lblProdFaltaCero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblProdFaltaCero.setText("Falta 0");
-
-        btnIgnorarSaldo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnIgnorarSaldo.setContentAreaFilled(false);
-        btnIgnorarSaldo.setMaximumSize(new java.awt.Dimension(4, 4));
-        btnIgnorarSaldo.setMinimumSize(new java.awt.Dimension(4, 4));
-        btnIgnorarSaldo.setPreferredSize(new java.awt.Dimension(4, 4));
-        btnIgnorarSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIgnorarSaldoMouseClicked(evt);
-            }
-        });
-
-        btnSumarSuministro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSumarSuministro.setContentAreaFilled(false);
-        btnSumarSuministro.setMaximumSize(new java.awt.Dimension(4, 4));
-        btnSumarSuministro.setMinimumSize(new java.awt.Dimension(4, 4));
-        btnSumarSuministro.setPreferredSize(new java.awt.Dimension(4, 4));
-        btnSumarSuministro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSumarSuministroMouseClicked(evt);
-            }
-        });
-
-        btnSumarTransito.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSumarTransito.setContentAreaFilled(false);
-        btnSumarTransito.setMaximumSize(new java.awt.Dimension(4, 4));
-        btnSumarTransito.setMinimumSize(new java.awt.Dimension(4, 4));
-        btnSumarTransito.setPreferredSize(new java.awt.Dimension(4, 4));
-        btnSumarTransito.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSumarTransitoMouseClicked(evt);
-            }
-        });
 
         btnSumarMinExhibicion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSumarMinExhibicion.setContentAreaFilled(false);
@@ -264,17 +200,6 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
             }
         });
 
-        btnProductosFraccionados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnProductosFraccionados.setContentAreaFilled(false);
-        btnProductosFraccionados.setMaximumSize(new java.awt.Dimension(4, 4));
-        btnProductosFraccionados.setMinimumSize(new java.awt.Dimension(4, 4));
-        btnProductosFraccionados.setPreferredSize(new java.awt.Dimension(4, 4));
-        btnProductosFraccionados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProductosFraccionadosMouseClicked(evt);
-            }
-        });
-
         btnFaltaCero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnFaltaCero.setContentAreaFilled(false);
         btnFaltaCero.setMaximumSize(new java.awt.Dimension(4, 4));
@@ -285,10 +210,6 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
                 btnFaltaCeroMouseClicked(evt);
             }
         });
-
-        jcbTipoOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D" }));
-
-        jcbOrigenProductos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "W", "X", "X", "Z" }));
 
         dcFechaIni.setBackground(new java.awt.Color(0, 0, 0));
         dcFechaIni.setForeground(new java.awt.Color(255, 0, 0));
@@ -308,76 +229,48 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
             pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeadLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addComponent(lblLocal)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(lblIgnorarProSinSaldo)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnIgnorarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(lblTipoOperacion)
-                        .addGap(30, 30, 30)
-                        .addComponent(jcbTipoOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addComponent(lblOpcionT)
-                        .addGap(28, 28, 28)
-                        .addComponent(lblOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(186, 186, 186)
-                        .addComponent(lblTiempoSuninistro)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnSumarSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(lblOrigenProductos)
-                        .addGap(34, 34, 34)
-                        .addComponent(jcbOrigenProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addComponent(lblPeriodo)
-                        .addGap(33, 33, 33)
-                        .addComponent(dcFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(dcFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(lblProdFaltaCero)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(lblTransito)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnSumarTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(pnlHeadLayout.createSequentialGroup()
-                                .addComponent(lblParametroMin)
-                                .addGap(51, 51, 51)
-                                .addComponent(txtParamDiasRotacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHeadLayout.createSequentialGroup()
-                                .addComponent(lblParametroMax)
-                                .addGap(12, 12, 12)
-                                .addComponent(txtParamMaxDias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlHeadLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtParamMinDias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(lblSumarCompras)
-                                .addGap(42, 42, 42)
-                                .addComponent(btnSumarComPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(lblProdActivos)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnProductosActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeadLayout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(lblMinExhibicion)
-                                .addGap(38, 38, 38)
-                                .addComponent(btnSumarMinExhibicion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(lblProdFraccionados)
-                                .addGap(45, 45, 45)
-                                .addComponent(btnProductosFraccionados, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addComponent(lblLocal)
+                .addGap(29, 29, 29)
+                .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150)
+                .addComponent(lblPeriodo)
+                .addGap(23, 23, 23)
+                .addComponent(dcFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(dcFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlHeadLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblOpcionT)
+                .addGap(28, 28, 28)
+                .addComponent(lblOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlHeadLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblParametroMax)
+                .addGap(12, 12, 12)
+                .addComponent(txtParamMaxDias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(txtParamMinDias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(lblSumarCompras)
+                .addGap(62, 62, 62)
+                .addComponent(btnSumarComPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(lblProdFaltaCero)
+                .addGap(89, 89, 89)
+                .addComponent(btnFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlHeadLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblParametroMin)
+                .addGap(51, 51, 51)
+                .addComponent(txtParamDiasRotacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170)
+                .addComponent(lblMinExhibicion)
+                .addGap(58, 58, 58)
+                .addComponent(btnSumarMinExhibicion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(lblProdActivos)
+                .addGap(27, 27, 27)
+                .addComponent(btnProductosActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlHeadLayout.setVerticalGroup(
             pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,22 +281,19 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
                         .addGap(10, 10, 10)
                         .addComponent(lblLocal))
                     .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIgnorarProSinSaldo)
-                    .addComponent(btnIgnorarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTipoOperacion)
-                    .addComponent(jcbTipoOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(lblPeriodo))
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(dcFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(dcFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
                 .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblOpcionT))
-                    .addGroup(pnlHeadLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblOpcion))
-                    .addComponent(lblTiempoSuninistro)
-                    .addComponent(btnSumarSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOrigenProductos)
-                    .addComponent(jcbOrigenProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblOpcionT)
+                    .addComponent(lblOpcion))
                 .addGap(5, 5, 5)
                 .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlHeadLayout.createSequentialGroup()
@@ -411,27 +301,24 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
                         .addComponent(lblParametroMax))
                     .addComponent(txtParamMaxDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtParamMinDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSumarCompras)
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblSumarCompras))
                     .addComponent(btnSumarComPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProdActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProductosActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblProdFaltaCero))
+                    .addComponent(btnFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblParametroMin)
+                    .addComponent(txtParamDiasRotacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMinExhibicion)
                     .addComponent(btnSumarMinExhibicion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProdFraccionados)
-                    .addComponent(btnProductosFraccionados, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtParamDiasRotacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(pnlHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPeriodo)
-                    .addComponent(dcFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dcFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProdFaltaCero)
-                    .addComponent(btnFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSumarTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlHeadLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lblProdActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnProductosActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pnlBody.setBackground(new java.awt.Color(51, 153, 255));
@@ -603,15 +490,8 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         pnlButtons.setOpaque(false);
         pnlButtons.setPreferredSize(new java.awt.Dimension(882, 45));
 
-        btnPedidoDefault.setBackground(new java.awt.Color(51, 153, 255));
-        btnPedidoDefault.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnPedidoDefault.setForeground(new java.awt.Color(255, 255, 255));
-        btnPedidoDefault.setText( "<html><body>Valores x<br>Default</body></html>");
-        btnPedidoDefault.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 255), new java.awt.Color(0, 102, 204), new java.awt.Color(0, 153, 153), new java.awt.Color(0, 102, 153)));
-        btnPedidoDefault.setPreferredSize(new java.awt.Dimension(80, 18));
-
         btnCalcularReposicion.setBackground(new java.awt.Color(51, 153, 255));
-        btnCalcularReposicion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCalcularReposicion.setFont(new java.awt.Font("Tahoma", 1, 12));
         btnCalcularReposicion.setForeground(new java.awt.Color(255, 255, 255));
         btnCalcularReposicion.setText( "<html><body>Calcular<br>Reposición</body></html>");
         btnCalcularReposicion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 255), new java.awt.Color(0, 102, 204), new java.awt.Color(0, 153, 153), new java.awt.Color(0, 102, 153)));
@@ -663,20 +543,18 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         pnlButtonsLayout.setHorizontalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlButtonsLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnPedidoDefault, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addComponent(btnProductoFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(btnCalcularReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(btnVerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPedidoDefault, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnProductoFaltaCero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnCalcularReposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnVerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -688,26 +566,30 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         panelFondoLayout.setHorizontalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoLayout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelFondoLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pnlFoot, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlBody, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlHead, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)))
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pnlFoot, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlBody, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlHead, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)))
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(pnlHead, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHead, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnlBody, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(pnlFoot, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -746,13 +628,13 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         this.dcFechaIni.setDate(AtuxUtility.getStringToDate(feIni,"dd/MM/yyyy"));    
         this.dcFechaFin.setDate(AtuxUtility.getStringToDate(feFin,"dd/MM/yyyy"));                                                
         
-        estadoBoton(btnIgnorarSaldo,    local.getInIgnorarProdSinSaldo().equalsIgnoreCase("S"));
-        estadoBoton(btnSumarSuministro, local.getInSumarTiempoSuministro().equalsIgnoreCase("S"));        
-        estadoBoton(btnSumarTransito,   local.getInSumarTransito().equalsIgnoreCase("S"));
+//        estadoBoton(btnIgnorarSaldo,    local.getInIgnorarProdSinSaldo().equalsIgnoreCase("S"));
+//        estadoBoton(btnSumarSuministro, local.getInSumarTiempoSuministro().equalsIgnoreCase("S"));
+//        estadoBoton(btnSumarTransito,   local.getInSumarTransito().equalsIgnoreCase("S"));
         estadoBoton(btnSumarMinExhibicion,local.getInSumarMinExhibicion().equalsIgnoreCase("S"));
         estadoBoton(btnSumarComPendientes,local.getInSumarComprasPendientes().equalsIgnoreCase("S"));
         estadoBoton(btnProductosActivos,local.getInSoloProdActivos().equalsIgnoreCase("S"));
-        estadoBoton(btnProductosFraccionados,local.getInProductosFraccionados().equalsIgnoreCase("S"));
+//        estadoBoton(btnProductosFraccionados,local.getInProductosFraccionados().equalsIgnoreCase("S"));
         estadoBoton(btnFaltaCero,local.getInFaltaCero().equalsIgnoreCase("S"));
 
         try {
@@ -805,18 +687,6 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnIgnorarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgnorarSaldoMouseClicked
-       estadoBoton(btnIgnorarSaldo,!btnIgnorarSaldo.isSelected());
-    }//GEN-LAST:event_btnIgnorarSaldoMouseClicked
-
-    private void btnSumarSuministroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSumarSuministroMouseClicked
-       estadoBoton(btnSumarSuministro,!btnSumarSuministro.isSelected());       
-    }//GEN-LAST:event_btnSumarSuministroMouseClicked
-
-    private void btnSumarTransitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSumarTransitoMouseClicked
-       estadoBoton(btnSumarTransito,!btnSumarTransito.isSelected());
-    }//GEN-LAST:event_btnSumarTransitoMouseClicked
-
     private void btnSumarMinExhibicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSumarMinExhibicionMouseClicked
        estadoBoton(btnSumarMinExhibicion,!btnSumarMinExhibicion.isSelected());
     }//GEN-LAST:event_btnSumarMinExhibicionMouseClicked
@@ -828,10 +698,6 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
     private void btnProductosActivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosActivosMouseClicked
        estadoBoton(btnProductosActivos,!btnProductosActivos.isSelected());
     }//GEN-LAST:event_btnProductosActivosMouseClicked
-
-    private void btnProductosFraccionadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosFraccionadosMouseClicked
-       estadoBoton(btnProductosFraccionados,!btnProductosFraccionados.isSelected());
-    }//GEN-LAST:event_btnProductosFraccionadosMouseClicked
 
     private void btnFaltaCeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFaltaCeroMouseClicked
         estadoBoton(btnFaltaCero,!btnFaltaCero.isSelected());
@@ -943,15 +809,15 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
         local.setNuDiasRotacionPromedio(Integer.parseInt(String.valueOf(vDiasRotacion)));
         local.setNuMaxDiasReposicion(Integer.parseInt(txtParamMaxDias.getText()));
         local.setNuMinDiasReposicion(Integer.parseInt(txtParamMinDias.getText()));        
-        local.setInIgnorarProdSinSaldo(btnIgnorarSaldo.isSelected()?"S":"N");
-        local.setInSumarTiempoSuministro(btnSumarSuministro.isSelected()?"S":"N");
-        local.setInSumarTransito(btnSumarTransito.isSelected()?"S":"N");
+//        local.setInIgnorarProdSinSaldo(btnIgnorarSaldo.isSelected()?"S":"N");
+//        local.setInSumarTiempoSuministro(btnSumarSuministro.isSelected()?"S":"N");
+//        local.setInSumarTransito(btnSumarTransito.isSelected()?"S":"N");
         local.setInSumarMinExhibicion(btnSumarMinExhibicion.isSelected()?"S":"N");
         local.setInSumarComprasPendientes(btnSumarComPendientes.isSelected()?"S":"N");
-        local.setInTipoOperacion((String)jcbTipoOperacion.getSelectedItem());
-        local.setInOrigenProductos((String)jcbOrigenProductos.getSelectedItem());
+//        local.setInTipoOperacion((String)jcbTipoOperacion.getSelectedItem());
+//        local.setInOrigenProductos((String)jcbOrigenProductos.getSelectedItem());
         local.setInSoloProdActivos(btnProductosActivos.isSelected()?"S":"N");
-        local.setInProductosFraccionados(btnProductosFraccionados.isSelected()?"S":"N");
+//        local.setInProductosFraccionados(btnProductosFraccionados.isSelected()?"S":"N");
         local.setInFaltaCero(btnFaltaCero.isSelected()?"S":"N");
         AtuxSearch.updateParametrosPedidoRep(local);        
     }
@@ -970,24 +836,16 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularReposicion;
     private javax.swing.JButton btnFaltaCero;
-    private javax.swing.JButton btnIgnorarSaldo;
-    private javax.swing.JButton btnPedidoDefault;
     private javax.swing.JButton btnProductoFaltaCero;
     private javax.swing.JButton btnProductosActivos;
-    private javax.swing.JButton btnProductosFraccionados;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSumarComPendientes;
     private javax.swing.JButton btnSumarMinExhibicion;
-    private javax.swing.JButton btnSumarSuministro;
-    private javax.swing.JButton btnSumarTransito;
     private javax.swing.JButton btnVerPedido;
     private com.toedter.calendar.JDateChooser dcFechaFin;
     private com.toedter.calendar.JDateChooser dcFechaIni;
     private javax.swing.JScrollPane jScrollPaneDet;
-    private javax.swing.JComboBox jcbOrigenProductos;
-    private javax.swing.JComboBox jcbTipoOperacion;
     private javax.swing.JLabel lblCostoStockProm;
-    private javax.swing.JLabel lblIgnorarProSinSaldo;
     private javax.swing.JLabel lblLocal;
     private javax.swing.JLabel lblMes01;
     private javax.swing.JLabel lblMes02;
@@ -996,22 +854,17 @@ public class IPedidoReposicion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblMinExhibicion;
     private javax.swing.JLabel lblOpcion;
     private javax.swing.JLabel lblOpcionT;
-    private javax.swing.JLabel lblOrigenProductos;
     private javax.swing.JLabel lblParametroMax;
     private javax.swing.JLabel lblParametroMin;
     private javax.swing.JLabel lblPeriodo;
     private javax.swing.JLabel lblPrecioStockProm;
     private javax.swing.JLabel lblProdActivos;
     private javax.swing.JLabel lblProdFaltaCero;
-    private javax.swing.JLabel lblProdFraccionados;
     private javax.swing.JLabel lblStockPromedio;
     private javax.swing.JLabel lblStockRepFinal;
     private javax.swing.JLabel lblSumarCompras;
-    private javax.swing.JLabel lblTiempoSuninistro;
-    private javax.swing.JLabel lblTipoOperacion;
     private javax.swing.JLabel lblTotalStockNeg;
     private javax.swing.JLabel lblTotalStockPos;
-    private javax.swing.JLabel lblTransito;
     private elaprendiz.gui.panel.PanelImage panelFondo;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlButtons;

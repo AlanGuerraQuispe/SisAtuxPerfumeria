@@ -1,5 +1,6 @@
 package atux.vistas.venta;
 
+import atux.handlers.PedidoVentaInterceptor;
 import atux.modelbd.DetallePedidoVenta;
 import atux.modelbd.PedidoVenta;
 import atux.modelbd.ProductoLocal;
@@ -7,9 +8,13 @@ import atux.modelgui.ModeloTomaPedidoVenta;
 import atux.util.CeldaAccionEditorInsumo;
 import atux.util.CellEditorSpinnerPedidoVenta;
 import atux.vistas.buscar.BuscarProducto;
+import com.aw.swing.spring.Application;
 
 import java.awt.*;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -178,14 +183,16 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
                     if (opc == JOptionPane.OK_OPTION) {
                         PedidoVenta pedidoVenta = new PedidoVenta();
                         pedidoVenta.setDetallePedidoVenta(mtpv.getRegistros());
-//                        DetallePedidoVenta detallePedidoVenta = ((DetallePedidoVenta) mtpv.getFila(this.indexFila));
-//                        PedidoVentaInterceptor pedidoVentaInterceptor = Application.instance().getBean(PedidoVentaInterceptor.class);
-//                        Map result=new HashMap();
-//                        pedidoVentaInterceptor.quitar(pedidoVenta,detallePedidoVenta,result);
-//                        List<DetallePedidoVenta> itemsEliminados = (List<DetallePedidoVenta>) result.get("itemsEliminados");
-//                        for (DetallePedidoVenta item : itemsEliminados) {
-//                            mtpv.quitarFila(item.getNuItemPedido()-1);
-//                       }
+
+                        DetallePedidoVenta detallePedidoVenta = ((DetallePedidoVenta) mtpv.getFila(this.indexFila));
+                        PedidoVentaInterceptor pedidoVentaInterceptor = Application.instance().getBean(PedidoVentaInterceptor.class);
+                        Map result=new HashMap();
+                        pedidoVentaInterceptor.quitar(pedidoVenta,detallePedidoVenta,result);
+                        List<DetallePedidoVenta> itemsEliminados = (List<DetallePedidoVenta>) result.get("itemsEliminados");
+                        for (DetallePedidoVenta item : itemsEliminados) {
+                            mtpv.quitarFila(item.getNuItemPedido()-1);
+                       }
+
                         ((DetallePedidoVenta) mtpv.getFila(this.indexFila)).setProdLocal(new ProductoLocal());
                         mtpv.quitarFila(this.indexFila);
                         if(this.ifr instanceof  IPedidoVentaInsumo)

@@ -170,7 +170,7 @@ public class FNPromocionPst extends FindPresenter<PromocionFlt> {
     }
 
     public static void main(String[] args) {
-        AppCtx.instance().setLocalId(new LocalId("001", "025"));
+        AppCtx.instance().setLocalId(new LocalId("003", "001"));
 
 
         new LookAndFeelManager().initialize();

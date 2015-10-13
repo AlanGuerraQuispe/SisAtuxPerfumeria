@@ -10,6 +10,10 @@
         <class>com.atux.infraestructura.jpa.pojo.LgtmProducto</class>
         <class>com.atux.infraestructura.jpa.pojo.LgtrProductoLocal</class>
         <class>com.atux.infraestructura.jpa.pojo.VttrPedidoDonacion</class>
+        <class>com.atux.infraestructura.jpa.pojo.PrtmPromo</class>
+        <class>com.atux.infraestructura.jpa.pojo.PrtrLocalPromo</class>
+        <class>com.atux.infraestructura.jpa.pojo.PrtdProductoPlanPromo</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.connection.charSet" value="WINDOWS-1252"/>

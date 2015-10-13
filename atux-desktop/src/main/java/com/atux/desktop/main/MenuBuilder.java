@@ -65,12 +65,11 @@ public class MenuBuilder {
         mb.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         MenuItem ventas = createMenu(mb, 'V',new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuVentas.png")))
-//                .addJInternalFrame(BuscarProducto.class, "Buscar Producto")
                 .addJInternalFrame(IPedidoVentaInsumo.class, "Productos terminados")
                 .addJInternalFrame(ICompletarPedidoVenta.class, "Completar Ventas")
                 .addJInternalFrame(IConsultarVentas.class, "Consultar Ventas")
                 .addJInternalFrame(IAnularComprobante.class, "Devolución")
-                .addJInternalFrame(IConsultarPedidosACredito.class, "Pedidos a Crédito")
+//                .addJInternalFrame(IConsultarPedidosACredito.class, "Pedidos a Crédito")
                 ;
 
         createMenu(ventas.getMenu(),"Consulta")

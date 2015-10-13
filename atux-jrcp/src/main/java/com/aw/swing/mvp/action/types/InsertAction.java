@@ -40,7 +40,7 @@ public class InsertAction<GridBean, EditBean> extends RoundTransitionAction {
     }
 
     public Object executeOnReturn(Flow initialFlow, Flow endFlow) {
-        if (refreshGridAtEnd){
+        if (!refreshGridAtEnd){
             return null;
         }
         Object domainToBeAdded = getRowToBeAdded((EditBean) endFlow.getAttribute(Flow.BACK_BEAN_NAME));
