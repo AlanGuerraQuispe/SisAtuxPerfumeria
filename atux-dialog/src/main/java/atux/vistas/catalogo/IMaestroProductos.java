@@ -13,7 +13,6 @@ import javax.swing.*;
 import atux.vistas.buscar.*;
 
 import java.awt.*;
-import java.util.Calendar;
 import java.sql.SQLException;
 import atux.util.ECampos;
 import atux.util.Helper;
@@ -154,6 +153,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         btnPrimeroActionPerformed(null);
         AtuxGridUtils.setearPrimerRegistro(tblListado, txtDescripcion, ModeloTablaSimple.COLUMNA_DESCRIPCION);
         tblListado.requestFocus();
+
+        lblCmbGenero.setBounds(120, 85, 137, 24);
+        lblCmbTipoProducto.setBounds(348, 40, 170, 24);
+        lblCmbImpuesto.setBounds(348, 83, 101, 24);
+        lblCmbMoneda.setBounds(348, 132, 171, 24);
+        txtFechaCreacion.setDisabledTextColor(Color.black);
     }
 
     private void CargarGrilla() {
@@ -197,7 +202,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.txtDescripcion.setText(String.valueOf(cp.getProducto().getDeProducto().trim()));
         this.txtUnidad.setText(String.valueOf(cp.getProducto().getDeUnidadProducto().trim()));
         this.txtCodEzenz.setText(StringUtils.isEmpty(cp.getProducto().getCoProductoSap())? "":String.valueOf(cp.getProducto().getCoProductoSap()));
-        this.dteFechaCreacion.setDate(cp.getProducto().getFeCreaProducto());
+        this.txtFechaCreacion.setText(AtuxUtility.getDateToString(cp.getProducto().getFeCreaProducto(),"dd/MM/yyyy"));
 
         // Set Categoria
         this.txtCodigoG1.setText(cp.getProducto().getCoNivel01() == null ? "" : cp.getProducto().getCoNivel01());
@@ -255,6 +260,11 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
 
         // Impuesto
         cmbOpcionImpuesto(cmbImpuesto, cp.getProducto().getCoImpuesto1());
+
+        this.lblCmbGenero.setText(cmbGenero.getSelectedItem().toString());
+        this.lblCmbTipoProducto.setText(cmbTipoProducto.getSelectedItem().toString());
+        this.lblCmbImpuesto.setText(cmbImpuesto.getSelectedItem().toString());
+        this.lblCmbMoneda.setText(cmbMoneda.getSelectedItem().toString());
     }
 
     private void cmbOpcionGenero(JComboBox cmbOption, String opcion) {
@@ -312,7 +322,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.txtPrecio.setText("0.00");
         this.txtDescuento.setText("0.00");
         this.txtPreVtaPublico.setText("0.00");
-        this.dteFechaCreacion.setDate(null);
+        this.txtFechaCreacion.setText("");
 
 
         chbSetActivo(false);
@@ -340,9 +350,9 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlControlDescuento.setEnabled(false);
         pnlBuscadorCategorias2.setEnabled(false);
 
-        ECampos.setEditableTexto(this.pnlDastosIniciales, true, new Component[]{lblCodigo, lblDescrip, lblUnidad}, false, "");
+        ECampos.setEditableTexto(this.pnlDastosIniciales, true, new Component[]{lblCodigo, lblDescrip, lblUnidad, }, false, "");
         ECampos.setEditableTexto(this.pnlSetDeCategoria, true, new Component[]{lblG1, lblG2, lblG3, lblG4, lblG5}, false, "");
-        ECampos.setEditableTexto(this.pnlControlDescuento, true, new Component[]{lblImpuesto,lblMoneda ,lblTipoProducto, lblInGenero,lblImpuesto1,lblCodigoEnz}, false, "");
+        ECampos.setEditableTexto(this.pnlControlDescuento, true, new Component[]{lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbMoneda, lblImpuesto,lblMoneda ,lblTipoProducto, lblInGenero,lblImpuesto1,lblCodigoEnz}, false, "");
         ECampos.setEditableTexto(this.pnlBuscadorCategorias2, true, new Component[]{lblCostoSol, lblPrecioSol, lblDescuento, lblPVP, lblInGenero,lblFechaCreacion}, false, "");
 
         this.tblListado.setEnabled(false);
@@ -367,14 +377,21 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.cmbTipoProducto.setEnabled(true);
         this.cmbGenero.setEnabled(true);
 
-        this.dteFechaCreacion.setEnabled(true);
-
         this.btnCodigoDeBarras.setEnabled(false);
         this.btnInsumos.setEnabled(false);
         this.btnParametrosReposicion.setEnabled(false);
         this.btnLote.setEnabled(false);
         this.btnRegistroSanitario.setEnabled(false);
-
+        
+        this.lblCmbGenero.setVisible(false);
+        this.lblCmbTipoProducto.setVisible(false);
+        this.lblCmbImpuesto.setVisible(false);
+        this.lblCmbMoneda.setVisible(false);
+        
+        this.cmbGenero.setVisible(true);
+        this.cmbTipoProducto.setVisible(true);
+        this.cmbImpuesto.setVisible(true);
+        this.cmbMoneda.setVisible(true);
     }
 
     private void DesActivarCasillas() {
@@ -384,7 +401,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlBuscadorCategorias2.setEnabled(true);
         ECampos.setEditableTexto(this.pnlDastosIniciales, false, new Component[]{lblCodigo, lblDescrip, lblUnidad}, false, "");
         ECampos.setEditableTexto(this.pnlSetDeCategoria, false, new Component[]{lblG1, lblG2, lblG3, lblG4, lblG5}, false, "");
-        ECampos.setEditableTexto(this.pnlControlDescuento, false, new Component[]{lblImpuesto,lblMoneda, lblImpuesto1,lblTipoProducto, lblInGenero,lblCodigoEnz}, false, "");
+        ECampos.setEditableTexto(this.pnlControlDescuento, false, new Component[]{lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbMoneda, lblImpuesto,lblMoneda, lblImpuesto1,lblTipoProducto, lblInGenero,lblCodigoEnz}, false, "");
         ECampos.setEditableTexto(this.pnlBuscadorCategorias2, false, new Component[]{lblCostoSol, lblPrecioSol, lblDescuento, lblPVP, lblInGenero,lblFechaCreacion}, false, "");
 
         this.tblListado.setEnabled(true);
@@ -409,7 +426,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.cmbTipoProducto.setEnabled(false);
         this.cmbGenero.setEnabled(false);
 
-        this.dteFechaCreacion.setEnabled(false);
+        this.txtFechaCreacion.setEnabled(false);
         this.btnCodigoDeBarras.setEnabled(true);
         this.btnInsumos.setEnabled(true);
         this.btnParametrosReposicion.setEnabled(true);
@@ -417,6 +434,16 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.btnRegistroSanitario.setEnabled(true);
 
         esActualizacion = false;
+
+        this.lblCmbGenero.setVisible(true);
+        this.lblCmbTipoProducto.setVisible(true);
+        this.lblCmbImpuesto.setVisible(true);
+        this.lblCmbMoneda.setVisible(true);
+                
+        this.cmbGenero.setVisible(false);
+        this.cmbTipoProducto.setVisible(false);
+        this.cmbImpuesto.setVisible(false);
+        this.cmbMoneda.setVisible(false);
     }
 
     public boolean verficarCambios() {
@@ -450,8 +477,6 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         } else if (!this.txtDescuento.getText().equals(String.valueOf(cpl.getProductoLocal().getPcDescuento1()))) {
             return true;
         } else if (!this.txtPreVtaPublico.getText().equals(String.valueOf(cpl.getProductoLocal().getCalculoPrecioPublico()))) {
-            return true;
-        } else if (this.dteFechaCreacion.getDate() != cp.getProducto().getFeCreaProducto()) {
             return true;
         }
 
@@ -691,11 +716,15 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtSub_Familia = new elaprendiz.gui.textField.TextField();
         pnlControlDescuento = new javax.swing.JPanel();
         lblInGenero = new javax.swing.JLabel();
-        cmbGenero = new javax.swing.JComboBox();
+        lblCmbMoneda = new javax.swing.JLabel();
+        lblCmbImpuesto = new javax.swing.JLabel();
+        lblCmbTipoProducto = new javax.swing.JLabel();
         lblTipoProducto = new javax.swing.JLabel();
         cmbTipoProducto = new javax.swing.JComboBox();
         cmbImpuesto = new javax.swing.JComboBox();
         lblImpuesto = new javax.swing.JLabel();
+        lblCmbGenero = new javax.swing.JLabel();
+        cmbGenero = new javax.swing.JComboBox();
         lblMoneda = new javax.swing.JLabel();
         cmbMoneda = new javax.swing.JComboBox();
         chbEstado = new javax.swing.JCheckBox();
@@ -711,8 +740,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblCostoSol = new javax.swing.JLabel();
         txtCosto = new elaprendiz.gui.textField.TextField();
         lblPrecioSol = new javax.swing.JLabel();
-        dteFechaCreacion = new com.toedter.calendar.JDateChooser();
         lblFechaCreacion = new javax.swing.JLabel();
+        txtFechaCreacion = new elaprendiz.gui.textField.TextField();
         pnlBuscadorCategorias = new javax.swing.JPanel();
         btnPrimero = new elaprendiz.gui.button.ButtonRect();
         btnAnterior = new elaprendiz.gui.button.ButtonRect();
@@ -1045,10 +1074,23 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlControlDescuento.add(lblInGenero);
         lblInGenero.setBounds(50, 90, 60, 23);
 
-        cmbGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
-        cmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
-        pnlControlDescuento.add(cmbGenero);
-        cmbGenero.setBounds(120, 85, 137, 24);
+        lblCmbMoneda.setText("lblCmbMoneda");
+        lblCmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbMoneda.setOpaque(true);
+        pnlControlDescuento.add(lblCmbMoneda);
+        lblCmbMoneda.setBounds(330, 160, 80, 20);
+
+        lblCmbImpuesto.setText("lblCmbImpuesto");
+        lblCmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbImpuesto.setOpaque(true);
+        pnlControlDescuento.add(lblCmbImpuesto);
+        lblCmbImpuesto.setBounds(240, 160, 80, 20);
+
+        lblCmbTipoProducto.setText("lblCmbTipoProducto");
+        lblCmbTipoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbTipoProducto.setOpaque(true);
+        pnlControlDescuento.add(lblCmbTipoProducto);
+        lblCmbTipoProducto.setBounds(110, 160, 110, 20);
 
         lblTipoProducto.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblTipoProducto.setText("Tipo producto:");
@@ -1071,6 +1113,17 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblImpuesto.setAlignmentY(0.2F);
         pnlControlDescuento.add(lblImpuesto);
         lblImpuesto.setBounds(280, 88, 53, 15);
+
+        lblCmbGenero.setText("lblCmbGenero");
+        lblCmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbGenero.setOpaque(true);
+        pnlControlDescuento.add(lblCmbGenero);
+        lblCmbGenero.setBounds(20, 160, 70, 20);
+
+        cmbGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        pnlControlDescuento.add(cmbGenero);
+        cmbGenero.setBounds(120, 85, 137, 24);
 
         lblMoneda.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblMoneda.setText("Moneda S/.");
@@ -1157,7 +1210,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtPreVtaPublico.setEditable(false);
         txtPreVtaPublico.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPreVtaPublico.setDireccionDeSombra(30);
-        txtPreVtaPublico.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtPreVtaPublico.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtPreVtaPublico.setFont(new java.awt.Font("Arial", 0, 12));
         txtPreVtaPublico.setMinimumSize(new java.awt.Dimension(6, 20));
         txtPreVtaPublico.setName(""); // NOI18N
@@ -1202,20 +1255,22 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblPrecioSol.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblPrecioSol.setText("Precio S/.");
 
-        dteFechaCreacion.setBackground(new java.awt.Color(0, 0, 0));
-        dteFechaCreacion.setForeground(new java.awt.Color(255, 0, 0));
-        dteFechaCreacion.setDate(Calendar.getInstance().getTime());
-        dteFechaCreacion.setFont(new java.awt.Font("Tahoma", 1, 13));
-        dteFechaCreacion.setPreferredSize(new java.awt.Dimension(120, 22));
-        dteFechaCreacion.setRequestFocusEnabled(false);
-        dteFechaCreacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                dteFechaCreacionKeyReleased(evt);
-            }
-        });
-
         lblFechaCreacion.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblFechaCreacion.setText("Fec.Crea:");
+
+        txtFechaCreacion.setEditable(false);
+        txtFechaCreacion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtFechaCreacion.setDireccionDeSombra(30);
+        txtFechaCreacion.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtFechaCreacion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtFechaCreacion.setMinimumSize(new java.awt.Dimension(6, 20));
+        txtFechaCreacion.setName(""); // NOI18N
+        txtFechaCreacion.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtFechaCreacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFechaCreacionKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlBuscadorCategorias2Layout = new javax.swing.GroupLayout(pnlBuscadorCategorias2);
         pnlBuscadorCategorias2.setLayout(pnlBuscadorCategorias2Layout);
@@ -1228,45 +1283,48 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
                 .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblPrecioSol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblDescuento)
                 .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblPVP)
-                .addGap(3, 3, 3)
+                .addGap(18, 18, 18)
                 .addComponent(txtPreVtaPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(lblFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(dteFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(211, 211, 211))
         );
         pnlBuscadorCategorias2Layout.setVerticalGroup(
             pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                .addGroup(pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblCostoSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblPrecioSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(lblCostoSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(lblPrecioSol, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(lblDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(pnlBuscadorCategorias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPreVtaPublico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlBuscadorCategorias2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(dteFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pnlEntradasCategorias_G05.add(pnlBuscadorCategorias2);
@@ -1837,14 +1895,6 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_chbEstadoKeyReleased
 
-    private void dteFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dteFechaCreacionKeyReleased
-        switch (evt.getKeyCode()) {
-            case KeyEvent.VK_ENTER:
-                cmbImpuesto.requestFocus();
-                break;
-        }
-    }//GEN-LAST:event_dteFechaCreacionKeyReleased
-
     private void btnPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeroActionPerformed
         finalPag = tblListado.getRowCount() - 1;
         numRegistros = 0;
@@ -2107,6 +2157,10 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             AtuxUtility.convertirMayuscula(evt);
     }//GEN-LAST:event_txtUnidadKeyTyped
 
+private void txtFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaCreacionKeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtFechaCreacionKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
     private elaprendiz.gui.button.ButtonRect btnBuscar;
@@ -2129,9 +2183,12 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbImpuesto;
     private javax.swing.JComboBox cmbMoneda;
     private javax.swing.JComboBox cmbTipoProducto;
-    private com.toedter.calendar.JDateChooser dteFechaCreacion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCmbGenero;
+    private javax.swing.JLabel lblCmbImpuesto;
+    private javax.swing.JLabel lblCmbMoneda;
+    private javax.swing.JLabel lblCmbTipoProducto;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoEnz;
     private javax.swing.JLabel lblCostoSol;
@@ -2176,6 +2233,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private elaprendiz.gui.textField.TextField txtDescuento;
     private elaprendiz.gui.textField.TextField txtDivision;
     private elaprendiz.gui.textField.TextField txtFamilia;
+    private elaprendiz.gui.textField.TextField txtFechaCreacion;
     private elaprendiz.gui.textField.TextField txtLineaComercial;
     private elaprendiz.gui.textField.TextField txtPreVtaPublico;
     private elaprendiz.gui.textField.TextField txtPrecio;
