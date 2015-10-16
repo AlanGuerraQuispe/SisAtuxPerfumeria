@@ -230,7 +230,6 @@ public class PanelAccionProdInsumos extends javax.swing.JPanel {
 
                 }
             }
-
         }
     }
 

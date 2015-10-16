@@ -77,7 +77,6 @@ public class FNPromocionPst extends FindPresenter<PromocionFlt> {
                 new ColumnInfo("Todos Locales", "inTodosLocales", 60, ColumnInfo.LEFT).formatAsDate(),
                 new ColumnInfo("Estado", "esPromocion", 60, ColumnInfo.LEFT).setDropDownFormatter(apdd.ES_TABLA)
 
-
         };
         return columns;
     }

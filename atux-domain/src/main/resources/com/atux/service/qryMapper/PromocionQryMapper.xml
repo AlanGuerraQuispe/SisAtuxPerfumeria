@@ -117,7 +117,42 @@
             <![CDATA[
                 AND  PPPP.CA_PRODUCTO <= #{caAtendida}
             ]]>
-            ORDER BY PPPP.CA_PRODUCTO DESC, PPPP.CA_PRODUCTO_P DESC
+            UNION
+            SELECT PPPP.CO_COMPANIA coCompania,
+                PPPP.CO_PROMOCION coPromocion,
+                LPO.CO_PRODUCTO coProducto,
+                LPO.DE_PRODUCTO deProducto,
+                PPPP.CA_PRODUCTO_P caProducto,
+                PPPP.VA_FRACCION vaFraccion,
+                LPI.CO_PRODUCTO_INSUMO coProductoP,
+                LPP.DE_PRODUCTO deProductoP,
+                LPP.DE_UNIDAD_PRODUCTO unidadProductoP,
+                LPO.DE_UNIDAD_PRODUCTO unidadProducto,
+                PPPP.CA_PRODUCTO_P caProductoP,
+                PPPP.VA_FRACCION_P vaFraccionP,
+                PPPP.ES_PRODUCTO_PLAN esProductoPlan
+            FROM
+                PRTM_PROMO PP
+                INNER JOIN PRTD_PRODUCTO_PLAN_PROMO PPPP ON PPPP.CO_COMPANIA= PP.CO_COMPANIA   AND PPPP.CO_PROMOCION = PP.CO_PROMOCION
+                INNER JOIN PRTR_LOCAL_PROMO PLP          ON PLP.CO_COMPANIA = PP.CO_COMPANIA   AND PLP.CO_PROMOCION  = PP.CO_PROMOCION
+                INNER JOIN LGTM_PRODUCTO LPO             ON LPO.CO_COMPANIA = PPPP.CO_COMPANIA AND LPO.CO_PRODUCTO   = PPPP.CO_PRODUCTO_P
+                INNER JOIN LGTR_PRODUCTO_INSUMO LPI      ON LPI.CO_COMPANIA = PPPP.CO_COMPANIA AND LPI.CO_PRODUCTO   = PPPP.CO_PRODUCTO_P
+                INNER JOIN LGTM_PRODUCTO LPP             ON LPP.CO_COMPANIA = PPPP.CO_COMPANIA AND LPP.CO_PRODUCTO   = LPI.CO_PRODUCTO_INSUMO
+                WHERE
+                1 = 1
+                <if test="localId.coCompania!=null and localId.coCompania!=''">
+                    AND LPO.CO_COMPANIA=  #{localId.coCompania}
+                </if>
+                <if test="localId.coLocal!=null and localId.coLocal!=''">
+                    AND PLP.CO_LOCAL=  #{localId.coLocal}
+                </if>
+                AND PPPP.CO_PRODUCTO=  #{coProducto}
+                AND SYSDATE BETWEEN TO_DATE(TO_CHAR(PP.FE_INI_PROMOCION,'dd/MM/yyyy')||' 00:00:00','dd/MM/yyyy HH24:MI:SS')
+                AND TO_DATE(TO_CHAR(PP.FE_FIN_PROMOCION,'dd/MM/yyyy')||' 23:59:59','dd/MM/yyyy HH24:MI:SS')
+                <![CDATA[
+                    AND  PPPP.CA_PRODUCTO <= #{caAtendida}
+                ]]>
+            --ORDER BY PPPP.CA_PRODUCTO DESC, PPPP.CA_PRODUCTO_P DESC
        </where>
     </select>
 

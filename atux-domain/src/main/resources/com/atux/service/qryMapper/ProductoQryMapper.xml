@@ -269,6 +269,7 @@
             AND CL.CO_LABORATORIO=LP.CO_LABORATORIO
         <where >
             1 = 1
+                AND LP.ES_PRODUCTO='A'
             <if test="localId.coCompania!=null and localId.coCompania!=''">
                 AND LP.CO_COMPANIA=  #{localId.coCompania}
             </if>
