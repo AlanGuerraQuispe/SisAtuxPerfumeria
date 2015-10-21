@@ -62,6 +62,9 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
         Helper.ajustarAnchoColumnas(tblTipoDeCambio);
         setFiltroTexto();        
         setEventSelectionModel(tblTipoDeCambio.getSelectionModel());
+        txtFecha.setBounds(71, 20, 110, 25);
+        txtFecha2.setBounds(71, 20, 110, 25);
+        
         DesActivarCasillas();
         rbTodosActionPerformed(null);
     }
@@ -98,6 +101,7 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
         }else{
             chbSetActivo(false); 
         }
+        this.txtFecha2.setText(cp.getTipodeCambio().getFeTipoCambio());
         this.btnModificar.setEnabled(true);
     }
     
@@ -128,6 +132,8 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(false);
         this.rbAtivos.setEnabled(false);
         this.rbNoActivos.setEnabled(false);
+        
+        this.txtFecha2.setVisible(false);
         txtFecha.setEnabled(true);
     }
     private void DesActivarCasillas(){
@@ -150,7 +156,8 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
         this.rbTodos.setEnabled(true);
         this.rbAtivos.setEnabled(true);
         this.rbNoActivos.setEnabled(true);        
-
+        
+        this.txtFecha2.setVisible(true);
         esActualizacion = false;
 //        this.pnlBuscadorTDeCambio.setVisible(true);
         txtFecha.setEnabled(false); 
@@ -252,6 +259,7 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         panelImage1 = new elaprendiz.gui.panel.PanelImage();
         pnlEntradasTDeCambio = new javax.swing.JPanel();
+        txtFecha2 = new elaprendiz.gui.textField.TextField();
         lblfecha = new javax.swing.JLabel();
         lblTipoCambio = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
@@ -282,17 +290,38 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        pnlEntradasTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos de Tipo de Cambio", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlEntradasTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Datos de Tipo de Cambio", 1, 2));
         pnlEntradasTDeCambio.setOpaque(false);
+        pnlEntradasTDeCambio.setLayout(null);
+
+        txtFecha2.setEditable(false);
+        txtFecha2.setDireccionDeSombra(30);
+        txtFecha2.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtFecha2.setFont(new java.awt.Font("Arial", 0, 12));
+        txtFecha2.setName("pdescrip"); // NOI18N
+        txtFecha2.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtFecha2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFecha2KeyReleased(evt);
+            }
+        });
+        pnlEntradasTDeCambio.add(txtFecha2);
+        txtFecha2.setBounds(456, 17, 10, 25);
 
         lblfecha.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblfecha.setText("Fecha:");
+        pnlEntradasTDeCambio.add(lblfecha);
+        lblfecha.setBounds(16, 16, 45, 27);
 
         lblTipoCambio.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblTipoCambio.setText("Tipo de Cambio:");
+        pnlEntradasTDeCambio.add(lblTipoCambio);
+        lblTipoCambio.setBounds(191, 16, 112, 24);
 
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
         lblEstado.setText("Estado:");
+        pnlEntradasTDeCambio.add(lblEstado);
+        lblEstado.setBounds(469, 20, 53, 17);
 
         txtValorTCambio.setEditable(false);
         txtValorTCambio.setDireccionDeSombra(30);
@@ -305,6 +334,8 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                 txtValorTCambioKeyReleased(evt);
             }
         });
+        pnlEntradasTDeCambio.add(txtValorTCambio);
+        txtValorTCambio.setBounds(316, 17, 135, 25);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -322,6 +353,8 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                 chbEstadoKeyReleased(evt);
             }
         });
+        pnlEntradasTDeCambio.add(chbEstado);
+        chbEstado.setBounds(528, 16, 116, 25);
 
         txtFecha.setBackground(new java.awt.Color(0, 0, 0));
         txtFecha.setForeground(new java.awt.Color(255, 0, 0));
@@ -334,42 +367,10 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                 txtFechaKeyReleased(evt);
             }
         });
+        pnlEntradasTDeCambio.add(txtFecha);
+        txtFecha.setBounds(71, 20, 110, 22);
 
-        javax.swing.GroupLayout pnlEntradasTDeCambioLayout = new javax.swing.GroupLayout(pnlEntradasTDeCambio);
-        pnlEntradasTDeCambio.setLayout(pnlEntradasTDeCambioLayout);
-        pnlEntradasTDeCambioLayout.setHorizontalGroup(
-            pnlEntradasTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasTDeCambioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblfecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTipoCambio)
-                .addGap(13, 13, 13)
-                .addComponent(txtValorTCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblEstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        pnlEntradasTDeCambioLayout.setVerticalGroup(
-            pnlEntradasTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEntradasTDeCambioLayout.createSequentialGroup()
-                .addGroup(pnlEntradasTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlEntradasTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlEntradasTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTipoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEstado)
-                            .addComponent(chbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtValorTCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlBuscadorTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlBuscadorTDeCambio.setOpaque(false);
 
         btnPrimero.setBackground(new java.awt.Color(102, 204, 0));
@@ -453,7 +454,7 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
             .addGap(0, 555, Short.MAX_VALUE)
             .addGroup(pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorTDeCambioLayout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
+                    .addGap(0, 8, Short.MAX_VALUE)
                     .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5, 5, 5)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,14 +470,14 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                     .addComponent(rbAtivos)
                     .addGap(5, 5, 5)
                     .addComponent(rbNoActivos)
-                    .addGap(0, 4, Short.MAX_VALUE)))
+                    .addGap(0, 8, Short.MAX_VALUE)))
         );
         pnlBuscadorTDeCambioLayout.setVerticalGroup(
             pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 33, Short.MAX_VALUE)
             .addGroup(pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBuscadorTDeCambioLayout.createSequentialGroup()
-                    .addGap(0, 2, Short.MAX_VALUE)
+                    .addGap(0, 4, Short.MAX_VALUE)
                     .addGroup(pnlBuscadorTDeCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -486,10 +487,10 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                         .addComponent(rbTodos)
                         .addComponent(rbAtivos)
                         .addComponent(rbNoActivos))
-                    .addGap(0, 2, Short.MAX_VALUE)))
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
 
-        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        pnlAccionesTDeCambio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "", 1, 2));
         pnlAccionesTDeCambio.setOpaque(false);
 
         btnNuevo.setBackground(new java.awt.Color(0, 153, 255));
@@ -586,20 +587,20 @@ public class ITipoDeCambio extends javax.swing.JInternalFrame {
                         .addGap(60, 60, 60)
                         .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelImage1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
-                            .addComponent(pnlEntradasTDeCambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelImage1Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlAccionesTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelImage1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlEntradasTDeCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlEntradasTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlEntradasTDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBuscadorTDeCambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -814,6 +815,10 @@ private void chbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         chbSetActivo(chbEstado.isSelected());
 }//GEN-LAST:event_chbEstadoActionPerformed
 
+private void txtFecha2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFecha2KeyReleased
+// TODO add your handling code here:
+}//GEN-LAST:event_txtFecha2KeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAnterior;
     private elaprendiz.gui.button.ButtonRect btnBuscar;
@@ -840,6 +845,7 @@ private void chbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private javax.swing.JRadioButton rbTodos;
     private javax.swing.JTable tblTipoDeCambio;
     private com.toedter.calendar.JDateChooser txtFecha;
+    private elaprendiz.gui.textField.TextField txtFecha2;
     private elaprendiz.gui.textField.TextField txtValorTCambio;
     // End of variables declaration//GEN-END:variables
 }
