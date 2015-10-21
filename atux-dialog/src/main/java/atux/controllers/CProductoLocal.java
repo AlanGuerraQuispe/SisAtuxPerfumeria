@@ -384,7 +384,10 @@ public class CProductoLocal extends JAbstractController implements Serializable{
             query.append("        ON  PRDLOCAL.CO_COMPANIA  = '").append(AtuxVariables.vCodigoCompania).append("'\n");
             query.append("        AND PRDLOCAL.CO_LOCAL     = '").append(AtuxVariables.vCodigoLocal).append("'\n");
             query.append("        AND T1.ES_PRODUCTO        = 'A'\n");
-            query.append("        AND T1.TI_MATERIAL_SAP='PROD'\n");//todo para productos terminados
+            if(!StringUtils.isNotBlank(coProducto)){
+                query.append("        AND T1.TI_MATERIAL_SAP    = 'PROD'\n");//todo para productos terminados
+            }
+
             //query.append("        AND T1.CO_LABORATORIO     IN('0014','0100') ");
             query.append("        AND PRDLOCAL.CO_COMPANIA  = T1.CO_COMPANIA ");
             query.append("        AND  PRDLOCAL.CO_PRODUCTO  = T1.CO_PRODUCTO ");

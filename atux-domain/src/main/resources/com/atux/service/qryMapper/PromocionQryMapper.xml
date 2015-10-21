@@ -122,7 +122,7 @@
                 PPPP.CO_PROMOCION coPromocion,
                 LPO.CO_PRODUCTO coProducto,
                 LPO.DE_PRODUCTO deProducto,
-                PPPP.CA_PRODUCTO_P caProducto,
+                PPPP.CA_PRODUCTO caProducto,
                 PPPP.VA_FRACCION vaFraccion,
                 LPI.CO_PRODUCTO_INSUMO coProductoP,
                 LPP.DE_PRODUCTO deProductoP,
