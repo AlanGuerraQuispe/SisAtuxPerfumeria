@@ -49,7 +49,8 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
     private ModeloTomaPedidoVenta mtdpv;
     private ModeloTablaDetallePedidoVenta mtdipv;
     CProductoLocal cpl;
-    
+    private String descEsp="No";
+
     private final Log logger = LogFactory.getLog(getClass());
     
     public ICompletarPedidoVenta() {
@@ -1154,7 +1155,7 @@ public final class ICompletarPedidoVenta extends javax.swing.JInternalFrame {
     public void setTotales()
     {       
         this.ftfBruto.setValue(mtdpv.getBruto());        
-        this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
+        this.ftfDescuento.setValue(mtdpv.getTotalDescuento(descEsp));
         this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
         this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
         this.ftfAfecto.setValue(mtdpv.getAfecto());

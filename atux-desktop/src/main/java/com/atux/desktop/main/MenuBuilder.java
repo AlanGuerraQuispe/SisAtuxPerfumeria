@@ -117,7 +117,9 @@ public class MenuBuilder {
                 .addJInternalFrame(ITipoDeCambio.class, "Tipo de Cambio")
                 .addPst(FNPromocionPst.class, "Promociones")
 //                .addPst(FNDonacionPst.class, "Donaciones")
-                .addJInternalFrame(IFormaPago.class, "Formas de Pago");
+                .addJInternalFrame(IFormaPago.class, "Formas de Pago")
+                .addJInternalFrame(IDescuentoVenta.class, "Descuento Venta");
+
         
          catalogos.addJInternalFrame(IPrincipioActivo.class, "Principio Activo")
 //                 .addJInternalFrame(IMedicos.class, "Médicos")

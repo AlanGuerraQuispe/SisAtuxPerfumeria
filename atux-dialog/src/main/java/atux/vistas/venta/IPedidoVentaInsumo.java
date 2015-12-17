@@ -47,6 +47,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     private PedidoVenta pedido;
     private ModeloTomaPedidoVenta mtdpv;
     private ModeloTablaDetallePedidoVenta mtdipv;
+    private String descEsp="No";
 
     CProductoLocal cpl;
     private final Log logger = LogFactory.getLog(getClass());
@@ -210,6 +211,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         pnlActionButtons = new javax.swing.JPanel();
         bntGuardar = new elaprendiz.gui.button.ButtonRect();
         bntSalir = new elaprendiz.gui.button.ButtonRect();
+        bntPromo2x1 = new elaprendiz.gui.button.ButtonRect();
 
         setTitle("Pedido Venta");
         setToolTipText("");
@@ -711,6 +713,16 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         });
         pnlActionButtons.add(bntSalir);
 
+
+        bntPromo2x1.setBackground(new java.awt.Color(51, 153, 255));
+        bntPromo2x1.setText("Promo 2 x 1");
+        bntPromo2x1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntPromo2x1ActionPerformed(evt);
+            }
+        });
+        pnlActionButtons.add(bntPromo2x1);
+
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
@@ -793,6 +805,18 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
 
     private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {
         closeWindow(true);
+    }
+
+    private void bntPromo2x1ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (descEsp=="Si"){
+            descEsp="No";
+            bntPromo2x1.setForeground(Color.white);
+        }else{
+            descEsp="Si";
+            bntPromo2x1.setForeground(Color.red);
+        }
+        setTotales();
+
     }
 
     private void bntImprimirActionPerformed(java.awt.event.ActionEvent evt) {
@@ -949,6 +973,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
     private elaprendiz.gui.button.ButtonRect bntGuardar;
     private elaprendiz.gui.button.ButtonRect bntImprimir;
     private elaprendiz.gui.button.ButtonRect bntSalir;
+    private elaprendiz.gui.button.ButtonRect bntPromo2x1;
     private javax.swing.ButtonGroup buttonGroupComprobante;
     private javax.swing.JFormattedTextField ftfAfecto;
     private javax.swing.JFormattedTextField ftfBruto;
@@ -1184,7 +1209,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
 
 
         this.ftfBruto.setValue(mtdpv.getBruto());
-        this.ftfDescuento.setValue(mtdpv.getTotalDescuento());
+        this.ftfDescuento.setValue(mtdpv.getTotalDescuento(descEsp));
         this.ftfTotal.setValue(mtdpv.getTotalPrecioVenta());
         this.ftfImpuesto.setValue(mtdpv.getTotalImpuesto());
         this.ftfAfecto.setValue(mtdpv.getAfecto());

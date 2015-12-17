@@ -45,7 +45,7 @@ public class PromocionPedidoTest extends TestPersistenceBase {
     private IPedidoVentaInsumo ipPedidoVenta = new IPedidoVentaInsumo("Test");
     private CProductoLocal cpProductoLocal = new CProductoLocal();
     private ModeloTomaPedidoVenta modeloTomaPedidoVenta;
-
+    private String descEsp="No";
     private CDetallePedidoVenta crtlDpv = new CDetallePedidoVenta();
 
     private static final Logger LOG = LoggerFactory.getLogger(PromocionPedidoTest.class);
@@ -79,7 +79,7 @@ public class PromocionPedidoTest extends TestPersistenceBase {
         pedidoVenta.setCaItem((Integer) modeloTomaPedidoVenta.getNumItems());
         pedidoVenta.setVaTotalVenta((Double) modeloTomaPedidoVenta.getBruto());
         pedidoVenta.setVaTotalPrecioVenta((Double) modeloTomaPedidoVenta.getTotalPrecioVenta());
-        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento());
+        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento(descEsp));
         pedidoVenta.setVaTotalImpuesto((Double) modeloTomaPedidoVenta.getTotalImpuesto());
         pedidoVenta.setVaSaldoRedondeo((Double) modeloTomaPedidoVenta.getRedondeo());
 
@@ -116,7 +116,7 @@ public class PromocionPedidoTest extends TestPersistenceBase {
         pedidoVenta.setCaItem((Integer) modeloTomaPedidoVenta.getNumItems());
         pedidoVenta.setVaTotalVenta((Double) modeloTomaPedidoVenta.getBruto());
         pedidoVenta.setVaTotalPrecioVenta((Double) modeloTomaPedidoVenta.getTotalPrecioVenta());
-        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento());
+        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento(descEsp));
         pedidoVenta.setVaTotalImpuesto((Double) modeloTomaPedidoVenta.getTotalImpuesto());
         pedidoVenta.setVaSaldoRedondeo((Double) modeloTomaPedidoVenta.getRedondeo());
 
@@ -191,7 +191,7 @@ public class PromocionPedidoTest extends TestPersistenceBase {
         pedidoVenta.setCaItem((Integer) modeloTomaPedidoVenta.getNumItems());
         pedidoVenta.setVaTotalVenta((Double) modeloTomaPedidoVenta.getBruto());
         pedidoVenta.setVaTotalPrecioVenta((Double) modeloTomaPedidoVenta.getTotalPrecioVenta());
-        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento());
+        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento(descEsp));
         pedidoVenta.setVaTotalImpuesto((Double) modeloTomaPedidoVenta.getTotalImpuesto());
         pedidoVenta.setVaSaldoRedondeo((Double) modeloTomaPedidoVenta.getRedondeo());
 
@@ -229,7 +229,7 @@ public class PromocionPedidoTest extends TestPersistenceBase {
         pedidoVenta.setCaItem((Integer) modeloTomaPedidoVenta.getNumItems());
         pedidoVenta.setVaTotalVenta((Double) modeloTomaPedidoVenta.getBruto());
         pedidoVenta.setVaTotalPrecioVenta((Double) modeloTomaPedidoVenta.getTotalPrecioVenta());
-        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento());
+        pedidoVenta.setVaTotalDescuento((Double) modeloTomaPedidoVenta.getTotalDescuento(descEsp));
         pedidoVenta.setVaTotalImpuesto((Double) modeloTomaPedidoVenta.getTotalImpuesto());
         pedidoVenta.setVaSaldoRedondeo((Double) modeloTomaPedidoVenta.getRedondeo());
 

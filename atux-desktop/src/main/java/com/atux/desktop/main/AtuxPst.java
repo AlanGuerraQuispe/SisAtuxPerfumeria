@@ -22,7 +22,8 @@ import java.util.List;
  * User: Juan Carlos Vergara
  * Date: 19/05/2009
  */
-public class AtuxPst {
+public class
+        AtuxPst {
     protected static final Log logger = LogFactory.getLog(AtuxPst.class);
 
     FrmAtuxV2 frmAtux;
@@ -36,7 +37,7 @@ public class AtuxPst {
         String bdInfo = StringUtils.nvl("TEST", "¿BD?");
         String debugInfo = SPSysProp.isDeveloperDebugEnabled() ? " /DEBUGMODE " : "";
         String appInfo = "[V:" + version + "/Env:" + enviroment + "/BD:" + bdInfo + debugInfo + "]";
-        frmAtux.setTitle("Atux " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
+        frmAtux.setTitle("ICBB " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
         final MenuBuilder mb = new MenuBuilder();
         frmAtux.setJMenuBar(mb.createMenus());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

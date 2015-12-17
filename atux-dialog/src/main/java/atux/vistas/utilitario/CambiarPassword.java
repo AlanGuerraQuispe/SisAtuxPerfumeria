@@ -56,7 +56,7 @@ public class CambiarPassword extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elaprendiz/resources/fondoazulceleste.jpg"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
         panelImage1.setLayout(new java.awt.BorderLayout());
 
         panelCurves1.setLayout(new java.awt.GridBagLayout());
@@ -154,7 +154,8 @@ private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         {
             if(pasN.equals(pasR))
             {
-                //us.setClave(pasN);
+                us.setDeNuevaClave(pasN);
+//                us.setClave(pasN);
                 //us.encriptarPass();
                 int ap = cus.actualizarPass(us);
                 if(ap != 0)

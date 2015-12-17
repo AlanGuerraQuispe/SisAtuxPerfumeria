@@ -288,7 +288,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
     
     private void ActivarCasillas(){
         pnlEntradas.setEnabled(false);        
-        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblTipoVIa, lblApellidoMaterno,lblApellidoPaterno,lblBlock,lblCodigo,lblDepartamento,lblDistrito,lblDpto,lblEmail,lblFechaNacimiento,lblLote,lblManzana,lblNombreVia,lblNombres,lblNroDocumento,lblNumero,lblProvincia,lblReferencia,lblSector,lblTelefono,lblTipoCliente,lblTipoDocumento,lblTipoVia,lblUrbanizacion,lblEstado},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, true, new Component[]{lblTipoVIa, lblRazonSocial, lblApellidoMaterno,lblApellidoPaterno,lblBlock,lblCodigo,lblDepartamento,lblDistrito,lblDpto,lblEmail,lblFechaNacimiento,lblLote,lblManzana,lblNombreVia,lblNombres,lblNroDocumento,lblNumero,lblProvincia,lblReferencia,lblSector,lblTelefono,lblTipoCliente,lblTipoDocumento,lblTipoVia,lblUrbanizacion,lblEstado},false,"");
         this.tblListado.setEnabled(false);
         this.tblListado.clearSelection();        
         this.btnNuevo.setEnabled(false);
@@ -322,7 +322,7 @@ public final class IClientes extends javax.swing.JInternalFrame {
     }
     private void DesActivarCasillas(){
         this.pnlEntradas.setEnabled(true);
-        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblTipoVIa, lblApellidoMaterno,lblApellidoPaterno,lblBlock,lblCodigo,lblDepartamento,lblDistrito,lblDpto,lblEmail,lblFechaNacimiento,lblLote,lblManzana,lblNombreVia,lblNombres,lblNroDocumento,lblNumero,lblProvincia,lblReferencia,lblSector,lblTelefono,lblTipoCliente,lblTipoDocumento,lblTipoVia,lblUrbanizacion,lblEstado},false,"");        
+        ECampos.setEditableTexto(this.pnlEntradas, false, new Component[]{lblTipoVIa, lblRazonSocial, lblApellidoMaterno,lblApellidoPaterno,lblBlock,lblCodigo,lblDepartamento,lblDistrito,lblDpto,lblEmail,lblFechaNacimiento,lblLote,lblManzana,lblNombreVia,lblNombres,lblNroDocumento,lblNumero,lblProvincia,lblReferencia,lblSector,lblTelefono,lblTipoCliente,lblTipoDocumento,lblTipoVia,lblUrbanizacion,lblEstado},false,"");
         this.tblListado.setEnabled(true);
         this.tblListado.clearSelection();
         this.btnNuevo.setEnabled(true);

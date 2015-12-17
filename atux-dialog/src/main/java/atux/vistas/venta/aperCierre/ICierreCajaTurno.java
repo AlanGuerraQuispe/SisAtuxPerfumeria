@@ -164,6 +164,8 @@ public class ICierreCajaTurno extends javax.swing.JInternalFrame {
         btnCerrarCajaTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarCajaTurnoActionPerformed(evt);
+                dispose();
+
             }
         });
 

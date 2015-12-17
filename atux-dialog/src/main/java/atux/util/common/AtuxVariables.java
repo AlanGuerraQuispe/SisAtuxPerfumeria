@@ -284,6 +284,7 @@ public class AtuxVariables {
 
     public static double vDescuentox1 = 0.0;
     public static double vDescuentox2 = 0.0;
+    public static double vDescuentox2a = 0.0;
     public static double vDescuentox3 = 0.0;
     public static String vTicketera = "STAR";
     public static String vCoSucursal = "001";

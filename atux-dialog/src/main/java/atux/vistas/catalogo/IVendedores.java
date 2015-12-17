@@ -125,7 +125,6 @@ public class IVendedores extends javax.swing.JInternalFrame {
 
     private void setEventSelectionModel(ListSelectionModel lsm){
         ListSelectionListener lsl = new ListSelectionListener(){
-            @Override
             public void valueChanged(ListSelectionEvent e) {
                 selectionEvent(e);
             }
@@ -1589,7 +1588,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         if(!esActualizacion){
             cp.getUsuario().setNuSecUsuario(cp.getNuevoCodigo());
         }
-
         if (JOptionPane.showConfirmDialog(this, "Esta Seguro de Guardar los Datos","Mensaje del Sistema",JOptionPane.YES_NO_OPTION)==JOptionPane.NO_OPTION){
             return;
         }
@@ -1603,8 +1601,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }            
         }
 
-        boolean correcto = false; 
-
+        boolean correcto = false;
         if(!this.verficarCambios()){
             JOptionPane.showMessageDialog(this, "Debe cambiar por lo menos algun valor", "No hubo cambios", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -1620,11 +1617,13 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             return;    
         }
 
-        txtLogin.setText(txtNombres.getText().substring(0, 1) + txtApellidoPaterno.getText());
-        if (txtLogin.getText().length()>8){
-            txtPassword.setText(txtLogin.getText().substring(0, 8));
-        }else{
-            txtPassword.setText(txtLogin.getText());
+        if(!esActualizacion){
+            txtLogin.setText(txtNombres.getText().substring(0, 1) + txtApellidoPaterno.getText());
+            if (txtLogin.getText().length()>8){
+                txtPassword.setText(txtLogin.getText().substring(0, 8));
+            }else{
+                txtPassword.setText(txtLogin.getText());
+            }
         }
 
         try {
@@ -1985,6 +1984,7 @@ private void bntPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     usuario=cp.getUsuario();
 
     if(nu == JOptionPane.OK_OPTION){
+        //CambiarPassword pvc = new CambiarPassword();
         CambiarPassword pvc = new CambiarPassword(usuario);
         JLabel aviso = pvc.getLbAviso();
 

@@ -11,10 +11,10 @@
 
 	<bean id="dataSource" lazy-init="true"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-        <!--<property name="url" value="jdbc:oracle:thin:@192.168.1.200:1521:XE" />-->
+        <!--<property name="driverClassName" value="oracle.jdbc.OracleDriver" />-->
         <!--<property name="url" value="jdbc:oracle:thin:@7.164.158.123:1521:XE" />-->
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.102:1521:XE" />
+        <!--<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />-->
         <property name="username" value="atux"/>
         <property name="password" value="atuxpro"/>
         <property name="timeBetweenEvictionRunsMillis" value="10000"/><!--evict cada 10 segs-->

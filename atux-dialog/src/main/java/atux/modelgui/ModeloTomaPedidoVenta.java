@@ -154,7 +154,7 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         return false;
     }
 
-    public Double aplicaDescuento(){
+    public Double aplicaDescuento(String descEsp){
         int cantPedida = evaluarCantidadPedida();
 
         if(cantPedida==1)  //Un perfume
@@ -164,7 +164,12 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
 
         if(cantPedida==2)  //Dos perfumes
         {
-            return AtuxVariables.vDescuentox2;
+            if (descEsp=="No"){
+                return AtuxVariables.vDescuentox2;
+            }else{
+                return AtuxVariables.vDescuentox2a;
+            }
+
         }
 
         if(cantPedida>=3) //Tres o mas perfumes
@@ -222,7 +227,7 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         return this.mBruto;
     }
     
-    public Double getTotalDescuento()
+    public Double getTotalDescuento(String descEsp)
     {
         Double tmpDsc = 0.0;
         for(Object obj:this.registros)
@@ -236,10 +241,11 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
         }
                 
 //      this.mDscto = this.mBruto - tmpDsc ;
-        this.mDscto = aplicaDescuento() ;
+        this.mDscto = aplicaDescuento(descEsp) ;
         return this.mDscto;
     }
-    
+
+
     public Double getAfecto()
     {                
         this.mAfecto = this.mTotalPreVenta - mImpuesto;
