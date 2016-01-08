@@ -27,7 +27,7 @@ public class BaseConexion {
 
 //    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@localhost:1521:XE";
 //    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@7.164.158.123:1521:XE";
-public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.102:1521:XE";
+    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@192.168.1.102:1521:XE";
 //    public static String connect_string_thin = "jdbc:oracle:thin:atux/atuxpro@localhost:1521:XE";
 
     /**

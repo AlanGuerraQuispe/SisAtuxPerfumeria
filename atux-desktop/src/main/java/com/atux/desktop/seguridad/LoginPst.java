@@ -146,6 +146,7 @@ public class LoginPst extends AWFormPresenter<BNLogin> {
             AtuxVariables.vDescuentox2      = Double.parseDouble(properties.getProperty("MontoDescuentox2"));
             AtuxVariables.vDescuentox2a      = Double.parseDouble(properties.getProperty("MontoDescuentox2a"));
             AtuxVariables.vDescuentox3      = Double.parseDouble(properties.getProperty("MontoDescuentox3"));
+            AtuxVariables.vDescuentoMas3      = Double.parseDouble(properties.getProperty("MontoDescuentoMas3"));
         } else {
             throw new AWBusinessException("Error al leer properties");
         }

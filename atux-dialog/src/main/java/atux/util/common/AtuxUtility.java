@@ -655,6 +655,7 @@ public class AtuxUtility {
             if (myRedondeo >= 5) return (0.01 * (AtuxVariables.vCifraRedondeo - myRedondeo));
             else return (-1 * 0.01 * myRedondeo);
 
+
         } else {
             return 0.00;
         }

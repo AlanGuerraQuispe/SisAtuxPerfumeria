@@ -10,6 +10,8 @@ import org.apache.commons.lang.StringUtils;
 import java.util.ArrayList;
 import atux.util.*;
 
+import static com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.formatNumber;
+
 public class ModeloTomaPedidoVenta extends ModeloTabla{
 
     private Class[] tipoColumnas;
@@ -162,19 +164,33 @@ public class ModeloTomaPedidoVenta extends ModeloTabla{
             return AtuxVariables.vDescuentox1;
         }
 
-        if(cantPedida==2)  //Dos perfumes
-        {
-            if (descEsp=="No"){
+            if (descEsp=="No" && cantPedida==2){
                 return AtuxVariables.vDescuentox2;
             }else{
-                return AtuxVariables.vDescuentox2a;
+                if (cantPedida%2==0){
+                    int multiplo=0;
+                    multiplo = cantPedida / 2;
+                    return (AtuxVariables.vDescuentox2a * multiplo);
+                }
+//                return AtuxVariables.vDescuentox2a;
             }
 
+
+        if(cantPedida==3) //Tres
+        {
+                return AtuxVariables.vDescuentox3;
         }
 
         if(cantPedida>=3) //Tres o mas perfumes
         {
-                return AtuxVariables.vDescuentox3;
+            double pTotal =AtuxVariables.vDescuentoMas3 * cantPedida;
+            String myTotal = AtuxUtility.formatNumber(pTotal);
+            int myRedondeo = Integer.parseInt(myTotal.substring(myTotal.length() - 1, myTotal.length()));
+            if (myRedondeo==5){
+                return (AtuxVariables.vDescuentoMas3 * cantPedida) - 0.05;
+            }else{
+                return (AtuxVariables.vDescuentoMas3 * cantPedida) ;
+            }
         }
 
         return 0d;

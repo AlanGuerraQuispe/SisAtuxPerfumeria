@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e7aa3df7-906e-49b9-b928-649730bc154f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/resources/atux/resources/ImgMenuPrincipalPie.png" afterPath="$PROJECT_DIR$/atux-dialog/src/main/resources/atux/resources/ImgMenuPrincipalPie.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties" afterPath="$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/utilitario/CambiarPassword.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/utilitario/CambiarPassword.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/FrmAtuxV2.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/FrmAtuxV2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/aperCierre/ICierreCajaTurno.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/aperCierre/ICierreCajaTurno.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IClientes.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IClientes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/ICompletarPedidoVenta.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/ICompletarPedidoVenta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IVendedores.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IVendedores.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.form" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PedidoTest.java" afterPath="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PedidoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PromocionPedidoTest.java" afterPath="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PromocionPedidoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml" afterPath="$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux.ipr" afterPath="$PROJECT_DIR$/atux.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux.iws" afterPath="$PROJECT_DIR$/atux.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-tools/buildNumber.properties" afterPath="$PROJECT_DIR$/build-tools/buildNumber.properties" />
     </list>
@@ -211,113 +196,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java">
+      <file leaf-file-name="IPagoPedido.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="6477">
-              <caret line="939" column="0" selection-start-line="939" selection-start-column="0" selection-end-line="939" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminIFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/AdminIFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="969">
-              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="4896">
-              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDescuentoVenta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IDescuentoVenta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="7582">
-              <caret line="56" column="69" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CDescuentoVenta.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CDescuentoVenta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.2349398" vertical-offset="1230" max-vertical-offset="3723">
-              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="19159" max-vertical-offset="26639">
+              <caret line="1195" column="0" selection-start-line="1195" selection-start-column="0" selection-end-line="1195" selection-end-column="0" />
               <folding>
-                <element signature="e#4203#4219#0" expanded="true" />
+                <element signature="e#4174#4263#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModeloTablaDescuentoVenta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTablaDescuentoVenta.java">
+      <file leaf-file-name="IPedidoVentaInsumo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1326">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JAbstractController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/core/JAbstractController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7333" max-vertical-offset="17663">
-              <caret line="454" column="0" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.3448277" vertical-offset="19808" max-vertical-offset="20519">
+              <caret line="1211" column="51" selection-start-line="1211" selection-start-column="51" selection-end-line="1211" selection-end-column="51" />
               <folding>
-                <marker date="1443130906705" expanded="true" signature="598:708" placeholder="UPDATE missi..." />
-                <marker date="1443130906705" expanded="true" signature="2005:2153" placeholder="delete from ..." />
-                <marker date="1443130906705" expanded="true" signature="3718:3769" placeholder="UPDATE missi..." />
-                <marker date="1443130906705" expanded="true" signature="4223:4266" placeholder="delete from ..." />
-                <marker date="1443130906705" expanded="true" signature="18734:18758" placeholder="update missi..." />
-                <marker date="1443130906705" expanded="true" signature="19429:19544" placeholder="insert into ..." />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminIFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-jrcp/src/main/java/atux/util/AdminIFrame.java">
+      <file leaf-file-name="ModeloTomaPedidoVenta.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="986">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwingShowDialogAction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-jrcp/src/main/java/com/aw/swing/mvp/util/SwingShowDialogAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="646">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AWWindowsManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-jrcp/src/main/java/com/aw/swing/mvp/navigation/AWWindowsManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="2941">
-              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5147453" vertical-offset="2936" max-vertical-offset="6817">
+              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
               <folding>
-                <element signature="e#5822#5823#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasisLibrary.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.6.0_26/src.zip!/com/sun/org/apache/xalan/internal/xsltc/runtime/BasisLibrary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="15074" max-vertical-offset="25738">
+              <caret line="962" column="25" selection-start-line="962" selection-start-column="25" selection-end-line="962" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AtuxUtility.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="25993">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginPst.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="2771">
+              <caret line="136" column="79" selection-start-line="136" selection-start-column="79" selection-end-line="136" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AtuxServidor.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AtuxVariables.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4764" max-vertical-offset="5134">
+              <caret line="288" column="38" selection-start-line="288" selection-start-column="38" selection-end-line="288" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseConexion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="4216">
+              <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appctx-datasource.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="1122">
+              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -337,19 +317,21 @@
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/aperCierre/ICierreCajaTurno.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/utilitario/CambiarPassword.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IVendedores.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java" />
-        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/ICompletarPedidoVenta.java" />
         <option value="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PedidoTest.java" />
         <option value="$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PromocionPedidoTest.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java" />
-        <option value="$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java" />
         <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IDescuentoVenta.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java" />
+        <option value="$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java" />
+        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java" />
       </list>
     </option>
   </component>
@@ -426,6 +408,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -444,174 +428,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vistas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux-dialog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="atux" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vistas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalogo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="ProjectViewSettings">
@@ -1004,11 +822,13 @@
       <workItem from="1450115192033" duration="1822000" />
       <workItem from="1450362795727" duration="178000" />
       <workItem from="1450368757735" duration="237000" />
+      <workItem from="1450369564451" duration="9367000" />
+      <workItem from="1452285903134" duration="5269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28553000" />
+    <option name="totallyTimeSpent" value="43189000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1024,7 +844,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1033,22 +853,23 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27495623" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34676006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14854518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28330782" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47635728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50963223" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27495623" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1056,7 +877,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21366024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1161,8 +981,20 @@
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java</url>
+          <line>644</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java</url>
+          <line>664</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1171,34 +1003,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="19567">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/ICompletarPedidoVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18496" max-vertical-offset="18955">
-          <caret line="1158" column="60" selection-start-line="1158" selection-start-column="60" selection-end-line="1158" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PedidoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2858" max-vertical-offset="4488">
-          <caret line="215" column="96" selection-start-line="215" selection-start-column="96" selection-end-line="215" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/venta/PromocionPedidoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3927">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1615">
@@ -1391,56 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26881722" vertical-offset="2348" max-vertical-offset="6409">
-          <caret line="161" column="46" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1657" max-vertical-offset="2754">
-          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="13413" max-vertical-offset="20723">
-          <caret line="812" column="43" selection-start-line="812" selection-start-column="43" selection-end-line="812" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4723" max-vertical-offset="5117">
-          <caret line="287" column="38" selection-start-line="287" selection-start-column="38" selection-end-line="287" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="4216">
-          <caret line="29" column="97" selection-start-line="29" selection-start-column="97" selection-end-line="29" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="158" max-vertical-offset="1122">
-          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-desktop/src/test/java/com/atux/desktop/inventario/InventarioTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="1394">
@@ -1459,9 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2705" max-vertical-offset="2975">
           <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-          <folding>
-            <element signature="e#5822#5823#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1469,23 +1220,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="646">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4017" max-vertical-offset="6477">
-          <caret line="939" column="0" selection-start-line="939" selection-start-column="0" selection-end-line="939" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/AdminIFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="969">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1500,15 +1234,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="1054">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="5644">
-          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1523,15 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1326">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IDescuentoVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="7582">
-          <caret line="56" column="69" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1539,23 +1255,140 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7333" max-vertical-offset="17663">
           <caret line="454" column="0" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
-          <folding>
-            <marker date="1443130906705" expanded="true" signature="598:708" placeholder="UPDATE missi..." />
-            <marker date="1443130906705" expanded="true" signature="2005:2153" placeholder="delete from ..." />
-            <marker date="1443130906705" expanded="true" signature="3718:3769" placeholder="UPDATE missi..." />
-            <marker date="1443130906705" expanded="true" signature="4223:4266" placeholder="delete from ..." />
-            <marker date="1443130906705" expanded="true" signature="18734:18758" placeholder="update missi..." />
-            <marker date="1443130906705" expanded="true" signature="19429:19544" placeholder="insert into ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CDescuentoVenta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2349398" vertical-offset="1230" max-vertical-offset="3723">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3735849" vertical-offset="1230" max-vertical-offset="3723">
+          <caret line="92" column="33" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="33" />
           <folding>
             <element signature="e#4203#4219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IDescuentoVenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.116981134" vertical-offset="482" max-vertical-offset="7582">
+          <caret line="56" column="69" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="5644">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/AdminIFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44935542" vertical-offset="113" max-vertical-offset="969">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4017" max-vertical-offset="6477">
+          <caret line="939" column="0" selection-start-line="939" selection-start-column="0" selection-end-line="939" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="19159" max-vertical-offset="26639">
+          <caret line="1195" column="0" selection-start-line="1195" selection-start-column="0" selection-end-line="1195" selection-end-column="0" />
+          <folding>
+            <element signature="e#4174#4263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75067025" vertical-offset="1726" max-vertical-offset="21607">
+          <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="4216">
+          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="1122">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4764" max-vertical-offset="5134">
+          <caret line="288" column="38" selection-start-line="288" selection-start-column="38" selection-end-line="288" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/seguridad/LoginPst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="2771">
+          <caret line="136" column="79" selection-start-line="136" selection-start-column="79" selection-end-line="136" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.3448277" vertical-offset="19808" max-vertical-offset="20519">
+          <caret line="1211" column="51" selection-start-line="1211" selection-start-column="51" selection-end-line="1211" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="25993">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_26/src.zip!/com/sun/org/apache/xalan/internal/xsltc/runtime/BasisLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15084" max-vertical-offset="25738">
+          <caret line="962" column="25" selection-start-line="962" selection-start-column="25" selection-end-line="962" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5147453" vertical-offset="2936" max-vertical-offset="6817">
+          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
