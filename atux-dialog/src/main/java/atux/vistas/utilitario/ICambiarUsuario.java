@@ -1,23 +1,117 @@
 package atux.vistas.utilitario;
 
-import atux.controllers.CUsuario;
-import atux.modelbd.Usuario;
-import java.awt.Component;
 
-/**
- *
- * @author user
- */
-public class ICambiarUsuario extends javax.swing.JInternalFrame {
-    private CUsuario cus;
-    private Usuario us;
-    private int seActualizo = -1;    
-    
-    /** Creates new form ICambiarUsuario */
-    public ICambiarUsuario() {
+import atux.config.AppConfig;
+import atux.controllers.CCadena;
+import atux.controllers.CCliente;
+import atux.inventario.reference.ConstantsInventario;
+import atux.inventario.reference.VariablesInventario;
+import atux.modelbd.Local;
+import atux.modelgui.ModeloTablaCadena;
+import javax.swing.JOptionPane;
+
+import atux.util.common.AtuxSearch;
+import atux.util.common.AtuxVariables;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import javax.swing.JInternalFrame;
+import com.aw.core.domain.AWBusinessException;
+import com.aw.swing.mvp.ui.msg.MsgDisplayer;
+import com.aw.swing.mvp.ui.common.ProcessMsgBlocker;
+
+import java.sql.SQLException;
+
+
+public final class ICambiarUsuario extends javax.swing.JInternalFrame {
+//public class ICambiarUsuario extends javax.swing.JPanel {
+    private boolean loginOk = false;
+    private CCadena cp;
+    private ModeloTablaCadena mtp;
+    private boolean esActualizacion = false;
+    private int tipoSeleccion = -1; //-1 todo,1 activos, 0 No activos
+    public int finalPag = 0;//cont
+    public int tmpFp = finalPag;
+    public int inicioPag = 0;
+    public int numRegistros = 0;
+    JInternalFrame ifr;
+    private final Log logger = LogFactory.getLog(getClass());    
+    JOptionPane op;
+    /** Creates new form IImpuestoIGV */
+    public ICambiarUsuario(JInternalFrame ifr) {
         initComponents();
-        this.us = new Usuario();
-        this.cus = new CUsuario();        
+        cp = new CCadena();
+        this.ifr = ifr;
+        Limpiar();
+    }
+    
+    
+    private void Limpiar(){
+        this.txtUsuario.setText("");
+        this.txtPassword.setText("");
+    }
+
+    private void doLogin(String username, String passsword) {
+//            AppCtx.instance().setUsuario(new UsuarioDTO(username));
+
+        String msg = "";
+
+//            try {
+//                leerProperties();
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+
+        AppConfig.Estado configUsuario = AppConfig.configUsuario(username, passsword);
+        if (configUsuario == AppConfig.Estado.NO_EXISTE) {
+            throw new AWBusinessException("Usuario no existe");
+        } else if (configUsuario == AppConfig.Estado.ERROR_CLAVE) {
+            throw new AWBusinessException("Contraseña incorrecta");
+        } else {
+            if (configUsuario == AppConfig.Estado.ACCESO_OK) {
+                MsgDisplayer.showMessage("Bienvenido:  " + AppConfig.getUsuario().getNombreCompleto());
+
+                ProcessMsgBlocker.initialize("[AtuxPro] Por favor espere.");
+                ProcessMsgBlocker.instance().showMessage("Inicializando ...");
+                try {
+                    obtenerInfoLocal();
+                } catch (SQLException ex) {
+                    logger.error("Error al obtener configuracion del usuario ", ex);
+                }
+                finally {
+                    ProcessMsgBlocker.instance().removeMessage();
+                }
+                loginOk = true;
+            }
+        }
+
+    }
+
+    private void obtenerInfoLocal() throws SQLException {
+        Local local = AppConfig.getLocal(AtuxVariables.vCodigoLocal);
+        AtuxVariables.vDescripcionLocal = local.getDeLocal().trim();
+        AtuxVariables.vDescripcionCortaLocal = local.getDeCortaLocal().trim();
+        AtuxVariables.vTipoCaja = local.getTiCaja();
+        AtuxVariables.vDescripcionCompania = local.getCompania().getDeCompania();
+        AtuxVariables.vCompaniaDireccion = local.getCompania().getDeDireccion();
+        AtuxVariables.vCompaniaDireccionWeb = local.getCompania().getDeDireccionWeb();
+        AtuxVariables.vCompaniaFono = local.getCompania().getNuTelNormal();
+        AtuxVariables.vNuRucCompania = local.getCompania().getNuRucCompania();
+
+        AtuxVariables.vTipoCambio = AtuxSearch.getTipoCambio(AtuxSearch.getFechaHoraBD(AtuxVariables.FORMATO_FECHA));
+        AtuxVariables.vDeMensajeTicket = local.getDeMensajeTicket();
+        AtuxVariables.vDireccionLocal = local.getDeDireccionLocal();
+        AtuxVariables.vInTicketBoleta = local.getInTicketBoleta();
+        AtuxVariables.vInTicketFactura = local.getInTicketFactura();
+
+        VariablesInventario.PANT_GUIA_INGRESO_MANUAL = ConstantsInventario.PANT_GUIA_INGRESO_COTIZACION;
+        VariablesInventario.TIPO_INGRESO_MANUAL = ConstantsInventario.INGRESO_COTIZACION;
+        AtuxVariables.vInComprobanteManual = "N";
+
+        AtuxSearch.setIGV();
+
+        AtuxVariables.arrayClientes = new CCliente().getCliente("A");
+
+        logger.info(AtuxVariables.vDescripcionLocal + " Es caja <<" + AtuxVariables.vTipoCaja + ">> : Tradicional (T) - Multifuncional (M)");
     }
 
     /** This method is called from within the constructor to
@@ -29,166 +123,119 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPassword = new elaprendiz.gui.panel.PanelCurves();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        passActual = new elaprendiz.gui.passwordField.PasswordField();
-        passNueva = new elaprendiz.gui.passwordField.PasswordField();
-        passRepetir = new elaprendiz.gui.passwordField.PasswordField();
-        bntGuardar = new elaprendiz.gui.button.ButtonRect();
-        bntCancelar = new elaprendiz.gui.button.ButtonRect();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        panelImage1 = new elaprendiz.gui.panel.PanelImage();
+        pnlEntradasCompania = new javax.swing.JPanel();
+        lblCodigo = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        txtUsuario = new elaprendiz.gui.textField.TextField();
+        btnAceptar = new elaprendiz.gui.button.ButtonRect();
+        btnCancelar = new elaprendiz.gui.button.ButtonRect();
+        txtPassword = new javax.swing.JPasswordField();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel1.setText("Contraseña Actual:");
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel2.setText("Contraseña Nueva:");
+        pnlEntradasCompania.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Cambiar Usuario", 1, 2));
+        pnlEntradasCompania.setOpaque(false);
+        pnlEntradasCompania.setPreferredSize(new java.awt.Dimension(748, 120));
+        pnlEntradasCompania.setLayout(null);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel3.setText("Repita La Contraseña:");
+        lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 14));
+        lblCodigo.setText("Usuario :");
+        pnlEntradasCompania.add(lblCodigo);
+        lblCodigo.setBounds(41, 27, 61, 27);
 
-        passActual.setPreferredSize(new java.awt.Dimension(250, 21));
+        lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14));
+        lblDescripcion.setText("Contraseña:");
+        pnlEntradasCompania.add(lblDescripcion);
+        lblDescripcion.setBounds(41, 75, 85, 17);
 
-        passNueva.setPreferredSize(new java.awt.Dimension(250, 21));
+        txtUsuario.setEditable(false);
+        txtUsuario.setDireccionDeSombra(30);
+        txtUsuario.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtUsuario.setFont(new java.awt.Font("Arial", 0, 12));
+        txtUsuario.setName("pcodigo"); // NOI18N
+        txtUsuario.setPreferredSize(new java.awt.Dimension(120, 25));
+        pnlEntradasCompania.add(txtUsuario);
+        txtUsuario.setBounds(140, 30, 158, 25);
 
-        passRepetir.setPreferredSize(new java.awt.Dimension(250, 21));
-
-        bntGuardar.setBackground(new java.awt.Color(51, 153, 255));
-        bntGuardar.setText("Guardar");
-        bntGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setBackground(new java.awt.Color(51, 153, 255));
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntGuardarActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
+        pnlEntradasCompania.add(btnAceptar);
+        btnAceptar.setBounds(50, 120, 108, 35);
 
-        bntCancelar.setBackground(new java.awt.Color(51, 153, 255));
-        bntCancelar.setText("Cancelar");
-        bntCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
+        pnlEntradasCompania.add(btnCancelar);
+        btnCancelar.setBounds(200, 120, 109, 33);
 
-        javax.swing.GroupLayout panelPasswordLayout = new javax.swing.GroupLayout(panelPassword);
-        panelPassword.setLayout(panelPasswordLayout);
-        panelPasswordLayout.setHorizontalGroup(
-            panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPasswordLayout.createSequentialGroup()
-                .addGroup(panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel1)
-                        .addComponent(passActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel2)
-                        .addComponent(passNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel3)
-                        .addComponent(passRepetir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(bntGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+        txtPassword.setBackground(new java.awt.Color(-4144960,true));
+        txtPassword.setText("jPasswordField1");
+        pnlEntradasCompania.add(txtPassword);
+        txtPassword.setBounds(144, 63, 158, 29);
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(pnlEntradasCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
-        panelPasswordLayout.setVerticalGroup(
-            panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPasswordLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
-                    .addComponent(passActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel2))
-                    .addComponent(passNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPasswordLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel3))
-                    .addComponent(passRepetir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(panelPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bntGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(pnlEntradasCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-         String pas = String.copyValueOf(this.passActual.getPassword());
-         String pasN = String.copyValueOf(this.passNueva.getPassword());
-         String pasR = String.copyValueOf(this.passRepetir.getPassword());
-            if(!pas.isEmpty() && !pasN.isEmpty() && !pasR.isEmpty())
-            {       
-                //if(pas.equals(us.desencriptarPass())) //TODO aguerra
-                if(pas.equals(us.getDeClave()))
-                {
-                    if(pasN.equals(pasR))
-                    {
-                        //us.setClave(pasN);
-                        //us.encriptarPass();
-                        int ap = cus.actualizarPass(us);
-                        if(ap != 0)
-                        {
-                          seActualizo = 1;  
-                          getOptionPane();                          
-                        }
-                    }
-                }
-            }else{                
-                passActual.requestFocus();
-            }
-    }//GEN-LAST:event_bntGuardarActionPerformed
+private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+//        if (JOptionPane.showConfirmDialog(this, "Se perderan todos los datos ingresados\nEsta Seguro de Cancelar ","Mensaje del Sistema",JOptionPane.YES_NO_OPTION)==JOptionPane.NO_OPTION){
+//            return;
+//        }
 
-    private void bntCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelarActionPerformed
-          this.dispose();
-    }//GEN-LAST:event_bntCancelarActionPerformed
-    
-    private void getOptionPane()
-    {
-        Component pdr =this.getParent(); 
-        while(pdr.getParent() != null)
-        {            
-            pdr = pdr.getParent();
-        }
-    }
-    
+
+    doLogin(txtUsuario.getText(), txtPassword.getPassword().toString());
+
+}//GEN-LAST:event_btnAceptarActionPerformed
+
+private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+}//GEN-LAST:event_btnCancelarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private elaprendiz.gui.button.ButtonRect bntCancelar;
-    private elaprendiz.gui.button.ButtonRect bntGuardar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private elaprendiz.gui.panel.PanelCurves panelPassword;
-    private elaprendiz.gui.passwordField.PasswordField passActual;
-    private elaprendiz.gui.passwordField.PasswordField passNueva;
-    private elaprendiz.gui.passwordField.PasswordField passRepetir;
+    private elaprendiz.gui.button.ButtonRect btnAceptar;
+    private elaprendiz.gui.button.ButtonRect btnCancelar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblDescripcion;
+    private elaprendiz.gui.panel.PanelImage panelImage1;
+    private javax.swing.JPanel pnlEntradasCompania;
+    private javax.swing.JPasswordField txtPassword;
+    private elaprendiz.gui.textField.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

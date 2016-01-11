@@ -113,7 +113,7 @@ public class VentaTransaccionResumenPst extends AWFormPresenter<ReporteVenta> {
             ConsultaFlt consultaFlt = new ConsultaFlt();
             consultaFlt.setLocalId(AppCtx.instance().getLocalId());
             consultaFlt.setFeInicio(kardex.getFeInicio());
-            consultaFlt.setFeFin(kardex.getFeInicio());
+            consultaFlt.setFeFin(kardex.getFeFin());
             return consultaQryMapper.findResumenFormaPago(consultaFlt);
         }
 

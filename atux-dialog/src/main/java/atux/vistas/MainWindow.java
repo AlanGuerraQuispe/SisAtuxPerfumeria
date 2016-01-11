@@ -177,6 +177,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem42 = new javax.swing.JMenuItem();
         jMenuItem43 = new javax.swing.JMenuItem();
         jMenuItem44 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
 
@@ -740,6 +741,9 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem44.setText("Clave de Usuarios");
         jMenu5.add(jMenuItem44);
 
+        jMenuItem49.setText("Cambiar Usuario");
+        jMenu5.add(jMenuItem49);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuSalir.png"))); // NOI18N
@@ -915,10 +919,6 @@ public class MainWindow extends javax.swing.JFrame {
         AdminIFrame.mostrarVentanaCentrada(dp, vntLaboratorio);
     }//GEN-LAST:event_jMenuItem22ActionPerformed
 
-    private void jMenuItem42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem42ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem42ActionPerformed
-
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         if (vntPedidoVentaInsumo == null) {
             vntPedidoVentaInsumo = new IPedidoVentaInsumo();
@@ -939,6 +939,10 @@ public class MainWindow extends javax.swing.JFrame {
 private void jMenuItem48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem48ActionPerformed
 
 }//GEN-LAST:event_jMenuItem48ActionPerformed
+
+private void jMenuItem42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem42ActionPerformed
+
+}//GEN-LAST:event_jMenuItem42ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntCancelar;
@@ -997,6 +1001,7 @@ private void jMenuItem48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JMenuItem jMenuItem46;
     private javax.swing.JMenuItem jMenuItem47;
     private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;

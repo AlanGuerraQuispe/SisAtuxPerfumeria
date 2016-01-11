@@ -139,6 +139,7 @@ public class MenuBuilder {
 
         createMenu(mb, 'U', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuUtilitarios.png")))
                 .addJInternalFrame(ICorrelativoSis.class, "Correlativos")
+                .addJInternalFrame(ICambiarUsuario.class, "Cambiar Usuario")
                 //.addJInternalFrame(ICambiarUsuario.class, "Cambio Usuario")
         ;
 
