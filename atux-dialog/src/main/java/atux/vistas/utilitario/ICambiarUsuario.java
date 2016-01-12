@@ -1,66 +1,40 @@
 package atux.vistas.utilitario;
 
-
 import atux.config.AppConfig;
-import atux.controllers.CCadena;
 import atux.controllers.CCliente;
 import atux.inventario.reference.ConstantsInventario;
 import atux.inventario.reference.VariablesInventario;
 import atux.modelbd.Local;
-import atux.modelgui.ModeloTablaCadena;
-import javax.swing.JOptionPane;
-
 import atux.util.common.AtuxSearch;
 import atux.util.common.AtuxVariables;
+
+import com.aw.core.domain.AWBusinessException;
+import com.aw.swing.mvp.ui.common.ProcessMsgBlocker;
+import com.aw.swing.mvp.ui.msg.MsgDisplayer;
+import java.awt.event.KeyEvent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import javax.swing.JInternalFrame;
-import com.aw.core.domain.AWBusinessException;
-import com.aw.swing.mvp.ui.msg.MsgDisplayer;
-import com.aw.swing.mvp.ui.common.ProcessMsgBlocker;
 
 import java.sql.SQLException;
 
-
-public final class ICambiarUsuario extends javax.swing.JInternalFrame {
-//public class ICambiarUsuario extends javax.swing.JPanel {
+public class ICambiarUsuario extends javax.swing.JInternalFrame {
+    private final Log logger = LogFactory.getLog(getClass());
     private boolean loginOk = false;
-    private CCadena cp;
-    private ModeloTablaCadena mtp;
-    private boolean esActualizacion = false;
-    private int tipoSeleccion = -1; //-1 todo,1 activos, 0 No activos
-    public int finalPag = 0;//cont
-    public int tmpFp = finalPag;
-    public int inicioPag = 0;
-    public int numRegistros = 0;
-    JInternalFrame ifr;
-    private final Log logger = LogFactory.getLog(getClass());    
-    JOptionPane op;
-    /** Creates new form IImpuestoIGV */
-    public ICambiarUsuario(JInternalFrame ifr) {
+
+    public ICambiarUsuario() {
+
         initComponents();
-        cp = new CCadena();
-        this.ifr = ifr;
-        Limpiar();
+        limpiar();
+        
     }
-    
-    
-    private void Limpiar(){
-        this.txtUsuario.setText("");
-        this.txtPassword.setText("");
-    }
-
+   
+    public void limpiar(){
+        txtUsuario.setText("");
+        txtPassword.setText("");
+     }
+   
     private void doLogin(String username, String passsword) {
-//            AppCtx.instance().setUsuario(new UsuarioDTO(username));
-
         String msg = "";
-
-//            try {
-//                leerProperties();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-
         AppConfig.Estado configUsuario = AppConfig.configUsuario(username, passsword);
         if (configUsuario == AppConfig.Estado.NO_EXISTE) {
             throw new AWBusinessException("Usuario no existe");
@@ -85,7 +59,7 @@ public final class ICambiarUsuario extends javax.swing.JInternalFrame {
         }
 
     }
-
+   
     private void obtenerInfoLocal() throws SQLException {
         Local local = AppConfig.getLocal(AtuxVariables.vCodigoLocal);
         AtuxVariables.vDescripcionLocal = local.getDeLocal().trim();
@@ -114,6 +88,7 @@ public final class ICambiarUsuario extends javax.swing.JInternalFrame {
         logger.info(AtuxVariables.vDescripcionLocal + " Es caja <<" + AtuxVariables.vTipoCaja + ">> : Tradicional (T) - Multifuncional (M)");
     }
 
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -133,7 +108,29 @@ public final class ICambiarUsuario extends javax.swing.JInternalFrame {
         btnCancelar = new elaprendiz.gui.button.ButtonRect();
         txtPassword = new javax.swing.JPasswordField();
 
+        setBorder(null);
+        setTitle("Cambiar Usuario");
+        setPreferredSize(new java.awt.Dimension(380, 250));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atux/resources/fondoazulceleste.jpg"))); // NOI18N
+        panelImage1.setPreferredSize(new java.awt.Dimension(380, 250));
 
         pnlEntradasCompania.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(0), "Cambiar Usuario", 1, 2));
         pnlEntradasCompania.setOpaque(false);
@@ -150,12 +147,16 @@ public final class ICambiarUsuario extends javax.swing.JInternalFrame {
         pnlEntradasCompania.add(lblDescripcion);
         lblDescripcion.setBounds(41, 75, 85, 17);
 
-        txtUsuario.setEditable(false);
         txtUsuario.setDireccionDeSombra(30);
         txtUsuario.setDisabledTextColor(new java.awt.Color(255, 102, 102));
         txtUsuario.setFont(new java.awt.Font("Arial", 0, 12));
         txtUsuario.setName("pcodigo"); // NOI18N
         txtUsuario.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+        });
         pnlEntradasCompania.add(txtUsuario);
         txtUsuario.setBounds(140, 30, 158, 25);
 
@@ -179,54 +180,69 @@ public final class ICambiarUsuario extends javax.swing.JInternalFrame {
         pnlEntradasCompania.add(btnCancelar);
         btnCancelar.setBounds(200, 120, 109, 33);
 
-        txtPassword.setBackground(new java.awt.Color(-4144960,true));
+        txtPassword.setBackground(new java.awt.Color(-3618616,true));
         txtPassword.setText("jPasswordField1");
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
         pnlEntradasCompania.add(txtPassword);
-        txtPassword.setBounds(144, 63, 158, 29);
+        txtPassword.setBounds(140, 60, 160, 29);
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(pnlEntradasCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(pnlEntradasCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(panelImage1, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-//        if (JOptionPane.showConfirmDialog(this, "Se perderan todos los datos ingresados\nEsta Seguro de Cancelar ","Mensaje del Sistema",JOptionPane.YES_NO_OPTION)==JOptionPane.NO_OPTION){
-//            return;
-//        }
-
-
-    doLogin(txtUsuario.getText(), txtPassword.getPassword().toString());
-
+    doLogin(txtUsuario.getText().toUpperCase(), txtPassword.getText());
+    dispose();
 }//GEN-LAST:event_btnAceptarActionPerformed
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
+    dispose();
 }//GEN-LAST:event_btnCancelarActionPerformed
 
+private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+    switch (evt.getKeyCode()){
+        case KeyEvent.VK_ENTER: txtPassword.requestFocus();
+             break;
+    }
+}//GEN-LAST:event_txtUsuarioKeyReleased
+
+private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+    switch (evt.getKeyCode()){
+        case KeyEvent.VK_ENTER: btnAceptar.requestFocus();
+             break;
+    }
+}//GEN-LAST:event_txtPasswordKeyReleased
+
+private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+// TODO add your handling code here:
+    txtUsuario.requestFocus();
+}//GEN-LAST:event_formInternalFrameActivated
+    
+  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect btnAceptar;
     private elaprendiz.gui.button.ButtonRect btnCancelar;
@@ -238,4 +254,4 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPasswordField txtPassword;
     private elaprendiz.gui.textField.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-}
+   }
