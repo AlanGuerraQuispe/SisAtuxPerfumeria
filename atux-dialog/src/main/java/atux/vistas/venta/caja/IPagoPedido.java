@@ -781,7 +781,7 @@ public final class IPagoPedido extends javax.swing.JDialog {
             limpiarDatosTarjeta();
 
             actualizaPagos();
-
+            AtuxUtility.aceptarTransaccion();
         } catch (Exception ex) {
             arrayPagos = new ArrayList();
             ex.printStackTrace();

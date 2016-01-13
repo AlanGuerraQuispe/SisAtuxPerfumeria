@@ -1027,7 +1027,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         } else
             AtuxVariables.vTipoCliente = AtuxVariables.PERSONA_JURIDICA;
 
-        logger.info("El cliente es uan persona " + AtuxVariables.vTipoCliente);
+        logger.info("El cliente es una persona " + AtuxVariables.vTipoCliente);
 
         IPedidoGenerado iPedidoGenerado = new IPedidoGenerado(this, "Generación de Pedido", true);
 
@@ -1056,6 +1056,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         iPedidoGenerado.setVisible(true);
 
         if (AtuxVariables.vAceptar) {
+            pedido.setCoClienteLocal(null);
             AtuxVariables.vANombreDe = iPedidoGenerado.txtCliente.getText().trim();
             pedido.setNoImpresoCliente(AtuxVariables.vANombreDe);
             pedido.setNoImpresoComprobante(AtuxVariables.vANombreDe);
@@ -1069,7 +1070,29 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
             AtuxVariables.vDireccion = iPedidoGenerado.txtDireccion.getText().trim();
             pedido.setDeDireccionCliente(AtuxVariables.vDireccion);
 
+            try {
+                if(pedido.getTiComprobante().equals(AtuxVariables.TIPO_TICKET_FACTURA) &&
+                        pedido.getTiComprobante().equals(AtuxVariables.TIPO_FACTURA)) {
+                    AtuxSearch.updatePersonaJuridicaAPedido(pedido.getNuRucCliente(),
+                            pedido.getNoImpresoComprobante(),
+                            pedido.getTiComprobante(),
+                            pedido.getDeDireccionCliente(),
+                            pedido.getNuPedido());
+                }
+                else{
+                    AtuxSearch.updatePersonaNaturalAPedido(pedido.getCoClienteLocal(),
+                            pedido.getNoImpresoComprobante(),
+                            pedido.getDeDireccionCliente(),
+                            pedido.getNuPedido());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+//            AtuxUtility.aceptarTransaccion();
+
             mostrarPagoPedido();
+
             closeWindow(true);
         } else if (iPedidoGenerado.pedidoAnulado)
             closeWindow(true);

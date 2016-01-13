@@ -299,6 +299,10 @@ public class IPedidoGenerado extends JDialog {
                 //txtRUC.setEditable(false);
                 lblDocumento.setText("D.N.I");
                 lblTipoCliente.setText("Seleccione cliente :");
+                txtRUC.setEditable(true);
+                txtCliente.setEditable(true);
+                txtDireccion.setEditable(true);
+                rdbBoleta.setSelected(true);
                 AtuxUtility.moveFocus(txtCliente);                
                 //txtDireccion.setEditable(false);
             }

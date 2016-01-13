@@ -1169,15 +1169,30 @@ public class AtuxSearch {
 
     public static void updatePersonaNaturalAPedido(String pCoCliente,String pNoCliente,
                                                    String pDireccion,String pNuPedido) throws SQLException {
-        String query = "UPDATE VTTC_PEDIDO_VENTA " +
-                "    SET CO_CLIENTE_LOCAL         = '" + pCoCliente     + "'," +
-                "        NO_IMPRESO_CLIENTE       = '" + pNoCliente + "'," +
-                "        DE_DIRECCION_CLIENTE     = '" + pDireccion + "'," +
-                "        NO_IMPRESO_COMPROBANTE   = '" + pNoCliente + "'," +
-                "        DE_DIRECCION_COMPROBANTE = '" + pDireccion + "'" +
-                "  WHERE CO_COMPANIA = '" + AtuxVariables.vCodigoCompania + "'" +
-                "    AND CO_LOCAL    = '" + AtuxVariables.vCodigoLocal + "'" +
-                "    AND NU_PEDIDO   = '" + pNuPedido + "'";
+        String query="";
+        if (pCoCliente==null){
+            query = "UPDATE VTTC_PEDIDO_VENTA " +
+                    "    SET CO_CLIENTE_LOCAL         =  " + pCoCliente + "," +
+                    "        NO_IMPRESO_CLIENTE       = '" + pNoCliente + "'," +
+                    "        DE_DIRECCION_CLIENTE     = '" + pDireccion + "'," +
+                    "        NO_IMPRESO_COMPROBANTE   = '" + pNoCliente + "'," +
+                    "        DE_DIRECCION_COMPROBANTE = '" + pDireccion + "'" +
+                    "  WHERE CO_COMPANIA = '" + AtuxVariables.vCodigoCompania + "'" +
+                    "    AND CO_LOCAL    = '" + AtuxVariables.vCodigoLocal + "'" +
+                    "    AND NU_PEDIDO   = '" + pNuPedido + "'";
+        }else{
+            query = "UPDATE VTTC_PEDIDO_VENTA " +
+                    "    SET CO_CLIENTE_LOCAL         = '" + pCoCliente     + "'," +
+                    "        NO_IMPRESO_CLIENTE       = '" + pNoCliente + "'," +
+                    "        DE_DIRECCION_CLIENTE     = '" + pDireccion + "'," +
+                    "        NO_IMPRESO_COMPROBANTE   = '" + pNoCliente + "'," +
+                    "        DE_DIRECCION_COMPROBANTE = '" + pDireccion + "'" +
+                    "  WHERE CO_COMPANIA = '" + AtuxVariables.vCodigoCompania + "'" +
+                    "    AND CO_LOCAL    = '" + AtuxVariables.vCodigoLocal + "'" +
+                    "    AND NU_PEDIDO   = '" + pNuPedido + "'";
+        }
+
+
 
         AtuxDBUtility.executeSQLUpdate(query, false);
     }
