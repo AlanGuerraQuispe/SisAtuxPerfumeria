@@ -24,6 +24,7 @@ public class AWWindowsManager {
 
     private JFrame frame;
     private javax.swing.JDesktopPane dp;
+    private JFrame frmAtux;
 
     public static AWWindowsManager instance() {
         return instance;
@@ -195,5 +196,13 @@ public class AWWindowsManager {
 
     public void setDp(JDesktopPane dp) {
         this.dp = dp;
+    }
+
+    public JFrame getFrmAtux() {
+        return frmAtux;
+    }
+
+    public void setFrmAtux(JFrame frmAtux) {
+        this.frmAtux = frmAtux;
     }
 }

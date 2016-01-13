@@ -2,6 +2,7 @@ package atux.controllers;
 
 import atux.controllers.repository.AtuxException;
 import atux.modelbd.DetallePedidoVenta;
+import atux.modelbd.PedidoVenta;
 import atux.util.common.AtuxDBUtility;
 import atux.util.common.AtuxSearch;
 import atux.util.common.AtuxUtility;
@@ -514,7 +515,7 @@ public class CComprobantePago implements Cloneable {
         vaSaldoRedondeo = pRedondeo;
     }
 
-    public void calcularTotales() {
+    public void calcularTotales(PedidoVenta pedido) {
 
         logger.info("-- Inicio del proceso del proceso de calulo");        
 
@@ -533,22 +534,25 @@ public class CComprobantePago implements Cloneable {
                 tmpVaTotalVenta += (item.getVaVenta() * item.getCaAtendida());
                 tmpVaTotalPrecioVenta += item.getVaPrecioVenta();
             }
-
         }
+        vaTotalVenta     = pedido.getVaTotalVenta();
+        vaTotalDescuento = pedido.getVaTotalDescuento();
+        vaTotalImpuesto  = pedido.getVaTotalImpuesto();
+        vaTotalPrecioVenta = vaTotalVenta - vaTotalDescuento;
 
         // precio bruto
-        vaTotalVenta = incluyeIgv ? AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta / igv) :
-                AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta);
+        //vaTotalVenta = incluyeIgv ? AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta / igv) :
+                //AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta);
 
         // descuento
-        vaTotalDescuento = incluyeIgv ? AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta / igv) - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta / igv) :
-                AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta) - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta);
+        //vaTotalDescuento = incluyeIgv ? AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta / igv) - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta / igv) :
+                //AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalVenta) - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta);
 
         // igv
-        vaTotalImpuesto = incluyeIgv ? tmpVaTotalPrecioVenta - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta / igv) : 0;
+        //vaTotalImpuesto = incluyeIgv ? tmpVaTotalPrecioVenta - AtuxUtility.getDecimalNumberRedondeado(tmpVaTotalPrecioVenta / igv) : 0;
 
         // precio venta
-        vaTotalPrecioVenta = tmpVaTotalPrecioVenta;
+        //vaTotalPrecioVenta = tmpVaTotalPrecioVenta;
 
         // redondeo
         vaSaldoRedondeo = 0;

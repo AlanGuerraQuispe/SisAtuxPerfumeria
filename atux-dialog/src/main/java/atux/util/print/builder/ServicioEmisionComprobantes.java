@@ -267,7 +267,7 @@ public class ServicioEmisionComprobantes {
                 showNumeroComprobanteManual(pedido.getTiComprobante());
                 comprobantePago.setNuComprobanteManual(pedido.getNuComprobanteManual());
             }
-            comprobantePago.calcularTotales();
+            comprobantePago.calcularTotales(pedido);
         }
     }
 

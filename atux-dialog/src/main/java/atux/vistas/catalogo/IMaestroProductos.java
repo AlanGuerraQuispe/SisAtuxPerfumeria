@@ -43,6 +43,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private CMoneda controllerMoneda;
     private CImpuestoIGV controllerIGV;
     private CSimpleModelo controllerTipoProducto;
+    private CUnidadMedida controllerUnidadMedida;
 
     private boolean esActualizacion = false;
     private int tipoSeleccion = 1; //-1 todo,1 activos, 0 No activos
@@ -50,6 +51,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
     private DefaultComboBoxModel mInGenero;
     private DefaultComboBoxModel mImpuestoIGV;
     private DefaultComboBoxModel mTipoProducto;
+    private DefaultComboBoxModel mUnidadMedida;
 
     public int finalPag = 0;
     public int tmpFp = finalPag;
@@ -149,17 +151,26 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.cmbTipoProducto.setModel(mTipoProducto);
         this.cmbTipoProducto.setSelectedIndex(0);
 
+        controllerUnidadMedida = new CUnidadMedida();
+        mUnidadMedida = new DefaultComboBoxModel(controllerUnidadMedida.getRegistros().toArray());
+        this.cmbUnidadMedida.setModel(mUnidadMedida);
+        this.cmbUnidadMedida.setSelectedIndex(0);
+
         Limpiar();
         btnPrimeroActionPerformed(null);
         AtuxGridUtils.setearPrimerRegistro(tblListado, txtDescripcion, ModeloTablaSimple.COLUMNA_DESCRIPCION);
         tblListado.requestFocus();
 
-        lblCmbGenero.setBounds(120, 85, 137, 24);
-        lblCmbTipoProducto.setBounds(348, 40, 170, 24);
-        lblCmbImpuesto.setBounds(348, 83, 101, 24);
-        lblCmbMoneda.setBounds(348, 132, 171, 24);
+        lblCmbGenero.setBounds(120, 70, 137, 24);
+        lblCmbTipoProducto.setBounds(350, 30, 170, 24);
+        lblCmbImpuesto.setBounds(350, 70, 101, 24);
+        lblCmbMoneda.setBounds(350, 110, 171, 24);
+        lblCmbUnidadMedida.setBounds(120, 150, 170, 24);
+        txtValorUnidadMedida.setBounds(430, 150, 60, 25);
+        txtCodEzenz.setBounds(120, 30, 108, 25);
+
         txtFechaCreacion.setDisabledTextColor(Color.black);
-    }
+}   
 
     private void CargarGrilla() {
         if (tipoSeleccion == -1) {
@@ -210,6 +221,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.txtCodigoG3.setText(cp.getProducto().getCoNivel03() == null ? "" : cp.getProducto().getCoNivel03());
         this.txtCodigoG4.setText(cp.getProducto().getCoNivel04() == null ? "" : cp.getProducto().getCoNivel04());
         this.txtCodigoG5.setText(cp.getProducto().getCoNivel05() == null ? "" : cp.getProducto().getCoNivel05());
+        txtValorUnidadMedida.setText(Integer.toString(cp.getProducto().getVaUnidadMedida()));
         cmbOpcionTipoMaterial(cmbTipoProducto, cp.getProducto().getTiMaterialSap());
         cmbOpcionGenero(cmbGenero,cp.getProducto().getInGenero());
 
@@ -243,6 +255,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         InProdFraccionadoAnt = prodLocal.getInProdFraccionado();
         DeFraccionAnt = prodLocal.getDeUnidadFraccion();
         CaStockDisponibleAnt = prodLocal.getCaStockDisponible();
+        
 
 //        if (cp.getProducto().getTiMaterialSap().equals("PROD")){
 //            ProductoInsumo insumo = new CProductoInsumo().getPreciosInsumo(cp.getProducto().getCoCompania(), cp.getProducto().getCoProducto());
@@ -260,11 +273,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
 
         // Impuesto
         cmbOpcionImpuesto(cmbImpuesto, cp.getProducto().getCoImpuesto1());
+        cmbOpcionUnidadMedida(cmbUnidadMedida, cp.getProducto().getCoUnidadMedida());
 
         this.lblCmbGenero.setText(cmbGenero.getSelectedItem().toString());
         this.lblCmbTipoProducto.setText(cmbTipoProducto.getSelectedItem().toString());
         this.lblCmbImpuesto.setText(cmbImpuesto.getSelectedItem().toString());
         this.lblCmbMoneda.setText(cmbMoneda.getSelectedItem().toString());
+        this.lblCmbUnidadMedida.setText(cmbUnidadMedida.getSelectedItem().toString().trim());
     }
 
     private void cmbOpcionGenero(JComboBox cmbOption, String opcion) {
@@ -296,6 +311,16 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             ImpuestoIGV impuestoIGV = (ImpuestoIGV) cmbImpuesto.getItemAt(i);
             if (impuestoIGV.getCoImpuesto().equals(coImpuesto1)){
                 cmbImpuesto.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+
+    private void cmbOpcionUnidadMedida(JComboBox cmbOption, String coUnidadMedida) {
+        for (int i=0;i<cmbOption.getItemCount();i++){
+            UnidadMedida unidadMedida = (UnidadMedida) cmbOption.getItemAt(i);
+            if (unidadMedida.getCoUnidadMedida().equals(coUnidadMedida)){
+                cmbOption.setSelectedIndex(i);
                 break;
             }
         }
@@ -338,7 +363,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.txtSub_Division.setText("");
         this.txtFamilia.setText("");
         this.txtSub_Familia.setText("");
-
+        
+        this.lblCmbUnidadMedida.setText("");
+        this.lblCmbGenero.setText("");
+        this.lblCmbImpuesto.setText("");
+        this.lblCmbMoneda.setText("");
+        this.lblCmbTipoProducto.setText("");
+        
         this.cmbImpuesto.setEnabled(false);
         this.cmbMoneda.setEnabled(false);
 
@@ -352,7 +383,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
 
         ECampos.setEditableTexto(this.pnlDastosIniciales, true, new Component[]{lblCodigo, lblDescrip, lblUnidad, }, false, "");
         ECampos.setEditableTexto(this.pnlSetDeCategoria, true, new Component[]{lblG1, lblG2, lblG3, lblG4, lblG5}, false, "");
-        ECampos.setEditableTexto(this.pnlControlDescuento, true, new Component[]{lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbMoneda, lblImpuesto,lblMoneda ,lblTipoProducto, lblInGenero,lblImpuesto1,lblCodigoEnz}, false, "");
+        ECampos.setEditableTexto(this.pnlControlDescuento, true, new Component[]{lblCmbMoneda, lblUnidadMedida, lblValorUnidadMedida, lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbUnidadMedida, lblImpuesto,lblMoneda ,lblTipoProducto, lblInGenero,lblImpuesto1,lblCodigoEnz}, false, "");
         ECampos.setEditableTexto(this.pnlBuscadorCategorias2, true, new Component[]{lblCostoSol, lblPrecioSol, lblDescuento, lblPVP, lblInGenero,lblFechaCreacion}, false, "");
 
         this.tblListado.setEnabled(false);
@@ -387,11 +418,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.lblCmbTipoProducto.setVisible(false);
         this.lblCmbImpuesto.setVisible(false);
         this.lblCmbMoneda.setVisible(false);
+        this.lblCmbUnidadMedida.setVisible(false);
         
         this.cmbGenero.setVisible(true);
         this.cmbTipoProducto.setVisible(true);
         this.cmbImpuesto.setVisible(true);
         this.cmbMoneda.setVisible(true);
+        this.cmbUnidadMedida.setVisible(true);
     }
 
     private void DesActivarCasillas() {
@@ -401,7 +434,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         pnlBuscadorCategorias2.setEnabled(true);
         ECampos.setEditableTexto(this.pnlDastosIniciales, false, new Component[]{lblCodigo, lblDescrip, lblUnidad}, false, "");
         ECampos.setEditableTexto(this.pnlSetDeCategoria, false, new Component[]{lblG1, lblG2, lblG3, lblG4, lblG5}, false, "");
-        ECampos.setEditableTexto(this.pnlControlDescuento, false, new Component[]{lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbMoneda, lblImpuesto,lblMoneda, lblImpuesto1,lblTipoProducto, lblInGenero,lblCodigoEnz}, false, "");
+        ECampos.setEditableTexto(this.pnlControlDescuento, false, new Component[]{lblCmbMoneda, lblUnidadMedida, lblValorUnidadMedida, lblCmbGenero, lblCmbTipoProducto, lblCmbImpuesto, lblCmbUnidadMedida, lblImpuesto,lblMoneda, lblImpuesto1,lblTipoProducto, lblInGenero,lblCodigoEnz}, false, "");
         ECampos.setEditableTexto(this.pnlBuscadorCategorias2, false, new Component[]{lblCostoSol, lblPrecioSol, lblDescuento, lblPVP, lblInGenero,lblFechaCreacion}, false, "");
 
         this.tblListado.setEnabled(true);
@@ -439,11 +472,13 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         this.lblCmbTipoProducto.setVisible(true);
         this.lblCmbImpuesto.setVisible(true);
         this.lblCmbMoneda.setVisible(true);
+        this.lblCmbUnidadMedida.setVisible(true);
                 
         this.cmbGenero.setVisible(false);
         this.cmbTipoProducto.setVisible(false);
         this.cmbImpuesto.setVisible(false);
         this.cmbMoneda.setVisible(false);
+        this.cmbUnidadMedida.setVisible(false);
     }
 
     public boolean verficarCambios() {
@@ -490,8 +525,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         cp.getProducto().setNuRevisionProducto("0");
         cp.getProducto().setDeCortaProducto(null);
         cp.getProducto().setCoFactorPrecio(null);
-        cp.getProducto().setCoMoneda(controllerMoneda.getMoneda().getCoMoneda());
-        cp.getProducto().setCoImpuesto1(controllerIGV.getImpuesto().getCoImpuesto());
+        cp.getProducto().setCoMoneda(((Moneda) cmbMoneda.getItemAt(cmbMoneda.getSelectedIndex())).getCoMoneda());
+        cp.getProducto().setCoImpuesto1(((ImpuestoIGV) cmbImpuesto.getItemAt(cmbImpuesto.getSelectedIndex())).getCoImpuesto());
         cp.getProducto().setCoImpuesto2(null);
         cp.getProducto().setCoLineaProducto(null);
         cp.getProducto().setCoGrupoProducto(null);
@@ -500,7 +535,8 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         cp.getProducto().setCoCategoriaSb(null);
         cp.getProducto().setCoSubcategoriaSb(null);
         cp.getProducto().setDeUnidadProducto(this.txtUnidad.getText().toUpperCase());
-        cp.getProducto().setVaUnidadMedida(0);
+        cp.getProducto().setCoUnidadMedida(((UnidadMedida) cmbUnidadMedida.getItemAt(cmbUnidadMedida.getSelectedIndex())).getCoUnidadMedida());
+        cp.getProducto().setVaUnidadMedida(Integer.parseInt(txtValorUnidadMedida.getText().trim()));
         cp.getProducto().setCoUnidadCompra(null);
         cp.getProducto().setCoUnidadVenta(null);
         cp.getProducto().setCoUnidadContenido(null);
@@ -716,7 +752,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtSub_Familia = new elaprendiz.gui.textField.TextField();
         pnlControlDescuento = new javax.swing.JPanel();
         lblInGenero = new javax.swing.JLabel();
-        lblCmbMoneda = new javax.swing.JLabel();
+        lblCmbUnidadMedida = new javax.swing.JLabel();
         lblCmbImpuesto = new javax.swing.JLabel();
         lblCmbTipoProducto = new javax.swing.JLabel();
         lblTipoProducto = new javax.swing.JLabel();
@@ -731,6 +767,11 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblImpuesto1 = new javax.swing.JLabel();
         txtCodEzenz = new elaprendiz.gui.textField.TextField();
         lblCodigoEnz = new javax.swing.JLabel();
+        lblUnidadMedida = new javax.swing.JLabel();
+        cmbUnidadMedida = new javax.swing.JComboBox();
+        lblValorUnidadMedida = new javax.swing.JLabel();
+        txtValorUnidadMedida = new elaprendiz.gui.textField.TextField();
+        lblCmbMoneda = new javax.swing.JLabel();
         pnlBuscadorCategorias2 = new javax.swing.JPanel();
         lblPVP = new javax.swing.JLabel();
         lblDescuento = new javax.swing.JLabel();
@@ -1072,70 +1113,70 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         lblInGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblInGenero.setText("Dirigido:");
         pnlControlDescuento.add(lblInGenero);
-        lblInGenero.setBounds(50, 90, 60, 23);
+        lblInGenero.setBounds(50, 70, 60, 23);
 
-        lblCmbMoneda.setText("lblCmbMoneda");
-        lblCmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
-        lblCmbMoneda.setOpaque(true);
-        pnlControlDescuento.add(lblCmbMoneda);
-        lblCmbMoneda.setBounds(330, 160, 80, 20);
+        lblCmbUnidadMedida.setText("lblCmbUnidadMedida");
+        lblCmbUnidadMedida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbUnidadMedida.setOpaque(true);
+        pnlControlDescuento.add(lblCmbUnidadMedida);
+        lblCmbUnidadMedida.setBounds(230, 170, 80, 20);
 
         lblCmbImpuesto.setText("lblCmbImpuesto");
         lblCmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         lblCmbImpuesto.setOpaque(true);
         pnlControlDescuento.add(lblCmbImpuesto);
-        lblCmbImpuesto.setBounds(240, 160, 80, 20);
+        lblCmbImpuesto.setBounds(370, 170, 80, 20);
 
         lblCmbTipoProducto.setText("lblCmbTipoProducto");
         lblCmbTipoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         lblCmbTipoProducto.setOpaque(true);
         pnlControlDescuento.add(lblCmbTipoProducto);
-        lblCmbTipoProducto.setBounds(110, 160, 110, 20);
+        lblCmbTipoProducto.setBounds(460, 80, 100, 20);
 
         lblTipoProducto.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblTipoProducto.setText("Tipo producto:");
         pnlControlDescuento.add(lblTipoProducto);
-        lblTipoProducto.setBounds(247, 41, 91, 23);
+        lblTipoProducto.setBounds(250, 30, 91, 23);
 
         cmbTipoProducto.setFont(new java.awt.Font("Tahoma", 1, 12));
         cmbTipoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbTipoProducto);
-        cmbTipoProducto.setBounds(348, 40, 170, 24);
+        cmbTipoProducto.setBounds(350, 30, 170, 24);
 
         cmbImpuesto.setFont(new java.awt.Font("Tahoma", 1, 12));
         cmbImpuesto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbImpuesto);
-        cmbImpuesto.setBounds(348, 83, 101, 24);
+        cmbImpuesto.setBounds(350, 70, 101, 24);
 
         lblImpuesto.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblImpuesto.setText("Imp. IGV");
         lblImpuesto.setAlignmentX(0.2F);
         lblImpuesto.setAlignmentY(0.2F);
         pnlControlDescuento.add(lblImpuesto);
-        lblImpuesto.setBounds(280, 88, 53, 15);
+        lblImpuesto.setBounds(280, 70, 53, 20);
 
         lblCmbGenero.setText("lblCmbGenero");
         lblCmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         lblCmbGenero.setOpaque(true);
         pnlControlDescuento.add(lblCmbGenero);
-        lblCmbGenero.setBounds(20, 160, 70, 20);
+        lblCmbGenero.setBounds(480, 60, 70, 20);
 
         cmbGenero.setFont(new java.awt.Font("Tahoma", 1, 12));
         cmbGenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbGenero);
-        cmbGenero.setBounds(120, 85, 137, 24);
+        cmbGenero.setBounds(120, 70, 137, 24);
 
         lblMoneda.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblMoneda.setText("Moneda S/.");
         lblMoneda.setAlignmentX(0.2F);
         lblMoneda.setAlignmentY(0.2F);
         pnlControlDescuento.add(lblMoneda);
-        lblMoneda.setBounds(266, 137, 72, 15);
+        lblMoneda.setBounds(270, 120, 72, 15);
 
         cmbMoneda.setFont(new java.awt.Font("Tahoma", 1, 12));
         cmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
         pnlControlDescuento.add(cmbMoneda);
-        cmbMoneda.setBounds(348, 132, 171, 24);
+        cmbMoneda.setBounds(350, 110, 171, 24);
 
         chbEstado.setBackground(new java.awt.Color(51, 153, 255));
         chbEstado.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -1156,14 +1197,14 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
             }
         });
         pnlControlDescuento.add(chbEstado);
-        chbEstado.setBounds(120, 130, 100, 26);
+        chbEstado.setBounds(120, 110, 100, 26);
 
         lblImpuesto1.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblImpuesto1.setText("Estado");
         lblImpuesto1.setAlignmentX(0.2F);
         lblImpuesto1.setAlignmentY(0.2F);
         pnlControlDescuento.add(lblImpuesto1);
-        lblImpuesto1.setBounds(60, 130, 42, 15);
+        lblImpuesto1.setBounds(60, 120, 42, 15);
 
         txtCodEzenz.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtCodEzenz.setAlignmentX(0.2F);
@@ -1173,12 +1214,43 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         txtCodEzenz.setFont(new java.awt.Font("Arial", 0, 12));
         txtCodEzenz.setName("pdescrip"); // NOI18N
         pnlControlDescuento.add(txtCodEzenz);
-        txtCodEzenz.setBounds(122, 40, 108, 21);
+        txtCodEzenz.setBounds(120, 30, 108, 21);
 
         lblCodigoEnz.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblCodigoEnz.setText("Cod EZENZ:");
         pnlControlDescuento.add(lblCodigoEnz);
-        lblCodigoEnz.setBounds(40, 40, 68, 20);
+        lblCodigoEnz.setBounds(40, 30, 68, 20);
+
+        lblUnidadMedida.setFont(new java.awt.Font("Tahoma", 1, 12));
+        lblUnidadMedida.setText("Unidad Medida");
+        pnlControlDescuento.add(lblUnidadMedida);
+        lblUnidadMedida.setBounds(20, 150, 90, 23);
+
+        cmbUnidadMedida.setFont(new java.awt.Font("Tahoma", 1, 12));
+        cmbUnidadMedida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        pnlControlDescuento.add(cmbUnidadMedida);
+        cmbUnidadMedida.setBounds(120, 150, 170, 24);
+
+        lblValorUnidadMedida.setFont(new java.awt.Font("Tahoma", 1, 12));
+        lblValorUnidadMedida.setText("Valor Unidad Medida");
+        pnlControlDescuento.add(lblValorUnidadMedida);
+        lblValorUnidadMedida.setBounds(300, 150, 125, 20);
+
+        txtValorUnidadMedida.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtValorUnidadMedida.setAlignmentX(0.2F);
+        txtValorUnidadMedida.setAlignmentY(0.2F);
+        txtValorUnidadMedida.setDireccionDeSombra(30);
+        txtValorUnidadMedida.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtValorUnidadMedida.setFont(new java.awt.Font("Arial", 0, 12));
+        txtValorUnidadMedida.setName("pdescrip"); // NOI18N
+        pnlControlDescuento.add(txtValorUnidadMedida);
+        txtValorUnidadMedida.setBounds(430, 150, 60, 20);
+
+        lblCmbMoneda.setText("lblCmbMoneda");
+        lblCmbMoneda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(-16777216,true)));
+        lblCmbMoneda.setOpaque(true);
+        pnlControlDescuento.add(lblCmbMoneda);
+        lblCmbMoneda.setBounds(480, 170, 80, 20);
 
         pnlEntradasCategorias_G05.add(pnlControlDescuento);
         pnlControlDescuento.setBounds(496, 65, 570, 197);
@@ -2035,6 +2107,7 @@ public class IMaestroProductos extends javax.swing.JInternalFrame {
         CargarGrilla();
         JOptionPane.showMessageDialog(this, "Información Guardada Satisfactoriamente", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
         tblListado.requestFocus();
+        setMaestroProductos();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -2183,12 +2256,14 @@ private void txtFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIR
     private javax.swing.JComboBox cmbImpuesto;
     private javax.swing.JComboBox cmbMoneda;
     private javax.swing.JComboBox cmbTipoProducto;
+    private javax.swing.JComboBox cmbUnidadMedida;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCmbGenero;
     private javax.swing.JLabel lblCmbImpuesto;
     private javax.swing.JLabel lblCmbMoneda;
     private javax.swing.JLabel lblCmbTipoProducto;
+    private javax.swing.JLabel lblCmbUnidadMedida;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoEnz;
     private javax.swing.JLabel lblCostoSol;
@@ -2209,6 +2284,8 @@ private void txtFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIR
     private javax.swing.JLabel lblPrecioSol;
     private javax.swing.JLabel lblTipoProducto;
     private javax.swing.JLabel lblUnidad;
+    private javax.swing.JLabel lblUnidadMedida;
+    private javax.swing.JLabel lblValorUnidadMedida;
     private elaprendiz.gui.panel.PanelImage panelImage1;
     private javax.swing.JPanel pnlAccionesCategorias;
     private javax.swing.JPanel pnlBuscadorCategorias;
@@ -2240,5 +2317,6 @@ private void txtFechaCreacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIR
     private elaprendiz.gui.textField.TextField txtSub_Division;
     private elaprendiz.gui.textField.TextField txtSub_Familia;
     private elaprendiz.gui.textField.TextField txtUnidad;
+    private elaprendiz.gui.textField.TextField txtValorUnidadMedida;
     // End of variables declaration//GEN-END:variables
 }

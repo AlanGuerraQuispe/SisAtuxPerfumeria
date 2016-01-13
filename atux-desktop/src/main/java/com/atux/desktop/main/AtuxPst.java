@@ -7,6 +7,7 @@ import com.atux.config.SPSysProp;
 import com.atux.desktop.seguridad.LoginPst;
 import com.aw.core.util.StringUtils;
 import com.aw.swing.mvp.PstMgr;
+import com.aw.swing.mvp.navigation.AWWindowsManager;
 import com.aw.swing.mvp.ui.common.ProcessMsgBlocker;
 import com.aw.swing.mvp.ui.laf.LookAndFeelManager;
 import com.aw.swing.spring.Application;
@@ -37,9 +38,12 @@ public class
         String bdInfo = StringUtils.nvl("TEST", "¿BD?");
         String debugInfo = SPSysProp.isDeveloperDebugEnabled() ? " /DEBUGMODE " : "";
         String appInfo = "[V:" + version + "/Env:" + enviroment + "/BD:" + bdInfo + debugInfo + "]";
+
         frmAtux.setTitle("ICBB " + /*appInfo version + " " +*/ " " + AppCtx.instance().getUsuario().getIdUsuario() +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
+
         final MenuBuilder mb = new MenuBuilder();
         frmAtux.setJMenuBar(mb.createMenus());
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frmAtux.getSize();
         if (frameSize.height > screenSize.height) {
@@ -49,6 +53,7 @@ public class
             frameSize.width = screenSize.width;
         }
         frmAtux.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+        AWWindowsManager.instance().setFrmAtux(frmAtux);
         frmAtux.setVisible(true);
 
     }
@@ -105,5 +110,4 @@ public class
         });
 
     }
-
 }

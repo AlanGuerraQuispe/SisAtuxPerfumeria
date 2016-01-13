@@ -1,4 +1,4 @@
-package atux.vistas.utilitario;
+package com.atux.desktop.main;
 
 import atux.config.AppConfig;
 import atux.controllers.CCliente;
@@ -7,8 +7,10 @@ import atux.inventario.reference.VariablesInventario;
 import atux.modelbd.Local;
 import atux.util.common.AtuxSearch;
 import atux.util.common.AtuxVariables;
-
+import com.atux.comun.context.AppCtx;
+import com.atux.desktop.seguridad.LoginPst;
 import com.aw.core.domain.AWBusinessException;
+import com.aw.swing.mvp.navigation.AWWindowsManager;
 import com.aw.swing.mvp.ui.common.ProcessMsgBlocker;
 import com.aw.swing.mvp.ui.msg.MsgDisplayer;
 import java.awt.event.KeyEvent;
@@ -22,10 +24,8 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
     private boolean loginOk = false;
 
     public ICambiarUsuario() {
-
         initComponents();
         limpiar();
-        
     }
    
     public void limpiar(){
@@ -43,6 +43,10 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
         } else {
             if (configUsuario == AppConfig.Estado.ACCESO_OK) {
                 MsgDisplayer.showMessage("Bienvenido:  " + AppConfig.getUsuario().getNombreCompleto());
+
+                //AppCtx.instance().getUsuario().getIdUsuario()
+                AWWindowsManager.instance().getFrmAtux().setTitle("ICBB " + /*appInfo version + " " +*/ " " +AppConfig.getUsuario().getNombreCompleto()  +" - IP : [ " + AtuxVariables.vIP_PC.trim()+" ]");
+                AWWindowsManager.instance().getFrmAtux().getGraphics();
 
                 ProcessMsgBlocker.initialize("[AtuxPro] Por favor espere.");
                 ProcessMsgBlocker.instance().showMessage("Inicializando ...");
@@ -214,6 +218,7 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+
     doLogin(txtUsuario.getText().toUpperCase(), txtPassword.getText());
     dispose();
 }//GEN-LAST:event_btnAceptarActionPerformed

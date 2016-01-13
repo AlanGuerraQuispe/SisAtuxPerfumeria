@@ -18,7 +18,6 @@ import com.atux.desktop.consulta.SeleccionarDetalleVentaPst;
 import com.atux.desktop.consulta.SeleccionarVentaDiaPst;
 import com.atux.desktop.consulta.SeleccionarVentaTransaccionPst;
 import com.atux.desktop.consulta.SeleccionarVentaVendedorPst;
-import com.atux.desktop.donacion.FNDonacionPst;
 import com.atux.desktop.inventario.*;
 import com.atux.desktop.promocion.FNPromocionPst;
 import com.aw.core.format.FillerFormat;
@@ -140,7 +139,6 @@ public class MenuBuilder {
         createMenu(mb, 'U', new javax.swing.ImageIcon(getClass().getResource("/atux/resources/menuUtilitarios.png")))
                 .addJInternalFrame(ICorrelativoSis.class, "Correlativos")
                 .addJInternalFrame(ICambiarUsuario.class, "Cambiar Usuario")
-                //.addJInternalFrame(ICambiarUsuario.class, "Cambio Usuario")
         ;
 
         return mb;
