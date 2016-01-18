@@ -71,7 +71,7 @@ public class MenuBuilder {
 //                .addJInternalFrame(IConsultarPedidosACredito.class, "Pedidos a Crédito")
                 ;
 
-        createMenu(ventas.getMenu(),"Consulta")
+        createMenu(ventas.getMenu(), "Consulta")
                 .addPst(SeleccionarDetalleVentaPst.class, "Detalle de Venta")
                 .addPst(SeleccionarVentaTransaccionPst.class, "Venta x Transacción")
                 .addPst(SeleccionarVentaDiaPst.class, "Venta x Día")
@@ -149,6 +149,8 @@ public class MenuBuilder {
         MenuBuilder m = new MenuBuilder();
         m.createMenus();
     }
+
+
 
     private void asignarMnemonics(List<? extends JMenuItem> menus, Character usedLetter) {
         List<Character> usedChars = new ArrayList<Character>();

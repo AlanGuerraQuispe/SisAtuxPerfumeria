@@ -112,6 +112,9 @@ public final class IPagoPedido extends javax.swing.JDialog {
         initComponents();
         this.setDefaultCloseOperation(0);
         AtuxUtility.centrarVentana((JDialog) this);
+        cmbMoneda.setEnabled(false);
+        calculaTotales();
+
     }
 
     public IPagoPedido(Frame frame, String title, boolean modal) {
@@ -122,6 +125,9 @@ public final class IPagoPedido extends javax.swing.JDialog {
         txtMontoPagado.setDocument(new AtuxLengthText(10));
         this.setDefaultCloseOperation(0);
         AtuxUtility.centrarVentana((JDialog) this);
+        cmbMoneda.setEnabled(false);
+        calculaTotales();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -170,7 +176,6 @@ public final class IPagoPedido extends javax.swing.JDialog {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
-
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -210,42 +215,42 @@ public final class IPagoPedido extends javax.swing.JDialog {
         javax.swing.GroupLayout panelCabCobroLayout = new javax.swing.GroupLayout(panelCabCobro);
         panelCabCobro.setLayout(panelCabCobroLayout);
         panelCabCobroLayout.setHorizontalGroup(
-                panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelCabCobroLayout.createSequentialGroup()
-                                .addContainerGap(37, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTipoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
+            panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCabCobroLayout.createSequentialGroup()
+                    .addContainerGap(37, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel14)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblTipoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18))
         );
         panelCabCobroLayout.setVerticalGroup(
-                panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelCabCobroLayout.createSequentialGroup()
-                                .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabCobroLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                                                        .addComponent(jLabel2)))
-                                        .addGroup(panelCabCobroLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(lblDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel14)
-                                                        .addComponent(lblTipoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addContainerGap())
+            panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCabCobroLayout.createSequentialGroup()
+                    .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabCobroLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                            .addComponent(jLabel2)))
+                            .addGroup(panelCabCobroLayout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addGroup(panelCabCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(lblDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14)
+                                            .addComponent(lblTipoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap())
         );
 
         panelBodyCobro.setPreferredSize(new java.awt.Dimension(400, 295));
@@ -259,7 +264,6 @@ public final class IPagoPedido extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMontoPagadoKeyPressed(evt);
             }
-
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMontoPagadoKeyTyped(evt);
             }
@@ -275,7 +279,6 @@ public final class IPagoPedido extends javax.swing.JDialog {
 
         cmbMoneda.setForeground(new java.awt.Color(204, 0, 0));
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Detalle de los pagos :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
         jScrollPane1.setViewportView(tblDetallePago);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -320,6 +323,15 @@ public final class IPagoPedido extends javax.swing.JDialog {
                 cmbFormaPagoItemStateChanged(evt);
             }
         });
+        cmbFormaPago.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbFormaPagoFocusGained(evt);
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cmbFormaPagoFocusLost(evt);
+            }
+        });
         cmbFormaPago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cmbFormaPagoKeyReleased(evt);
@@ -336,87 +348,87 @@ public final class IPagoPedido extends javax.swing.JDialog {
         javax.swing.GroupLayout panelBodyCobroLayout = new javax.swing.GroupLayout(panelBodyCobro);
         panelBodyCobro.setLayout(panelBodyCobroLayout);
         panelBodyCobroLayout.setHorizontalGroup(
-                panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
-                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(jLabel8)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(lblTotalPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(91, 91, 91)
-                                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(lblVuelto, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                                                                .addGap(55, 55, 55))
-                                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                .addGap(5, 5, 5)
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel6)
-                                                        .addComponent(jLabel4))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(txtMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(cmbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                                .addGap(21, 21, 21)
-                                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(bntAdicionar)))))
-                                .addContainerGap())
+            panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(6, 6, 6)
+                                                    .addComponent(jLabel8)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(lblTotalPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(91, 91, 91)
+                                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(lblVuelto, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                                    .addGap(55, 55, 55))
+                                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                    .addGap(5, 5, 5)
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cmbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                                    .addGap(21, 21, 21)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(bntAdicionar)))))
+                    .addContainerGap())
         );
         panelBodyCobroLayout.setVerticalGroup(
-                panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBodyCobroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(bntAdicionar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panelBodyCobroLayout.createSequentialGroup()
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(jLabel10)
-                                                                .addComponent(lblSaldo))
-                                                        .addComponent(jLabel9))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblVuelto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel13)
-                                                        .addComponent(jLabel12)))
-                                        .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jLabel8)
-                                                .addComponent(lblTotalPagado)
-                                                .addComponent(jLabel7)))
-                                .addContainerGap())
+            panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBodyCobroLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bntAdicionar))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBodyCobroLayout.createSequentialGroup()
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(lblSaldo))
+                                            .addComponent(jLabel9))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblVuelto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel12)))
+                            .addGroup(panelBodyCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(lblTotalPagado)
+                                    .addComponent(jLabel7)))
+                    .addContainerGap())
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -433,30 +445,30 @@ public final class IPagoPedido extends javax.swing.JDialog {
         javax.swing.GroupLayout panelFootCobroLayout = new javax.swing.GroupLayout(panelFootCobro);
         panelFootCobro.setLayout(panelFootCobroLayout);
         panelFootCobroLayout.setHorizontalGroup(
-                panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelFootCobroLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblComprobantes)
-                                        .addComponent(lblComprobantesT))
-                                .addContainerGap(145, Short.MAX_VALUE))
+            panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFootCobroLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblComprobantes)
+                            .addComponent(lblComprobantesT))
+                    .addContainerGap(145, Short.MAX_VALUE))
         );
         panelFootCobroLayout.setVerticalGroup(
-                panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelFootCobroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                                .addGap(54, 54, 54))
-                        .addGroup(panelFootCobroLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblComprobantesT, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(panelFootCobroLayout.createSequentialGroup()
-                                                .addGap(19, 19, 19)
-                                                .addComponent(lblComprobantes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(33, Short.MAX_VALUE))
+            panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFootCobroLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addGap(54, 54, 54))
+            .addGroup(panelFootCobroLayout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addGroup(panelFootCobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblComprobantesT, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelFootCobroLayout.createSequentialGroup()
+                                    .addGap(19, 19, 19)
+                                    .addComponent(lblComprobantes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(33, Short.MAX_VALUE))
         );
 
         bntAceptar.setBackground(new java.awt.Color(51, 153, 255));
@@ -486,52 +498,52 @@ public final class IPagoPedido extends javax.swing.JDialog {
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
-                panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelImage1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(bntEliminarFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                                .addComponent(bntAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelCabCobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                        .addGroup(panelImage1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(panelFootCobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(panelBodyCobro, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE))
-                                .addContainerGap(13, Short.MAX_VALUE))
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(bntEliminarFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                    .addComponent(bntAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelCabCobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panelFootCobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBodyCobro, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE))
+                    .addContainerGap(13, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
-                panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelImage1Layout.createSequentialGroup()
-                                .addComponent(panelCabCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addComponent(panelBodyCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelFootCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)
-                                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(bntEliminarFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(bntAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                    .addComponent(panelCabCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(1, 1, 1)
+                    .addComponent(panelBodyCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(panelFootCobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(11, 11, 11)
+                    .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bntEliminarFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bntAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -648,6 +660,12 @@ public final class IPagoPedido extends javax.swing.JDialog {
     private void cmbFormaPagoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbFormaPagoKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             doEnterCmbFormaPago();
+            if (AtuxVariables.vCobroConRedondeo) {
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText())));
+            } else {
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText()) + AtuxUtility.getRedondeo(Double.parseDouble(lblSoles.getText()))));
+            }
+
         }
     }//GEN-LAST:event_cmbFormaPagoKeyReleased
 
@@ -662,9 +680,9 @@ public final class IPagoPedido extends javax.swing.JDialog {
                 return;
             }
 
-            if (!AtuxUtility.isDouble(String.valueOf(AtuxUtility.getDecimalNumber(txtMontoPagado.getText().trim())))) {
-                txtMontoPagado.setText("");
-            }
+//            if (!AtuxUtility.isDouble(String.valueOf(AtuxUtility.getDecimalNumber(txtMontoPagado.getText().trim())))) {
+//                txtMontoPagado.setText("");
+//            }
 
             if (codigoFormaPago.equalsIgnoreCase(AtuxVariables.FORMA_PAGO_EFECTIVO)) {
                 if (!AtuxUtility.validaCentimos(txtMontoPagado)) {
@@ -835,6 +853,34 @@ public final class IPagoPedido extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtMontoPagadoKeyPressed
 
+    private void cmbFormaPagoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbFormaPagoFocusGained
+        if (lblSaldo.getText().equals("0.00")){
+            if (AtuxVariables.vCobroConRedondeo) {
+                //txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText())));
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText()) - Double.parseDouble(lblTotalPagado.getText())));
+            } else {
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText()) + AtuxUtility.getRedondeo(Double.parseDouble(lblSoles.getText()))));
+            }
+        }else{
+            txtMontoPagado.setText(lblSaldo.getText());
+        }
+
+    }//GEN-LAST:event_cmbFormaPagoFocusGained
+
+    private void cmbFormaPagoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbFormaPagoFocusLost
+        if (lblSaldo.getText().equals("0.00")){
+            if (AtuxVariables.vCobroConRedondeo) {
+                //txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText())));
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText()) - Double.parseDouble(lblTotalPagado.getText())));
+            } else {
+                txtMontoPagado.setText(AtuxUtility.formatNumber(Double.parseDouble(lblSoles.getText()) + AtuxUtility.getRedondeo(Double.parseDouble(lblSoles.getText()))));
+            }
+        }else{
+            txtMontoPagado.setText(lblSaldo.getText());
+        }
+
+    }//GEN-LAST:event_cmbFormaPagoFocusLost
+
     void actualizaPagos() {
         System.out.println("Agregando Pago: " + arrayPagos);
         if (arrayPagos.size() > 0) {
@@ -868,7 +914,7 @@ public final class IPagoPedido extends javax.swing.JDialog {
 
     public void doEnterCmbFormaPago() {
         cmbMoneda.setEnabled(false);
-
+        calculaTotales();
         String codigoFormaPago = ((FormaPago) cmbFormaPago.getSelectedItem()).getCoFormaPago();
 
         if (codigoFormaPago.equalsIgnoreCase(AtuxVariables.FORMA_PAGO_EFECTIVO)) {
@@ -909,7 +955,7 @@ public final class IPagoPedido extends javax.swing.JDialog {
 
             AtuxUtility.moveFocus(txtMontoPagado);
         }
-
+        AtuxUtility.moveFocus(txtMontoPagado);
     }
 
     public void calculaTotales() {
@@ -1075,11 +1121,12 @@ public final class IPagoPedido extends javax.swing.JDialog {
         AtuxVariables.vAceptar = pAceptar;
         if (!pAceptar) txtMontoPagado.setText("0.00");
         this.setVisible(false);
-        this.dispose();
+        //this.dispose();
     }
 
     public void setPedido(PedidoVenta pedido) {
         this.pedido = pedido;
+//        doEnterCmbFormaPago();
     }
 
     private void limpiarDatosTarjeta() {

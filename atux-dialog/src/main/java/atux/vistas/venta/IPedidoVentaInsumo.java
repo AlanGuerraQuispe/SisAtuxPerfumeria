@@ -1093,7 +1093,7 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
 
             mostrarPagoPedido();
 
-            closeWindow(true);
+//            closeWindow(true);
         } else if (iPedidoGenerado.pedidoAnulado)
             closeWindow(true);
     }
@@ -1128,9 +1128,16 @@ public final class IPedidoVentaInsumo extends javax.swing.JInternalFrame {
         iPagoPedido.setPedido(pedido);
         iPagoPedido.setVisible(true);
 
-        if (AtuxVariables.vAceptar) {
+        /*if (AtuxVariables.vAceptar) {
             this.setVisible(false);
             this.dispose();
+        }*/
+        if (AtuxVariables.vAceptar) {
+            try {
+                nuevoPedido();
+            } catch (SQLException ex) {
+                Logger.getLogger(IPedidoVentaInsumo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

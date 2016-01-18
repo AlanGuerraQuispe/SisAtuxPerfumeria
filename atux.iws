@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e7aa3df7-906e-49b9-b928-649730bc154f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.form" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPedidoGenerado.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPedidoGenerado.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" afterPath="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" afterPath="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/atux.iws" afterPath="$PROJECT_DIR$/atux.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-tools/buildNumber.properties" afterPath="$PROJECT_DIR$/build-tools/buildNumber.properties" />
     </list>
@@ -197,97 +200,91 @@
       <file leaf-file-name="IPedidoVentaInsumo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="16286" max-vertical-offset="20264">
-              <caret line="1049" column="21" selection-start-line="1049" selection-start-column="21" selection-end-line="1049" selection-end-column="21" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="673" max-vertical-offset="20519">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding>
+                <element signature="e#42052#42235#0" expanded="true" />
+                <element signature="e#42234#42235#0" expanded="true" />
+                <element signature="e#67625#67626#0" expanded="true" />
+                <element signature="e#67654#67655#0" expanded="true" />
+                <element signature="e#67703#67704#0" expanded="true" />
+                <element signature="e#67739#67740#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseConexion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="4216">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ICambiarUsuario.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ICambiarUsuario.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32884097" vertical-offset="167" max-vertical-offset="2295">
-              <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="693" max-vertical-offset="2312">
+              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appctx-datasource.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
+      <file leaf-file-name="ICobroPedido.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/ICobroPedido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1122">
-              <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PedidoVenta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelbd/PedidoVenta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6920" max-vertical-offset="10319">
-              <caret line="598" column="33" selection-start-line="598" selection-start-column="33" selection-end-line="598" selection-end-column="33" />
+            <state vertical-scroll-proportion="-3.7931035" vertical-offset="8118" max-vertical-offset="13872">
+              <caret line="529" column="55" selection-start-line="529" selection-start-column="50" selection-end-line="529" selection-end-column="55" />
               <folding>
-                <element signature="e#14667#14668#0" expanded="true" />
-                <element signature="e#14708#14709#0" expanded="true" />
-                <element signature="e#20601#20602#0" expanded="true" />
-                <element signature="e#20644#20645#0" expanded="true" />
-                <element signature="e#20846#20847#0" expanded="true" />
-                <element signature="e#25995#25996#0" expanded="true" />
-                <element signature="e#26032#26033#0" expanded="true" />
+                <element signature="e#1556#1645#0" expanded="true" />
+                <element signature="e#24677#24859#0" expanded="true" />
+                <element signature="e#24858#24859#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IPagoPedido.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IPagoPedido.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9945" max-vertical-offset="27387">
-              <caret line="605" column="56" selection-start-line="605" selection-start-column="54" selection-end-line="605" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.9028571" vertical-offset="14644" max-vertical-offset="28764">
+              <caret line="880" column="0" selection-start-line="880" selection-start-column="0" selection-end-line="880" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4174#4263#0" expanded="true" />
+                <element signature="e#3542#3567#0" expanded="true" />
+                <element signature="e#4267#4297#0" expanded="true" />
+                <element signature="e#4302#4391#0" expanded="true" />
+                <element signature="e#6492#6493#0" expanded="true" />
+                <element signature="e#6546#6547#0" expanded="true" />
+                <element signature="e#6617#6618#0" expanded="true" />
+                <element signature="e#6670#6671#0" expanded="true" />
+                <element signature="e#11832#11833#0" expanded="true" />
+                <element signature="e#11893#11894#0" expanded="true" />
+                <element signature="e#11957#11958#0" expanded="true" />
+                <element signature="e#12016#12017#0" expanded="true" />
+                <element signature="e#14136#14319#0" expanded="true" />
+                <element signature="e#14318#14319#0" expanded="true" />
+                <element signature="e#14463#14464#0" expanded="true" />
+                <element signature="e#14523#14524#0" expanded="true" />
+                <element signature="e#14591#14592#0" expanded="true" />
+                <element signature="e#14649#14650#0" expanded="true" />
+                <element signature="e#14699#14869#0" expanded="true" />
+                <element signature="e#14868#14869#0" expanded="true" />
+                <element signature="e#14955#15140#0" expanded="true" />
+                <element signature="e#15139#15140#0" expanded="true" />
+                <element signature="e#26448#26631#0" expanded="true" />
+                <element signature="e#26630#26631#0" expanded="true" />
+                <element signature="e#26771#26952#0" expanded="true" />
+                <element signature="e#26951#26952#0" expanded="true" />
+                <element signature="e#27138#27331#0" expanded="true" />
+                <element signature="e#27330#27331#0" expanded="true" />
+                <element signature="e#36466#36467#0" expanded="true" />
+                <element signature="e#36509#36510#0" expanded="true" />
+                <element signature="e#85750#85751#0" expanded="true" />
+                <element signature="e#85802#85803#0" expanded="true" />
+                <element signature="e#85852#85853#0" expanded="true" />
+                <element signature="e#85890#85891#0" expanded="true" />
+                <element signature="e#85969#85970#0" expanded="true" />
+                <element signature="e#86017#86018#0" expanded="true" />
+                <element signature="e#86052#86053#0" expanded="true" />
+                <element signature="e#86083#86084#0" expanded="true" />
+                <element signature="e#86131#86132#0" expanded="true" />
+                <element signature="e#86171#86172#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AtuxSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="19651" max-vertical-offset="21862">
-              <caret line="1172" column="0" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
-              <folding>
-                <marker date="1452708648241" expanded="true" signature="1052:1109" placeholder="SELECT TO_CH..DUAL..." />
-                <marker date="1452708648241" expanded="true" signature="2205:2259" placeholder="SELECT TO_CH..DUAL..." />
-                <marker date="1452708648241" expanded="true" signature="3045:3069" placeholder="SELECT SYSDA..DUAL..." />
-                <marker date="1452708648241" expanded="true" signature="3559:3632" placeholder="SELECT SYSDA..DUAL..." />
-                <marker date="1452708648241" expanded="true" signature="4146:4170" placeholder="SELECT SYSDA..DUAL..." />
-                <marker date="1452708648241" expanded="true" signature="4680:4772" placeholder="SELECT TO_CH..DUAL..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CPedidoVenta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CPedidoVenta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="13226">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -295,12 +292,10 @@
       <file leaf-file-name="IPedidoGenerado.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPedidoGenerado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2890" max-vertical-offset="6953">
+            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="6919">
               <caret line="200" column="48" selection-start-line="200" selection-start-column="48" selection-end-line="200" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3554#3737#0" expanded="true" />
-                <element signature="e#3736#3737#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -333,21 +328,21 @@
         <option value="$PROJECT_DIR$/atux-dialog/src/main/resources/properties/AtuxServidor.properties" />
         <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/consulta/VentaTransaccionResumenPst.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/MainWindow.java" />
-        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/print/builder/ServicioEmisionComprobantes.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CComprobantePago.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/utilitario/ICambiarUsuario.java" />
         <option value="$PROJECT_DIR$/atux-jrcp/src/main/java/com/aw/swing/mvp/navigation/AWWindowsManager.java" />
         <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java" />
-        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CUnidadMedida.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/catalogo/IMaestroProductos.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java" />
-        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPedidoGenerado.java" />
         <option value="$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml" />
         <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java" />
+        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java" />
+        <option value="$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java" />
+        <option value="$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java" />
       </list>
     </option>
   </component>
@@ -1232,6 +1227,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atux-desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="donacion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -1632,12 +1665,12 @@
       <workItem from="1452657846849" duration="854000" />
       <workItem from="1452703795102" duration="236000" />
       <workItem from="1452704437695" duration="5080000" />
-      <workItem from="1452709831249" duration="740000" />
+      <workItem from="1452709831249" duration="15289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84071000" />
+    <option name="totallyTimeSpent" value="98620000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1653,11 +1686,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1665,25 +1699,24 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36044657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29761904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29761904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34290272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29346094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33014354" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23923445" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28867623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1704,21 +1737,21 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3110048" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4290271" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28867623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36044657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26984128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29761904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34290272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29346094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1825,19 +1858,25 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java</url>
-          <line>664</line>
-          <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java</url>
-          <line>692</line>
+          <line>706</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/ICobroPedido.java</url>
+          <line>815</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="60" />
+      <option name="time" value="79" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1846,25 +1885,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/modelgui/ModeloTomaPedidoVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2936" max-vertical-offset="6817">
-          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="25993">
-          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-jrcp/src/main/java/com/aw/swing/mvp/Presenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8890" max-vertical-offset="12937">
           <caret line="618" column="13" selection-start-line="618" selection-start-column="13" selection-end-line="618" selection-end-column="13" />
+          <folding>
+            <element signature="e#18870#18871#0" expanded="false" />
+            <element signature="e#18901#18902#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1960,13 +1988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/ICobroPedido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27631578" vertical-offset="1123" max-vertical-offset="13804">
-          <caret line="96" column="12" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/INumeroPedido.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="694" max-vertical-offset="2176">
@@ -1999,13 +2020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.8057325" vertical-offset="1290" max-vertical-offset="2771">
           <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/principal/MenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2094,13 +2108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/config/AppConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23038398" vertical-offset="304" max-vertical-offset="1836">
@@ -2109,20 +2116,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8412969" vertical-offset="2975" max-vertical-offset="5627">
-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/FrmAtuxV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="939" max-vertical-offset="1751">
           <caret line="71" column="21" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="21" />
+          <folding>
+            <element signature="e#2685#3111#0" expanded="false" />
+            <element signature="e#3110#3111#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2135,6 +2136,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22911051" vertical-offset="0" max-vertical-offset="3264">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2142,6 +2144,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36061382" vertical-offset="1899" max-vertical-offset="7599">
           <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2155,25 +2158,401 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6920" max-vertical-offset="10319">
           <caret line="598" column="33" selection-start-line="598" selection-start-column="33" selection-end-line="598" selection-end-column="33" />
           <folding>
-            <element signature="e#14667#14668#0" expanded="true" />
-            <element signature="e#14708#14709#0" expanded="true" />
-            <element signature="e#20601#20602#0" expanded="true" />
-            <element signature="e#20644#20645#0" expanded="true" />
-            <element signature="e#20846#20847#0" expanded="true" />
-            <element signature="e#25995#25996#0" expanded="true" />
-            <element signature="e#26032#26033#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#7165#7166#0" expanded="false" />
+            <element signature="e#7192#7193#0" expanded="false" />
+            <element signature="e#12162#12163#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="false" />
+            <element signature="e#12236#12237#0" expanded="false" />
+            <element signature="e#12272#12273#0" expanded="false" />
+            <element signature="e#12307#12308#0" expanded="false" />
+            <element signature="e#12338#12339#0" expanded="false" />
+            <element signature="e#12386#12387#0" expanded="false" />
+            <element signature="e#12426#12427#0" expanded="false" />
+            <element signature="e#12470#12471#0" expanded="false" />
+            <element signature="e#12510#12511#0" expanded="false" />
+            <element signature="e#12576#12577#0" expanded="false" />
+            <element signature="e#12634#12635#0" expanded="false" />
+            <element signature="e#12671#12672#0" expanded="false" />
+            <element signature="e#12704#12705#0" expanded="false" />
+            <element signature="e#12756#12757#0" expanded="false" />
+            <element signature="e#12800#12801#0" expanded="false" />
+            <element signature="e#12846#12847#0" expanded="false" />
+            <element signature="e#12888#12889#0" expanded="false" />
+            <element signature="e#12958#12959#0" expanded="false" />
+            <element signature="e#13020#13021#0" expanded="false" />
+            <element signature="e#13060#13061#0" expanded="false" />
+            <element signature="e#13096#13097#0" expanded="false" />
+            <element signature="e#13154#13155#0" expanded="false" />
+            <element signature="e#13204#13205#0" expanded="false" />
+            <element signature="e#13238#13239#0" expanded="false" />
+            <element signature="e#13268#13269#0" expanded="false" />
+            <element signature="e#13314#13315#0" expanded="false" />
+            <element signature="e#13352#13353#0" expanded="false" />
+            <element signature="e#13394#13395#0" expanded="false" />
+            <element signature="e#13432#13433#0" expanded="false" />
+            <element signature="e#13494#13495#0" expanded="false" />
+            <element signature="e#13548#13549#0" expanded="false" />
+            <element signature="e#13583#13584#0" expanded="false" />
+            <element signature="e#13614#13615#0" expanded="false" />
+            <element signature="e#13662#13663#0" expanded="false" />
+            <element signature="e#13702#13703#0" expanded="false" />
+            <element signature="e#13746#13747#0" expanded="false" />
+            <element signature="e#13786#13787#0" expanded="false" />
+            <element signature="e#13852#13853#0" expanded="false" />
+            <element signature="e#13910#13911#0" expanded="false" />
+            <element signature="e#13949#13950#0" expanded="false" />
+            <element signature="e#13984#13985#0" expanded="false" />
+            <element signature="e#14040#14041#0" expanded="false" />
+            <element signature="e#14088#14089#0" expanded="false" />
+            <element signature="e#14125#14126#0" expanded="false" />
+            <element signature="e#14158#14159#0" expanded="false" />
+            <element signature="e#14210#14211#0" expanded="false" />
+            <element signature="e#14254#14255#0" expanded="false" />
+            <element signature="e#14297#14298#0" expanded="false" />
+            <element signature="e#14336#14337#0" expanded="false" />
+            <element signature="e#14400#14401#0" expanded="false" />
+            <element signature="e#14456#14457#0" expanded="false" />
+            <element signature="e#14493#14494#0" expanded="false" />
+            <element signature="e#14526#14527#0" expanded="false" />
+            <element signature="e#14578#14579#0" expanded="false" />
+            <element signature="e#14622#14623#0" expanded="false" />
+            <element signature="e#14776#14777#0" expanded="false" />
+            <element signature="e#14836#14837#0" expanded="false" />
+            <element signature="e#14885#14886#0" expanded="false" />
+            <element signature="e#14930#14931#0" expanded="false" />
+            <element signature="e#15113#15114#0" expanded="false" />
+            <element signature="e#15148#15149#0" expanded="false" />
+            <element signature="e#15204#15205#0" expanded="false" />
+            <element signature="e#15252#15253#0" expanded="false" />
+            <element signature="e#15293#15294#0" expanded="false" />
+            <element signature="e#15330#15331#0" expanded="false" />
+            <element signature="e#15390#15391#0" expanded="false" />
+            <element signature="e#15442#15443#0" expanded="false" />
+            <element signature="e#15510#15511#0" expanded="false" />
+            <element signature="e#15535#15536#0" expanded="false" />
+            <element signature="e#15610#15611#0" expanded="false" />
+            <element signature="e#15638#15639#0" expanded="false" />
+            <element signature="e#15678#15679#0" expanded="false" />
+            <element signature="e#15714#15715#0" expanded="false" />
+            <element signature="e#15772#15773#0" expanded="false" />
+            <element signature="e#15822#15823#0" expanded="false" />
+            <element signature="e#15860#15861#0" expanded="false" />
+            <element signature="e#15896#15897#0" expanded="false" />
+            <element signature="e#15952#15953#0" expanded="false" />
+            <element signature="e#16002#16003#0" expanded="false" />
+            <element signature="e#16041#16042#0" expanded="false" />
+            <element signature="e#16078#16079#0" expanded="false" />
+            <element signature="e#16136#16137#0" expanded="false" />
+            <element signature="e#16188#16189#0" expanded="false" />
+            <element signature="e#16230#16231#0" expanded="false" />
+            <element signature="e#16270#16271#0" expanded="false" />
+            <element signature="e#16334#16335#0" expanded="false" />
+            <element signature="e#16392#16393#0" expanded="false" />
+            <element signature="e#16434#16435#0" expanded="false" />
+            <element signature="e#16474#16475#0" expanded="false" />
+            <element signature="e#16538#16539#0" expanded="false" />
+            <element signature="e#16596#16597#0" expanded="false" />
+            <element signature="e#16636#16637#0" expanded="false" />
+            <element signature="e#16674#16675#0" expanded="false" />
+            <element signature="e#16734#16735#0" expanded="false" />
+            <element signature="e#16788#16789#0" expanded="false" />
+            <element signature="e#16829#16830#0" expanded="false" />
+            <element signature="e#16868#16869#0" expanded="false" />
+            <element signature="e#16930#16931#0" expanded="false" />
+            <element signature="e#16986#16987#0" expanded="false" />
+            <element signature="e#17019#17020#0" expanded="false" />
+            <element signature="e#17050#17051#0" expanded="false" />
+            <element signature="e#17096#17097#0" expanded="false" />
+            <element signature="e#17136#17137#0" expanded="false" />
+            <element signature="e#17177#17178#0" expanded="false" />
+            <element signature="e#17214#17215#0" expanded="false" />
+            <element signature="e#17274#17275#0" expanded="false" />
+            <element signature="e#17326#17327#0" expanded="false" />
+            <element signature="e#17372#17373#0" expanded="false" />
+            <element signature="e#17414#17415#0" expanded="false" />
+            <element signature="e#17484#17485#0" expanded="false" />
+            <element signature="e#17546#17547#0" expanded="false" />
+            <element signature="e#17591#17592#0" expanded="false" />
+            <element signature="e#17632#17633#0" expanded="false" />
+            <element signature="e#17700#17701#0" expanded="false" />
+            <element signature="e#17760#17761#0" expanded="false" />
+            <element signature="e#17803#17804#0" expanded="false" />
+            <element signature="e#17842#17843#0" expanded="false" />
+            <element signature="e#17906#17907#0" expanded="false" />
+            <element signature="e#17962#17963#0" expanded="false" />
+            <element signature="e#18002#18003#0" expanded="false" />
+            <element signature="e#18038#18039#0" expanded="false" />
+            <element signature="e#18096#18097#0" expanded="false" />
+            <element signature="e#18146#18147#0" expanded="false" />
+            <element signature="e#18190#18191#0" expanded="false" />
+            <element signature="e#18230#18231#0" expanded="false" />
+            <element signature="e#18296#18297#0" expanded="false" />
+            <element signature="e#18354#18355#0" expanded="false" />
+            <element signature="e#18396#18397#0" expanded="false" />
+            <element signature="e#18434#18435#0" expanded="false" />
+            <element signature="e#18496#18497#0" expanded="false" />
+            <element signature="e#18550#18551#0" expanded="false" />
+            <element signature="e#18593#18594#0" expanded="false" />
+            <element signature="e#18632#18633#0" expanded="false" />
+            <element signature="e#18696#18697#0" expanded="false" />
+            <element signature="e#18752#18753#0" expanded="false" />
+            <element signature="e#18787#18788#0" expanded="false" />
+            <element signature="e#18818#18819#0" expanded="false" />
+            <element signature="e#18866#18867#0" expanded="false" />
+            <element signature="e#18906#18907#0" expanded="false" />
+            <element signature="e#18949#18950#0" expanded="false" />
+            <element signature="e#18983#18984#0" expanded="false" />
+            <element signature="e#19042#19043#0" expanded="false" />
+            <element signature="e#19088#19089#0" expanded="false" />
+            <element signature="e#19124#19125#0" expanded="false" />
+            <element signature="e#19156#19157#0" expanded="false" />
+            <element signature="e#19206#19207#0" expanded="false" />
+            <element signature="e#19248#19249#0" expanded="false" />
+            <element signature="e#19287#19288#0" expanded="false" />
+            <element signature="e#19322#19323#0" expanded="false" />
+            <element signature="e#19378#19379#0" expanded="false" />
+            <element signature="e#19426#19427#0" expanded="false" />
+            <element signature="e#19468#19469#0" expanded="false" />
+            <element signature="e#19506#19507#0" expanded="false" />
+            <element signature="e#19568#19569#0" expanded="false" />
+            <element signature="e#19622#19623#0" expanded="false" />
+            <element signature="e#19665#19666#0" expanded="false" />
+            <element signature="e#19704#19705#0" expanded="false" />
+            <element signature="e#19768#19769#0" expanded="false" />
+            <element signature="e#19824#19825#0" expanded="false" />
+            <element signature="e#19866#19867#0" expanded="false" />
+            <element signature="e#19904#19905#0" expanded="false" />
+            <element signature="e#19966#19967#0" expanded="false" />
+            <element signature="e#20020#20021#0" expanded="false" />
+            <element signature="e#20061#20062#0" expanded="false" />
+            <element signature="e#20098#20099#0" expanded="false" />
+            <element signature="e#20158#20159#0" expanded="false" />
+            <element signature="e#20210#20211#0" expanded="false" />
+            <element signature="e#20243#20244#0" expanded="false" />
+            <element signature="e#20272#20273#0" expanded="false" />
+            <element signature="e#20316#20317#0" expanded="false" />
+            <element signature="e#20352#20353#0" expanded="false" />
+            <element signature="e#20395#20396#0" expanded="false" />
+            <element signature="e#20434#20435#0" expanded="false" />
+            <element signature="e#20498#20499#0" expanded="false" />
+            <element signature="e#20554#20555#0" expanded="false" />
+            <element signature="e#20894#20895#0" expanded="false" />
+            <element signature="e#20934#20935#0" expanded="false" />
+            <element signature="e#20977#20978#0" expanded="false" />
+            <element signature="e#21016#21017#0" expanded="false" />
+            <element signature="e#21080#21081#0" expanded="false" />
+            <element signature="e#21136#21137#0" expanded="false" />
+            <element signature="e#21177#21178#0" expanded="false" />
+            <element signature="e#21214#21215#0" expanded="false" />
+            <element signature="e#21274#21275#0" expanded="false" />
+            <element signature="e#21326#21327#0" expanded="false" />
+            <element signature="e#21366#21367#0" expanded="false" />
+            <element signature="e#21402#21403#0" expanded="false" />
+            <element signature="e#21460#21461#0" expanded="false" />
+            <element signature="e#21510#21511#0" expanded="false" />
+            <element signature="e#21549#21550#0" expanded="false" />
+            <element signature="e#21584#21585#0" expanded="false" />
+            <element signature="e#21640#21641#0" expanded="false" />
+            <element signature="e#21688#21689#0" expanded="false" />
+            <element signature="e#21730#21731#0" expanded="false" />
+            <element signature="e#21768#21769#0" expanded="false" />
+            <element signature="e#21830#21831#0" expanded="false" />
+            <element signature="e#21884#21885#0" expanded="false" />
+            <element signature="e#21923#21924#0" expanded="false" />
+            <element signature="e#21958#21959#0" expanded="false" />
+            <element signature="e#22014#22015#0" expanded="false" />
+            <element signature="e#22062#22063#0" expanded="false" />
+            <element signature="e#22096#22097#0" expanded="false" />
+            <element signature="e#22126#22127#0" expanded="false" />
+            <element signature="e#22172#22173#0" expanded="false" />
+            <element signature="e#22210#22211#0" expanded="false" />
+            <element signature="e#22258#22259#0" expanded="false" />
+            <element signature="e#22302#22303#0" expanded="false" />
+            <element signature="e#22482#22483#0" expanded="false" />
+            <element signature="e#22518#22519#0" expanded="false" />
+            <element signature="e#22576#22577#0" expanded="false" />
+            <element signature="e#22626#22627#0" expanded="false" />
+            <element signature="e#22666#22667#0" expanded="false" />
+            <element signature="e#22702#22703#0" expanded="false" />
+            <element signature="e#22760#22761#0" expanded="false" />
+            <element signature="e#22810#22811#0" expanded="false" />
+            <element signature="e#22845#22846#0" expanded="false" />
+            <element signature="e#22876#22877#0" expanded="false" />
+            <element signature="e#22924#22925#0" expanded="false" />
+            <element signature="e#22964#22965#0" expanded="false" />
+            <element signature="e#22999#23000#0" expanded="false" />
+            <element signature="e#23030#23031#0" expanded="false" />
+            <element signature="e#23078#23079#0" expanded="false" />
+            <element signature="e#23118#23119#0" expanded="false" />
+            <element signature="e#23165#23166#0" expanded="false" />
+            <element signature="e#23208#23209#0" expanded="false" />
+            <element signature="e#23386#23387#0" expanded="false" />
+            <element signature="e#23424#23425#0" expanded="false" />
+            <element signature="e#23486#23487#0" expanded="false" />
+            <element signature="e#23540#23541#0" expanded="false" />
+            <element signature="e#23589#23590#0" expanded="false" />
+            <element signature="e#23634#23635#0" expanded="false" />
+            <element signature="e#23817#23818#0" expanded="false" />
+            <element signature="e#23852#23853#0" expanded="false" />
+            <element signature="e#23908#23909#0" expanded="false" />
+            <element signature="e#23956#23957#0" expanded="false" />
+            <element signature="e#24002#24003#0" expanded="false" />
+            <element signature="e#24044#24045#0" expanded="false" />
+            <element signature="e#24114#24115#0" expanded="false" />
+            <element signature="e#24176#24177#0" expanded="false" />
+            <element signature="e#24220#24221#0" expanded="false" />
+            <element signature="e#24260#24261#0" expanded="false" />
+            <element signature="e#24326#24327#0" expanded="false" />
+            <element signature="e#24384#24385#0" expanded="false" />
+            <element signature="e#24427#24428#0" expanded="false" />
+            <element signature="e#24466#24467#0" expanded="false" />
+            <element signature="e#24530#24531#0" expanded="false" />
+            <element signature="e#24586#24587#0" expanded="false" />
+            <element signature="e#24628#24629#0" expanded="false" />
+            <element signature="e#24666#24667#0" expanded="false" />
+            <element signature="e#24728#24729#0" expanded="false" />
+            <element signature="e#24782#24783#0" expanded="false" />
+            <element signature="e#24830#24831#0" expanded="false" />
+            <element signature="e#24874#24875#0" expanded="false" />
+            <element signature="e#25059#25060#0" expanded="false" />
+            <element signature="e#25100#25101#0" expanded="false" />
+            <element signature="e#25168#25169#0" expanded="false" />
+            <element signature="e#25228#25229#0" expanded="false" />
+            <element signature="e#25267#25268#0" expanded="false" />
+            <element signature="e#25302#25303#0" expanded="false" />
+            <element signature="e#25358#25359#0" expanded="false" />
+            <element signature="e#25406#25407#0" expanded="false" />
+            <element signature="e#25441#25442#0" expanded="false" />
+            <element signature="e#25471#25472#0" expanded="false" />
+            <element signature="e#25518#25519#0" expanded="false" />
+            <element signature="e#25556#25557#0" expanded="false" />
+            <element signature="e#25602#25603#0" expanded="false" />
+            <element signature="e#25644#25645#0" expanded="false" />
+            <element signature="e#25714#25715#0" expanded="false" />
+            <element signature="e#25776#25777#0" expanded="false" />
+            <element signature="e#25815#25816#0" expanded="false" />
+            <element signature="e#25850#25851#0" expanded="false" />
+            <element signature="e#25906#25907#0" expanded="false" />
+            <element signature="e#25954#25955#0" expanded="false" />
+            <element signature="e#26092#26093#0" expanded="false" />
+            <element signature="e#26144#26145#0" expanded="false" />
+            <element signature="e#26193#26194#0" expanded="false" />
+            <element signature="e#26222#26223#0" expanded="false" />
+            <element signature="e#26282#26283#0" expanded="false" />
+            <element signature="e#26318#26319#0" expanded="false" />
+            <element signature="e#26357#26358#0" expanded="false" />
+            <element signature="e#26392#26393#0" expanded="false" />
+            <element signature="e#26448#26449#0" expanded="false" />
+            <element signature="e#26496#26497#0" expanded="false" />
+            <element signature="e#27279#27280#0" expanded="false" />
+            <element signature="e#27367#27368#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java">
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CPedidoVenta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9945" max-vertical-offset="27387">
-          <caret line="605" column="56" selection-start-line="605" selection-start-column="54" selection-end-line="605" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13226">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#658#659#0" expanded="false" />
+            <element signature="e#725#726#0" expanded="false" />
+            <element signature="e#1119#1120#0" expanded="false" />
+            <element signature="e#1196#1197#0" expanded="false" />
+            <element signature="e#8673#8686#0" expanded="false" />
+            <element signature="e#14824#14837#0" expanded="false" />
+            <element signature="e#22885#22898#0" expanded="false" />
+            <element signature="e#28382#28395#0" expanded="false" />
+            <element signature="e#37776#37793#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="19651" max-vertical-offset="21862">
+          <caret line="1172" column="0" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
+          <folding>
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT TO_CH..DUAL..." />
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT TO_CH..DUAL..." />
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT SYSDA..DUAL..." />
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT SYSDA..DUAL..." />
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT SYSDA..DUAL..." />
+            <marker date="1452708648241" expanded="true" signature="-1:-1" placeholder="SELECT TO_CH..DUAL..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/principal/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/MenuBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78634363" vertical-offset="2057" max-vertical-offset="5661">
+          <caret line="142" column="8" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4174#4263#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10842" max-vertical-offset="25993">
+          <caret line="664" column="28" selection-start-line="664" selection-start-column="28" selection-end-line="664" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3773585" vertical-offset="132" max-vertical-offset="1122">
+          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_26/src.zip!/java/awt/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3325359" vertical-offset="15773" max-vertical-offset="27642">
+          <caret line="984" column="16" selection-start-line="984" selection-start-column="16" selection-end-line="984" selection-end-column="16" />
+          <folding>
+            <element signature="e#39543#39544#0" expanded="false" />
+            <element signature="e#39578#39579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/AtuxPst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4317406" vertical-offset="495" max-vertical-offset="1921">
+          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="693" max-vertical-offset="2312">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21368948" vertical-offset="280" max-vertical-offset="4216">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2183,64 +2562,83 @@
           <caret line="200" column="48" selection-start-line="200" selection-start-column="48" selection-end-line="200" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3554#3737#0" expanded="true" />
-            <element signature="e#3736#3737#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/controllers/CPedidoVenta.java">
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/ICobroPedido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13226">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/util/common/AtuxSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19651" max-vertical-offset="21862">
-          <caret line="1172" column="0" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.7931035" vertical-offset="8118" max-vertical-offset="13872">
+          <caret line="529" column="55" selection-start-line="529" selection-start-column="50" selection-end-line="529" selection-end-column="55" />
           <folding>
-            <marker date="1452708648241" expanded="true" signature="1052:1109" placeholder="SELECT TO_CH..DUAL..." />
-            <marker date="1452708648241" expanded="true" signature="2205:2259" placeholder="SELECT TO_CH..DUAL..." />
-            <marker date="1452708648241" expanded="true" signature="3045:3069" placeholder="SELECT SYSDA..DUAL..." />
-            <marker date="1452708648241" expanded="true" signature="3559:3632" placeholder="SELECT SYSDA..DUAL..." />
-            <marker date="1452708648241" expanded="true" signature="4146:4170" placeholder="SELECT SYSDA..DUAL..." />
-            <marker date="1452708648241" expanded="true" signature="4680:4772" placeholder="SELECT TO_CH..DUAL..." />
+            <element signature="e#1556#1645#0" expanded="true" />
+            <element signature="e#24677#24859#0" expanded="true" />
+            <element signature="e#24858#24859#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/IPedidoVentaInsumo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="16286" max-vertical-offset="20264">
-          <caret line="1049" column="21" selection-start-line="1049" selection-start-column="21" selection-end-line="1049" selection-end-column="21" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="673" max-vertical-offset="20519">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <element signature="e#42052#42235#0" expanded="true" />
+            <element signature="e#42234#42235#0" expanded="true" />
+            <element signature="e#67625#67626#0" expanded="true" />
+            <element signature="e#67654#67655#0" expanded="true" />
+            <element signature="e#67703#67704#0" expanded="true" />
+            <element signature="e#67739#67740#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/atux-domain/src/main/resources/appCtx/appctx-datasource.xml">
+    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/vistas/venta/caja/IPagoPedido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1122">
-          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-dialog/src/main/java/atux/managerbd/BaseConexion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="4216">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atux-desktop/src/main/java/com/atux/desktop/main/ICambiarUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32884097" vertical-offset="167" max-vertical-offset="2295">
-          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding />
+        <state vertical-scroll-proportion="0.9028571" vertical-offset="14644" max-vertical-offset="28764">
+          <caret line="880" column="0" selection-start-line="880" selection-start-column="0" selection-end-line="880" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3542#3567#0" expanded="true" />
+            <element signature="e#4267#4297#0" expanded="true" />
+            <element signature="e#4302#4391#0" expanded="true" />
+            <element signature="e#6492#6493#0" expanded="true" />
+            <element signature="e#6546#6547#0" expanded="true" />
+            <element signature="e#6617#6618#0" expanded="true" />
+            <element signature="e#6670#6671#0" expanded="true" />
+            <element signature="e#11832#11833#0" expanded="true" />
+            <element signature="e#11893#11894#0" expanded="true" />
+            <element signature="e#11957#11958#0" expanded="true" />
+            <element signature="e#12016#12017#0" expanded="true" />
+            <element signature="e#14136#14319#0" expanded="true" />
+            <element signature="e#14318#14319#0" expanded="true" />
+            <element signature="e#14463#14464#0" expanded="true" />
+            <element signature="e#14523#14524#0" expanded="true" />
+            <element signature="e#14591#14592#0" expanded="true" />
+            <element signature="e#14649#14650#0" expanded="true" />
+            <element signature="e#14699#14869#0" expanded="true" />
+            <element signature="e#14868#14869#0" expanded="true" />
+            <element signature="e#14955#15140#0" expanded="true" />
+            <element signature="e#15139#15140#0" expanded="true" />
+            <element signature="e#26448#26631#0" expanded="true" />
+            <element signature="e#26630#26631#0" expanded="true" />
+            <element signature="e#26771#26952#0" expanded="true" />
+            <element signature="e#26951#26952#0" expanded="true" />
+            <element signature="e#27138#27331#0" expanded="true" />
+            <element signature="e#27330#27331#0" expanded="true" />
+            <element signature="e#36466#36467#0" expanded="true" />
+            <element signature="e#36509#36510#0" expanded="true" />
+            <element signature="e#85750#85751#0" expanded="true" />
+            <element signature="e#85802#85803#0" expanded="true" />
+            <element signature="e#85852#85853#0" expanded="true" />
+            <element signature="e#85890#85891#0" expanded="true" />
+            <element signature="e#85969#85970#0" expanded="true" />
+            <element signature="e#86017#86018#0" expanded="true" />
+            <element signature="e#86052#86053#0" expanded="true" />
+            <element signature="e#86083#86084#0" expanded="true" />
+            <element signature="e#86131#86132#0" expanded="true" />
+            <element signature="e#86171#86172#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -37,9 +37,11 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
         String msg = "";
         AppConfig.Estado configUsuario = AppConfig.configUsuario(username, passsword);
         if (configUsuario == AppConfig.Estado.NO_EXISTE) {
-            throw new AWBusinessException("Usuario no existe");
+            MsgDisplayer.showMessage("Usuario no existe");
+            //throw new AWBusinessException("Usuario no existe");
         } else if (configUsuario == AppConfig.Estado.ERROR_CLAVE) {
-            throw new AWBusinessException("Contraseña incorrecta");
+            MsgDisplayer.showMessage("Contraseña incorrecta");
+//            throw new AWBusinessException("Contraseña incorrecta");
         } else {
             if (configUsuario == AppConfig.Estado.ACCESO_OK) {
                 MsgDisplayer.showMessage("Bienvenido:  " + AppConfig.getUsuario().getNombreCompleto());
@@ -61,7 +63,6 @@ public class ICambiarUsuario extends javax.swing.JInternalFrame {
                 loginOk = true;
             }
         }
-
     }
    
     private void obtenerInfoLocal() throws SQLException {
